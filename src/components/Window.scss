@@ -1,0 +1,73 @@
+@import "bourbon";
+
+:local(.container) {
+  @include background-image(linear-gradient(to bottom, #888, #555));
+  @include filter(drop-shadow(3px 3px 3px black));
+  width: 100%;
+  height: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  position: absolute;
+  cursor: move;
+  .inner-container {
+    cursor: default;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    .menu {
+      padding-bottom: 2px;
+      display: flex;
+      font-weight: bold;
+      > div {
+        cursor: pointer;
+        margin: 3px 5px 0 10px;
+      }
+      > div:not(:first-child) {
+        font-weight: 200;
+      }
+    }
+    .body {
+      flex: 1;
+      display: flex;
+      border-radius: 4px;
+    }
+  }
+}
+
+:local(.container).Editor {
+  top: 5px;
+  left: 100px;
+  height: 600px;
+  width: 480px;
+}
+
+:local(.container).Terminal {
+  top: 100px;
+  right: 200px;
+  height: 240px;
+  width: 320px;
+}
+
+:local(.container).Map {
+  top: 200px;
+  left: 240px;
+  height: 300px;
+  width: 400px;
+}
+
+:local(.container).AudioPlayer {
+  top: 370px;
+  right: 240px;
+  height: 80px;
+  width: 240px;
+}
+
+:local(.container).PDF {
+  top: 25px;
+  right: 100px;
+  height: 640px;
+  width: 480px;
+}

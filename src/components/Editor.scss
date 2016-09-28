@@ -1,0 +1,28 @@
+@import "bourbon";
+
+:local(.container) {
+  .title {
+    color: #8c800a;
+  }
+  .key {
+    color: #b71fb6;
+  }
+  .symbol {
+    color: #D00;
+  }
+  .value {
+    color: #685;
+  }
+  .tooltip {
+    font-size: 0.67rem;
+    max-width: 320px;
+    div {
+      padding: 3px 0;
+    }
+  }
+  *[data-tip] {
+    background-color: #EEE;
+    border: thin solid #CCC;
+    border-radius: 2px;
+  }
+}

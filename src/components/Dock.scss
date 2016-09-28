@@ -1,0 +1,51 @@
+@import "bourbon";
+
+$height: 48px;
+$top-gray: 135;
+$bottom-gray: 120;
+$opacity: 0.8;
+$border-radius: 8px;
+
+@mixin bg() {
+  border-top-left-radius: $border-radius;
+  border-top-right-radius: $border-radius;
+  width: 100%;
+  height: 100%;
+}
+
+:local(.container) {
+  position: fixed;
+  margin: auto;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 262px;  //314px
+  height: $height + 3px;
+  padding: 3px;
+  z-index: 9999999999;
+
+  .inner-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    .back-container {
+      position: absolute;
+      z-index: 1;
+      @include bg();
+      background-color: #FFF;
+      opacity: 0.85;
+      @include filter(blur(0));
+    }
+
+    .front-container {
+      position: absolute;
+      z-index: 2;
+      @include bg();
+      @include filter(drop-shadow(0 4px 6px black));
+      @include background-image(linear-gradient(to bottom, rgba($top-gray, $top-gray, $top-gray, $opacity),
+                                                           rgba($bottom-gray, $bottom-gray, $bottom-gray, $opacity)));
+      display: flex;
+    }
+  }
+}
