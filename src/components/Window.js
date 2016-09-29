@@ -7,7 +7,8 @@ import { bringToFront } from '../actions/UiActions';
 import { getWindowZIndex } from '../utils/ui';
 
 const Window = ({name, menuItems, children, fgColor='#000', bgColor='#FFF', usePadding=true, zIndex, bringToFront}) => {
-    return <Draggable bounds="body" onStart={bringToFront} cancel=".inner-container">
+    //onStart={bringToFront}
+    return <Draggable bounds="body" cancel=".inner-container">
         <div className={`${styles.container} ${name}`} style={{zIndex: zIndex}} onClick={bringToFront}>
             <div className="inner-container"
                  style={{backgroundColor:bgColor, color:fgColor, padding: usePadding ? '6px 5px' : null}}>
