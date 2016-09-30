@@ -1,4 +1,4 @@
-import ReactAudioPlayer, {connectAudioPlayer} from './audio/ReactAudioPlayer';
+import {connectAudioPlayer, TitleMarquee} from './audio/ReactAudioPlayer';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import styles from './AudioPlayer.scss';
@@ -19,9 +19,7 @@ const AudioPlayer = ({play, stop, next, prev, seek, currentTrack:{number, artist
                 <i className="fa fa-step-forward" onClick={next} />
             </div>
             <div className="current-track">
-                <div className={`marquee ${isPlaying && secondsElapsed === 0 ? 'off' : 'on'}`}>
-                    {`${number}. ${artist} - ${title}`}
-                </div>
+                <TitleMarquee text={`${number}. ${artist} - ${title}`} />
             </div>
             <div className="time-slider">
                 <Slider onChange={seek} value={secondsElapsed} min={0} max={lengthInSeconds}

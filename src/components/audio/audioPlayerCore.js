@@ -9,6 +9,15 @@ let timer;
 let listeners = {};
 let lastListenerId = 0;
 
+export const UpdateTypes = {
+    PLAY: 'PLAY',
+    PAUSE: 'PAUSE',
+    STOP: 'STOP',
+    SEEK: 'SEEK',
+    TRACK_SWITCH: 'TRACK_SWITCH',
+    TICK: 'TICK'
+};
+
 function isPlaying() {
     return audio.duration > 0 && !audio.paused;
 }
@@ -28,8 +37,9 @@ function formatTime(seconds) {
     }
 }
 
-function updateListeners() {
+function updateListeners(type) {
     _.each(_.values(listeners), listener => listener({
+        type,
         currentTrack: {...tracks[currentTrackIndex], number: currentTrackIndex + 1, lengthInSeconds: audio.duration},
         isPlaying: isPlaying(),
         secondsElapsed: audio.currentTime,
@@ -44,7 +54,7 @@ function switchTrack() {
     if (!wasStopped) {
         play();
     }
-    updateListeners();
+    updateListeners(UpdateTypes.TRACK_SWITCH);
 }
 
 function stopTimer() {
@@ -52,7 +62,6 @@ function stopTimer() {
         clearInterval(timer);
         timer = null;
     }
-    updateListeners();
 }
 
 export function addTracks(newTracks) {
@@ -66,11 +75,12 @@ export function play() {
     if (isPlaying()) {
         audio.pause();
         stopTimer();
+        updateListeners(UpdateTypes.PAUSE);
     }
     else {
         audio.play();
-        updateListeners();
-        timer = setInterval(updateListeners, 1000);
+        updateListeners(UpdateTypes.PLAY);
+        timer = setInterval(() => updateListeners(UpdateTypes.TICK), 1000);
     }
 }
 
@@ -78,6 +88,7 @@ export function stop() {
     audio.pause();
     audio.currentTime = 0;
     stopTimer();
+    updateListeners(UpdateTypes.STOP);
 }
 
 export function next() {
@@ -92,7 +103,7 @@ export function prev() {
 
 export function seek(seconds) {
     audio.currentTime = seconds;
-    updateListeners();
+    updateListeners(UpdateTypes.SEEK);
 }
 
 export function addListener(callback) {
