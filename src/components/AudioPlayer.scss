@@ -1,8 +1,57 @@
 :local(.container) {
   margin: auto;
-  i.fa {
-    font-size: 1.5rem;
-    margin: 5px 10px;
-    cursor: pointer;
+  width: 90%;
+  .controls {
+    width: 96%;
+    margin: 20px auto;
+    text-align: center;
+    display: flex;
+    i.fa {
+      display: block;
+      flex: 1;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    i.fa:active {
+      opacity: 0.5;
+    }
+  }
+  .current-track {
+    overflow: hidden;
+    width: 90%;
+    margin: 10px auto;
+    white-space: nowrap;
+    .marquee {
+      padding-left: 100%;
+      display: inline-block;
+    }
+    .marquee.on {
+      animation: marquee 10s infinite linear;
+      @keyframes marquee {
+        0% {
+          transform: translate3d(0, 0, 0);
+        }
+        100% {
+          transform: translate3d(-100%, 0, 0);
+        }
+      }
+    }
+  }
+  .time-slider {
+    padding: 5%;
+    .rc-slider {
+      background-color: #36F;
+      cursor: pointer;
+    }
+    .rc-slider-track {
+      background-color: darken(#36F, 15%);
+    }
+    .handle {
+
+    }
+  }
+  .time {
+    margin: 10px auto;
+    text-align: center;
   }
 }
