@@ -40,9 +40,15 @@ function formatTime(seconds) {
 function updateListeners(type) {
     _.each(_.values(listeners), listener => listener({
         type,
-        currentTrack: {...tracks[currentTrackIndex], number: currentTrackIndex + 1, lengthInSeconds: audio.duration},
+        currentTrack: {
+            ...tracks[currentTrackIndex],
+            number: currentTrackIndex + 1,
+            durationSeconds: audio.duration,
+            durationString: formatTime(audio.duration)
+        },
         isPlaying: isPlaying(),
         secondsElapsed: audio.currentTime,
+        secondsRemaining: audio.duration - audio.currentTime,
         timeElapsed: formatTime(audio.currentTime),
         timeRemaining: formatTime(audio.duration - audio.currentTime)
     }));

@@ -1,4 +1,6 @@
 import { Component, PropTypes, createElement } from 'react';
+import Slider from 'rc-slider';
+import 'rc-slider/assets/index.css';
 import { play, stop, next, prev, seek, addTracks, addListener, UpdateTypes } from './audioPlayerCore';
 import _ from 'lodash';
 
@@ -10,6 +12,7 @@ export function connectAudioPlayer(WrappedComponent, tracks) {
                 isPlaying: false,
                 currentTrack: {},
                 secondsElapsed: 0,
+                secondsRemaining: 0,
                 timeElapsed: null,
                 timeRemaining: null,
             };
@@ -30,6 +33,7 @@ export function connectAudioPlayer(WrappedComponent, tracks) {
                 isPlaying: this.state.isPlaying,
                 currentTrack: this.state.currentTrack,
                 secondsElapsed: this.state.secondsElapsed,
+                secondsRemaining: this.state.secondsRemaining,
                 timeElapsed: this.state.timeElapsed,
                 timeRemaining: this.state.timeRemaining,
             };
@@ -87,3 +91,30 @@ Marquee.propTypes = {
 };
 
 export const TitleMarquee = Marquee;
+
+
+/* TimeSlider component */
+
+const DefaultSliderHandle = () => (
+    <div></div>
+);
+
+export class TimeSlider extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            secondsElapsed: 0,
+            secondsRemaining: 0
+        };
+    }
+
+    componentDidMount() {
+        addListener(update => this.setState(_.pick(update, ['secondsElapsed', 'secondsRemaining'])));
+    }
+
+    render() {
+        const {secondsElapsed, secondsRemaining} = this.state;
+        return <Slider onChange={seek} value={secondsElapsed} min={0} max={secondsElapsed + secondsRemaining}
+                       handle={this.props.handle || <DefaultSliderHandle />} {...this.props} />;
+    }
+}

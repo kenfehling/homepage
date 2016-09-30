@@ -1,15 +1,9 @@
-import {connectAudioPlayer, TitleMarquee} from './audio/ReactAudioPlayer';
-import Slider from 'rc-slider';
-import 'rc-slider/assets/index.css';
+import {connectAudioPlayer, TitleMarquee, TimeSlider} from './audio/ReactAudioPlayer';
 import styles from './AudioPlayer.scss';
 import Window from './Window';
 
-const SliderHandle = () => (
-    <div className="handle"></div>
-);
-
-const AudioPlayer = ({play, stop, next, prev, seek, currentTrack:{number, artist, title, lengthInSeconds}, isPlaying,
-    secondsElapsed, timeElapsed, timeRemaining}) => (
+const AudioPlayer = ({play, stop, next, prev, seek, currentTrack:{number, artist, title, durationSeconds}, isPlaying,
+    secondsElapsed, timeElapsed}) => (
     <Window name="AudioPlayer" bgColor="#003" fgColor="#36F" usePadding={false}>
         <div className={styles.container}>
             <div className="controls">
@@ -22,8 +16,7 @@ const AudioPlayer = ({play, stop, next, prev, seek, currentTrack:{number, artist
                 <TitleMarquee text={`${number}. ${artist} - ${title}`} />
             </div>
             <div className="time-slider">
-                <Slider onChange={seek} value={secondsElapsed} min={0} max={lengthInSeconds}
-                        className="slider" handle={<SliderHandle />} />
+                <TimeSlider />
             </div>
             <div className="time">{timeElapsed}</div>
         </div>
