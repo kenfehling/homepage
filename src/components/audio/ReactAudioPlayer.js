@@ -1,10 +1,10 @@
 import { Component, PropTypes, createElement } from 'react';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
-import { play, stop, next, prev, seek, addTracks, addListener, UpdateTypes } from './audioPlayerCore';
+import { play, stop, next, prev, seek, addTracks, turnOnAutoplay, addListener, UpdateTypes } from './audioPlayerCore';
 import _ from 'lodash';
 
-export function connectAudioPlayer(WrappedComponent, tracks) {
+export function connectAudioPlayer(WrappedComponent, tracks, options={autoplay:false}) {
     class Connect extends Component {
         constructor(props) {
             super(props);
@@ -20,6 +20,9 @@ export function connectAudioPlayer(WrappedComponent, tracks) {
 
         componentDidMount() {
             addListener(update => this.setState(_.omit(update, 'type')));
+            if (options.autoplay) {
+                turnOnAutoplay();
+            }
             addTracks(tracks);
         }
 
@@ -62,32 +65,41 @@ const baseStyle  = {
     display: 'inline-block'
 };
 
-const marqueeStyle = {
+const getMarqueeStyle = duration => ({
     ...baseStyle,
-    animation: `${animationName} 10s infinite linear`
-};
+    animation: `${animationName} ${duration}s infinite linear`
+});
 
 class Marquee extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            on: true
+            on: true,
+            currentTrack: {}
         };
     }
 
     componentDidMount() {
-        addListener(update => this.setState({on: update.type !== UpdateTypes.TRACK_SWITCH}));
+        addListener(update => this.setState({
+            currentTrack: update.currentTrack,
+            on: update.type !== UpdateTypes.TRACK_SWITCH,
+        }));
     }
 
     render() {
+        const {text, duration} = this.props;
+        const {number, artist, title} = this.state.currentTrack;
         return <div style={{overflow: 'hidden', whiteSpace: 'nowrap'}}>
-            <div style={this.state.on ? marqueeStyle : baseStyle}>{this.props.text}</div>
+            <div style={this.state.on ? getMarqueeStyle(duration || 10) : baseStyle}>
+                {text || `${number}. ${artist} - ${title}`}
+            </div>
         </div>
     }
 }
 
 Marquee.propTypes = {
-    text: PropTypes.string.isRequired
+    text: PropTypes.string,
+    duration: PropTypes.number
 };
 
 export const TitleMarquee = Marquee;

@@ -1,0 +1,74 @@
+@import "bourbon";
+
+$icon-size: 64px;
+$star-size: 12px;
+$item-bg: #FCFBFB;
+$border-darken: 15%;
+
+:local(.container) {
+  font-family: Helvetica, sans-serif;
+  width: 100%;
+  background-color: #F2F1F0;
+  .header {
+    @include background-image(linear-gradient(to bottom, #95B422, #80A41E));
+    padding: 10px 0;
+    .title {
+      padding: 10px 0;
+      font-weight: bold;
+      font-size: 14px;
+      text-align: center;
+    }
+    .menu {
+
+    }
+  }
+  .tools {
+    display: flex;
+    padding: 5px 5px 0 5px;
+    overflow-x: scroll;
+    .col {
+      height: 100%;
+      .tool {
+        width: 96px;
+        text-align: center;
+        cursor: pointer;
+        background-color: $item-bg;
+        border: thin solid darken($item-bg, $border-darken);
+        border-radius: 4px;
+        padding: 10px;
+        box-sizing: border-box;
+        margin: 8px 4px;
+        .icon {
+          width: $icon-size;
+          height: $icon-size;
+          border-radius: 4px;
+          margin: auto;
+        }
+        .name {
+          font-size: 12px;
+          font-weight: 700;
+          text-align: center;
+        }
+        .tags {
+
+        }
+        .stars {
+          margin-top: 3px;
+          text-align: center;
+          img {
+            height: $star-size;
+          }
+        }
+      }
+    }
+    .tool:hover {
+      background-color: darken($item-bg, 10%);
+      border: thin solid darken($item-bg, 20%);
+    }
+
+    .tool:active {
+      background-color: darken($item-bg, 15%);
+      border: thin solid darken($item-bg, 25%);
+    }
+  }
+}

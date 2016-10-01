@@ -4,7 +4,7 @@ import { bringToFront } from '../actions/UiActions';
 
 const DockIcon = ({name, bringToFront}) => (
     <div className={styles.container}>
-        <img src={require('img/icons/' + name + '.svg')} onClick={bringToFront} />
+        <img src={require('img/icons/dock/' + name + '.svg')} onClick={bringToFront} />
     </div>
 );
 

@@ -1,8 +1,9 @@
 @import "bourbon";
 
+$num-icons: 6;
 $height: 48px;
-$top-gray: 135;
-$bottom-gray: 120;
+$top-gray: 137;
+$bottom-gray: 122;
 $opacity: 0.8;
 $border-radius: 8px;
 
@@ -19,15 +20,15 @@ $border-radius: 8px;
   left: 0;
   right: 0;
   bottom: 0;
-  width: 262px;  //314px
-  height: $height + 3px;
-  padding: 3px;
+  width: 2px + 52px * $num_icons;
+  height: $height + 7px;
   z-index: 9999999999;
 
   .inner-container {
     position: relative;
     width: 100%;
     height: 100%;
+    margin: 3px;
 
     .back-container {
       position: absolute;

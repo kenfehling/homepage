@@ -112,6 +112,10 @@ export function seek(seconds) {
     updateListeners(UpdateTypes.SEEK);
 }
 
+export function turnOnAutoplay() {
+    audio.autoplay = true;
+}
+
 export function addListener(callback) {
     listeners[String(++lastListenerId)] = callback;
     return lastListenerId;

@@ -2,8 +2,7 @@ import {connectAudioPlayer, TitleMarquee, TimeSlider} from './audio/ReactAudioPl
 import styles from './AudioPlayer.scss';
 import Window from './Window';
 
-const AudioPlayer = ({play, stop, next, prev, seek, currentTrack:{number, artist, title, durationSeconds}, isPlaying,
-    secondsElapsed, timeElapsed}) => (
+const AudioPlayer = ({play, stop, next, prev, isPlaying, timeElapsed}) => (
     <Window name="AudioPlayer" bgColor="#003" fgColor="#36F" usePadding={false}>
         <div className={styles.container}>
             <div className="controls">
@@ -13,7 +12,7 @@ const AudioPlayer = ({play, stop, next, prev, seek, currentTrack:{number, artist
                 <i className="fa fa-step-forward" onClick={next} />
             </div>
             <div className="current-track">
-                <TitleMarquee text={`${number}. ${artist} - ${title}`} />
+                <TitleMarquee />
             </div>
             <div className="time-slider">
                 <TimeSlider />
@@ -24,7 +23,7 @@ const AudioPlayer = ({play, stop, next, prev, seek, currentTrack:{number, artist
 );
 
 const tracks = [
-    { artist: 'Doobie Brothers', title: 'What a Fool Believes', file: '/public/song1.mp3' },
+    { artist: '8BIT-SOLDIER', title: 'Close Your Eyes', file: 'https://ia601209.us.archive.org/20/items/Chiptune_Songs_Archive/8BIT-SOLDIER/06%20Close%20Your%20Eyes.mp3' },
     { artist: 'Doobie Brothers', title: 'Taking it to the Streets', file: '/public/song2.mp3' },
 ];
 

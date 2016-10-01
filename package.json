@@ -11,7 +11,6 @@
   "license": "ISC",
   "dependencies": {
     "lodash": "^4.16.1",
-    "rc-slider": "^5.1.1",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "react-draggable": "^2.2.2",
