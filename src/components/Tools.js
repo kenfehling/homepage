@@ -29,9 +29,17 @@ export default class Tools extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            insideTool: false
+            insideTool: false,
+            lastScrollLeft: 0
         }
     }
+
+    componentDidUpdate() {
+        if (this.scrollArea) {
+            this.scrollArea.scrollLeft = this.state.lastScrollLeft;
+        }
+    }
+
     renderTool({name, stars}) {
         return <div className="tool" key={name} onClick={() => this.setState({insideTool: true})}>
             <img className="icon" src={require('img/icons/tools/' + name.replace(' ', '_') + '.svg')} />
@@ -44,7 +52,8 @@ export default class Tools extends Component {
     }
     renderTools() {
         return <div className="tools" key="tools">
-            <div className="scroll-area">
+            <div className="scroll-area" ref={(ref) => this.scrollArea = ref}
+                 onScroll={e => this.setState({lastScrollLeft: e.target.scrollLeft})}>
                 {_.map(_.range(Math.ceil(_.size(tools) / ROWS)), col =>
                     <div className="col" key={col}>
                         {_.map(_.range(ROWS), row =>
