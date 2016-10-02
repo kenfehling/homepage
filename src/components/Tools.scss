@@ -6,6 +6,8 @@ $window-bg: #F2F1F0;
 $item-bg: #FCFBFB;
 $border-darken: 15%;
 $title-weight: 700;
+$header-top-color: #9650a1;
+$header-bottom-color: #a42d95;
 
 :local(.container) {
   font-family: Helvetica, sans-serif;
@@ -13,7 +15,7 @@ $title-weight: 700;
   background-color: $window-bg;
 
   .header {
-    @include background-image(linear-gradient(to bottom, #9650a1, #a42d95));
+    @include background-image(linear-gradient(to bottom, $header-top-color, $header-bottom-color));
     color: $item-bg;
     padding: 10px 0;
     .title {
@@ -32,17 +34,13 @@ $title-weight: 700;
         &:hover {
           text-decoration: underline;
         }
-        &:active {
-          color: #DDD;
-        }
         &.current {
           background-color: $item-bg;
           border-radius: 2px;
-          color: #a42d95;
+          color: $header-bottom-color;
           cursor: default;
-          &:hover, &:active {
+          &:hover {
             text-decoration: none;
-            color: #a42d95;
           }
         }
       }
