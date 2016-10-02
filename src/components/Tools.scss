@@ -2,19 +2,22 @@
 
 $icon-size: 64px;
 $star-size: 12px;
+$window-bg: #F2F1F0;
 $item-bg: #FCFBFB;
 $border-darken: 15%;
+$title-weight: 700;
 
 :local(.container) {
   font-family: Helvetica, sans-serif;
   width: 100%;
-  background-color: #F2F1F0;
+  background-color: $window-bg;
   .header {
-    @include background-image(linear-gradient(to bottom, #95B422, #80A41E));
+    @include background-image(linear-gradient(to bottom, #9650a1, #a42d95));
+    color: $window-bg;
     padding: 10px 0;
     .title {
       padding: 10px 0;
-      font-weight: bold;
+      font-weight: $title-weight;
       font-size: 14px;
       text-align: center;
     }
@@ -24,7 +27,7 @@ $border-darken: 15%;
   }
   .tools {
     display: flex;
-    padding: 5px 5px 0 5px;
+    padding: 5px 0 0 5px;
     overflow-x: scroll;
     .col {
       height: 100%;
@@ -46,7 +49,7 @@ $border-darken: 15%;
         }
         .name {
           font-size: 12px;
-          font-weight: 700;
+          font-weight: $title-weight;
           text-align: center;
         }
         .tags {
