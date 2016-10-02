@@ -1,6 +1,4 @@
-import { Component } from 'react';
-import Animate from 'rc-animate';
-import Window from './Window';
+import React, { Component } from 'react';
 import styles from './Tools.scss';
 import './SlideTransition.css';
 import _ from 'lodash';
@@ -62,26 +60,20 @@ export default class Tools extends Component {
         </div>;
     }
     render() {
-        return <Window name="Tools" bgColor="#FFF" fgColor="#000" usePadding={false}>
-            <div className={styles.container}>
-                <div className="header">
-                    <div className="title">Skills</div>
-                    <div className="menu">
-                        <div>All</div>
-                        <div>Languages</div>
-                        <div>Libraries</div>
-                        <div>Platforms</div>
-                        <div>Software</div>
-                    </div>
+        return <div className={styles.container}>
+            <div className="header">
+                <div className="title">Skills</div>
+                <div className="menu">
+                    <div>All</div>
+                    <div>Languages</div>
+                    <div>Libraries</div>
+                    <div>Platforms</div>
+                    <div>Web</div>
+                    <div>Mobile</div>
+                    <div>Software</div>
                 </div>
-                <Animate
-                    transitionLeave={false}
-                    transitionName="fade"
-                >
-                    {this.state.insideTool ? this.renderDetails() : this.renderTools()}
-                </Animate>
             </div>
-        </Window>;
+            {this.state.insideTool ? this.renderDetails() : this.renderTools()}
+        </div>;
     }
 }
-

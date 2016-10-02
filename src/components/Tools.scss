@@ -1,6 +1,6 @@
 @import "bourbon";
 
-$icon-size: 64px;
+$icon-size: 56px;
 $star-size: 12px;
 $window-bg: #F2F1F0;
 $item-bg: #FCFBFB;
@@ -27,7 +27,7 @@ $title-weight: 700;
   }
   .tools {
     display: flex;
-    padding: 5px 0 0 5px;
+    padding: 3px 5px 1px 5px;
     overflow-x: scroll;
     .col {
       height: 100%;
@@ -51,9 +51,9 @@ $title-weight: 700;
           font-size: 12px;
           font-weight: $title-weight;
           text-align: center;
+          margin: 1px 0 3px 0;
         }
         .stars {
-          margin-top: 3px;
           text-align: center;
           img {
             height: $star-size;
@@ -62,18 +62,17 @@ $title-weight: 700;
       }
     }
     .tool:hover {
-      background-color: darken($item-bg, 10%);
-      border: thin solid darken($item-bg, 20%);
+      background-color: darken($item-bg, 8%);
+      border: thin solid darken($item-bg, 8% + $border-darken);
     }
 
     .tool:active {
-      background-color: darken($item-bg, 15%);
-      border: thin solid darken($item-bg, 25%);
+      background-color: darken($item-bg, 12%);
+      border: thin solid darken($item-bg, 12% + $border-darken);
     }
   }
   .details {
     width: 100%;
     height: 200px;  // REMOVE THIS
-    background-color: #8c800a;
   }
 }
