@@ -7,22 +7,33 @@ const ROWS = 2;
 const starIcon = require('img/icons/star.svg');
 const halfStarIcon = require('img/icons/half-star.svg');
 
+const categories = [
+    'All',
+    'Languages',
+    'Libraries',
+    'Platforms',
+    'Web',
+    'Mobile',
+    'Databases',
+    'Software'
+];
+
 const tools = [
-    { name: 'JavaScript', stars: 5 },
-    { name: 'React', stars: 4.5 },
-    { name: 'Redux', stars: 4.5 },
-    { name: 'HTML', stars: 4.5 },
-    { name: 'Webpack', stars: 4 },
-    { name: 'Node', stars: 4 },
-    { name: 'Python', stars: 4 },
-    { name: 'CSS', stars: 4 },
-    { name: 'Android', stars: 4 },
-    { name: 'MongoDB', stars: 3.5 },
-    { name: 'Java', stars: 3.5 },
-    { name: 'Ruby', stars: 3 },
-    { name: 'iOS', stars: 3 },
-    { name: 'Swift', stars: 2.5 },
-    { name: 'Illustrator', stars: 2 }
+    { name: 'JavaScript', stars: 5, categories: ['Languages', 'Web'] },
+    { name: 'React', stars: 4.5, categories: ['Libraries', 'Web'] },
+    { name: 'Redux', stars: 4.5, categories: ['Libraries', 'Web'] },
+    { name: 'HTML', stars: 4.5, categories: ['Languages', 'Platforms', 'Web'] },
+    { name: 'Webpack', stars: 4, categories: ['Libraries', 'Web'] },
+    { name: 'Node', stars: 4, categories: ['Platforms', 'Web'] },
+    { name: 'Python', stars: 4, categories: ['Languages'] },
+    { name: 'CSS', stars: 4, categories: ['Languages', 'Web'] },
+    { name: 'Android', stars: 4, categories: ['Platforms', 'Mobile'] },
+    { name: 'MongoDB', stars: 3.5, categories: ['Databases'] },
+    { name: 'Java', stars: 3.5, categories: ['Languages'] },
+    { name: 'Ruby', stars: 3, categories: ['Languages'] },
+    { name: 'iOS', stars: 3, categories: ['Platforms', 'Mobile'] },
+    { name: 'Swift', stars: 2.5, categories: ['Languages', 'Mobile'] },
+    { name: 'Illustrator', stars: 2, categories: ['Software'] }
 ];
 
 export default class Tools extends Component {
@@ -30,7 +41,8 @@ export default class Tools extends Component {
         super(props);
         this.state = {
             insideTool: false,
-            lastScrollLeft: 0
+            lastScrollLeft: 0,
+            category: 'All'
         }
     }
 
@@ -50,38 +62,44 @@ export default class Tools extends Component {
             </div>
         </div>;
     }
+
     renderTools() {
+        const {category} = this.state;
+        const filteredTools = category === 'All' ? tools : _.filter(tools, t => _.includes(t.categories, category));
+        const n = _.size(filteredTools);
         return <div className="tools" key="tools">
             <div className="scroll-area" ref={(ref) => this.scrollArea = ref}
                  onScroll={e => this.setState({lastScrollLeft: e.target.scrollLeft})}>
-                {_.map(_.range(Math.ceil(_.size(tools) / ROWS)), col =>
+                {_.map(_.range(Math.ceil(n / ROWS)), col =>
                     <div className="col" key={col}>
                         {_.map(_.range(ROWS), row =>
-                            _.size(tools) >= col * ROWS + row + 1 ? this.renderTool(tools[col * ROWS + row]) : ''
-                        )}
+                            n >= col * ROWS + row + 1 ? this.renderTool(filteredTools[col * ROWS + row]) : '')}
                     </div>
                 )}
             </div>
         </div>;
     }
+
     renderDetails() {
         return <div className="details" key="details">
             <div>Details</div>
             <div onClick={() => this.setState({insideTool: false})}>Back</div>
         </div>;
     }
+
+    filter(category) {
+
+        this.setState({category, insideTool: false, lastScrollLeft: 0});
+    }
+
     render() {
         return <div className={styles.container}>
             <div className="header">
                 <div className="title">Skills</div>
-                <div className="menu">
-                    <div>All</div>
-                    <div>Languages</div>
-                    <div>Libraries</div>
-                    <div>Platforms</div>
-                    <div>Web</div>
-                    <div>Mobile</div>
-                    <div>Software</div>
+                <div className="categories">
+                    {_.map(categories, c =>
+                        <div className={c === this.state.category ? 'current' : ''}
+                             key={c} onClick={() => this.filter(c)}>{c}</div>)}
                 </div>
             </div>
             <div className="transition-wrapper">

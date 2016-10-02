@@ -14,7 +14,7 @@ $title-weight: 700;
 
   .header {
     @include background-image(linear-gradient(to bottom, #9650a1, #a42d95));
-    color: $window-bg;
+    color: $item-bg;
     padding: 10px 0;
     .title {
       padding: 10px 0;
@@ -22,8 +22,30 @@ $title-weight: 700;
       font-size: 14px;
       text-align: center;
     }
-    .menu {
-
+    .categories {
+      padding-left: 9px;
+      display: flex;
+      > div {
+        padding: 3px 6px;
+        margin-right: 3px;
+        cursor: pointer;
+        &:hover {
+          text-decoration: underline;
+        }
+        &:active {
+          color: #DDD;
+        }
+        &.current {
+          background-color: $item-bg;
+          border-radius: 2px;
+          color: #a42d95;
+          cursor: default;
+          &:hover, &:active {
+            text-decoration: none;
+            color: #a42d95;
+          }
+        }
+      }
     }
   }
 
