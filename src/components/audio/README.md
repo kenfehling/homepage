@@ -40,6 +40,12 @@ const tracks = [
 export default connectAudioPlayer(AudioPlayer, tracks);
 ```
 
+## API
+Exports:
+- `connectAudioPlayer`
+- `TitleMarquee`
+- `TimeSlider`
+
 ### connectAudioPlayer
 This is all you need to connect your custom UI component to the player library.
 
@@ -65,11 +71,11 @@ This is all you need to connect your custom UI component to the player library.
     </tbody>
 </table>
 
-### Provided props
+#### Provided props
 
 A number of props are provided for your component to use.
 
-#### Functions
+##### Functions
 <table class="table table-bordered table-striped">
     <thead>
     <tr>
@@ -170,10 +176,10 @@ A number of props are provided for your component to use.
     </tbody>
 </table>
 
-## TitleMarquee
+#### TitleMarquee
 Use the `TitleMarquee` component to show the current tracking playing.
 
-### props
+##### Props
 <table class="table table-bordered table-striped">
     <thead>
     <tr>
@@ -199,6 +205,6 @@ Use the `TitleMarquee` component to show the current tracking playing.
     </tbody>
 </table>
 
-## TimeSlider
+#### TimeSlider
 The `TimeSlider` component shows the current progress and allows seeking within the playing track.
 The component is based on [rc-slider](https://github.com/react-component/slider#rc-slider) and all customizations for that library are available.

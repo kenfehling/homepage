@@ -1,6 +1,6 @@
 @import "bourbon";
 
-$icon-size: 64px;
+$icon-size: 56px;
 $star-size: 12px;
 $window-bg: #F2F1F0;
 $item-bg: #FCFBFB;
@@ -11,9 +11,10 @@ $title-weight: 700;
   font-family: Helvetica, sans-serif;
   width: 100%;
   background-color: $window-bg;
+
   .header {
     @include background-image(linear-gradient(to bottom, #9650a1, #a42d95));
-    color: $window-bg;
+    color: $item-bg;
     padding: 10px 0;
     .title {
       padding: 10px 0;
@@ -21,57 +22,142 @@ $title-weight: 700;
       font-size: 14px;
       text-align: center;
     }
-    .menu {
-
-    }
-  }
-  .tools {
-    display: flex;
-    padding: 5px 0 0 5px;
-    overflow-x: scroll;
-    .col {
-      height: 100%;
-      .tool {
-        width: 96px;
-        text-align: center;
+    .categories {
+      padding-left: 9px;
+      display: flex;
+      > div {
+        padding: 3px 6px;
+        margin-right: 3px;
         cursor: pointer;
-        background-color: $item-bg;
-        border: thin solid darken($item-bg, $border-darken);
-        border-radius: 4px;
-        padding: 10px;
-        box-sizing: border-box;
-        margin: 8px 4px;
-        .icon {
-          width: $icon-size;
-          height: $icon-size;
-          border-radius: 4px;
-          margin: auto;
+        &:hover {
+          text-decoration: underline;
         }
-        .name {
-          font-size: 12px;
-          font-weight: $title-weight;
-          text-align: center;
+        &:active {
+          color: #DDD;
         }
-        .tags {
-
-        }
-        .stars {
-          margin-top: 3px;
-          text-align: center;
-          img {
-            height: $star-size;
+        &.current {
+          background-color: $item-bg;
+          border-radius: 2px;
+          color: #a42d95;
+          cursor: default;
+          &:hover, &:active {
+            text-decoration: none;
+            color: #a42d95;
           }
         }
       }
     }
-    .tool:hover {
-      background-color: darken($item-bg, 10%);
-      border: thin solid darken($item-bg, 20%);
-    }
+  }
 
-    .tool:active {
-      background-color: darken($item-bg, 15%);
-      border: thin solid darken($item-bg, 25%);
+  .tools {
+    .scroll-area {
+      display: flex;
+      padding: 3px 5px 1px 5px;
+      overflow-x: scroll;
+      .col {
+        height: 100%;
+        .tool {
+          width: 96px;
+          text-align: center;
+          cursor: pointer;
+          background-color: $item-bg;
+          border: thin solid darken($item-bg, $border-darken);
+          border-radius: 4px;
+          padding: 10px;
+          box-sizing: border-box;
+          margin: 8px 4px;
+          .icon {
+            width: $icon-size;
+            height: $icon-size;
+            border-radius: 4px;
+            margin: auto;
+          }
+          .name {
+            font-size: 12px;
+            font-weight: $title-weight;
+            text-align: center;
+            margin: 1px 0 3px 0;
+          }
+          .stars {
+            text-align: center;
+            img {
+              height: $star-size;
+            }
+          }
+        }
+        .tool:hover {
+          background-color: darken($item-bg, 8%);
+          border: thin solid darken($item-bg, 8% + $border-darken);
+        }
+
+        .tool:active {
+          background-color: darken($item-bg, 12%);
+          border: thin solid darken($item-bg, 12% + $border-darken);
+        }
+      }
     }
+  }
+
+  .details {
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .tools, .details {
+    width: 50%;
+  }
+
+  .transition-wrapper {
+    overflow: hidden;
+  }
+
+  .transition-group {
+    width: 200%;
+  }
+
+  .tool-enter {
+    &.tools {
+      transform: translate(-100%, 0);
+    }
+    &.details {
+      transform: translate(100%, 0);
+    }
+    width: 50%;
+    float: left;
+  }
+
+  .tool-enter.tool-enter-active {
+    &.tools {
+      transform: translate(0, 0);
+    }
+    &.details {
+      transform: translate(0, 0);
+    }
+    transition: all 1s;
+    width: 50%;
+    float: left;
+  }
+
+  .tool-leave {
+    &.tools {
+      transform: translate(-100%, 0);
+    }
+    &.details {
+      transform: translate(-100%, 0);
+    }
+    width: 50%;
+    float: left;
+  }
+
+  .tool-leave.tool-leave-active {
+    &.tools {
+      transform: translate(-200%, 0);
+    }
+    &.details {
+      transform: translate(0, 0);
+    }
+    transition: all 1s;
+    width: 50%;
+    float: left;
   }
 }

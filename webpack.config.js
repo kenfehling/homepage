@@ -1,8 +1,8 @@
-var webpack = require('webpack');
-var path = require('path');
+const webpack = require('webpack');
+const path = require('path');
 
-var bourbon = require('node-bourbon');
-var neat = require('node-neat');
+const bourbon = require('node-bourbon');
+const neat = require('node-neat');
 
 const sassPaths = bourbon
     .includePaths

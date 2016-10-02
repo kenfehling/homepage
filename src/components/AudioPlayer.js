@@ -1,25 +1,22 @@
 import {connectAudioPlayer, TitleMarquee, TimeSlider} from './audio/ReactAudioPlayer';
 import styles from './AudioPlayer.scss';
-import Window from './Window';
 
 const AudioPlayer = ({play, stop, next, prev, isPlaying, timeElapsed}) => (
-    <Window name="AudioPlayer" bgColor="#003" fgColor="#36F" usePadding={false}>
-        <div className={styles.container}>
-            <div className="controls">
-                <i className="fa fa-step-backward" onClick={prev} />
-                <i className={`fa fa-${isPlaying ? 'pause' : 'play'}`} onClick={play} />
-                <i className="fa fa-stop" onClick={stop} />
-                <i className="fa fa-step-forward" onClick={next} />
-            </div>
-            <div className="current-track">
-                <TitleMarquee />
-            </div>
-            <div className="time-slider">
-                <TimeSlider />
-            </div>
-            <div className="time">{timeElapsed}</div>
+    <div className={styles.container}>
+        <div className="controls">
+            <i className="fa fa-step-backward" onClick={prev} />
+            <i className={`fa fa-${isPlaying ? 'pause' : 'play'}`} onClick={play} />
+            <i className="fa fa-stop" onClick={stop} />
+            <i className="fa fa-step-forward" onClick={next} />
         </div>
-    </Window>
+        <div className="current-track">
+            <TitleMarquee />
+        </div>
+        <div className="time-slider">
+            <TimeSlider />
+        </div>
+        <div className="time">{timeElapsed}</div>
+    </div>
 );
 
 const tracks = [
