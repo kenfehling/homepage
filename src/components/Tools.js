@@ -18,23 +18,113 @@ const categories = [
     'Software'
 ];
 
-const tools = [
-    { name: 'JavaScript', stars: 5, categories: ['Languages', 'Web'] },
-    { name: 'React', stars: 4.5, categories: ['Libraries', 'Web'] },
-    { name: 'Redux', stars: 4.5, categories: ['Libraries', 'Web'] },
-    { name: 'HTML', stars: 4.5, categories: ['Languages', 'Platforms', 'Web'] },
-    { name: 'Webpack', stars: 4, categories: ['Libraries', 'Web'] },
-    { name: 'Node', stars: 4, categories: ['Platforms', 'Web'] },
-    { name: 'Python', stars: 4, categories: ['Languages'] },
-    { name: 'CSS', stars: 4, categories: ['Languages', 'Web'] },
-    { name: 'Android', stars: 4, categories: ['Platforms', 'Mobile'] },
-    { name: 'MongoDB', stars: 3.5, categories: ['Databases'] },
-    { name: 'Java', stars: 3.5, categories: ['Languages'] },
-    { name: 'Ruby', stars: 3, categories: ['Languages'] },
-    { name: 'iOS', stars: 3, categories: ['Platforms', 'Mobile'] },
-    { name: 'Swift', stars: 2.5, categories: ['Languages', 'Mobile'] },
-    { name: 'Illustrator', stars: 2, categories: ['Software'] }
-];
+const tools = [{
+    name: 'JavaScript',
+    stars: 5,
+    categories: ['Languages', 'Web'],
+    description: <div>
+        My main programming language, I'm actually quite fond of JavaScript, especially now with some of the features
+        in ES6/ES2015.
+    </div>
+}, {
+    name: 'React',
+    stars: 4.5,
+    categories: ['Libraries', 'Web'],
+    description: <div>
+        By far my favorite web "framework", React has drastically changed the way I look at web app development.
+        This site is written in React, along with Redux.
+    </div>
+}, {
+    name: 'Redux',
+    stars: 4.5,
+    categories: ['Libraries', 'Web'],
+    description: <div>
+        Redux is the leader!
+    </div>
+}, {
+    name: 'HTML',
+    stars: 4.5,
+    categories: ['Languages', 'Platforms', 'Web'],
+    description: <div>
+        Description
+    </div>
+}, {
+    name: 'Webpack',
+    stars: 4,
+    categories: ['Libraries', 'Web'],
+    description: <div>
+        Description
+    </div>
+}, {
+    name: 'Node',
+    stars: 4,
+    categories: ['Platforms', 'Web'],
+    description: <div>
+        Description
+    </div>
+}, { name: 'Python',
+    stars: 4,
+    categories: ['Languages'],
+    description: <div>
+        Description
+    </div>
+}, {
+    name: 'CSS',
+    stars: 4,
+    categories: ['Languages', 'Web'],
+    description: <div>
+        Description
+    </div>
+}, {
+    name: 'Android',
+    stars: 4,
+    categories: ['Platforms', 'Mobile'],
+    description: <div>
+        Description
+    </div>
+}, {
+    name: 'MongoDB',
+    stars: 3.5,
+    categories: ['Databases'],
+    description: <div>
+        Description
+    </div>
+}, {
+    name: 'Java',
+    stars: 3.5,
+    categories: ['Languages'],
+    description: <div>
+        Description
+    </div>
+}, {
+    name: 'Ruby',
+    stars: 3,
+    categories: ['Languages'],
+    description: <div>
+        Description
+    </div>
+}, {
+    name: 'iOS',
+    stars: 3,
+    categories: ['Platforms', 'Mobile'],
+    description: <div>
+        Description
+    </div>
+}, {
+    name: 'Swift',
+    stars: 2.5,
+    categories: ['Languages', 'Mobile'],
+    description: <div>
+        Description
+    </div>
+}, {
+    name: 'Illustrator',
+    stars: 2,
+    categories: ['Software'],
+    description: <div>
+        Description
+    </div>
+}];
 
 const getIcon = name => <img className="icon" src={require('img/icons/tools/' + name.replace(' ', '_') + '.svg')} />;
 
@@ -54,8 +144,9 @@ export default class Tools extends Component {
         }
     }
 
-    renderTool({name, stars}) {
-        return <div className="tool" key={name} onClick={() => this.setState({selectedTool: name})}>
+    renderTool(tool) {
+        const {name, stars} = tool;
+        return <div className="tool" key={name} onClick={() => this.setState({selectedTool: tool})}>
             {getIcon(name)}
             <div className="name">{name}</div>
             <div className="stars">
@@ -83,14 +174,14 @@ export default class Tools extends Component {
     }
 
     renderDetails() {
-        const {selectedTool} = this.state;
+        const {name, stars, description} = this.state.selectedTool;
         return <div className="details" key="details">
             <div className="top">
-                <div className="icon">{getIcon(selectedTool)}</div>
-                <div className="title">{selectedTool}</div>
+                <div className="icon">{getIcon(name)}</div>
+                <div className="title">{name}</div>
             </div>
             <div className="body">
-                I made a pretty rational choice to use this tool.
+                {description}
             </div>
             <div onClick={() => this.setState({selectedTool: null})}>Back</div>
         </div>;
