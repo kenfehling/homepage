@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import styles from './Tools.scss';
-import './SlideTransition.css';
 import _ from 'lodash';
 
 const ROWS = 2;
@@ -43,18 +43,20 @@ export default class Tools extends Component {
         </div>;
     }
     renderTools() {
-        return <div className="tools">
-            {_.map(_.range(Math.ceil(_.size(tools) / ROWS)), col =>
-                <div className="col" key={col}>
-                    {_.map(_.range(ROWS), row =>
-                        _.size(tools) >= col * ROWS + row + 1 ? this.renderTool(tools[col * ROWS + row]) : ''
-                    )}
-                </div>
-            )}
+        return <div className="tools" key="tools">
+            <div className="scroll-area">
+                {_.map(_.range(Math.ceil(_.size(tools) / ROWS)), col =>
+                    <div className="col" key={col}>
+                        {_.map(_.range(ROWS), row =>
+                            _.size(tools) >= col * ROWS + row + 1 ? this.renderTool(tools[col * ROWS + row]) : ''
+                        )}
+                    </div>
+                )}
+            </div>
         </div>;
     }
     renderDetails() {
-        return <div className="details">
+        return <div className="details" key="details">
             <div>Details</div>
             <div onClick={() => this.setState({insideTool: false})}>Back</div>
         </div>;
@@ -73,7 +75,17 @@ export default class Tools extends Component {
                     <div>Software</div>
                 </div>
             </div>
-            {this.state.insideTool ? this.renderDetails() : this.renderTools()}
+            <ReactCSSTransitionGroup
+                component="div"
+                className="transition-group"
+                transitionName="tool"
+                transitionEnter={true}
+                transitionLeave={true}
+                transitionEnterTimeout={0}
+                transitionLeaveTimeout={0}
+            >
+                {this.state.insideTool ? this.renderDetails() : this.renderTools()}
+            </ReactCSSTransitionGroup>
         </div>;
     }
 }

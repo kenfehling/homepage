@@ -25,12 +25,12 @@ export default class Demo extends Component {
     }
 
     render() {
-        const page = this.state.pageFlipped ? '' : <Page2 key="key" /> ;
+        const page = this.state.pageFlipped ? <Page2 key="key2" /> : <Page1 key="key1" /> ;
         console.log(page);
         return <div>
             <button onClick={() => this.setState({pageFlipped: !this.state.pageFlipped})}>Flip page</button>
             <ReactCSSTransitionGroup
-                transitionName="slide"
+                transitionName="example"
                 transitionAppear={true}
                 transitionAppearTimeout={500}
                 transitionEnterTimeout={300}
