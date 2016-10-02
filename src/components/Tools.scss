@@ -11,6 +11,7 @@ $title-weight: 700;
   font-family: Helvetica, sans-serif;
   width: 100%;
   background-color: $window-bg;
+
   .header {
     @include background-image(linear-gradient(to bottom, #9650a1, #a42d95));
     color: $window-bg;
@@ -25,6 +26,7 @@ $title-weight: 700;
 
     }
   }
+
   .tools {
     .scroll-area {
       display: flex;
@@ -73,12 +75,22 @@ $title-weight: 700;
       }
     }
   }
+
   .details {
-    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .tools, .details {
+    width: 50%;
+  }
+
+  .transition-wrapper {
+    overflow: hidden;
   }
 
   .transition-group {
-    overflow: hidden;
+    width: 200%;
   }
 
   .tool-enter {
@@ -88,6 +100,8 @@ $title-weight: 700;
     &.details {
       transform: translate(100%, 0);
     }
+    width: 50%;
+    float: left;
   }
 
   .tool-enter.tool-enter-active {
@@ -98,24 +112,30 @@ $title-weight: 700;
       transform: translate(0, 0);
     }
     transition: all 1s;
+    width: 50%;
+    float: left;
   }
 
   .tool-leave {
     &.tools {
-      transform: translate(0, 0);
+      transform: translate(-100%, 0);
     }
     &.details {
-      transform: translate(0, 0);
+      transform: translate(-100%, 0);
     }
+    width: 50%;
+    float: left;
   }
 
   .tool-leave.tool-leave-active {
     &.tools {
-      transform: translate(-100%, 0);
+      transform: translate(-200%, 0);
     }
     &.details {
-      transform: translate(100%, 0);
+      transform: translate(0, 0);
     }
     transition: all 1s;
+    width: 50%;
+    float: left;
   }
 }

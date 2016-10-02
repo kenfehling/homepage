@@ -75,17 +75,19 @@ export default class Tools extends Component {
                     <div>Software</div>
                 </div>
             </div>
-            <ReactCSSTransitionGroup
-                component="div"
-                className="transition-group"
-                transitionName="tool"
-                transitionEnter={true}
-                transitionLeave={true}
-                transitionEnterTimeout={0}
-                transitionLeaveTimeout={0}
-            >
-                {this.state.insideTool ? this.renderDetails() : this.renderTools()}
-            </ReactCSSTransitionGroup>
+            <div className="transition-wrapper">
+                <ReactCSSTransitionGroup
+                    component="div"
+                    className="transition-group"
+                    transitionName="tool"
+                    transitionEnter={true}
+                    transitionLeave={true}
+                    transitionEnterTimeout={0}
+                    transitionLeaveTimeout={0}
+                >
+                    {this.state.insideTool ? this.renderDetails() : this.renderTools()}
+                </ReactCSSTransitionGroup>
+            </div>
         </div>;
     }
 }
