@@ -36,11 +36,13 @@ const tools = [
     { name: 'Illustrator', stars: 2, categories: ['Software'] }
 ];
 
+const getIcon = name => <img className="icon" src={require('img/icons/tools/' + name.replace(' ', '_') + '.svg')} />;
+
 export default class Tools extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            insideTool: false,
+            selectedTool: null,
             lastScrollLeft: 0,
             category: 'All'
         }
@@ -53,8 +55,8 @@ export default class Tools extends Component {
     }
 
     renderTool({name, stars}) {
-        return <div className="tool" key={name} onClick={() => this.setState({insideTool: true})}>
-            <img className="icon" src={require('img/icons/tools/' + name.replace(' ', '_') + '.svg')} />
+        return <div className="tool" key={name} onClick={() => this.setState({selectedTool: name})}>
+            {getIcon(name)}
             <div className="name">{name}</div>
             <div className="stars">
                 {_.map(_.range(Math.floor(stars)), i => <img key={i} src={starIcon} />)}
@@ -81,15 +83,21 @@ export default class Tools extends Component {
     }
 
     renderDetails() {
+        const {selectedTool} = this.state;
         return <div className="details" key="details">
-            <div>Details</div>
-            <div onClick={() => this.setState({insideTool: false})}>Back</div>
+            <div className="top">
+                <div className="icon">{getIcon(selectedTool)}</div>
+                <div className="title">{selectedTool}</div>
+            </div>
+            <div className="body">
+                I made a pretty rational choice to use this tool.
+            </div>
+            <div onClick={() => this.setState({selectedTool: null})}>Back</div>
         </div>;
     }
 
     filter(category) {
-
-        this.setState({category, insideTool: false, lastScrollLeft: 0});
+        this.setState({category, selectedTool: null, lastScrollLeft: 0});
     }
 
     render() {
@@ -112,7 +120,7 @@ export default class Tools extends Component {
                     transitionEnterTimeout={0}
                     transitionLeaveTimeout={0}
                 >
-                    {this.state.insideTool ? this.renderDetails() : this.renderTools()}
+                    {this.state.selectedTool ? this.renderDetails() : this.renderTools()}
                 </ReactCSSTransitionGroup>
             </div>
         </div>;
