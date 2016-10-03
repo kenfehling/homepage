@@ -7,135 +7,187 @@ const ROWS = 2;
 const starIcon = require('img/icons/star.svg');
 const halfStarIcon = require('img/icons/half-star.svg');
 
-const categories = [
-    'All',
-    'Languages',
-    'Libraries',
-    'Platforms',
-    'Web',
-    'Mobile',
-    'Databases',
-    'Software'
-];
-
-const tools = [{
-    name: 'JavaScript',
-    stars: 5,
-    categories: ['Languages', 'Web'],
-    description: <div>
-        My main programming language, I'm actually quite fond of JavaScript, especially now with some of the features
-        in ES6/ES2015.
-    </div>
-}, {
-    name: 'React',
-    stars: 4.5,
-    categories: ['Libraries', 'Web'],
-    description: <div>
-        By far my favorite web "framework", React has drastically changed the way I look at web app development.
-        This site is written in React, along with Redux.
-    </div>
-}, {
-    name: 'Redux',
-    stars: 4.5,
-    categories: ['Libraries', 'Web'],
-    description: <div>
-        Redux is the leader!
-    </div>
-}, {
-    name: 'HTML',
-    stars: 4.5,
-    categories: ['Languages', 'Platforms', 'Web'],
-    description: <div>
-        Description
-    </div>
-}, {
-    name: 'Webpack',
-    stars: 4,
-    categories: ['Libraries', 'Web'],
-    description: <div>
-        Description
-    </div>
-}, {
-    name: 'Node',
-    stars: 4,
-    categories: ['Platforms', 'Web'],
-    description: <div>
-        Description
-    </div>
-}, { name: 'Python',
-    stars: 4,
-    categories: ['Languages'],
-    description: <div>
-        Description
-    </div>
-}, {
-    name: 'CSS',
-    stars: 4,
-    categories: ['Languages', 'Web'],
-    description: <div>
-        Description
-    </div>
-}, {
-    name: 'Android',
-    stars: 4,
-    categories: ['Platforms', 'Mobile'],
-    description: <div>
-        Description
-    </div>
-}, {
-    name: 'MongoDB',
-    stars: 3.5,
-    categories: ['Databases'],
-    description: <div>
-        Description
-    </div>
-}, {
-    name: 'Java',
-    stars: 3.5,
-    categories: ['Languages'],
-    description: <div>
-        Description
-    </div>
-}, {
-    name: 'Ruby',
-    stars: 3,
-    categories: ['Languages'],
-    description: <div>
-        Description
-    </div>
-}, {
-    name: 'iOS',
-    stars: 3,
-    categories: ['Platforms', 'Mobile'],
-    description: <div>
-        Description
-    </div>
-}, {
-    name: 'Swift',
-    stars: 2.5,
-    categories: ['Languages', 'Mobile'],
-    description: <div>
-        Description
-    </div>
-}, {
-    name: 'Illustrator',
-    stars: 2,
-    categories: ['Software'],
-    description: <div>
-        Description
-    </div>
-}];
-
 const getIcon = name => <img className="icon" src={require('img/icons/tools/' + name.replace(' ', '_') + '.svg')} />;
 
+const LANGUAGES = 'Languages';
+const LIBRARIES = 'Libraries';
+const PLATFORMS = 'Platforms';
+const WEB = 'Web';
+const MOBILE = 'Mobile';
+const DATABASES = 'Databases';
+const SOFTWARE = 'Software';
+
 export default class Tools extends Component {
+    switchToTool(name) {
+        this.setState({selectedTool: _.find(this.tools, t => t.name === name)});
+    }
+    linkToTool(name) {
+        return <a onClick={() => this.switchToTool(name)}>{name}</a>;
+    }
     constructor(props) {
         super(props);
         this.state = {
             selectedTool: null,
             lastScrollLeft: 0,
             category: 'All'
-        }
+        };
+        this.categories = [
+            'All',
+            LANGUAGES,
+            LIBRARIES,
+            PLATFORMS,
+            WEB,
+            MOBILE,
+            DATABASES,
+            SOFTWARE
+        ];
+
+        this.tools = [{
+            name: 'JavaScript',
+            stars: 5,
+            categories: [LANGUAGES, WEB],
+            description: <div>
+                My main programming language, I'm actually quite fond of JavaScript,
+                especially now with some of the features in ES6/ES2015.
+            </div>
+        }, {
+            name: 'React',
+            stars: 4.5,
+            categories: [LIBRARIES, WEB],
+            description: <div>
+                By far my favorite web framework/library, React has drastically changed the way I approach web app
+                development. This site itself is written in React, along with {this.linkToTool('Redux')}.
+                <br /><br />I've also released a couple of libraries for React into open source:<br />
+                <ul>
+                    <li><a href="http://github.com/kenfehling/react-designable-audio-player">react-designable-audio-player</a></li>
+                </ul>
+            </div>
+        }, {
+            name: 'Redux',
+            stars: 4.5,
+            categories: [LIBRARIES, WEB],
+            description: <div>
+                Redux is the leader!
+            </div>
+        }, {
+            name: 'HTML',
+            stars: 4.5,
+            categories: [LANGUAGES, PLATFORMS, WEB],
+            description: <div>
+                Description
+            </div>
+        }, {
+            name: 'Webpack',
+            stars: 4,
+            categories: [LIBRARIES, WEB],
+            description: <div>
+                Description
+            </div>
+        }, {
+            name: 'Node',
+            stars: 4,
+            categories: [PLATFORMS, WEB],
+            description: <div>
+                Description
+            </div>
+        }, { name: 'Python',
+            stars: 4,
+            categories: [LANGUAGES],
+            description: <div>
+                Description
+            </div>
+        }, {
+            name: 'CSS',
+            stars: 4,
+            categories: [LANGUAGES, WEB],
+            description: <div>
+                Description
+            </div>
+        }, {
+            name: 'Android',
+            stars: 4,
+            categories: [PLATFORMS, MOBILE],
+            description: <div>
+                Description
+            </div>
+        }, {
+            name: 'MongoDB',
+            stars: 3.5,
+            categories: [DATABASES],
+            description: <div>
+                Description
+            </div>
+        }, {
+            name: 'Java',
+            stars: 3.5,
+            categories: [LANGUAGES, MOBILE],
+            description: <div>
+                Description
+            </div>
+        }, {
+            name: 'Flash',
+            stars: 3.5,
+            categories: [PLATFORMS, WEB, SOFTWARE],
+            description: <div>
+                Description
+            </div>
+        }, {
+            name: 'Flex',
+            stars: 3.5,
+            categories: [SOFTWARE],
+            description: <div>
+                Description
+            </div>
+        }, {
+            name: 'Ruby',
+            stars: 3,
+            categories: [LANGUAGES],
+            description: <div>
+                Description
+            </div>
+        }, {
+            name: 'iOS',
+            stars: 3,
+            categories: [PLATFORMS, MOBILE],
+            description: <div>
+                Description
+            </div>
+        }, {
+            name: 'Postgresql',
+            stars: 3,
+            categories: [DATABASES],
+            description: <div>
+                Description
+            </div>
+        }, {
+            name: 'MySQL',
+            stars: 3,
+            categories: [DATABASES],
+            description: <div>
+                Description
+            </div>
+        }, {
+            name: 'Swift',
+            stars: 2.5,
+            categories: [LANGUAGES, MOBILE],
+            description: <div>
+                Description
+            </div>
+        }, {
+            name: 'Illustrator',
+            stars: 2.5,
+            categories: [SOFTWARE],
+            description: <div>
+                Description
+            </div>
+        }, {
+            name: 'Photoshop',
+            stars: 1.5,
+            categories: [SOFTWARE],
+            description: <div>
+                Description
+            </div>
+        }];
     }
 
     componentDidUpdate() {
@@ -158,7 +210,7 @@ export default class Tools extends Component {
 
     renderTools() {
         const {category} = this.state;
-        const filteredTools = category === 'All' ? tools : _.filter(tools, t => _.includes(t.categories, category));
+        const filteredTools = category === 'All' ? this.tools : _.filter(this.tools, t => _.includes(t.categories, category));
         const n = _.size(filteredTools);
         return <div className="tools" key="tools">
             <div className="scroll-area" ref={(ref) => this.scrollArea = ref}
@@ -196,7 +248,7 @@ export default class Tools extends Component {
             <div className="header">
                 <div className="title">Skills</div>
                 <div className="categories">
-                    {_.map(categories, c =>
+                    {_.map(this.categories, c =>
                         <div className={c === this.state.category ? 'current' : ''}
                              key={c} onClick={() => this.filter(c)}>{c}</div>)}
                 </div>

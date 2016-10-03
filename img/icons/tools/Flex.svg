@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1"
+	 id="Ebene_1" xmlns:svg="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" inkscape:version="0.48.3.1 r9886" sodipodi:docname="Adobe_Flex_Logo2.svg"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="511px" height="511px"
+	 viewBox="19.873 13.073 511 511" enable-background="new 19.873 13.073 511 511" xml:space="preserve">
+<radialGradient id="rect2988_1_" cx="208.1016" cy="507.5986" r="255.5659" gradientTransform="matrix(-1.6776 0.818 0.8596 1.7641 86.3767 -986.6335)" gradientUnits="userSpaceOnUse">
+	<stop  offset="0" style="stop-color:#6A6963"/>
+	<stop  offset="0.6278" style="stop-color:#3A3A38"/>
+	<stop  offset="1" style="stop-color:#191917"/>
+</radialGradient>
+<rect id="rect2988" x="19.873" y="13.073" fill="url(#rect2988_1_)" width="511" height="511"/>
+<path id="rect3015" sodipodi:nodetypes="cccccccsccssccccccsccsccccccccccscccsssscssssccsccscscc" inkscape:connector-curvature="0" fill="#FFFFFF" d="
+	M279.527,209.904h41.586c1.944,0.04,3.47,0.837,4.374,2.75l24.751,53.731h4.499l25.985-54.106c0.78-1.592,2.22-2.456,4.374-2.375
+	h35.746c1.4,0,3.319,1.689,2.199,3.701l-44.238,76.459l48.05,80.363c1.497,2.503,1.586,4.621-1.575,4.621h-43.558
+	c-1.798,0.12-2.972-0.74-3.75-2.223l-26.787-53.846l-5.405,0.016l-25.667,54.082c-0.969,1.98-2.612,1.934-4.229,1.971h-38.129
+	c-1.426,0-2.181-1.208-1.426-2.418l46.654-77.569l-46.029-82.582C276.148,211.036,276.36,209.907,279.527,209.904
+	C280.001,209.904,279.527,209.904,279.527,209.904L279.527,209.904z M133.724,142.955c-0.178,0-0.363,0.028-0.531,0.062
+	c-0.512,0.104-0.929,0.361-1.281,0.719c-0.109,0.112-0.225,0.213-0.312,0.344c-0.005,0.007,0.005,0.024,0,0.031
+	c-0.086,0.13-0.188,0.26-0.25,0.406c-0.004,0.008,0.004,0.023,0,0.031c-0.123,0.301-0.188,0.622-0.188,0.969c0,0.01,0,0.021,0,0.031
+	v30.066v70.852v30.816v95.167c0,1.426,1.136,2.562,2.562,2.562h37.584c1.426,0,2.562-1.137,2.562-2.562v-92.604h76.511
+	c1.426,0,2.593-1.137,2.593-2.562v-30.816c0-1.427-1.167-2.563-2.593-2.563H173.87v-65.694h85.696c1.426,0,2.755-1.181,2.562-2.594
+	l-4.124-30.066c-0.193-1.413-1.136-2.562-2.562-2.562h-83.854c-0.092-0.01-0.187-0.031-0.281-0.031H133.724L133.724,142.955z"/>
+</svg>

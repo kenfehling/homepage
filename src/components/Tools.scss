@@ -118,6 +118,13 @@ $header-bottom-color: #a42d95;
     }
     .body {
       padding: 0 1px;
+      a {
+        color: #3366FF;
+        cursor: pointer;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
     }
   }
 
