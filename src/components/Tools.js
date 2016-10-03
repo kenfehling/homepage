@@ -7,7 +7,9 @@ const ROWS = 2;
 const starIcon = require('img/icons/star.svg');
 const halfStarIcon = require('img/icons/half-star.svg');
 
-const getIcon = name => <img className="icon" src={require('img/icons/tools/' + name.replace(' ', '_') + '.svg')} />;
+const getIcon = ({name, iconType}) =>
+    <img className="icon" src={require('img/icons/tools/' +
+        name.replace(' ', '_').replace('#', 'sharp') +'.' + (iconType || 'svg'))} />;
 
 const LANGUAGES = 'Languages';
 const LIBRARIES = 'Libraries';
@@ -111,6 +113,13 @@ export default class Tools extends Component {
                 Description
             </div>
         }, {
+            name: 'Git',
+            stars: 4,
+            categories: [SOFTWARE],
+            description: <div>
+                Description
+            </div>
+        }, {
             name: 'MongoDB',
             stars: 3.5,
             categories: [DATABASES],
@@ -121,6 +130,14 @@ export default class Tools extends Component {
             name: 'Java',
             stars: 3.5,
             categories: [LANGUAGES, MOBILE],
+            description: <div>
+                Description
+            </div>
+        }, {
+            name: 'ActionScript',
+            iconType: 'png',
+            stars: 3.5,
+            categories: [LANGUAGES, WEB, MOBILE],
             description: <div>
                 Description
             </div>
@@ -146,6 +163,13 @@ export default class Tools extends Component {
                 Description
             </div>
         }, {
+            name: 'C#',
+            stars: 3,
+            categories: [LANGUAGES],
+            description: <div>
+                Description
+            </div>
+        }, {
             name: 'iOS',
             stars: 3,
             categories: [PLATFORMS, MOBILE],
@@ -153,6 +177,16 @@ export default class Tools extends Component {
                 Description
             </div>
         }, {
+        /*
+            name: 'Xcode',
+            iconType: 'png',
+            stars: 3,
+            categories: [MOBILE, SOFTWARE],
+            description: <div>
+                Description
+            </div>
+        }, {
+        */
             name: 'Postgresql',
             stars: 3,
             categories: [DATABASES],
@@ -167,9 +201,45 @@ export default class Tools extends Component {
                 Description
             </div>
         }, {
+            name: 'Firebase',
+            stars: 3,
+            categories: [DATABASES],
+            description: <div>
+                Description
+            </div>
+        }, {
+            name: 'Logic',
+            iconType: 'png',
+            stars: 3,
+            categories: [SOFTWARE],
+            description: <div>
+                Description
+            </div>
+        }, {
+            name: 'Ableton',
+            stars: 3,
+            categories: [SOFTWARE],
+            description: <div>
+                Description
+            </div>
+        }, {
+            name: 'Clojure',
+            stars: 2.5,
+            categories: [LANGUAGES],
+            description: <div>
+                Description
+            </div>
+        }, {
             name: 'Swift',
             stars: 2.5,
             categories: [LANGUAGES, MOBILE],
+            description: <div>
+                Description
+            </div>
+        }, {
+            name: 'Unity',
+            stars: 2.5,
+            categories: [PLATFORMS, SOFTWARE, MOBILE],
             description: <div>
                 Description
             </div>
@@ -199,7 +269,7 @@ export default class Tools extends Component {
     renderTool(tool) {
         const {name, stars} = tool;
         return <div className="tool" key={name} onClick={() => this.setState({selectedTool: tool})}>
-            {getIcon(name)}
+            {getIcon(tool)}
             <div className="name">{name}</div>
             <div className="stars">
                 {_.map(_.range(Math.floor(stars)), i => <img key={i} src={starIcon} />)}
@@ -229,7 +299,7 @@ export default class Tools extends Component {
         const {name, stars, description} = this.state.selectedTool;
         return <div className="details" key="details">
             <div className="top">
-                <div className="icon">{getIcon(name)}</div>
+                <div className="icon">{getIcon(this.state.selectedTool)}</div>
                 <div className="title">{name}</div>
             </div>
             <div className="body">

@@ -4,74 +4,81 @@
 <svg version="1.1"
 	 id="svg2" xmlns:svg="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" inkscape:version="0.91 r13725" sodipodi:docname="MongoDB-Logo.svg"
 	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="130px" height="130px"
-	 viewBox="-33.706 4.815 130 130" enable-background="new -33.706 4.815 130 130" xml:space="preserve">
+	 viewBox="0 0 130 130" enable-background="new 0 0 130 130" xml:space="preserve">
 <sodipodi:namedview  id="namedview4" borderopacity="1" objecttolerance="10" inkscape:cy="57.558266" guidetolerance="10" bordercolor="#666666" pagecolor="#ffffff" inkscape:cx="210.82244" inkscape:zoom="2.0079853" gridtolerance="10" showgrid="false" inkscape:current-layer="g10" inkscape:window-y="0" inkscape:pageshadow="2" inkscape:window-height="1145" inkscape:window-maximized="1" inkscape:window-width="1920" inkscape:window-x="0" inkscape:pageopacity="0">
 	</sodipodi:namedview>
 <g id="g10" transform="matrix(1.25,0,0,-1.25,0,143.2125)" inkscape:label="ink_ext_XXXXXX" inkscape:groupmode="layer">
 	<g id="g12" transform="scale(0.1,0.1)">
 		<g id="g14">
 			<g>
-				<defs>
-					<path id="SVGID_1_" d="M275.945-33.829l-29.961,9.922c0,0,3.82,151.641-50.867,162.258
-						c-36.062,41.781,5.551,1784.89,136.559,5.969c0,0-44.84-22.516-53.328-60.75C269.863,45.311,275.945-33.829,275.945-33.829z"/>
-				</defs>
-				<clipPath id="SVGID_2_">
-					<use xlink:href="#SVGID_1_"  overflow="visible"/>
-				</clipPath>
-				<g id="g16" clip-path="url(#SVGID_2_)">
-					
-						<linearGradient id="path30_1_" gradientUnits="userSpaceOnUse" x1="1257.0233" y1="-252.1497" x2="1258.0233" y2="-252.1497" gradientTransform="matrix(43.0493 -14.5243 -13.1019 -38.6334 -57340.0312 9029.3203)">
-						<stop  offset="0" style="stop-color:#929669"/>
-						<stop  offset="0.2308" style="stop-color:#929669"/>
-						<stop  offset="1" style="stop-color:#FDFCF1"/>
-					</linearGradient>
-					<path id="path30" inkscape:connector-curvature="0" fill="url(#path30_1_)" d="M275.945-33.829l-29.961,9.922
-						c0,0,3.82,151.641-50.867,162.258c-36.062,41.781,5.551,1784.89,136.559,5.969c0,0-44.84-22.516-53.328-60.75
-						C269.863,45.311,275.945-33.829,275.945-33.829"/>
+				<g>
+					<defs>
+						<path id="SVGID_1_" d="M545.789-25.831l-31.285,10.359c0,0,3.988,158.336-53.113,169.43
+							c-37.656,43.633,5.801,1863.715,142.586,6.234c0,0-46.812-23.508-55.68-63.43C539.43,56.801,545.789-25.831,545.789-25.831z"
+							/>
+					</defs>
+					<clipPath id="SVGID_2_">
+						<use xlink:href="#SVGID_1_"  overflow="visible"/>
+					</clipPath>
+					<g id="g16" clip-path="url(#SVGID_2_)">
+						
+							<linearGradient id="path30_1_" gradientUnits="userSpaceOnUse" x1="10212.2803" y1="-1927.2062" x2="10213.3242" y2="-1927.2062" gradientTransform="matrix(5.3812 -1.8155 -1.6377 -4.8292 -57771.3594 9779.6162)">
+							<stop  offset="0" style="stop-color:#929669"/>
+							<stop  offset="0.2308" style="stop-color:#929669"/>
+							<stop  offset="1" style="stop-color:#FDFCF1"/>
+						</linearGradient>
+						<path id="path30" inkscape:connector-curvature="0" fill="url(#path30_1_)" d="M545.789-25.831l-31.285,10.359
+							c0,0,3.988,158.336-53.113,169.43c-37.656,43.633,5.801,1863.715,142.586,6.234c0,0-46.812-23.508-55.68-63.43
+							C539.43,56.801,545.789-25.831,545.789-25.831"/>
+					</g>
 				</g>
 			</g>
 		</g>
 		<g id="g32">
 			<g>
-				<defs>
-					<path id="SVGID_3_" d="M292.098,112.608c0,0,260.344,171.469,199.352,527.57c-58.738,258.719-197.418,343.773-212.32,376.242
-						c-16.406,22.977-32.93,63.711-32.93,63.711l11.074-720.867C257.273,359.264,234.367,139.155,292.098,112.608z"/>
-				</defs>
-				<clipPath id="SVGID_4_">
-					<use xlink:href="#SVGID_3_"  overflow="visible"/>
-				</clipPath>
-				<g id="g34" clip-path="url(#SVGID_4_)">
-					
-						<linearGradient id="path46_1_" gradientUnits="userSpaceOnUse" x1="1253.4725" y1="-308.5012" x2="1254.4725" y2="-308.5012" gradientTransform="matrix(30.1458 -117.0264 -125.9163 -20.1877 -76428.4922 141534.1406)">
-						<stop  offset="0" style="stop-color:#45AA3A"/>
-						<stop  offset="1" style="stop-color:#3D9439"/>
-					</linearGradient>
-					<path id="path46" inkscape:connector-curvature="0" fill="url(#path46_1_)" d="M292.098,112.608
-						c0,0,260.344,171.469,199.352,527.57c-58.738,258.719-197.418,343.773-212.32,376.242
-						c-16.406,22.977-32.93,63.711-32.93,63.711l11.074-720.867C257.273,359.264,234.367,139.155,292.098,112.608"/>
+				<g>
+					<defs>
+						<path id="SVGID_3_" d="M562.648,127.075c0,0,271.844,179.039,208.164,550.867
+							c-61.336,270.148-206.141,358.957-221.711,392.859c-17.117,23.992-34.371,66.527-34.371,66.527l11.566-752.707
+							C526.297,384.622,502.375,154.794,562.648,127.075z"/>
+					</defs>
+					<clipPath id="SVGID_4_">
+						<use xlink:href="#SVGID_3_"  overflow="visible"/>
+					</clipPath>
+					<g id="g34" clip-path="url(#SVGID_4_)">
+						
+							<linearGradient id="path46_1_" gradientUnits="userSpaceOnUse" x1="9864.6475" y1="-2819.3389" x2="9865.6914" y2="-2819.3389" gradientTransform="matrix(3.7682 -14.6283 -15.7395 -2.5235 -81076.5312 138318.6406)">
+							<stop  offset="0" style="stop-color:#45AA3A"/>
+							<stop  offset="1" style="stop-color:#3D9439"/>
+						</linearGradient>
+						<path id="path46" inkscape:connector-curvature="0" fill="url(#path46_1_)" d="M562.648,127.075
+							c0,0,271.844,179.039,208.164,550.867c-61.336,270.148-206.141,358.957-221.711,392.859
+							c-17.117,23.992-34.371,66.527-34.371,66.527l11.566-752.707C526.297,384.622,502.375,154.794,562.648,127.075"/>
+					</g>
 				</g>
 			</g>
 		</g>
 		<g id="g48">
 			<g>
-				<defs>
-					<path id="SVGID_5_" d="M230.742,103.022c0,0-244.211,166.602-230.16,460.547c14.055,293.953,186.539,438.484,220.133,464.703
-						c21.719,23.148,22.617,32.07,24.297,54.906c15.223-32.695,12.691-488.422,14.305-541.687
-						C265.574,334.139,247.832,142.163,230.742,103.022L230.742,103.022z"/>
-				</defs>
-				<clipPath id="SVGID_6_">
-					<use xlink:href="#SVGID_5_"  overflow="visible"/>
-				</clipPath>
-				<g id="g50" clip-path="url(#SVGID_6_)">
-					
-						<linearGradient id="path62_1_" gradientUnits="userSpaceOnUse" x1="1221.535" y1="-259.634" x2="1222.5345" y2="-259.634" gradientTransform="matrix(52.7619 11.988 16.4871 -49.2638 -60194.8398 -26901.5547)">
-						<stop  offset="0" style="stop-color:#41A83B"/>
-						<stop  offset="1" style="stop-color:#5EBC44"/>
-					</linearGradient>
-					<path id="path62" inkscape:connector-curvature="0" fill="url(#path62_1_)" d="M230.742,103.022
-						c0,0-244.211,166.602-230.16,460.547c14.055,293.953,186.539,438.484,220.133,464.703
-						c21.719,23.148,22.617,32.07,24.297,54.906c15.223-32.695,12.691-488.422,14.305-541.687
-						C265.574,334.139,247.832,142.163,230.742,103.022"/>
+				<g>
+					<defs>
+						<path id="SVGID_5_" d="M498.59,117.067c0,0-255,173.961-240.328,480.891c14.676,306.93,194.777,457.844,229.863,485.219
+							c22.676,24.172,23.605,33.484,25.367,57.332c15.891-34.141,13.25-509.992,14.93-565.605
+							C534.961,358.387,516.426,157.942,498.59,117.067L498.59,117.067z"/>
+					</defs>
+					<clipPath id="SVGID_6_">
+						<use xlink:href="#SVGID_5_"  overflow="visible"/>
+					</clipPath>
+					<g id="g50" clip-path="url(#SVGID_6_)">
+						
+							<linearGradient id="path62_1_" gradientUnits="userSpaceOnUse" x1="9600.4209" y1="-1866.6593" x2="9601.4648" y2="-1866.6593" gradientTransform="matrix(6.5952 1.4985 2.0609 -6.158 -59238.6055 -25314.6895)">
+							<stop  offset="0" style="stop-color:#41A83B"/>
+							<stop  offset="1" style="stop-color:#5EBC44"/>
+						</linearGradient>
+						<path id="path62" inkscape:connector-curvature="0" fill="url(#path62_1_)" d="M498.59,117.067
+							c0,0-255,173.961-240.328,480.891c14.676,306.93,194.777,457.844,229.863,485.219c22.676,24.172,23.605,33.484,25.367,57.332
+							c15.891-34.141,13.25-509.992,14.93-565.605C534.961,358.387,516.426,157.942,498.59,117.067"/>
+					</g>
 				</g>
 			</g>
 		</g>
