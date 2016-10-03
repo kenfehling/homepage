@@ -49,7 +49,7 @@ export default class Tools extends Component {
             stars: 5,
             categories: [LANGUAGES, WEB],
             description: <div>
-                My main programming language, I'm actually quite fond of JavaScript,
+                My main programming language. I'm actually quite fond of JavaScript,
                 especially now with some of the features in ES6/ES2015.
             </div>
         }, {
@@ -57,7 +57,8 @@ export default class Tools extends Component {
             stars: 4.5,
             categories: [LIBRARIES, WEB],
             description: <div>
-                By far my favorite web framework/library, React has drastically changed the way I approach web app
+                By far my favorite {this.linkToTool('JavaScript')} framework/library,
+                React has drastically changed the way I approach web app
                 development. This site itself is written in React, along with {this.linkToTool('Redux')}.
                 <br /><br />I've also released a couple of libraries for React into open source:<br />
                 <ul>
@@ -69,7 +70,12 @@ export default class Tools extends Component {
             stars: 4.5,
             categories: [LIBRARIES, WEB],
             description: <div>
-                Redux is the leader!
+                Redux is a great add-on to {this.linkToTool('React')}, and it's renewed my interest
+                in functional programming. It makes managing client-side state simple and sensible,
+                and I appreciate how it's decoupled from the web and can be used in React Native
+                and even non-React projects.
+                <br /><br />
+                This site itself uses Redux to manage things like how the individual windows are layered.
             </div>
         }, {
             name: 'HTML',
@@ -79,11 +85,38 @@ export default class Tools extends Component {
                 Description
             </div>
         }, {
+        /*
+            name: 'Lodash',
+            stars: 4.5,
+            categories: [LIBRARIES, WEB],
+            description: <div>
+                Description
+            </div>
+        }, {
+        */
             name: 'Webpack',
             stars: 4,
             categories: [LIBRARIES, WEB],
             description: <div>
-                Description
+                Currently my main {this.linkToTool('JavaScript')} build tool.
+            </div>
+        }, {
+            name: 'Gulp',
+            stars: 4,
+            categories: [LIBRARIES, WEB],
+            description: <div>
+                Gulp was my main {this.linkToTool('JavaScript')} build tool before switching to
+                {this.linkToTool('Webpack')}. I often used Gulp with {this.linkToTool('Browserify')}.
+            </div>
+        }, {
+            name: 'Grunt',
+            stars: 4,
+            categories: [LIBRARIES, WEB],
+            description: <div>
+                I used Grunt for a short time before switching to {this.linkToTool('Gulp')},
+                and currently {this.linkToTool('Webpack')}.
+                Grunt and Gulp are pretty similar build tools for {this.linkToTool('JavaScript')} and
+                I used both of them frequently with {this.linkToTool('Browserify')}.
             </div>
         }, {
             name: 'Node',
@@ -96,7 +129,10 @@ export default class Tools extends Component {
             stars: 4,
             categories: [LANGUAGES],
             description: <div>
-                Description
+                Python is my main go-to language for anything not web or mobile related.
+                Since most of my work is on the frontend web, I'm usually using {this.linkToTool('JavaScript')},
+                however I've recently been using Python for the backend for a hackathon registration page,
+                and some data analysis using Pandas.
             </div>
         }, {
             name: 'CSS',
@@ -106,16 +142,74 @@ export default class Tools extends Component {
                 Description
             </div>
         }, {
+            name: 'SASS',
+            stars: 4,
+            categories: [LANGUAGES, WEB],
+            description: <div>
+                Description
+            </div>
+        }, {
+            name: 'Flask',
+            stars: 4,
+            categories: [LIBRARIES, WEB],
+            description: <div>
+                I usually use Flask when I write web projects in {this.linkToTool('Python')}.
+                I've dabbled with Django a little,
+                but my Python web projects tend to be pretty small so Flask is better suited.
+                For larger web apps I typically use {this.linkToTool('Node')} for the backend.
+            </div>
+        }, {
+            name: 'JQuery',
+            stars: 4,
+            categories: [LIBRARIES, WEB],
+            description: <div>
+                Description
+            </div>
+        }, {
             name: 'Android',
             stars: 4,
             categories: [PLATFORMS, MOBILE],
             description: <div>
-                Description
+                I was passionate about making Android apps for a couple of years,
+                before going back to focusing primarily on web development.
+                <br /><br />
+                I released 3 major apps:
+                <ul>
+                    <li>Video Toolbox</li>
+                    <li>Color Sounds</li>
+                    <li>TaskBomb</li>
+                </ul>
+            </div>
+        }, {
+            name: 'RoboGuice',
+            iconType: 'png',
+            stars: 4,
+            categories: [LIBRARIES, MOBILE],
+            description: <div>
+                Back when I was doing {this.linkToTool('Android')} development,
+                this is the library I used for dependency injection.
+                Android isn't inherently that well suited for DI but RoboGuice smoothed this over,
+                helping me strive to write more modular and testable code.
+                In 2016 the library was discontinued, however there are now many alternatives for DI libraries Android.
             </div>
         }, {
             name: 'Git',
             stars: 4,
             categories: [SOFTWARE],
+            description: <div>
+                Description
+            </div>
+        }, {
+            name: 'NPM',
+            stars: 4,
+            categories: [LIBRARIES, WEB],
+            description: <div>
+                Description
+            </div>
+        }, {
+            name: 'Babel',
+            stars: 4,
+            categories: [LIBRARIES, WEB],
             description: <div>
                 Description
             </div>
@@ -130,6 +224,27 @@ export default class Tools extends Component {
             name: 'Java',
             stars: 3.5,
             categories: [LANGUAGES, MOBILE],
+            description: <div>
+                Description
+            </div>
+        }, {
+            name: 'Browserify',
+            stars: 3.5,
+            categories: [LIBRARIES, WEB],
+            description: <div>
+                Description
+            </div>
+        }, {
+            name: 'Rails',
+            stars: 3.5,
+            categories: [LIBRARIES, WEB],
+            description: <div>
+                Description
+            </div>
+        }, {
+            name: 'FFmpeg',
+            stars: 3.5,
+            categories: [SOFTWARE],
             description: <div>
                 Description
             </div>
@@ -227,7 +342,16 @@ export default class Tools extends Component {
             stars: 2.5,
             categories: [LANGUAGES],
             description: <div>
-                Description
+                I had previously learned Scheme over a summer vacation using the
+                old <a target="_blank" href="http://youtube.com/watch?v=2Op3QLzMgSY">SICP lectures</a> from MIT.
+                I was smitten by the power yet simplicity of it all.
+                I later learned some Clojure and ClojureScript,
+                which also being Lisp variants are similar to Scheme.
+                <br /><br />
+                Although I don't use any of these languages in my daily work,
+                I'm glad I learned them because they completely changed the way I approach writing programs,
+                even in more imperative languages
+                like {this.linkToTool('JavaScript')} and {this.linkToTool('Python')}.
             </div>
         }, {
             name: 'Swift',
@@ -305,6 +429,7 @@ export default class Tools extends Component {
             <div className="body">
                 {description}
             </div>
+            <br />
             <div onClick={() => this.setState({selectedTool: null})}>Back</div>
         </div>;
     }

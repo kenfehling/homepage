@@ -108,7 +108,7 @@ $header-bottom-color: #a42d95;
         width: $detail-icon-size;
         height: $detail-icon-size;
         border-radius: 2px;
-        margin-right: 6px;
+        margin-right: 5px;
       }
       .title {
         line-height: $detail-icon-size;
@@ -117,9 +117,10 @@ $header-bottom-color: #a42d95;
       }
     }
     .body {
-      padding: 0 1px;
+      padding: 0 6px;
       a {
-        color: #3366FF;
+        color: #4670d3;
+        font-weight: $title-weight;
         cursor: pointer;
       }
       a:hover {
