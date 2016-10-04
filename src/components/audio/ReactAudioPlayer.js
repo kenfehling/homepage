@@ -49,16 +49,27 @@ export function connectAudioPlayer(WrappedComponent, tracks, options={autoplay:f
 
 /* TitleMarquee component */
 
-const animationName = 'marquee_' + Math.round(Math.random() * 10000000);
+function insertStyle(style) {
+    for (let i = 0; i < document.styleSheets.length; i++) {
+        try {
+            document.styleSheets[i].insertRule(style, _.size(document.styleSheets[i].cssRules));
+            break;
+        }
+        catch(e) {
+            if (e.name !== "SecurityError" && e.name !== 'InvalidAccessError') {
+                throw e;
+            }
+        }
+    }
+}
 
+const animationName = 'marquee_' + Math.round(Math.random() * 10000000);
 const keyframes =
     `@keyframes ${animationName} {
         0% {-webkit-transform:translate(0, 0)} 
         100% {-webkit-transform:translate(-100%, 0)}
      }`;
-
-const styleSheet = document.styleSheets[0];
-styleSheet.insertRule(keyframes, _.size(styleSheet.cssRules));
+insertStyle(keyframes);
 
 const baseStyle  = {
     paddingLeft: '100%',

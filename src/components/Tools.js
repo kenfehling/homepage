@@ -142,9 +142,16 @@ export default class Tools extends Component {
                 Description
             </div>
         }, {
+            name: 'Java',
+            stars: 4,
+            categories: [LANGUAGES, MOBILE],
+            description: <div>
+                Description
+            </div>
+        }, {
             name: 'SASS',
             stars: 4,
-            categories: [LANGUAGES, WEB],
+            categories: [LIBRARIES, WEB],
             description: <div>
                 Description
             </div>
@@ -217,13 +224,6 @@ export default class Tools extends Component {
             name: 'MongoDB',
             stars: 3.5,
             categories: [DATABASES],
-            description: <div>
-                Description
-            </div>
-        }, {
-            name: 'Java',
-            stars: 3.5,
-            categories: [LANGUAGES, MOBILE],
             description: <div>
                 Description
             </div>
