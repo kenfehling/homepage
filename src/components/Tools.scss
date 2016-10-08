@@ -4,12 +4,12 @@ $icon-size: 56px;
 $detail-icon-size: 36px;
 $star-size: 12px;
 $tools-bg: #F2F1F0;
-$item-bg: #FCFBFB;
+$item-bg: #FCFBFC;
 $border-darken: 15%;
-$title-size: 14px;
+$title-size: 15px;
 $title-weight: 700;
-$header-top-color: #9650a1;
-$header-bottom-color: #a42d95;
+$header-top-color: #7946a1;
+$header-bottom-color: #a343a4;
 
 :local(.container) {
   font-family: Helvetica, sans-serif;
@@ -86,44 +86,38 @@ $header-bottom-color: #a42d95;
           }
         }
         .tool:hover {
-          background-color: darken($item-bg, 8%);
-          border: thin solid darken($item-bg, 8% + $border-darken);
+          background-color: darken($item-bg, 6%);
+          border: thin solid darken($item-bg, 6% + $border-darken);
         }
 
         .tool:active {
-          background-color: darken($item-bg, 12%);
-          border: thin solid darken($item-bg, 12% + $border-darken);
+          background-color: darken($item-bg, 10%);
+          border: thin solid darken($item-bg, 10% + $border-darken);
         }
       }
     }
   }
-
   .details {
-    padding: 20px;
+    padding: 35px;
     box-sizing: border-box;
-    .top {
-      display: flex;
+    .title {
       margin-bottom: 20px;
-      .icon {
-        width: $detail-icon-size;
-        height: $detail-icon-size;
-        border-radius: 2px;
-        margin-right: 5px;
-      }
-      .title {
-        line-height: $detail-icon-size;
-        font-weight: $title-weight;
-        font-size: $title-size;
-      }
+      font-weight: $title-weight;
+      font-size: $title-size + 3px;
     }
     .body {
-      padding: 0 6px;
+      padding-right: 10px;
+      line-height: 1.45em;
       a {
         color: #4670d3;
         font-weight: $title-weight;
         cursor: pointer;
+        text-decoration: none;
+        * {
+          font-weight: inherit;
+        }
       }
-      a:hover {
+      a:hover, a:hover * {
         text-decoration: underline;
       }
     }
