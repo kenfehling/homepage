@@ -82,7 +82,7 @@ export default class Tools extends Component {
             description: <div>
                 By far my favorite {this.linkToTool('JavaScript')} framework/library,
                 React has drastically changed the way I approach web app
-                development. This site itself is written in React, along with {this.linkToTool('Redux')}.
+                development. This site itself is written in React as well as {this.linkToTool('Redux')}.
                 <br /><br />I've also released a couple of libraries for React into open source:<br />
                 <ul>
                     <li>{this.externalLink("react-designable-audio-player",
