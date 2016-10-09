@@ -61,6 +61,10 @@ $header-bottom-color: #a343a4;
         flex: 1 0 auto;
         max-width: 104px;
         height: 100%;
+        a {
+          color: inherit;
+          text-decoration: none;
+        }
         .tool {
           width: 96px;
           text-align: center;
