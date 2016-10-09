@@ -182,4 +182,12 @@ $header-bottom-color: #a343a4;
     width: 50%;
     float: left;
   }
+
+  /* When one details is replacing another details */
+  .details + .tool-leave.details {
+    transform: translate(-100%, 0);
+  }
+  .details + .tool-leave.tool-leave-active.details {
+    transform: translate(-200%, 0);
+  }
 }

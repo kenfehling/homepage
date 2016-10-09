@@ -17,12 +17,24 @@ const MOBILE = 'Mobile';
 const DATABASES = 'Databases';
 const SOFTWARE = 'Software';
 
+let detailsHistory = [];
+
 const getIcon = ({name, iconType}) =>
     <img className="icon" src={require('img/icons/tools/' +
         name.replace(' ', '_').replace('#', 'sharp') +'.' + (iconType || 'svg'))} />;
 
-const linkToTool = (name, text=name) =>
-    <Link key={name} onClick={() => browserHistory.replace(`/skills/${name}`)} to={`/skills/${name}`}>{text}</Link>;
+const linkToTool = (name, text=name, back=false) => {
+    const f = () => {
+        if (back) {
+            detailsHistory.pop();
+        }
+        else {
+            detailsHistory.push(name);
+        }
+        browserHistory.replace(`/skills/${name}`);
+    };
+    return <Link key={name} onClick={f} to={`/skills/${name}`}>{text}</Link>;
+};
 
 const externalLink = (name, href='http://' + name) =>
     <a target="_blank" href={href}>{name} <i className="fa fa-external-link" /></a>;
@@ -515,14 +527,16 @@ class Tools extends Component {
 
     renderDetails() {
         const {name, fullName, stars, description} = this.getSelectedTool();
-        return (<div className="details" key="details">
+        return (<div className="details" key={name}>
             <div className="title">{fullName || name}</div>
             <div className="body">{description}</div>
 
             <br />
             <br />
 
-            <Link to="/">Back</Link>
+            {detailsHistory.length > 1 ?
+                linkToTool(detailsHistory[detailsHistory.length - 2], "Back", true) :
+                <Link to="/">Back</Link>}
         </div>);
     }
 
