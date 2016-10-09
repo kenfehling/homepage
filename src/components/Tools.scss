@@ -55,6 +55,8 @@ $header-bottom-color: #a343a4;
       padding: 3px 5px 1px 5px;
       overflow-x: scroll;
       .col {
+        flex: 1 0 auto;
+        max-width: 104px;
         height: 100%;
         .tool {
           width: 96px;
