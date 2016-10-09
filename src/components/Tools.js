@@ -19,15 +19,18 @@ const SOFTWARE = 'Software';
 
 let detailsHistory = [];
 
+const escapeName = name => name.replace(' ', '_').replace('#', 'sharp');
+
 const getIcon = ({name, iconType}) =>
-    <img className="icon" src={require('img/icons/tools/' +
-        name.replace(' ', '_').replace('#', 'sharp') +'.' + (iconType || 'svg'))} />;
+    <img className="icon" src={require('img/icons/tools/' + escapeName(name) +'.' + (iconType || 'svg'))} />;
 
 const externalLink = (name, href='http://' + name) =>
     <a target="_blank" href={href}>{name} <i className="fa fa-external-link" /></a>;
 
 class Tools extends Component {
     linkToTool(name, text=name, back=false) {
+        const {category=this.categories[0]} = this.props;
+        const escapedName = escapeName(name);
         const f = () => {
             if (back) {
                 detailsHistory.pop();
@@ -36,16 +39,28 @@ class Tools extends Component {
                 detailsHistory.push(name);
             }
             this.setState({...this.state, back});
-            browserHistory.replace(`/skills/${name}`);
+            browserHistory.replace(`/tools/${category}/${escapedName}`);
         };
-        return <Link key={name} onClick={f} to={`/skills/${name}`}>{text}</Link>;
+        return <Link key={name} onClick={f} to={`/tools/${category}/${escapedName}`}>{text}</Link>;
+    }
+
+    linkToCategory(name, text=name, back=false) {
+        const {category=this.categories[0]} = this.props;
+        const f = () => {
+            if (!back) {
+                this.setState({lastScrollLeft: 0});
+            }
+            detailsHistory = [];
+            browserHistory.replace(`/tools/${name}`);
+        };
+        return <Link className={!back && name === category ? 'current' : ''}
+                     to={`/tools/${name}`} key={name} onClick={f}>{text}</Link>;
     }
     
     constructor(props) {
         super(props);
         this.state = {
             lastScrollLeft: 0,
-            category: 'All',
             back: false
         };
         this.categories = [
@@ -59,12 +74,11 @@ class Tools extends Component {
             DATABASES,
             SOFTWARE
         ];
-
         this.tools = [{
             name: 'JavaScript',
             stars: 5,
             categories: [LANGUAGES, WEB],
-            description: <div>
+            description: () => <div>
                 My main programming language.
                 Despite the near universal hatred of JavaScript by my peers, I'm actually quite fond of it.
                 It's gotten especially good now with some of the features in ES6/ES2015.
@@ -74,21 +88,21 @@ class Tools extends Component {
             name: 'HTML',
             stars: 5,
             categories: [LANGUAGES, PLATFORMS, WEB],
-            description: <div>
+            description: () => <div>
                 Description
             </div>
         }, {
             name: 'CSS',
             stars: 4.5,
             categories: [LANGUAGES, WEB],
-            description: <div>
+            description: () => <div>
                 Description
             </div>
         }, {
             name: 'React',
             stars: 4.5,
             categories: [LIBRARIES, WEB],
-            description: <div>
+            description: () => <div>
                 By far my favorite {this.linkToTool('JavaScript')} framework/library,
                 React has drastically changed the way I approach web app
                 development. This site itself is written in React as well as {this.linkToTool('Redux')}.
@@ -102,7 +116,7 @@ class Tools extends Component {
             name: 'Redux',
             stars: 4.5,
             categories: [LIBRARIES, WEB],
-            description: <div>
+            description: () => <div>
                 Redux is a great add-on to {this.linkToTool('React')}, and it's renewed my interest
                 in functional programming. It makes managing client-side state simple and sensible,
                 and I appreciate how it's decoupled from the web and can be used in React Native
@@ -114,7 +128,7 @@ class Tools extends Component {
             name: 'SASS',
             stars: 4.5,
             categories: [LIBRARIES, WEB],
-            description: <div>
+            description: () => <div>
                 Description
             </div>
         }, {
@@ -122,7 +136,7 @@ class Tools extends Component {
             name: 'Lodash',
             stars: 4.5,
             categories: [LIBRARIES, WEB],
-            description: <div>
+            description: () => <div>
                 Description
             </div>
         }, {
@@ -130,13 +144,13 @@ class Tools extends Component {
             name: 'Node',
             stars: 4,
             categories: [PLATFORMS, WEB],
-            description: <div>
+            description: () => <div>
                 Description
             </div>
         }, { name: 'Python',
             stars: 4,
             categories: [LANGUAGES],
-            description: <div>
+            description: () => <div>
                 Python is my main go-to language for anything not web or mobile related.
                 Since most of my work is on the frontend web I'm usually
                 using {this.linkToTool('JavaScript')}, however I've recently been using Python
@@ -146,7 +160,7 @@ class Tools extends Component {
             name: 'Java',
             stars: 4,
             categories: [LANGUAGES, MOBILE],
-            description: <div>
+            description: () => <div>
                 At my university, the Computer Science curriculum uses Java as its main programming language.
                 I've also used Java on my own projects with
                 JSP/Servlets, {this.linkToTool('GWT', 'Google Web Toolkit')},
@@ -156,14 +170,14 @@ class Tools extends Component {
             name: 'Webpack',
             stars: 4,
             categories: [DEVOPS, WEB],
-            description: <div>
+            description: () => <div>
                 Currently my main {this.linkToTool('JavaScript')} build tool.
             </div>
         }, {
             name: 'Gulp',
             stars: 4,
             categories: [DEVOPS, WEB],
-            description: <div>
+            description: () => <div>
                 Gulp was my main {this.linkToTool('JavaScript')} build tool before switching to
                 {this.linkToTool('Webpack')}. I often used Gulp with {this.linkToTool('Browserify')}.
             </div>
@@ -171,7 +185,7 @@ class Tools extends Component {
             name: 'Grunt',
             stars: 4,
             categories: [DEVOPS, WEB],
-            description: <div>
+            description: () => <div>
                 I used Grunt for a short time before switching to {this.linkToTool('Gulp')},
                 and currently {this.linkToTool('Webpack')}.
                 Grunt and Gulp are pretty similar build tools for {this.linkToTool('JavaScript')} and
@@ -181,7 +195,7 @@ class Tools extends Component {
             name: 'Flask',
             stars: 4,
             categories: [LIBRARIES, WEB],
-            description: <div>
+            description: () => <div>
                 I usually use Flask when I write web projects in {this.linkToTool('Python')}.
                 I've dabbled with Django a little,
                 but my Python web projects tend to be pretty small so Flask is better suited.
@@ -191,14 +205,14 @@ class Tools extends Component {
             name: 'JQuery',
             stars: 4,
             categories: [LIBRARIES, WEB],
-            description: <div>
+            description: () => <div>
                 Description
             </div>
         }, {
             name: 'Android',
             stars: 4,
             categories: [PLATFORMS, MOBILE],
-            description: <div>
+            description: () => <div>
                 I was passionate about making Android apps for a couple of years,
                 before going back to focusing primarily on web development.
                 <br /><br />
@@ -213,77 +227,77 @@ class Tools extends Component {
             name: 'Git',
             stars: 4,
             categories: [SOFTWARE],
-            description: <div>
+            description: () => <div>
                 Description
             </div>
         }, {
             name: 'NPM',
             stars: 4,
             categories: [DEVOPS, WEB],
-            description: <div>
+            description: () => <div>
                 Description
             </div>
         }, {
             name: 'Babel',
             stars: 4,
             categories: [DEVOPS, WEB],
-            description: <div>
+            description: () => <div>
                 Description
             </div>
         }, {
             name: 'MongoDB',
             stars: 3.5,
             categories: [DATABASES],
-            description: <div>
+            description: () => <div>
                 Description
             </div>
         }, {
             name: 'Rails',
             stars: 3.5,
             categories: [LIBRARIES, WEB],
-            description: <div>
+            description: () => <div>
                 Description
             </div>
         }, {
             name: 'Bootstrap',
             stars: 3.5,
             categories: [LIBRARIES, WEB],
-            description: <div>
+            description: () => <div>
                 Description
             </div>
         }, {
             name: 'Keystone',
             stars: 3.5,
             categories: [LIBRARIES, WEB],
-            description: <div>
+            description: () => <div>
                 Description
             </div>
         }, {
             name: 'Jest',
             stars: 3.5,
             categories: [DEVOPS, WEB],
-            description: <div>
+            description: () => <div>
                 Description
             </div>
         }, {
             name: 'ESLint',
             stars: 3.5,
             categories: [DEVOPS, WEB],
-            description: <div>
+            description: () => <div>
                 Description
             </div>
         }, {
             name: 'Bower',
             stars: 3.5,
             categories: [DEVOPS, WEB],
-            description: <div>
+            description: () => <div>
                 Description
             </div>
         }, {
             name: 'FFmpeg',
             stars: 3.5,
             categories: [SOFTWARE],
-            description: <div>
+            description: () => <div>
                 Description
             </div>
         }, {
@@ -291,7 +305,7 @@ class Tools extends Component {
             fullName: 'Google Guice',
             stars: 3.5,
             categories: [LIBRARIES],
-            description: <div>
+            description: () => <div>
                 Google Guice is a dependency injection library for {this.linkToTool('Java')}.
                 I started using Guice while doing {this.linkToTool('GWT')} development,
                 but I continued to use it on almost all of my {this.linkToTool('Java')} projects,
@@ -302,7 +316,7 @@ class Tools extends Component {
             iconType: 'png',
             stars: 3.5,
             categories: [LIBRARIES, MOBILE],
-            description: <div>
+            description: () => <div>
                 Back when I was doing {this.linkToTool('Android')} development,
                 I used {this.linkToTool('Guice')} and RoboGuice for dependency injection.
                 Android isn't inherently that well suited for DI but RoboGuice smoothed this over a bit,
@@ -314,63 +328,63 @@ class Tools extends Component {
             iconType: 'png',
             stars: 3.5,
             categories: [LANGUAGES, WEB, MOBILE],
-            description: <div>
+            description: () => <div>
                 Description
             </div>
         }, {
             name: 'Flash',
             stars: 3.5,
             categories: [PLATFORMS, WEB, SOFTWARE],
-            description: <div>
+            description: () => <div>
                 Description
             </div>
         }, {
             name: 'Flex',
             stars: 3.5,
             categories: [SOFTWARE],
-            description: <div>
+            description: () => <div>
                 Description
             </div>
         }, {
             name: 'Ruby',
             stars: 3,
             categories: [LANGUAGES],
-            description: <div>
+            description: () => <div>
                 Description
             </div>
         }, {
             name: 'C#',
             stars: 3,
             categories: [LANGUAGES],
-            description: <div>
+            description: () => <div>
                 Description
             </div>
         }, {
             name: 'iOS',
             stars: 3,
             categories: [PLATFORMS, MOBILE],
-            description: <div>
+            description: () => <div>
                 Description
             </div>
         }, {
             name: 'TravisCI',
             stars: 3,
             categories: [DEVOPS, WEB],
-            description: <div>
+            description: () => <div>
                 Description
             </div>
         }, {
             name: 'Browserify',
             stars: 3,
             categories: [DEVOPS, WEB],
-            description: <div>
+            description: () => <div>
                 Description
             </div>
         }, {
             name: 'Bourbon',
             stars: 3,
             categories: [LIBRARIES, WEB],
-            description: <div>
+            description: () => <div>
                 Description
             </div>
         }, {
@@ -379,7 +393,7 @@ class Tools extends Component {
             iconType: 'png',
             stars: 3,
             categories: [MOBILE, SOFTWARE],
-            description: <div>
+            description: () => <div>
                 Description
             </div>
         }, {
@@ -387,28 +401,28 @@ class Tools extends Component {
             name: 'Postgresql',
             stars: 3,
             categories: [DATABASES],
-            description: <div>
+            description: () => <div>
                 Description
             </div>
         }, {
             name: 'MySQL',
             stars: 3,
             categories: [DATABASES],
-            description: <div>
+            description: () => <div>
                 Description
             </div>
         }, {
             name: 'SQLite',
             stars: 3,
             categories: [DATABASES],
-            description: <div>
+            description: () => <div>
                 Description
             </div>
         }, {
             name: 'Firebase',
             stars: 3,
             categories: [DATABASES],
-            description: <div>
+            description: () => <div>
                 Description
             </div>
         }, {
@@ -416,21 +430,21 @@ class Tools extends Component {
             iconType: 'png',
             stars: 3,
             categories: [SOFTWARE],
-            description: <div>
+            description: () => <div>
                 Description
             </div>
         }, {
             name: 'Ableton',
             stars: 3,
             categories: [SOFTWARE],
-            description: <div>
+            description: () => <div>
                 Description
             </div>
         }, {
             name: 'Clojure',
             stars: 2.5,
             categories: [LANGUAGES],
-            description: <div>
+            description: () => <div>
                 I had previously learned Scheme over a summer vacation using the
                 old <a target="_blank" href="http://youtube.com/watch?v=2Op3QLzMgSY">SICP lectures</a> from MIT.
                 I was smitten by the power yet simplicity of it all.
@@ -446,14 +460,14 @@ class Tools extends Component {
             name: 'Swift',
             stars: 2.5,
             categories: [LANGUAGES, MOBILE],
-            description: <div>
+            description: () => <div>
                 Description
             </div>
         }, {
             name: 'Unity',
             stars: 2.5,
             categories: [PLATFORMS, SOFTWARE, MOBILE],
-            description: <div>
+            description: () => <div>
                 Description
             </div>
         }, {
@@ -462,7 +476,7 @@ class Tools extends Component {
             fullName: 'Google Web Toolkit',
             stars: 2.5,
             categories: [WEB],
-            description: <div>
+            description: () => <div>
                 In the past {this.linkToTool('Java')} was my primary language, so GWT seemed like an
                 alluring tool at the time for creating web apps. However I didn't quite care for it overall,
                 and my {this.linkToTool('HTML')}, {this.linkToTool('JavaScript')},
@@ -475,14 +489,14 @@ class Tools extends Component {
             name: 'Illustrator',
             stars: 2.5,
             categories: [SOFTWARE],
-            description: <div>
+            description: () => <div>
                 Description
             </div>
         }, {
             name: 'Photoshop',
             stars: 1.5,
             categories: [SOFTWARE],
-            description: <div>
+            description: () => <div>
                 Description
             </div>
         }];
@@ -495,7 +509,7 @@ class Tools extends Component {
     }
 
     getSelectedTool() {
-        return _.find(this.tools, tool => tool.name === this.props.selectedTool);
+        return _.find(this.tools, tool => escapeName(tool.name) === this.props.selectedTool);
     }
 
     renderTool(tool) {
@@ -511,8 +525,7 @@ class Tools extends Component {
     }
 
     renderTools() {
-        detailsHistory = [];
-        const {category} = this.state;
+        const {category=this.categories[0]} = this.props;
         const filteredTools = category === 'All' ? this.tools : _.filter(this.tools, t => _.includes(t.categories, category));
         const n = _.size(filteredTools);
         return (<div className="tools" key="tools">
@@ -529,22 +542,19 @@ class Tools extends Component {
     }
 
     renderDetails() {
+        const {category=this.categories[0]} = this.props;
         const {name, fullName, stars, description} = this.getSelectedTool();
         return (<div className="details" key={name}>
             <div className="title">{fullName || name}</div>
-            <div className="body">{description}</div>
+            <div className="body">{description()}</div>
 
             <br />
             <br />
 
             {detailsHistory.length > 1 ?
                 this.linkToTool(detailsHistory[detailsHistory.length - 2], "Back", true) :
-                <Link to="/">Back</Link>}
+                this.linkToCategory(category, "Back")}
         </div>);
-    }
-
-    filter(category) {
-        this.setState({category, lastScrollLeft: 0});
     }
 
     render() {
@@ -552,9 +562,7 @@ class Tools extends Component {
             <div className="header">
                 <div className="title">Skills</div>
                 <div className="categories">
-                    {_.map(this.categories, c =>
-                        <div className={c === this.state.category ? 'current' : ''}
-                             key={c} onClick={() => this.filter(c)}>{c}</div>)}
+                    {_.map(this.categories, c => this.linkToCategory(c))}
                 </div>
             </div>
             <div className="transition-wrapper">
@@ -574,6 +582,7 @@ class Tools extends Component {
 }
 
 Tools.propTypes = {
+    category: PropTypes.string,
     selectedTool: PropTypes.string
 };
 

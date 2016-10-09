@@ -1,5 +1,5 @@
 import { render }  from 'react-dom';
-import { Router, Route, IndexRoute, createMemoryHistory } from 'react-router';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
 import { Provider } from 'react-redux';
@@ -28,15 +28,18 @@ const store = createStore(
     )
 );
 
-const history = syncHistoryWithStore(createMemoryHistory(), store);
+//const history = syncHistoryWithStore(createMemoryHistory(), store);
+//const history = createMemoryHistory();
 
 render((
     <Provider store={store}>
         <div>
-            <Router history={history}>
+            <Router history={browserHistory}>
                 <Route path="/" component={App}>
                     <IndexRoute component={Desktop} />
-                    <Route path="skills/:tool" component={Desktop} />
+                    <Route path="tools" component={Desktop} />
+                    <Route path="tools/:category" component={Desktop} />
+                    <Route path="tools/:category/:tool" component={Desktop} />
                 </Route>
             </Router>
             <DevTools store={store} />
