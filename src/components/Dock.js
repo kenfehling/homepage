@@ -12,6 +12,7 @@ export default () => (
                 <DockIcon name="Tools" />
                 <DockIcon name="Editor" />
                 <DockIcon name="PDF" />
+                <DockIcon name="Mobile" />
             </div>
         </div>
     </div>

@@ -1,0 +1,109 @@
+@import "bourbon";
+
+$bg-color: #F6F6F6;
+$nav-height: 55px;
+$nav-bg-color: #77AAFF;
+$dashboard-icon-size: 52px;
+$list-item-icon-size: 32px;
+
+:local(.container) {
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  background-color: $bg-color;
+  font-size: 16px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .nav {
+    height: $nav-height;
+    background-color: $nav-bg-color;
+    border-bottom: thin solid darken($nav-bg-color, 5%);
+    h1 {
+      text-align: center;
+      margin: 0;
+      font-size: inherit;
+      line-height: $nav-height;
+    }
+  }
+
+  .content {
+    height: 100%;
+    padding: 10px 0 10px 10px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .content::-webkit-scrollbar {
+    -webkit-appearance: none;
+    background-color: $bg-color;
+    width: 10px;
+  }
+
+  .dashboard {
+    padding-top: 20px;
+    .section {
+      margin-bottom: 25px;
+      .title {
+        font-size: 13px;
+        line-height: 10px;
+        margin-bottom: 10px;
+        color: #333;
+      }
+      .title::before {
+        content: '\00a0';
+      }
+      .title::after {
+        content: '';
+        display: block;
+        @include background-image(linear-gradient(to right, rgba(150, 150, 150, 1), rgba(150, 150, 150, 0)));
+        height: 1px;
+        width: 100%;
+      }
+      .items {
+        display: flex;
+        margin-left: 18px;
+        .item {
+          display: inline-block;
+          margin-right: 36px;
+          .icon {
+            width: $dashboard-icon-size;
+            height: $dashboard-icon-size;
+            border-radius: 4px;
+            display: block;
+          }
+          .name {
+            text-align: center;
+            font-size: 13px;
+            color: #333;
+            font-weight: 700;
+          }
+        }
+      }
+    }
+  }
+
+  .list {
+    height: 100%;
+    .item {
+      padding: 8px;
+      margin-bottom: 8px;
+      display: flex;
+      background-color: white;
+      border: thin solid #DDD;
+      border-radius: 4px;
+      .icon {
+        width: $list-item-icon-size;
+        height: $list-item-icon-size;
+        border-radius: 2px;
+        display: block;
+        margin-right: 10px;
+      }
+      .name {
+        line-height: $list-item-icon-size;
+      }
+    }
+  }
+}

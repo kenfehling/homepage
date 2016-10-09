@@ -4,6 +4,7 @@ import Editor from '../components/Editor';
 import Terminal from '../components/Terminal';
 import AudioPlayer from '../components/AudioPlayer';
 import Tools from '../components/Tools';
+import Mobile from './Mobile';
 import Dock from '../components/Dock';
 import styles from './Desktop.scss';
 
@@ -21,6 +22,7 @@ export default ({params:{category, tool}}) => (
         <Window name="Tools" bgColor="#FFF" fgColor="#000" usePadding={false}>
             <Tools category={category} selectedTool={tool} />
         </Window>
+        <Window name="Mobile" usePadding={false}><Mobile /></Window>
         <Dock />
     </div>
 );

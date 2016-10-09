@@ -17,6 +17,7 @@ const MOBILE = 'Mobile';
 const DATABASES = 'Databases';
 const SOFTWARE = 'Software';
 
+
 let detailsHistory = [];
 
 const escapeName = name => name.replace(' ', '_').replace('#', 'sharp');
