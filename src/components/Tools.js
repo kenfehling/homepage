@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { Link, browserHistory } from 'react-router';
+import Helmet from "react-helmet";
 import styles from './Tools.scss';
 import _ from 'lodash';
 
@@ -46,15 +46,16 @@ class Tools extends Component {
 
     linkToCategory(name, text=name, back=false) {
         const {category=this.categories[0]} = this.props;
+        const path = name === this.categories[0] ? '' : '/' + name;
         const f = () => {
             if (!back) {
                 this.setState({lastScrollLeft: 0});
             }
             detailsHistory = [];
-            browserHistory.replace(`/tools/${name}`);
+            browserHistory.replace(`/tools${path}`);
         };
         return <Link className={!back && name === category ? 'current' : ''}
-                     to={`/tools/${name}`} key={name} onClick={f}>{text}</Link>;
+                     to={`/tools${path}`} key={name} onClick={f}>{text}</Link>;
     }
     
     constructor(props) {
@@ -558,7 +559,13 @@ class Tools extends Component {
     }
 
     render() {
+        const {category, selectedTool} = this.props;
         return (<div className={styles.container}>
+            <Helmet
+                title={`${!selectedTool ? (category || '') : selectedTool || ''}`}
+                titleTemplate="Ken Fehling - %s"
+                defaultTitle="Ken Fehling"
+            />
             <div className="header">
                 <div className="title">Skills</div>
                 <div className="categories">
@@ -574,7 +581,7 @@ class Tools extends Component {
                     transitionLeave={true}
                     transitionEnterTimeout={0}
                     transitionLeaveTimeout={0}>
-                    {this.props.selectedTool ? this.renderDetails() : this.renderTools()}
+                    {selectedTool ? this.renderDetails() : this.renderTools()}
                 </ReactCSSTransitionGroup>
             </div>
         </div>);
@@ -586,15 +593,4 @@ Tools.propTypes = {
     selectedTool: PropTypes.string
 };
 
-const mapStateToProps = (state, ownProps) => ({
-
-});
-
-const mapDispatchToProps = (dispatch, ownProps) => ({
-
-});
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(Tools);
+export default Tools;
