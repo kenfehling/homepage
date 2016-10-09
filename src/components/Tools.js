@@ -23,28 +23,30 @@ const getIcon = ({name, iconType}) =>
     <img className="icon" src={require('img/icons/tools/' +
         name.replace(' ', '_').replace('#', 'sharp') +'.' + (iconType || 'svg'))} />;
 
-const linkToTool = (name, text=name, back=false) => {
-    const f = () => {
-        if (back) {
-            detailsHistory.pop();
-        }
-        else {
-            detailsHistory.push(name);
-        }
-        browserHistory.replace(`/skills/${name}`);
-    };
-    return <Link key={name} onClick={f} to={`/skills/${name}`}>{text}</Link>;
-};
-
 const externalLink = (name, href='http://' + name) =>
     <a target="_blank" href={href}>{name} <i className="fa fa-external-link" /></a>;
 
 class Tools extends Component {
+    linkToTool(name, text=name, back=false) {
+        const f = () => {
+            if (back) {
+                detailsHistory.pop();
+            }
+            else {
+                detailsHistory.push(name);
+            }
+            this.setState({...this.state, back});
+            browserHistory.replace(`/skills/${name}`);
+        };
+        return <Link key={name} onClick={f} to={`/skills/${name}`}>{text}</Link>;
+    }
+    
     constructor(props) {
         super(props);
         this.state = {
             lastScrollLeft: 0,
-            category: 'All'
+            category: 'All',
+            back: false
         };
         this.categories = [
             'All',
@@ -66,7 +68,7 @@ class Tools extends Component {
                 My main programming language.
                 Despite the near universal hatred of JavaScript by my peers, I'm actually quite fond of it.
                 It's gotten especially good now with some of the features in ES6/ES2015.
-                I use {linkToTool('Babel')} to transpile into ES5 for cross-browser support.
+                I use {this.linkToTool('Babel')} to transpile into ES5 for cross-browser support.
             </div>
         }, {
             name: 'HTML',
@@ -87,9 +89,9 @@ class Tools extends Component {
             stars: 4.5,
             categories: [LIBRARIES, WEB],
             description: <div>
-                By far my favorite {linkToTool('JavaScript')} framework/library,
+                By far my favorite {this.linkToTool('JavaScript')} framework/library,
                 React has drastically changed the way I approach web app
-                development. This site itself is written in React as well as {linkToTool('Redux')}.
+                development. This site itself is written in React as well as {this.linkToTool('Redux')}.
                 <br /><br />I've also released a couple of libraries for React into open source:<br />
                 <ul>
                     <li>{externalLink("react-designable-audio-player",
@@ -101,7 +103,7 @@ class Tools extends Component {
             stars: 4.5,
             categories: [LIBRARIES, WEB],
             description: <div>
-                Redux is a great add-on to {linkToTool('React')}, and it's renewed my interest
+                Redux is a great add-on to {this.linkToTool('React')}, and it's renewed my interest
                 in functional programming. It makes managing client-side state simple and sensible,
                 and I appreciate how it's decoupled from the web and can be used in React Native
                 and even non-React projects.
@@ -137,7 +139,7 @@ class Tools extends Component {
             description: <div>
                 Python is my main go-to language for anything not web or mobile related.
                 Since most of my work is on the frontend web I'm usually
-                using {linkToTool('JavaScript')}, however I've recently been using Python
+                using {this.linkToTool('JavaScript')}, however I've recently been using Python
                 for the backend for a hackathon registration page, and some data analysis using Pandas.
             </div>
         }, {
@@ -147,43 +149,43 @@ class Tools extends Component {
             description: <div>
                 At my university, the Computer Science curriculum uses Java as its main programming language.
                 I've also used Java on my own projects with
-                JSP/Servlets, {linkToTool('GWT', 'Google Web Toolkit')},
-                and {linkToTool('Android')}.
+                JSP/Servlets, {this.linkToTool('GWT', 'Google Web Toolkit')},
+                and {this.linkToTool('Android')}.
             </div>
         }, {
             name: 'Webpack',
             stars: 4,
             categories: [DEVOPS, WEB],
             description: <div>
-                Currently my main {linkToTool('JavaScript')} build tool.
+                Currently my main {this.linkToTool('JavaScript')} build tool.
             </div>
         }, {
             name: 'Gulp',
             stars: 4,
             categories: [DEVOPS, WEB],
             description: <div>
-                Gulp was my main {linkToTool('JavaScript')} build tool before switching to
-                {linkToTool('Webpack')}. I often used Gulp with {linkToTool('Browserify')}.
+                Gulp was my main {this.linkToTool('JavaScript')} build tool before switching to
+                {this.linkToTool('Webpack')}. I often used Gulp with {this.linkToTool('Browserify')}.
             </div>
         }, {
             name: 'Grunt',
             stars: 4,
             categories: [DEVOPS, WEB],
             description: <div>
-                I used Grunt for a short time before switching to {linkToTool('Gulp')},
-                and currently {linkToTool('Webpack')}.
-                Grunt and Gulp are pretty similar build tools for {linkToTool('JavaScript')} and
-                I used both of them frequently with {linkToTool('Browserify')}.
+                I used Grunt for a short time before switching to {this.linkToTool('Gulp')},
+                and currently {this.linkToTool('Webpack')}.
+                Grunt and Gulp are pretty similar build tools for {this.linkToTool('JavaScript')} and
+                I used both of them frequently with {this.linkToTool('Browserify')}.
             </div>
         }, {
             name: 'Flask',
             stars: 4,
             categories: [LIBRARIES, WEB],
             description: <div>
-                I usually use Flask when I write web projects in {linkToTool('Python')}.
+                I usually use Flask when I write web projects in {this.linkToTool('Python')}.
                 I've dabbled with Django a little,
                 but my Python web projects tend to be pretty small so Flask is better suited.
-                For larger web apps I typically use {linkToTool('Node')} for the backend.
+                For larger web apps I typically use {this.linkToTool('Node')} for the backend.
             </div>
         }, {
             name: 'JQuery',
@@ -290,10 +292,10 @@ class Tools extends Component {
             stars: 3.5,
             categories: [LIBRARIES],
             description: <div>
-                Google Guice is a dependency injection library for {linkToTool('Java')}.
-                I started using Guice while doing {linkToTool('GWT')} development,
-                but I continued to use it on almost all of my {linkToTool('Java')} projects,
-                including for {linkToTool('Android')} (along with {linkToTool('RoboGuice')}).
+                Google Guice is a dependency injection library for {this.linkToTool('Java')}.
+                I started using Guice while doing {this.linkToTool('GWT')} development,
+                but I continued to use it on almost all of my {this.linkToTool('Java')} projects,
+                including for {this.linkToTool('Android')} (along with {this.linkToTool('RoboGuice')}).
             </div>
         }, {
             name: 'RoboGuice',
@@ -301,8 +303,8 @@ class Tools extends Component {
             stars: 3.5,
             categories: [LIBRARIES, MOBILE],
             description: <div>
-                Back when I was doing {linkToTool('Android')} development,
-                I used {linkToTool('Guice')} and RoboGuice for dependency injection.
+                Back when I was doing {this.linkToTool('Android')} development,
+                I used {this.linkToTool('Guice')} and RoboGuice for dependency injection.
                 Android isn't inherently that well suited for DI but RoboGuice smoothed this over a bit,
                 helping me strive to write more modular and testable code.
                 In 2016 the library was discontinued, however there are now many alternative DI libraries for Android.
@@ -438,7 +440,7 @@ class Tools extends Component {
                 Although I don't use any of these languages in my daily work,
                 I'm glad I learned them because they completely changed the way I approach writing programs,
                 even in more imperative languages
-                like {linkToTool('JavaScript')} and {linkToTool('Python')}.
+                like {this.linkToTool('JavaScript')} and {this.linkToTool('Python')}.
             </div>
         }, {
             name: 'Swift',
@@ -461,13 +463,13 @@ class Tools extends Component {
             stars: 2.5,
             categories: [WEB],
             description: <div>
-                In the past {linkToTool('Java')} was my primary language, so GWT seemed like an
+                In the past {this.linkToTool('Java')} was my primary language, so GWT seemed like an
                 alluring tool at the time for creating web apps. However I didn't quite care for it overall,
-                and my {linkToTool('HTML')}, {linkToTool('JavaScript')},
-                and {linkToTool('CSS')} skills continued to progress.
+                and my {this.linkToTool('HTML')}, {this.linkToTool('JavaScript')},
+                and {this.linkToTool('CSS')} skills continued to progress.
                 <br /><br />
                 Although I abandoned GWT, I did take away some nice experience with dependency injection,
-                particularly with {linkToTool('Guice', 'Google Guice')}, and the observer pattern.
+                particularly with {this.linkToTool('Guice', 'Google Guice')}, and the observer pattern.
             </div>
         }, {
             name: 'Illustrator',
@@ -498,7 +500,7 @@ class Tools extends Component {
 
     renderTool(tool) {
         const {name, stars} = tool;
-        return linkToTool(name, (<div className="tool">
+        return this.linkToTool(name, (<div className="tool">
             {getIcon(tool)}
             <div className="name">{name}</div>
             <div className="stars">
@@ -509,6 +511,7 @@ class Tools extends Component {
     }
 
     renderTools() {
+        detailsHistory = [];
         const {category} = this.state;
         const filteredTools = category === 'All' ? this.tools : _.filter(this.tools, t => _.includes(t.categories, category));
         const n = _.size(filteredTools);
@@ -535,7 +538,7 @@ class Tools extends Component {
             <br />
 
             {detailsHistory.length > 1 ?
-                linkToTool(detailsHistory[detailsHistory.length - 2], "Back", true) :
+                this.linkToTool(detailsHistory[detailsHistory.length - 2], "Back", true) :
                 <Link to="/">Back</Link>}
         </div>);
     }
@@ -557,7 +560,7 @@ class Tools extends Component {
             <div className="transition-wrapper">
                 <ReactCSSTransitionGroup
                     component="div"
-                    className="transition-group"
+                    className={`transition-group${this.state.back ? ' back' : ''}`}
                     transitionName="tool"
                     transitionEnter={true}
                     transitionLeave={true}

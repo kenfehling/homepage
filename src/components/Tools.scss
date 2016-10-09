@@ -190,4 +190,19 @@ $header-bottom-color: #a343a4;
   .details + .tool-leave.tool-leave-active.details {
     transform: translate(-200%, 0);
   }
+
+  .back {
+    .tool-leave.details {
+      transform: translate(-100%, 0);
+    }
+    .tool-leave.tool-leave-active.details {
+      transform: translate(0, 0);
+    }
+    .tool-enter.details {
+      transform: translate(-100%, 0);
+    }
+    .tool-enter.tool-enter-active.details {
+      transform: translate(0, 0);
+    }
+  }
 }
