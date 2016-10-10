@@ -101,7 +101,7 @@ export function connectComponent(WrappedComponent) {
         constructor(props={}) {
             super(props);
             this.state = {
-                params: props.params
+                params: {}
             };
         }
 

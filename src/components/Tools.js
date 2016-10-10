@@ -27,15 +27,15 @@ const externalLink = (name, href='http://' + name) =>
 
 class Tools extends Component {
     linkToTool(name, text=name) {
-        const {toolCategory=this.categories[0]} = this.props;
+        const {category=this.categories[0]} = this.props;
         const escapedName = escapeName(name);
-        return <HistoryLink to={`/tools/${toolCategory}/${escapedName}`}>{text}</HistoryLink>;
+        return <HistoryLink to={`/tools/${category}/${escapedName}`}>{text}</HistoryLink>;
     }
 
     linkToCategory(name, text=name) {
-        const {toolCategory=this.categories[0]} = this.props;
+        const {category=this.categories[0]} = this.props;
         const path = name === this.categories[0] ? '' : '/' + name;
-        return <HistoryLink to={`/tools${path}`} className={name === toolCategory ? 'current' : ''}>{text}</HistoryLink>;
+        return <HistoryLink to={`/tools${path}`} className={name === category ? 'current' : ''}>{text}</HistoryLink>;
     }
     
     constructor(props) {
@@ -505,9 +505,9 @@ class Tools extends Component {
     }
 
     renderTools() {
-        const {toolCategory=this.categories[0]} = this.props;
-        const filteredTools = toolCategory === 'All' ? this.tools :
-            _.filter(this.tools, t => _.includes(t.categories, toolCategory));
+        const {category=this.categories[0]} = this.props;
+        const filteredTools = category === 'All' ? this.tools :
+            _.filter(this.tools, t => _.includes(t.categories, category));
         const n = _.size(filteredTools);
         return (<div className="tools" key="tools">
             <div className="scroll-area" ref={(ref) => this.scrollArea = ref}
@@ -531,10 +531,10 @@ class Tools extends Component {
     }
 
     render() {
-        const {toolCategory, selectedTool} = this.props;
+        const {category, selectedTool} = this.props;
         return (<div className={styles.container}>
             <Helmet
-                title={`${!selectedTool ? (toolCategory || '') : selectedTool || ''}`}
+                title={`${!selectedTool ? (category || '') : selectedTool || ''}`}
                 titleTemplate="Ken Fehling - %s"
                 defaultTitle="Ken Fehling"
             />
@@ -552,7 +552,7 @@ class Tools extends Component {
 }
 
 Tools.propTypes = {
-    toolCategory: PropTypes.string,
+    category: PropTypes.string,
     selectedTool: PropTypes.string
 };
 

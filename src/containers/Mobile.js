@@ -88,19 +88,19 @@ const Tools = () => (
     ]} />
 );
 
-const Mobile = ({useTopBar, mobileSection}) => (
+const Mobile = ({useTopBar, category}) => (
     <div className={styles.container}>
         {useTopBar ? <TopBar /> : ''}
         <Navigator />
         <ContentArea className="content">
-            {mobileSection ? <Tools /> : <Dashboard />}
+            {category ? <Tools /> : <Dashboard />}
         </ContentArea>
     </div>
 );
 
 Mobile.propTypes = {
     useTopBar: PropTypes.bool,
-    mobileSection: PropTypes.string
+    category: PropTypes.string
 };
 
 export default connectComponent(Mobile);

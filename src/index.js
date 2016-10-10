@@ -37,10 +37,10 @@ const store = createStore(
 setRoutes(
     <Route path="/" component={App}>
         <Route path="tools" component={Tools} />
-        <Route path="tools/:toolCategory" component={Tools} />
-        <Route path="tools/:toolCategory/:selectedTool" component={Tools} />
-        <Route path="mobile/:mobileSection" component={Mobile} />
-        <Route path="mobile/:mobileSection/*" component={Mobile} />
+        <Route path="tools/:category" component={Tools} />
+        <Route path="tools/:category/:selectedTool" component={Tools} />
+        <Route path="mobile/:category" component={Mobile} />
+        <Route path="mobile/:category/*" component={Mobile} />
     </Route>
 );
 
@@ -51,10 +51,10 @@ render((
                 <Route path="/" component={App}>
                     <IndexRoute component={Desktop} />
                     <Route path="tools" component={Desktop} />
-                    <Route path="tools/:toolCategory" component={Desktop} />
-                    <Route path="tools/:toolCategory/:selectedTool" component={Desktop} />
-                    <Route path="mobile/:mobileSection" component={Desktop} />
-                    <Route path="mobile/:mobileSection/*" component={Desktop} />
+                    <Route path="tools/:category" component={Desktop} />
+                    <Route path="tools/:category/:selectedTool" component={Desktop} />
+                    <Route path="mobile/:category" component={Desktop} />
+                    <Route path="mobile/:category/*" component={Desktop} />
                 </Route>
             </Router>
             <DevTools store={store} />
