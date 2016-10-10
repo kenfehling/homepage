@@ -1,9 +1,10 @@
 import { Component, PropTypes, createElement } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import { Link, browserHistory } from 'react-router';
+import { Link, browserHistory, match } from 'react-router';
 import styles from './HistoryComponent.scss';
 
 let historyStack = [];
+let routes = {};
 let listeners = {};
 let lastListenerId = 0;
 
@@ -29,6 +30,10 @@ function onClick(to, back) {
     }
     updateListeners({back});
     browserHistory.replace(to);
+}
+
+export function setRoutes(newRoutes) {
+    routes = newRoutes;
 }
 
 export const HistoryLink = props => (
@@ -84,6 +89,37 @@ export function connectNavigator(WrappedComponent) {
         render() {
             const props = {
                 title: this.state.title
+            };
+            return createElement(WrappedComponent, props);
+        }
+    }
+    return Connect;
+}
+
+export function connectComponent(WrappedComponent) {
+    class Connect extends Component {
+        constructor(props={}) {
+            super(props);
+            this.state = {
+                params: props.params
+            };
+        }
+
+        componentDidMount() {
+            browserHistory.listen(location => {
+                match({routes, location}, (error, redirectLocation, renderProps) => {
+                    if (renderProps.components.length > 1) {
+                        if (this instanceof renderProps.components[1]) {  // if active component
+                            this.setState({params: renderProps.params});
+                        }
+                    }
+                });
+            });
+        }
+
+        render() {
+            const props = {
+                ...this.state.params
             };
             return createElement(WrappedComponent, props);
         }

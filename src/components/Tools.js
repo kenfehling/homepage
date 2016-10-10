@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react';
-import { Link } from 'react-router';
 import Helmet from "react-helmet";
 import styles from './Tools.scss';
 import _ from 'lodash';
 import { connectNavigator, HistoryLink, ContentArea } from '../containers/history/HistoryComponent';
+import {connectComponent} from "../containers/history/HistoryComponent";
 
 const ROWS = 2;
 const starIcon = require('img/icons/star.svg');
@@ -26,23 +26,22 @@ const externalLink = (name, href='http://' + name) =>
     <a target="_blank" href={href}>{name} <i className="fa fa-external-link" /></a>;
 
 class Tools extends Component {
-    linkToTool(name, text=name, back=false) {
-        const {category=this.categories[0]} = this.props;
+    linkToTool(name, text=name) {
+        const {toolCategory=this.categories[0]} = this.props;
         const escapedName = escapeName(name);
-        return <HistoryLink to={`/tools/${category}/${escapedName}`}>{text}</HistoryLink>;
+        return <HistoryLink to={`/tools/${toolCategory}/${escapedName}`}>{text}</HistoryLink>;
     }
 
-    linkToCategory(name, text=name, back=false) {
-        const {category=this.categories[0]} = this.props;
+    linkToCategory(name, text=name) {
+        const {toolCategory=this.categories[0]} = this.props;
         const path = name === this.categories[0] ? '' : '/' + name;
-        return <HistoryLink to={`/tools${path}`} className={name === category ? 'current' : ''}>{text}</HistoryLink>;
+        return <HistoryLink to={`/tools${path}`} className={name === toolCategory ? 'current' : ''}>{text}</HistoryLink>;
     }
     
     constructor(props) {
         super(props);
         this.state = {
-            lastScrollLeft: 0,
-            back: false
+            lastScrollLeft: 0
         };
         this.categories = [
             'All',
@@ -506,8 +505,9 @@ class Tools extends Component {
     }
 
     renderTools() {
-        const {category=this.categories[0]} = this.props;
-        const filteredTools = category === 'All' ? this.tools : _.filter(this.tools, t => _.includes(t.categories, category));
+        const {toolCategory=this.categories[0]} = this.props;
+        const filteredTools = toolCategory === 'All' ? this.tools :
+            _.filter(this.tools, t => _.includes(t.categories, toolCategory));
         const n = _.size(filteredTools);
         return (<div className="tools" key="tools">
             <div className="scroll-area" ref={(ref) => this.scrollArea = ref}
@@ -523,7 +523,6 @@ class Tools extends Component {
     }
 
     renderDetails() {
-        const {category=this.categories[0]} = this.props;
         const {name, fullName, stars, description} = this.getSelectedTool();
         return (<div className="details" key={name}>
             <div className="title">{fullName || name}</div>
@@ -532,10 +531,10 @@ class Tools extends Component {
     }
 
     render() {
-        const {category, selectedTool} = this.props;
+        const {toolCategory, selectedTool} = this.props;
         return (<div className={styles.container}>
             <Helmet
-                title={`${!selectedTool ? (category || '') : selectedTool || ''}`}
+                title={`${!selectedTool ? (toolCategory || '') : selectedTool || ''}`}
                 titleTemplate="Ken Fehling - %s"
                 defaultTitle="Ken Fehling"
             />
@@ -553,8 +552,8 @@ class Tools extends Component {
 }
 
 Tools.propTypes = {
-    category: PropTypes.string,
+    toolCategory: PropTypes.string,
     selectedTool: PropTypes.string
 };
 
-export default Tools;
+export default connectComponent(Tools);

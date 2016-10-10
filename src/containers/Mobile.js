@@ -2,6 +2,7 @@ import { PropTypes } from 'react';
 import styles from './Mobile.scss';
 import _ from 'lodash';
 import { connectNavigator, HistoryLink, ContentArea } from './history/HistoryComponent';
+import {connectComponent} from "./history/HistoryComponent";
 
 const req = require.context("img/icons", true, /^\.\/.*$/);
 
@@ -27,19 +28,19 @@ const Navigator = connectNavigator(({back, title}) => (
     </div>
 ));
 
-const DashboardItem = ({icon, name}) => (
-    <div className="item">
+const DashboardItem = ({icon, name, link}) => (
+    <HistoryLink to={link} className="item">
         <img className="icon" src={req(icon)} />
         <div className="name">{name}</div>
-    </div>
+    </HistoryLink>
 );
 
 const Dashboard = () => (
-    <div className="dashboard">
+    <div key="dashboard" className="dashboard">
         <div className="section">
             <div className="title">Programming</div>
             <div className="items">
-                <DashboardItem icon='./dock/Tools.svg' name="Tools" />
+                <DashboardItem icon='./dock/Tools.svg' name="Tools" link={'/mobile/tools'} />
                 <DashboardItem icon='./dock/Projects.svg' name="Projects" />
             </div>
         </div>
@@ -81,24 +82,25 @@ const List = ({items}) => (
 );
 
 const Tools = () => (
-    <List items={[
+    <List key="tools" items={[
         {icon: './tools/React.svg', name: 'React'},
         {icon: './tools/JavaScript.svg', name: 'JavaScript'}
     ]} />
 );
 
-const Mobile = ({useTopBar}) => (
+const Mobile = ({useTopBar, mobileSection}) => (
     <div className={styles.container}>
         {useTopBar ? <TopBar /> : ''}
         <Navigator />
         <ContentArea className="content">
-            <Dashboard />
+            {mobileSection ? <Tools /> : <Dashboard />}
         </ContentArea>
     </div>
 );
 
 Mobile.propTypes = {
-    useTopBar: PropTypes.bool
+    useTopBar: PropTypes.bool,
+    mobileSection: PropTypes.string
 };
 
-export default Mobile;
+export default connectComponent(Mobile);
