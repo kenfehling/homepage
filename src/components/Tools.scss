@@ -1,4 +1,5 @@
 @import "bourbon";
+@import "../styles/utils";
 
 $icon-size: 56px;
 $detail-icon-size: 36px;
@@ -17,6 +18,7 @@ $header-bottom-color: #a343a4;
 
   .header {
     @include background-image(linear-gradient(to bottom, $header-top-color, $header-bottom-color));
+    @include no-select();
     color: $item-bg;
     padding: 10px 0;
     .title {
@@ -52,6 +54,7 @@ $header-bottom-color: #a343a4;
   }
 
   .tools {
+    @include no-select();
     background-color: $tools-bg;
     .scroll-area {
       display: flex;

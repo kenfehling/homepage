@@ -1,4 +1,7 @@
+@import "../styles/utils";
+
 :local(.container) {
+  @include no-select();
   margin: auto;
   width: 90%;
   .controls {
