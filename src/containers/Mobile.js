@@ -82,7 +82,7 @@ const List = ({items}) => (
 );
 
 const Tools = () => (
-    <List key="tools" items={[
+    <List key="mobile-tools" items={[
         {icon: './tools/React.svg', name: 'React'},
         {icon: './tools/JavaScript.svg', name: 'JavaScript'}
     ]} />

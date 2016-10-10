@@ -29,13 +29,15 @@ class Tools extends Component {
     linkToTool(name, text=name) {
         const {category=this.categories[0]} = this.props;
         const escapedName = escapeName(name);
-        return <HistoryLink to={`/tools/${category}/${escapedName}`}>{text}</HistoryLink>;
+        return <HistoryLink key={name} to={`/tools/${category}/${escapedName}`}>{text}</HistoryLink>;
     }
 
     linkToCategory(name, text=name) {
         const {category=this.categories[0]} = this.props;
         const path = name === this.categories[0] ? '' : '/' + name;
-        return <HistoryLink to={`/tools${path}`} className={name === category ? 'current' : ''}>{text}</HistoryLink>;
+        return <HistoryLink key={name} to={`/tools${path}`} className={name === category ? 'current' : ''}>
+            {text}
+        </HistoryLink>;
     }
     
     constructor(props) {
@@ -544,7 +546,7 @@ class Tools extends Component {
                     {_.map(this.categories, c => this.linkToCategory(c))}
                 </div>
             </div>
-            <ContentArea className="transition-wrapper">
+            <ContentArea>
                 {selectedTool ? this.renderDetails() : this.renderTools()}
             </ContentArea>
         </div>);

@@ -33,7 +33,7 @@ function onClick(to, back) {
 }
 
 export const HistoryLink = props => (
-    <Link key={props.to} {...props} onClick={() => onClick(props.to, props.back)}>{props.children}</Link>
+    <Link {...props} onClick={() => onClick(props.to, props.back)}>{props.children}</Link>
 );
 
 const BackLink = ({children}) => {
