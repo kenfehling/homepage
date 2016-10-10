@@ -1,8 +1,9 @@
 @import "bourbon";
 
 $bg-color: #F6F6F6;
-$nav-height: 55px;
-$nav-bg-color: #77AAFF;
+$nav-bg-color: #b7b6ac;
+$top-bar-height: 20px;
+$nav-height: 38px;
 $dashboard-icon-size: 52px;
 $list-item-icon-size: 32px;
 
@@ -15,10 +16,50 @@ $list-item-icon-size: 32px;
   display: flex;
   flex-direction: column;
 
+  .top-bar, .nav {
+    background-color: $nav-bg-color;
+  }
+
+  .top-bar {
+    font-size: 10px;
+    font-weight: 500;
+    height: $top-bar-height;
+    line-height: $top-bar-height;
+    display: flex;
+    padding: 0 6px;
+    i {
+      margin-left: 3px;
+    }
+    .network, .battery {
+      width: 20%;
+    }
+    .network {
+      display: flex;
+      i {
+        font-size: 12px;
+        line-height: 22px;
+      }
+    }
+    .time {
+      flex: 1 1;
+      text-align: center;
+    }
+    .battery {
+      * {
+        float: right;
+      }
+      i {
+        font-size: 14px;
+        line-height: $top-bar-height;
+      }
+    }
+  }
+
   .nav {
+    font-size: 15px;
     height: $nav-height;
     background-color: $nav-bg-color;
-    border-bottom: thin solid darken($nav-bg-color, 5%);
+    border-bottom: thin solid darken($nav-bg-color, 9%);
     h1 {
       text-align: center;
       margin: 0;
@@ -50,7 +91,7 @@ $list-item-icon-size: 32px;
         font-size: 13px;
         line-height: 10px;
         margin-bottom: 10px;
-        color: #333;
+        color: #222;
       }
       .title::before {
         content: '\00a0';
@@ -65,6 +106,7 @@ $list-item-icon-size: 32px;
       .items {
         display: flex;
         margin-left: 18px;
+        cursor: pointer;
         .item {
           display: inline-block;
           margin-right: 36px;
@@ -77,9 +119,17 @@ $list-item-icon-size: 32px;
           .name {
             text-align: center;
             font-size: 13px;
-            color: #333;
+            color: #222;
             font-weight: 700;
           }
+          opacity: 0.9;
+        }
+        .item:hover {
+          opacity: 1;
+          @include filter(brightness(1.1));
+        }
+        .item:active {
+          @include filter(brightness(0.9));
         }
       }
     }

@@ -1,7 +1,24 @@
+import { PropTypes } from 'react';
 import styles from './Mobile.scss';
 import _ from 'lodash';
 
 const req = require.context("img", true, /^\.\/.*$/);
+
+const TopBar = () => (
+    <div className="top-bar">
+        <div className="network">
+            <div>Network</div>
+            <i className="fa fa-wifi" />
+        </div>
+        <div className="time">
+            {new Date().toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'})}
+        </div>
+        <div className="battery">
+            <i className="fa fa-battery-full "/>
+            <div>79%</div>
+        </div>
+    </div>
+);
 
 const DashboardItem = ({icon, name}) => (
     <div className="item">
@@ -55,8 +72,9 @@ const Tools = () => (
     ]} />
 );
 
-export default () => (
+const Mobile = ({useTopBar}) => (
     <div className={styles.container}>
+        {useTopBar ? <TopBar /> : ''}
         <div className="nav">
             <h1>Ken Fehling</h1>
         </div>
@@ -65,3 +83,9 @@ export default () => (
         </div>
     </div>
 );
+
+Mobile.propTypes = {
+    useTopBar: PropTypes.bool
+};
+
+export default Mobile;

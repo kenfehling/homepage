@@ -22,7 +22,7 @@ export default ({params:{category, tool}}) => (
         <Window name="Tools" bgColor="#FFF" fgColor="#000" usePadding={false}>
             <Tools category={category} selectedTool={tool} />
         </Window>
-        <Window name="Mobile" usePadding={false}><Mobile /></Window>
+        <Window name="Mobile" usePadding={false}><Mobile useTopBar={true} /></Window>
         <Dock />
     </div>
 );
