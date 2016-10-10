@@ -11,6 +11,6 @@
   }
 
   img:active {
-    @include filter(brightness(0.5));
+    @include filter(brightness(0.67));
   }
 }
