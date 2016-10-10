@@ -40,6 +40,7 @@ render((
                     <Route path="tools" component={Desktop} />
                     <Route path="tools/:category" component={Desktop} />
                     <Route path="tools/:category/:tool" component={Desktop} />
+                    <Route path="mobile/*" component={Desktop} />
                 </Route>
             </Router>
             <DevTools store={store} />

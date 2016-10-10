@@ -1,6 +1,7 @@
 import { PropTypes } from 'react';
 import styles from './Mobile.scss';
 import _ from 'lodash';
+import { connectNavigator, HistoryLink, ContentArea } from './history/HistoryComponent';
 
 const req = require.context("img/icons", true, /^\.\/.*$/);
 
@@ -15,10 +16,16 @@ const TopBar = () => (
         </div>
         <div className="battery">
             <i className="fa fa-battery-full "/>
-            <div>79%</div>
+            <div>100%</div>
         </div>
     </div>
 );
+
+const Navigator = connectNavigator(({back, title}) => (
+    <div className="nav">
+        <h1>{title}</h1>
+    </div>
+));
 
 const DashboardItem = ({icon, name}) => (
     <div className="item">
@@ -83,12 +90,10 @@ const Tools = () => (
 const Mobile = ({useTopBar}) => (
     <div className={styles.container}>
         {useTopBar ? <TopBar /> : ''}
-        <div className="nav">
-            <h1>Ken Fehling</h1>
-        </div>
-        <div className="content">
+        <Navigator />
+        <ContentArea className="content">
             <Dashboard />
-        </div>
+        </ContentArea>
     </div>
 );
 

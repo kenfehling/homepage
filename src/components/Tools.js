@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import { Link, browserHistory } from 'react-router';
+import { Link } from 'react-router';
 import Helmet from "react-helmet";
 import styles from './Tools.scss';
 import _ from 'lodash';
+import { connectNavigator, HistoryLink, ContentArea } from '../containers/history/HistoryComponent';
 
 const ROWS = 2;
 const starIcon = require('img/icons/star.svg');
@@ -17,9 +17,6 @@ const MOBILE = 'Mobile';
 const DATABASES = 'Databases';
 const SOFTWARE = 'Software';
 
-
-let detailsHistory = [];
-
 const escapeName = name => name.replace(' ', '_').replace('#', 'sharp');
 
 const getIcon = ({name, iconType}) =>
@@ -32,31 +29,13 @@ class Tools extends Component {
     linkToTool(name, text=name, back=false) {
         const {category=this.categories[0]} = this.props;
         const escapedName = escapeName(name);
-        const f = () => {
-            if (back) {
-                detailsHistory.pop();
-            }
-            else {
-                detailsHistory.push(name);
-            }
-            this.setState({...this.state, back});
-            browserHistory.replace(`/tools/${category}/${escapedName}`);
-        };
-        return <Link key={name} onClick={f} to={`/tools/${category}/${escapedName}`}>{text}</Link>;
+        return <HistoryLink to={`/tools/${category}/${escapedName}`}>{text}</HistoryLink>;
     }
 
     linkToCategory(name, text=name, back=false) {
         const {category=this.categories[0]} = this.props;
         const path = name === this.categories[0] ? '' : '/' + name;
-        const f = () => {
-            if (!back) {
-                this.setState({lastScrollLeft: 0});
-            }
-            detailsHistory = [];
-            browserHistory.replace(`/tools${path}`);
-        };
-        return <Link className={!back && name === category ? 'current' : ''}
-                     to={`/tools${path}`} key={name} onClick={f}>{text}</Link>;
+        return <HistoryLink to={`/tools${path}`} className={name === category ? 'current' : ''}>{text}</HistoryLink>;
     }
     
     constructor(props) {
@@ -549,13 +528,6 @@ class Tools extends Component {
         return (<div className="details" key={name}>
             <div className="title">{fullName || name}</div>
             <div className="body">{description()}</div>
-
-            <br />
-            <br />
-
-            {detailsHistory.length > 1 ?
-                this.linkToTool(detailsHistory[detailsHistory.length - 2], "Back", true) :
-                this.linkToCategory(category, "Back")}
         </div>);
     }
 
@@ -573,18 +545,9 @@ class Tools extends Component {
                     {_.map(this.categories, c => this.linkToCategory(c))}
                 </div>
             </div>
-            <div className="transition-wrapper">
-                <ReactCSSTransitionGroup
-                    component="div"
-                    className={`transition-group${this.state.back ? ' back' : ''}`}
-                    transitionName="tool"
-                    transitionEnter={true}
-                    transitionLeave={true}
-                    transitionEnterTimeout={0}
-                    transitionLeaveTimeout={0}>
-                    {selectedTool ? this.renderDetails() : this.renderTools()}
-                </ReactCSSTransitionGroup>
-            </div>
+            <ContentArea className="transition-wrapper">
+                {selectedTool ? this.renderDetails() : this.renderTools()}
+            </ContentArea>
         </div>);
     }
 }
