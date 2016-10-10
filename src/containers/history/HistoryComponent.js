@@ -2,9 +2,9 @@ import { Component, PropTypes, createElement } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { Link, browserHistory, match } from 'react-router';
 import styles from './HistoryComponent.scss';
+import routes from '../../routes';
 
 let historyStack = [];
-let routes = {};
 let listeners = {};
 let lastListenerId = 0;
 
@@ -30,10 +30,6 @@ function onClick(to, back) {
     }
     updateListeners({back});
     browserHistory.replace(to);
-}
-
-export function setRoutes(newRoutes) {
-    routes = newRoutes;
 }
 
 export const HistoryLink = props => (
