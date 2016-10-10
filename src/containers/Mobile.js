@@ -2,7 +2,7 @@ import { PropTypes } from 'react';
 import styles from './Mobile.scss';
 import _ from 'lodash';
 
-const req = require.context("img", true, /^\.\/.*$/);
+const req = require.context("img/icons", true, /^\.\/.*$/);
 
 const TopBar = () => (
     <div className="top-bar">
@@ -32,21 +32,29 @@ const Dashboard = () => (
         <div className="section">
             <div className="title">Programming</div>
             <div className="items">
-                <DashboardItem icon='./icons/dock/Tools.svg' name="Tools" />
-                <DashboardItem icon='./icons/dock/Map.svg' name="Projects" />
+                <DashboardItem icon='./dock/Tools.svg' name="Tools" />
+                <DashboardItem icon='./dock/Map.svg' name="Projects" />
             </div>
         </div>
         <div className="section">
             <div className="title">Music</div>
             <div className="items">
-                <DashboardItem icon='./icons/dock/AudioPlayer.svg' name="Listen" />
+                <DashboardItem icon='./dock/AudioPlayer.svg' name="Listen" />
             </div>
         </div>
         <div className="section">
             <div className="title">Resume</div>
             <div className="items">
-                <DashboardItem icon='./icons/dock/Editor.svg' name="HTML" />
-                <DashboardItem icon='./icons/dock/PDF.svg' name="PDF" />
+                <DashboardItem icon='./dock/Editor.svg' name="HTML" />
+                <DashboardItem icon='./dock/PDF.svg' name="PDF" />
+            </div>
+        </div>
+        <div className="section">
+            <div className="title">Social</div>
+            <div className="items">
+                <DashboardItem icon='./social/GitHub.svg' name="GitHub" />
+                <DashboardItem icon='./social/Twitter.svg' name="Twitter" />
+                <DashboardItem icon='./social/LinkedIn.svg' name="LinkedIn" />
             </div>
         </div>
     </div>
@@ -67,8 +75,8 @@ const List = ({items}) => (
 
 const Tools = () => (
     <List items={[
-        {icon: './icons/tools/React.svg', name: 'React'},
-        {icon: './icons/tools/JavaScript.svg', name: 'JavaScript'}
+        {icon: './tools/React.svg', name: 'React'},
+        {icon: './tools/JavaScript.svg', name: 'JavaScript'}
     ]} />
 );
 
