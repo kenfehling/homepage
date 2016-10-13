@@ -2,8 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import Helmet from "react-helmet";
 import styles from './Tools.scss';
 import _ from 'lodash';
-import { connectNavigator, HistoryLink, ContentArea } from '../containers/history/HistoryComponent';
-import {connectComponent} from "../containers/history/HistoryComponent";
+import { connectNavigator, HistoryLink, BackLink, ContentArea } from '../containers/history/components/HistoryComponent';
+import {connectComponent} from "../containers/history/components/HistoryComponent";
 
 const ROWS = 2;
 const starIcon = require('img/icons/star.svg');
@@ -29,13 +29,13 @@ class Tools extends Component {
     linkToTool(name, text=name) {
         const {category=this.categories[0]} = this.props;
         const escapedName = escapeName(name);
-        return <HistoryLink key={name} to={`/tools/${category}/${escapedName}`}>{text}</HistoryLink>;
+        return <HistoryLink key={name} name={name} to={`/tools/${category}/${escapedName}`}>{text}</HistoryLink>;
     }
 
     linkToCategory(name, text=name) {
         const {category=this.categories[0]} = this.props;
         const path = name === this.categories[0] ? '' : '/' + name;
-        return <HistoryLink key={name} to={`/tools${path}`} className={name === category ? 'current' : ''}>
+        return <HistoryLink key={name} name={name} to={`/tools${path}`} className={name === category ? 'current' : ''}>
             {text}
         </HistoryLink>;
     }
@@ -494,15 +494,19 @@ class Tools extends Component {
         return _.find(this.tools, tool => escapeName(tool.name) === this.props.selectedTool);
     }
 
+    renderStars(stars) {
+        return <div className="stars">
+            {_.map(_.range(Math.floor(stars)), i => <img key={i} src={starIcon} />)}
+            {stars % 1 === 0.5 ? <img src={halfStarIcon} /> : ''}
+        </div>;
+    }
+
     renderTool(tool) {
         const {name, stars} = tool;
         return this.linkToTool(name, (<div className="tool">
             {getIcon(tool)}
             <div className="name">{name}</div>
-            <div className="stars">
-                {_.map(_.range(Math.floor(stars)), i => <img key={i} src={starIcon} />)}
-                {stars % 1 === 0.5 ? <img src={halfStarIcon} /> : ''}
-            </div>
+            {this.renderStars(stars)}
         </div>));
     }
 
@@ -527,7 +531,14 @@ class Tools extends Component {
     renderDetails() {
         const {name, fullName, stars, description} = this.getSelectedTool();
         return (<div className="details" key={name}>
-            <div className="title">{fullName || name}</div>
+            <div className="heading">
+                <BackLink />
+                <div className="title">{fullName || name}</div>
+                <div className="skill">
+                    <div className="label">Skill level:</div>
+                    {this.renderStars(stars)}
+                </div>
+            </div>
             <div className="body">{description()}</div>
         </div>);
     }

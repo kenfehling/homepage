@@ -108,8 +108,8 @@ $list-item-icon-size: 32px;
       .items {
         display: flex;
         margin-left: 18px;
-        cursor: pointer;
         .item {
+          cursor: pointer;
           text-decoration: none;
           display: inline-block;
           margin-right: 36px;

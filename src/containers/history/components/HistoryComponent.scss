@@ -1,0 +1,61 @@
+:local(.content-container) {
+  overflow: hidden;
+
+  .default-back {
+    color: #3366FF;
+    font-weight: 500;
+    display: flex;
+    cursor: pointer;
+    i {
+      padding-right: 3px;
+    }
+  }
+
+  .transition-group {
+    width: 200%;
+    > * {
+      width: 50%;
+    }
+  }
+
+  .tool-enter, .tool-leave, .tool-enter-active, .tool-leave-active {
+    width: 50%;
+    float: left;
+  }
+
+  .tool-enter-active, .tool-leave-active {
+    transition: all 1s;
+    width: 50%;
+    float: left;
+  }
+
+  .push {
+    .tool-leave {
+      transform: translate(-100%, 0);
+    }
+    .tool-leave.tool-leave-active {
+      transform: translate(-200%, 0);
+    }
+    .tool-enter {
+      transform: translate(100%, 0);
+    }
+    .tool-enter.tool-enter-active {
+      transform: translate(0, 0);
+    }
+  }
+
+  .pop, .top {
+    .tool-leave {
+      transform: translate(-100%, 0);
+    }
+    .tool-leave.tool-leave-active {
+      transform: translate(0, 0);
+    }
+    .tool-enter {
+      transform: translate(-100%, 0);
+    }
+    .tool-enter.tool-enter-active {
+      transform: translate(0, 0);
+    }
+  }
+}

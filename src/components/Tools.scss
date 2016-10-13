@@ -3,7 +3,8 @@
 
 $icon-size: 56px;
 $detail-icon-size: 36px;
-$star-size: 12px;
+$tools-star-size: 12px;
+$details-star-size: 16px;
 $tools-bg: #F2F1F0;
 $item-bg: #FCFBFC;
 $border-darken: 15%;
@@ -93,7 +94,7 @@ $header-bottom-color: #a343a4;
           .stars {
             text-align: center;
             img {
-              height: $star-size;
+              height: $tools-star-size;
             }
           }
         }
@@ -112,10 +113,31 @@ $header-bottom-color: #a343a4;
   .details {
     padding: 35px;
     box-sizing: border-box;
-    .title {
+    .heading {
+      display: flex;
       margin-bottom: 20px;
+      padding-right: 15px;
       font-weight: $title-weight;
       font-size: $title-size + 3px;
+      line-height: $title-size + 3px;
+      .title {
+        flex: 1;
+        text-align: center;
+      }
+      .skill {
+        display: flex;
+        font-weight: 300;
+        font-size: $title-size;
+        .label {
+          line-height: $details-star-size;
+        }
+        .stars {
+          margin-left: 5px;
+          img {
+            height: $details-star-size;
+          }
+        }
+      }
     }
     .body {
       padding-right: 10px;

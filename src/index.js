@@ -1,5 +1,6 @@
 import { render }  from 'react-dom';
-import { Router, browserHistory } from 'react-router';
+import { browserHistory } from 'react-router';
+import { Router } from './containers/history/components/HistoryComponent';
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
 import { Provider } from 'react-redux';
