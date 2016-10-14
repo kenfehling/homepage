@@ -1,4 +1,4 @@
-import { Component, PropTypes, createElement } from 'react';
+import { Component, Children, PropTypes, createElement } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { Link, browserHistory, match } from 'react-router';
 import { createStore, combineReducers } from 'redux';
@@ -133,7 +133,7 @@ export function connectNavigator(WrappedComponent) {
     return Connect;
 }
 
-export function connectComponent(WrappedComponent) {
+export function connectComponent(WrappedComponent, id) {
     class Connect extends Component {
         constructor(props={}) {
             super(props);
@@ -148,7 +148,7 @@ export function connectComponent(WrappedComponent) {
                 if (routes) {
                     match({routes, location}, (error, redirectLocation, renderProps) => {
                         if (renderProps.components.length > 1) {
-                            if (raffie === renderProps.components[1]) {  // if active component
+                            if (renderProps.components[1]().props.id === id) {  // if active component
                                 this.setState({params: renderProps.params});
                             }
                         }
@@ -159,7 +159,8 @@ export function connectComponent(WrappedComponent) {
 
         render() {
             const props = {
-                ...this.state.params
+                ...this.state.params,
+                id
             };
             return createElement(WrappedComponent, props);
         }
@@ -172,9 +173,7 @@ export function connectComponent(WrappedComponent) {
         dispatch => ({})
     )(Connect);
 
-    const raffie = props => (
-        <X store={store} {...props} />
+    return props => (
+        <X store={store} id={id} {...props} />
     );
-
-    return raffie;
 }

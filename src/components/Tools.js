@@ -569,4 +569,4 @@ Tools.propTypes = {
     selectedTool: PropTypes.string
 };
 
-export default connectComponent(Tools);
+export default connectComponent(Tools, 'tools');
