@@ -2,8 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import Helmet from "react-helmet";
 import styles from './Tools.scss';
 import _ from 'lodash';
-import { connectNavigator, HistoryLink, BackLink, ContentArea } from '../containers/history/components/HistoryComponent';
-import {connectComponent} from "../containers/history/components/HistoryComponent";
+import { connectNavigator, HistoryLink, BackLink, ContentArea } from '../containers/history/src/components/HistoryComponent';
+import {connectComponent} from "../containers/history/src/components/HistoryComponent";
 
 const ROWS = 2;
 const starIcon = require('img/icons/star.svg');

@@ -1,27 +1,39 @@
 import { Component, PropTypes, createElement } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { Link, browserHistory, match } from 'react-router';
-import { createStore } from 'redux';
+import { createStore, combineReducers } from 'redux';
 import { connect } from 'react-redux';
+import { routerReducer } from 'react-router-redux';
 import styles from './HistoryComponent.scss';
 import { changePage, pageChanged, setRoutes } from '../actions/HistoryActions';
 import LinkTypes from '../constants/LinkTypes';
-import reducer from '../reducers';
+import * as reducers from '../reducers';
 import { getBackLink } from '../utils/history';
+import { getTransitionType } from '../utils/transitions';
 import * as reactRouter from 'react-router';
 import _ from 'lodash';
 
+const reducer = combineReducers({
+    ...reducers,
+    routing: routerReducer
+});
+
 const store = createStore(reducer);
 
+console.log(store);
+
 const HistoryLinkX = connect(
-    (state, ownProps) => ({}),
+    (state, ownProps) => {
+        return {
+            type: ownProps.type || getTransitionType(state.history.transitions, window.location.pathname, ownProps.to)
+        }
+    },
     dispatch => ({
         changePage: link => dispatch(changePage(link))
     })
-)(props => (
-    <Link to={props.to} className={props.className}
-          onClick={() => props.changePage({href: props.to, name: props.name, type: LinkTypes.PUSH})}>
-        {props.children}
+)(({to, name, type, className, changePage, children}) => (
+    <Link to={to} className={className} onClick={() => changePage({href: to, name, type})}>
+        {children}
     </Link>
 ));
 
@@ -31,25 +43,26 @@ export const HistoryLink = props => (
 
 HistoryLink.propTypes = {
     to: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired
+    name: PropTypes.string.isRequired,
+    type: PropTypes.string
 };
 
 const BackLinkX = connect(
     (state, ownProps) => ({
-        link: getBackLink(state.historyStacks, ownProps.containerId)
+        link: getBackLink(state.history.historyStacks, ownProps.containerId)
     }),
     dispatch => ({
-
+        changePage: link => dispatch(changePage(link))
     })
-)(({children, link, className}) => (
-    link ? <Link to={link.href} className={className} onClick={() => onClick(link, LinkTypes.POP)}>
+)(props => {
+    return props.link ? <HistoryLink {...{...props, type: LinkTypes.POP}}>
         {children ||
         <div className="default-back">
-            <i className="fa fa-chevron-left" />
+            <i className="fa fa-chevron-left"/>
             <span>Back</span>
         </div>}
-    </Link> : <div></div>
-));
+    </HistoryLink> : <div></div>
+});
 
 export const BackLink = props => (
     <BackLinkX store={store} {...props} />
@@ -57,19 +70,18 @@ export const BackLink = props => (
 
 const ContentAreaX = connect(
     state => ({
-        type: state.lastLinkType
+        type: state.history.lastLinkType
     })
 )(props => {
-    console.log(props);
     return <div className={styles['content-container'] + (props.className ? ' ' + props.className : '')}>
         <ReactCSSTransitionGroup
-            component="div"
-            className={`transition-group${props.type ? ' ' + props.type : ''}`}
-            transitionName="tool"
-            transitionEnter={true}
-            transitionLeave={true}
-            transitionEnterTimeout={0}
-            transitionLeaveTimeout={0}>
+        component="div"
+        className={`transition-group${props.type ? ' ' + props.type : ''}`}
+        transitionName="tool"
+        transitionEnter={true}
+        transitionLeave={true}
+        transitionEnterTimeout={0}
+        transitionLeaveTimeout={0}>
             {props.children}
         </ReactCSSTransitionGroup>
     </div>;
@@ -79,10 +91,14 @@ export const ContentArea = props => (
     <ContentAreaX store={store} {...props} />
 );
 
+ContentArea.propTypes = {
+    //id: PropTypes.string.isRequired
+};
+
 export const RouterX = connect(
     state=> ({}),
     (dispatch, ownProps) => ({
-        setRoutes: () => dispatch(setRoutes(ownProps.routes || ownProps.children))
+        setRoutes: () => dispatch(setRoutes(ownProps.routes || ownProps.children, ownProps.transitions))
     })
 )(class extends Component {
     componentDidMount() {
@@ -97,6 +113,10 @@ export const RouterX = connect(
 export const Router = props => (
     <RouterX store={store} {...props} />
 );
+
+Router.propTypes = {
+    transitions: PropTypes.arrayOf(PropTypes.object)
+};
 
 export function connectNavigator(WrappedComponent) {
     class Connect extends Component {
@@ -151,7 +171,7 @@ export function connectComponent(WrappedComponent) {
 
     const X = connect(
         state => ({
-            routes: state.routes
+            routes: state.history.routes
         }),
         dispatch => ({})
     )(Connect);

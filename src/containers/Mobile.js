@@ -1,8 +1,8 @@
 import { PropTypes } from 'react';
 import styles from './Mobile.scss';
 import _ from 'lodash';
-import { connectNavigator, HistoryLink, ContentArea } from './history/components/HistoryComponent';
-import {connectComponent} from "./history/components/HistoryComponent";
+import { connectNavigator, HistoryLink, ContentArea } from './history/src/components/HistoryComponent';
+import {connectComponent} from "./history/src/components/HistoryComponent";
 
 const req = require.context("img/icons", true, /^\.\/.*$/);
 

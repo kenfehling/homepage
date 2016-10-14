@@ -2,10 +2,11 @@ import { SET_ROUTES, CHANGE_PAGE, PAGE_CHANGED } from '../constants/ActionTypes'
 import LinkTypes from '../constants/LinkTypes';
 import { browserHistory, match } from 'react-router';
 
-export function setRoutes(routes) {
+export function setRoutes(routes, transitions) {
     return {
         type: SET_ROUTES,
-        routes
+        routes,
+        transitions
     }
 }
 
