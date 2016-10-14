@@ -103,4 +103,4 @@ Mobile.propTypes = {
     category: PropTypes.string
 };
 
-export default connectComponent(Mobile);
+export default connectComponent(Mobile, 'mobile');

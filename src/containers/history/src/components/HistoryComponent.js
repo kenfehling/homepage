@@ -50,7 +50,8 @@ const BackLinkX = connect(
     dispatch => ({
         changePage: link => dispatch(changePage(link))
     })
-)(props => {
+)((props, context) => {
+    console.log('B', context);
     return props.link ? <HistoryLink {...{...props, type: LinkTypes.POP}}>
         {children ||
         <div className="default-back">
@@ -83,12 +84,16 @@ const ContentAreaX = connect(
     </div>;
 });
 
-export const ContentArea = props => (
-    <ContentAreaX store={store} {...props} />
-);
+export const ContentArea = (props, context) => {
+    console.log('CA', context);
+    return <ContentAreaX store={store} {...props} />;
+};
 
 ContentArea.propTypes = {
-    //id: PropTypes.string.isRequired
+};
+
+ContentArea.contextTypes = {
+    id: PropTypes.string.isRequired
 };
 
 export const RouterX = connect(
@@ -142,6 +147,12 @@ export function connectComponent(WrappedComponent, id) {
             };
         }
 
+        getChildContext() {
+            return {
+                id: this.props.id
+            }
+        }
+
         componentDidMount() {
             browserHistory.listen(location => {
                 const {routes} = this.props;
@@ -165,6 +176,10 @@ export function connectComponent(WrappedComponent, id) {
             return createElement(WrappedComponent, props);
         }
     }
+
+    Connect.childContextTypes = {
+        id: PropTypes.string.isRequired
+    };
 
     const X = connect(
         state => ({
