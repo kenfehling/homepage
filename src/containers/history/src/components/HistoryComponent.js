@@ -20,14 +20,10 @@ const reducer = combineReducers({
 
 const store = createStore(reducer);
 
-console.log(store);
-
 const HistoryLinkX = connect(
-    (state, ownProps) => {
-        return {
-            type: ownProps.type || getTransitionType(state.history.transitions, window.location.pathname, ownProps.to)
-        }
-    },
+    (state, ownProps) => ({
+        type: ownProps.type || getTransitionType(state.history.transitions, window.location.pathname, ownProps.to)
+    }),
     dispatch => ({
         changePage: link => dispatch(changePage(link))
     })
