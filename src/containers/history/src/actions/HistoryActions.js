@@ -1,5 +1,4 @@
 import { SET_ROUTES, CHANGE_PAGE, PAGE_CHANGED } from '../constants/ActionTypes';
-import LinkTypes from '../constants/LinkTypes';
 import { browserHistory, match } from 'react-router';
 
 export function setRoutes(routes, transitions) {
@@ -10,20 +9,18 @@ export function setRoutes(routes, transitions) {
     }
 }
 
-export function changePage({href, name, type}) {
-    browserHistory.replace(href);
+export function changePage(link, containerId) {
+    browserHistory.replace(link.to);
     return {
         type: CHANGE_PAGE,
-        name,
-        href,
-        linkType: type
+        containerId,
+        link
     };
 }
 
-export function pageChanged({href, name}) {
+export function pageChanged(link) {
     return {
         type: PAGE_CHANGED,
-        name,
-        href
+        link
     };
 }

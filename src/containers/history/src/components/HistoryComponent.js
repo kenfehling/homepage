@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 import { routerReducer } from 'react-router-redux';
 import styles from './HistoryComponent.scss';
 import { changePage, pageChanged, setRoutes } from '../actions/HistoryActions';
-import LinkTypes from '../constants/LinkTypes';
 import * as reducers from '../reducers';
 import { getBackLink } from '../utils/history';
 import { getTransitionType } from '../utils/transitions';
@@ -20,18 +19,31 @@ const reducer = combineReducers({
 
 const store = createStore(reducer);
 
+class HistoryLinkY extends Component {
+    render() {
+        const {to, name, type, className, changePage, children} = this.props;
+        return (<Link to={to} className={className} onClick={() => changePage({to: to, name, type}, this.context.id)}>
+            {children}
+        </Link>);
+    }
+}
+
 const HistoryLinkX = connect(
     (state, ownProps) => ({
         type: ownProps.type || getTransitionType(state.history.transitions, window.location.pathname, ownProps.to)
     }),
     dispatch => ({
-        changePage: link => dispatch(changePage(link))
+        changePage: (link, containerId) => dispatch(changePage(link, containerId))
     })
-)(({to, name, type, className, changePage, children}) => (
-    <Link to={to} className={className} onClick={() => changePage({href: to, name, type})}>
-        {children}
-    </Link>
-));
+)(HistoryLinkY);
+
+HistoryLinkY.contextTypes = {
+    id: PropTypes.string.isRequired
+};
+
+HistoryLinkY.childContextTypes = {
+    id: PropTypes.string.isRequired
+};
 
 export const HistoryLink = props => (
     <HistoryLinkX store={store} {...props} />
@@ -43,56 +55,130 @@ HistoryLink.propTypes = {
     type: PropTypes.string
 };
 
+class BackLinkY extends Component {
+    getChildContext() {
+        return {
+            id: this.context.id
+        }
+    }
+    render() {
+        const {historyStacks, children} = this.props;
+        const backLink = getBackLink(historyStacks, this.context.id);
+        if (backLink) {
+            return (<HistoryLink {...this.props} {...backLink}>
+                {children ||
+                <div className="default-back">
+                    <i className="fa fa-chevron-left"/>
+                    <span>Back</span>
+                </div>}
+            </HistoryLink>);
+        }
+        else {
+            return <div></div>;
+        }
+    }
+}
+
+BackLinkY.contextTypes = {
+    id: PropTypes.string.isRequired
+};
+
+BackLinkY.childContextTypes = {
+    id: PropTypes.string.isRequired
+};
+
 const BackLinkX = connect(
     (state, ownProps) => ({
-        link: getBackLink(state.history.historyStacks, ownProps.containerId)
+        historyStacks: state.history.historyStacks,
     }),
     dispatch => ({
-        changePage: link => dispatch(changePage(link))
+        getBackLink: (historyStacks, containerId) => dispatch(getBackLink(historyStacks, containerId))
     })
-)((props, context) => {
-    console.log('B', context);
-    return props.link ? <HistoryLink {...{...props, type: LinkTypes.POP}}>
-        {children ||
-        <div className="default-back">
-            <i className="fa fa-chevron-left"/>
-            <span>Back</span>
-        </div>}
-    </HistoryLink> : <div></div>
-});
+)(BackLinkY);
 
-export const BackLink = props => (
-    <BackLinkX store={store} {...props} />
-);
+BackLinkX.contextTypes = {
+    id: PropTypes.string.isRequired
+};
+
+BackLinkX.childContextTypes = {
+    id: PropTypes.string.isRequired
+};
+
+export class BackLink extends Component {
+    render() {
+        return <BackLinkX store={store} {...this.props} />;
+    }
+}
+
+BackLink.contextTypes = {
+    id: PropTypes.string.isRequired
+};
+
+BackLink.childContextTypes = {
+    id: PropTypes.string.isRequired
+};
+
+class ContentAreaY extends Component {
+    getChildContext() {
+        return {
+            id: this.context.id
+        }
+    }
+    render() {
+        const {className, children, lastTransitionTypes} = this.props;
+        return <div className={styles['content-container'] + (className ? ' ' + className : '')}>
+            <ReactCSSTransitionGroup
+            component="div"
+            className={`transition-group ${lastTransitionTypes[this.context.id]}`}
+            transitionName="tool"
+            transitionEnter={true}
+            transitionLeave={true}
+            transitionEnterTimeout={0}
+            transitionLeaveTimeout={0}>
+                {children}
+            </ReactCSSTransitionGroup>
+        </div>;
+    }
+}
+
+ContentAreaY.propTypes = {
+};
+
+ContentAreaY.contextTypes = {
+    id: PropTypes.string.isRequired
+};
+
+ContentAreaY.childContextTypes = {
+    id: PropTypes.string.isRequired
+};
 
 const ContentAreaX = connect(
     state => ({
-        type: state.history.lastLinkType
-    })
-)(props => {
-    return <div className={styles['content-container'] + (props.className ? ' ' + props.className : '')}>
-        <ReactCSSTransitionGroup
-        component="div"
-        className={`transition-group${props.type ? ' ' + props.type : ''}`}
-        transitionName="tool"
-        transitionEnter={true}
-        transitionLeave={true}
-        transitionEnterTimeout={0}
-        transitionLeaveTimeout={0}>
-            {props.children}
-        </ReactCSSTransitionGroup>
-    </div>;
-});
+        lastTransitionTypes: state.history.lastTransitionTypes
+    }),
+    dispatch => ({})
+)(ContentAreaY);
 
-export const ContentArea = (props, context) => {
-    console.log('CA', context);
-    return <ContentAreaX store={store} {...props} />;
-};
+export class ContentArea extends Component {
+    getChildContext() {
+        return {
+            id: this.context.id
+        }
+    }
+
+    render() {
+        return <ContentAreaX store={store} {...this.props} />;
+    }
+}
 
 ContentArea.propTypes = {
 };
 
 ContentArea.contextTypes = {
+    id: PropTypes.string.isRequired
+};
+
+ContentArea.childContextTypes = {
     id: PropTypes.string.isRequired
 };
 
