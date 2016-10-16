@@ -48,9 +48,10 @@ render((
         <div>
             <Router history={browserHistory} transitions={transitions}>
                 <Route path="/" component={App}>
-                    <Route path="tools" component={Tools} />
+                    <Route path="tools" name="Tools" component={Tools} />
                     <Route path="tools/:category" component={Tools} />
                     <Route path="tools/:category/:selectedTool" component={Tools} />
+                    <Route path="mobile" name="Mobile" component={Mobile} />
                     <Route path="mobile/:category" component={Mobile} />
                     <Route path="mobile/:category/*" component={Mobile} />
                 </Route>

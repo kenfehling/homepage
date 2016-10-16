@@ -4,10 +4,13 @@
   .default-back {
     color: #3366FF;
     font-weight: 500;
-    display: flex;
     cursor: pointer;
+    text-decoration: none;
+    > div {
+      display: flex;
+    }
     i {
-      padding-right: 3px;
+      padding-right: 5px;
     }
   }
 

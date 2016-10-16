@@ -67,11 +67,11 @@ class BackLinkY extends Component {
         const {id} = this.context;
         const backLink = getCurrentBackLink(pageHistories, id);
         if (backLink) {
-            return (<HistoryLink {...this.props} {...backLink}>
+            return (<HistoryLink className="default-back" {...this.props} {...backLink}>
                 {children ||
-                <div className="default-back">
+                <div>
                     <i className="fa fa-chevron-left"/>
-                    <span>Back</span>
+                    <span>{backLink.name}</span>
                 </div>}
             </HistoryLink>);
         }
@@ -236,15 +236,13 @@ export function connectComponent(WrappedComponent, id) {
         componentDidMount() {
             browserHistory.listen(location => {
                 const {routes} = this.props;
-                if (routes) {
-                    match({routes, location}, (error, redirectLocation, renderProps) => {
-                        if (renderProps.components.length > 1) {
-                            if (renderProps.components[1]().props.id === id) {  // if active component
-                                this.setState({params: renderProps.params});
-                            }
+                match({routes, location}, (error, redirectLocation, renderProps) => {
+                    if (renderProps.components.length > 1) {
+                        if (renderProps.components[1]().props.id === id) {  // if active component
+                            this.setState({params: renderProps.params});
                         }
-                    });
-                }
+                    }
+                });
             });
         }
 
@@ -265,7 +263,7 @@ export function connectComponent(WrappedComponent, id) {
         state => ({
             routes: state.history.routes,
         }),
-        { changePage }
+        { }
     )(Connect);
 
     return props => (
