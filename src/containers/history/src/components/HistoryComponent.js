@@ -7,7 +7,7 @@ import { routerReducer } from 'react-router-redux';
 import styles from './HistoryComponent.scss';
 import { changePage, pageChanged, setRoutes } from '../actions/HistoryActions';
 import * as reducers from '../reducers';
-import { getBackLinkAtIndex } from '../utils/history';
+import { getCurrentBackLink } from '../utils/history';
 import { getTransitionType } from '../utils/transitions';
 import * as reactRouter from 'react-router';
 import _ from 'lodash';
@@ -61,9 +61,13 @@ class BackLinkY extends Component {
             id: this.context.id
         }
     }
+    shouldComponentUpdate() {
+        return false;
+    }
     render() {
         const {pageHistories, children} = this.props;
-        const backLink = getBackLinkAtIndex(pageHistories, this.context.id);
+        const {id} = this.context;
+        const backLink = getCurrentBackLink(pageHistories, id);
         if (backLink) {
             return (<HistoryLink {...this.props} {...backLink}>
                 {children ||

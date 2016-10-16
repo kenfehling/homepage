@@ -34,3 +34,14 @@ export function getLastTransitionType(lastTransitionTypes, containerId) {
         return lastTransitionTypes[containerId];
     }
 }
+
+export function getCurrentIndex(pageHistories, containerId) {
+    const pageHistory = pageHistories[containerId];
+    if (pageHistory) {
+        return _.size(pageHistory) - 1;
+    }
+}
+
+export function getCurrentBackLink(pageHistories, containerId) {
+    return getBackLinkAtIndex(pageHistories, containerId, getCurrentIndex(pageHistories, containerId));
+}
