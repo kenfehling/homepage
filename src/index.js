@@ -34,6 +34,7 @@ const store = createStore(
 
 const transitions = [
     {from: /^\/tools$/, to: /^\/tools\/\w+\/\w+$/, type:'push'},
+    {from: /^\/tools$/, to: /^\/tools\/\w+$/, type:'push'},
     {from: /^\/tools\/\w+$/, to: /^\/tools\/\w+\/\w+$/, type:'push'},
     {from: /^\/tools\/\w+\/\w+$/, to: /^\/tools\/\w+\/\w+$/, type:'push'},
     {from: /^\/$/, to: /^\/tools\/\w+\/\w+$/, type:'push'},

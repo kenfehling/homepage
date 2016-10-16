@@ -1,6 +1,6 @@
 import { SET_ROUTES, CHANGE_PAGE, PAGE_CHANGED } from '../constants/ActionTypes';
 import _ from 'lodash';
-import { changePage, getLastTransitionType } from '../utils/history';
+import { changePage } from '../utils/history';
 
 const initialState = {
     routes: null,
@@ -18,6 +18,9 @@ export default (state=initialState, action) => {
             const lastTransitionTypes = _.clone(state.lastTransitionTypes);
             lastTransitionTypes[id] = action.link.type;
             const pageHistories = changePage(state.pageHistories, action.containerId, action.link);
+
+            console.log('pageHistories', pageHistories);
+
             return {...state, pageHistories, lastTransitionTypes};
         case PAGE_CHANGED:
             return {...state};

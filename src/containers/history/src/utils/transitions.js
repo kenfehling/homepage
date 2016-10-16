@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import { DEFAULT_TRANSITION_TYPE } from '../constants/Settings';
 
 export function getTransitionType(transitions, from, to) {
     if (_.isEmpty(transitions)) {
@@ -17,4 +18,5 @@ export function getTransitionType(transitions, from, to) {
             }
         }
     }
+    return DEFAULT_TRANSITION_TYPE;
 }

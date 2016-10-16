@@ -15,6 +15,7 @@ export function getPageHistoryAtIndex(pageHistories, containerId, index) {
 export function convertHistoryToStackAtIndex(pageHistories, containerId, index) {
     const pageHistory = getPageHistoryAtIndex(pageHistories, containerId, index);
     return _.reduce(pageHistory, (stack, page) => {
+        console.log(stack, page);
         switch(page.type) {
             case LinkTypes.PUSH: return [...stack, page];
             case LinkTypes.POP: return _.initial(stack);
