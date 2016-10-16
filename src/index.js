@@ -11,6 +11,7 @@ import DockMonitor from 'redux-devtools-dock-monitor';
 import App from './containers/App';
 import Tools from './components/Tools';
 import Mobile from './containers/Mobile';
+import { LOAD, PUSH, POP, TOP } from './containers/history/src/constants/LinkTypes';
 
 const reducer = combineReducers({
     ...reducers,
@@ -33,14 +34,14 @@ const store = createStore(
 //const history = createMemoryHistory();
 
 const transitions = [
-    {from: /^\/tools$/, to: /^\/tools\/\w+\/\w+$/, type:'push'},
-    {from: /^\/tools$/, to: /^\/tools\/\w+$/, type:'push'},
-    {from: /^\/tools\/\w+$/, to: /^\/tools\/\w+\/\w+$/, type:'push'},
-    {from: /^\/tools\/\w+\/\w+$/, to: /^\/tools\/\w+\/\w+$/, type:'push'},
-    {from: /^\/$/, to: /^\/tools\/\w+\/\w+$/, type:'push'},
-    {from: /^\/tools\/\w+\/\w+$/, to: /^\/$/, type:'pop'},
-    {from: /^\/tools\/\w+\/\w+$/, to: /^\/tools$/, type:'pop'},
-    {from: /^\/tools\/\w+\/\w+$/, to: /^\/tools\/\w+$/, type:'pop'}
+    {from: /^\/tools$/, to: /^\/tools\/\w+\/\w+$/, type: PUSH},
+    {from: /^\/tools$/, to: /^\/tools\/\w+$/, type: PUSH},
+    {from: /^\/tools\/\w+$/, to: /^\/tools\/\w+\/\w+$/, type: PUSH},
+    {from: /^\/tools\/\w+\/\w+$/, to: /^\/tools\/\w+\/\w+$/, type: PUSH},
+    {from: /^\/$/, to: /^\/tools\/\w+\/\w+$/, type: PUSH},
+    {from: /^\/tools\/\w+\/\w+$/, to: /^\/$/, type: TOP},
+    {from: /^\/tools\/\w+\/\w+$/, to: /^\/tools$/, type: TOP},
+    {from: /^\/tools\/\w+\/\w+$/, to: /^\/tools\/\w+$/, type: TOP}
 ];
 
 render((

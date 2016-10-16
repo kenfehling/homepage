@@ -1,4 +1,4 @@
-import LinkTypes from '../constants/LinkTypes';
+import { LOAD, PUSH, POP, TOP } from '../../src/constants/LinkTypes';
 import _ from 'lodash';
 
 export function changePage(pageHistories, containerId, link) {
@@ -16,8 +16,9 @@ export function convertHistoryToStackAtIndex(pageHistories, containerId, index) 
     const pageHistory = getPageHistoryAtIndex(pageHistories, containerId, index);
     return _.reduce(pageHistory, (stack, page) => {
         switch(page.type) {
-            case LinkTypes.PUSH: return [...stack, page];
-            case LinkTypes.POP: return _.initial(stack);
+            case PUSH: return [...stack, page];
+            case POP: return _.initial(stack);
+            case TOP: return [page]
         }
     }, []);
 }

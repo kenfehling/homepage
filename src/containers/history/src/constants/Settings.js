@@ -1,3 +1,3 @@
-import LinkTypes from "./LinkTypes";
+import { PUSH } from './LinkTypes';
 
-export const DEFAULT_TRANSITION_TYPE = LinkTypes.PUSH;
+export const DEFAULT_TRANSITION_TYPE = PUSH;

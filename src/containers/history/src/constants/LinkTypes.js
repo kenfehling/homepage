@@ -1,6 +1,4 @@
-export default {
-    LOAD: 'load',
-    PUSH: 'push',
-    POP: 'pop',
-    TOP: 'top'
-};
+export const LOAD = 'load';
+export const PUSH = 'push';
+export const POP = 'pop';
+export const TOP = 'top';
