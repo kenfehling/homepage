@@ -5,7 +5,7 @@ import { changePage, getLastTransitionType } from '../utils/history';
 const initialState = {
     routes: null,
     transitions: [],
-    historyStacks: {},
+    pageHistories: {},
     lastTransitionTypes: {}
 };
 
@@ -17,8 +17,8 @@ export default (state=initialState, action) => {
             const id = action.containerId;
             const lastTransitionTypes = _.clone(state.lastTransitionTypes);
             lastTransitionTypes[id] = action.link.type;
-            const historyStacks = changePage(state.historyStacks, action.containerId, action.link);
-            return {...state, historyStacks, lastTransitionTypes};
+            const pageHistories = changePage(state.pageHistories, action.containerId, action.link);
+            return {...state, pageHistories, lastTransitionTypes};
         case PAGE_CHANGED:
             return {...state};
     }

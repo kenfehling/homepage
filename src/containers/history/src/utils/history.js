@@ -1,36 +1,31 @@
 import LinkTypes from '../constants/LinkTypes';
 import _ from 'lodash';
 
-export function changePage(historyStacks, containerId, link) {
-    const {type} = link;
-    const stack = historyStacks[containerId] || [];
-    const newHistoryStacks = _.clone(historyStacks);
-    switch (type) {
-        case LinkTypes.PUSH:
-            newHistoryStacks[containerId] = [...stack, link];
-            return newHistoryStacks;
-        case LinkTypes.POP:
-            newHistoryStacks[containerId] = _.initial(stack);
-            return newHistoryStacks;
-    }
+export function changePage(pageHistories, containerId, link) {
+    const stack = pageHistories[containerId] || [];
+    const newHistoryStacks = _.clone(pageHistories);
+    newHistoryStacks[containerId] = [...stack, link];
+    return newHistoryStacks;
 }
 
-export function setLastTransitionType(historyStacks, containerId, link) {
-    const {type} = link;
-    switch (type) {
-        case LinkTypes.PUSH:
-            return type;
-        case LinkTypes.POP:
-            return LinkTypes.POP;
-    }
+export function getPageHistoryAtIndex(pageHistories, containerId, index) {
+    return _.take(pageHistories[containerId] || [], index + 1);
 }
 
-export function getBackLink(historyStacks, containerId) {
-    if (historyStacks) {
-        const stack = historyStacks[containerId];
-        if (stack && stack.length > 1) {
-            return {...stack[stack.length - 2], type: 'pop'};
+export function convertHistoryToStackAtIndex(pageHistories, containerId, index) {
+    const pageHistory = getPageHistoryAtIndex(pageHistories, containerId, index);
+    return _.reduce(pageHistory, (stack, page) => {
+        switch(page.type) {
+            case LinkTypes.PUSH: return [...stack, page];
+            case LinkTypes.POP: return _.initial(stack);
         }
+    }, []);
+}
+
+export function getBackLinkAtIndex(pageHistories, containerId, index) {
+    const stack = convertHistoryToStackAtIndex(pageHistories, containerId, index);
+    if (stack.length > 1) {
+        return {...stack[stack.length - 2], type: 'pop'};
     }
 }
 

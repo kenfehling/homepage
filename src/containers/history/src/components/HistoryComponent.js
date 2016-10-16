@@ -7,7 +7,7 @@ import { routerReducer } from 'react-router-redux';
 import styles from './HistoryComponent.scss';
 import { changePage, pageChanged, setRoutes } from '../actions/HistoryActions';
 import * as reducers from '../reducers';
-import { getBackLink } from '../utils/history';
+import { getBackLinkAtIndex } from '../utils/history';
 import { getTransitionType } from '../utils/transitions';
 import * as reactRouter from 'react-router';
 import _ from 'lodash';
@@ -62,8 +62,8 @@ class BackLinkY extends Component {
         }
     }
     render() {
-        const {historyStacks, children} = this.props;
-        const backLink = getBackLink(historyStacks, this.context.id);
+        const {pageHistories, children} = this.props;
+        const backLink = getBackLinkAtIndex(pageHistories, this.context.id);
         if (backLink) {
             return (<HistoryLink {...this.props} {...backLink}>
                 {children ||
@@ -89,10 +89,11 @@ BackLinkY.childContextTypes = {
 
 const BackLinkX = connect(
     (state, ownProps) => ({
-        historyStacks: state.history.historyStacks,
+        pageHistories: state.history.pageHistories,
     }),
     dispatch => ({
-        getBackLink: (historyStacks, containerId) => dispatch(getBackLink(historyStacks, containerId))
+        getBackLinkAtIndex: (pageHistories, containerId, index) =>
+            dispatch(getBackLinkAtIndex(pageHistories, containerId, index))
     })
 )(BackLinkY);
 
@@ -141,9 +142,6 @@ class ContentAreaY extends Component {
     }
 }
 
-ContentAreaY.propTypes = {
-};
-
 ContentAreaY.contextTypes = {
     id: PropTypes.string.isRequired
 };
@@ -170,9 +168,6 @@ export class ContentArea extends Component {
         return <ContentAreaX store={store} {...this.props} />;
     }
 }
-
-ContentArea.propTypes = {
-};
 
 ContentArea.contextTypes = {
     id: PropTypes.string.isRequired

@@ -1,5 +1,5 @@
 import { SET_ROUTES, CHANGE_PAGE, PAGE_CHANGED } from '../constants/ActionTypes';
-import { browserHistory, match } from 'react-router';
+import { browserHistory } from 'react-router';
 
 export function setRoutes(routes, transitions) {
     return {
