@@ -18,9 +18,6 @@ export default (state=initialState, action) => {
             const lastTransitionTypes = _.clone(state.lastTransitionTypes);
             lastTransitionTypes[id] = action.link.type;
             const pageHistories = changePage(state.pageHistories, action.containerId, action.link);
-
-            console.log('pageHistories', pageHistories);
-
             return {...state, pageHistories, lastTransitionTypes};
         case PAGE_CHANGED:
             return {...state};

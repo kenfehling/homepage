@@ -32,9 +32,7 @@ const HistoryLinkX = connect(
     (state, ownProps) => ({
         type: ownProps.type || getTransitionType(state.history.transitions, window.location.pathname, ownProps.to)
     }),
-    dispatch => ({
-        changePage: (link, containerId) => dispatch(changePage(link, containerId))
-    })
+    { changePage }
 )(HistoryLinkY);
 
 HistoryLinkY.contextTypes = {
@@ -94,10 +92,6 @@ BackLinkY.childContextTypes = {
 const BackLinkX = connect(
     (state, ownProps) => ({
         pageHistories: state.history.pageHistories,
-    }),
-    dispatch => ({
-        getBackLinkAtIndex: (pageHistories, containerId, index) =>
-            dispatch(getBackLinkAtIndex(pageHistories, containerId, index))
     })
 )(BackLinkY);
 
@@ -187,8 +181,9 @@ export const RouterX = connect(
         setRoutes: () => dispatch(setRoutes(ownProps.routes || ownProps.children, ownProps.transitions))
     })
 )(class extends Component {
-    componentDidMount() {
-        this.props.setRoutes();
+    constructor(props) {
+        super(props);
+        props.setRoutes();
     }
     render() {
         const props = _.pick(this.props, ['history', 'children', 'routes', 'render', 'createElement', 'onError', 'onUpdate']);
@@ -268,9 +263,9 @@ export function connectComponent(WrappedComponent, id) {
 
     const X = connect(
         state => ({
-            routes: state.history.routes
+            routes: state.history.routes,
         }),
-        dispatch => ({})
+        { changePage }
     )(Connect);
 
     return props => (
