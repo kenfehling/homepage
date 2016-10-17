@@ -1,26 +1,33 @@
-import { SET_ROUTES, CHANGE_PAGE, PAGE_CHANGED } from '../constants/ActionTypes';
+import { SET_ROUTER, CHANGE_PAGE, PAGE_CHANGED } from '../constants/ActionTypes';
 import _ from 'lodash';
 import { changePage } from '../utils/history';
 
 const initialState = {
-    routes: null,
-    transitions: [],
     pageHistories: {},
-    lastTransitionTypes: {}
+    lastTransitionTypes: {},
+    router: {
+        routes: [],
+        transitions: [],
+        history: null
+    }
 };
 
 export default (state=initialState, action) => {
+    console.log(action);
     switch(action.type) {
-        case SET_ROUTES:
-            return {...state, ..._.pick(action, ['routes', 'transitions'])};
+        case SET_ROUTER:
+            const {routes, transitions, history} = action;
+            return {...state, router: {routes, transitions, history}};
         case CHANGE_PAGE:
-            const id = action.containerId;
             const lastTransitionTypes = _.clone(state.lastTransitionTypes);
-            lastTransitionTypes[id] = action.link.type;
-            const pageHistories = changePage(state.pageHistories, action.containerId, action.link);
-            return {...state, pageHistories, lastTransitionTypes};
+            lastTransitionTypes[action.containerId] = action.link.type;
+
+            console.log('state', state);
+            console.log('lastTransitionTypes (reducer)', lastTransitionTypes);
+
+            return {...state, lastTransitionTypes};
         case PAGE_CHANGED:
-            return {...state};
+            return {...state, pageHistories: changePage(state.pageHistories, action.containerId, action.link)};
     }
     return state;
 }

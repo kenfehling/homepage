@@ -13,6 +13,8 @@
   "author": "Ken Fehling",
   "license": "ISC",
   "dependencies": {
+    "history": "^2.1.2",
+    "invariant": "^2.2.1",
     "lodash": "^4.16.1",
     "react-addons-css-transition-group": "^15.3.2",
     "react-designable-audio-player": "github:kenfehling/react-designable-audio-player",
@@ -27,7 +29,9 @@
     "redux": "^3.6.0",
     "redux-devtools": "^3.3.1",
     "redux-devtools-dock-monitor": "^1.1.1",
-    "redux-devtools-log-monitor": "^1.0.11"
+    "redux-devtools-log-monitor": "^1.0.11",
+    "redux-thunk": "^2.1.0",
+    "warning": "^3.0.0"
   },
   "devDependencies": {
     "@kadira/storybook": "^2.5.2",

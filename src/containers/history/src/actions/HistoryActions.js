@@ -1,26 +1,31 @@
-import { SET_ROUTES, CHANGE_PAGE, PAGE_CHANGED } from '../constants/ActionTypes';
-import { browserHistory } from 'react-router';
+import { SET_ROUTER, CHANGE_PAGE, PAGE_CHANGED } from '../constants/ActionTypes';
 
-export function setRoutes(routes, transitions) {
+export function setRouter({routes, transitions, history}) {
     return {
-        type: SET_ROUTES,
+        type: SET_ROUTER,
         routes,
-        transitions
+        transitions,
+        history
     }
 }
 
 export function changePage(link, containerId) {
-    browserHistory.replace(link.to);
-    return {
-        type: CHANGE_PAGE,
-        containerId,
-        link
+    return (dispatch, getState) => {
+        dispatch({
+            type: CHANGE_PAGE,
+            containerId,
+            link
+        });
+        const state = getState();
+        const {history} = state.history.router;
+        history.replace(link.to);
     };
 }
 
-export function pageChanged(link) {
+export function pageChanged(link, containerId) {
     return {
         type: PAGE_CHANGED,
+        containerId,
         link
     };
 }

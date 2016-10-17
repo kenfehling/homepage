@@ -53,6 +53,14 @@ describe('history', () => {
         expect(f(pageHistories, 'id', 2)).toEqual(expected1);
     });
 
+    it('gets current page', () => {
+        const pageHistories = {id: [
+            {name: 'a', to: '/a', type: PUSH},
+            {name: 'b', to: '/b', type: PUSH}
+        ]};
+        expect(util.getCurrentPage(pageHistories, 'id')).toEqual({name: 'b', to: '/b', type: PUSH});
+    });
+
     it('gets no back link', () => {
         const f = util.getBackLinkAtIndex;
         const pageHistories = {id: [{name: 'a', to: '/a', type: PUSH}]};
