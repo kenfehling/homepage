@@ -1,5 +1,4 @@
 import { render }  from 'react-dom';
-import { browserHistory } from 'react-router';
 import { Router, Route } from './containers/history/src/components/HistoryComponent';
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
@@ -33,17 +32,18 @@ const store = createStore(
 //const history = createMemoryHistory();
 
 const transitions = [
+    {from: /^\/$/, to: /^\/tools\/\w+\/\w+$/, type: PUSH},
     {from: /^\/tools$/, to: /^\/tools\/\w+\/\w+$/, type: PUSH},
     {from: /^\/tools$/, to: /^\/tools\/\w+$/, type: PUSH},
     {from: /^\/tools\/\w+$/, to: /^\/tools\/\w+\/\w+$/, type: PUSH},
     {from: /^\/tools\/\w+\/\w+$/, to: /^\/tools\/\w+\/\w+$/, type: PUSH},
-    {from: /^\/$/, to: /^\/tools\/\w+\/\w+$/, type: PUSH},
     {from: /^\/tools\/\w+\/\w+$/, to: /^\/$/, type: TOP},
     {from: /^\/tools\/\w+\/\w+$/, to: /^\/tools$/, type: TOP},
-    {from: /^\/tools\/\w+\/\w+$/, to: /^\/tools\/\w+$/, type: TOP}
-];
+    {from: /^\/tools\/\w+\/\w+$/, to: /^\/tools\/\w+$/, type: TOP},
 
-console.log(browserHistory);
+    {from: /^\/$/, to: /^\/mobile\/\w+$/, type: PUSH},
+    {from: /^\/mobile$/, to: /^\/mobile\/\w+$/, type: PUSH},
+];
 
 render((
     <Provider store={store}>

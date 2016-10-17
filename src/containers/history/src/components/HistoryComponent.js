@@ -8,7 +8,7 @@ import styles from './HistoryComponent.scss';
 import { pageChanged, setRouter } from '../actions/HistoryActions';
 import { LOAD, PUSH, POP, TOP } from '../constants/LinkTypes';
 import * as reducers from '../reducers';
-import { getCurrentBackLink, getCurrentPage } from '../utils/history';
+import { getCurrentBackLink } from '../utils/history';
 import { getTransitionType } from '../utils/transitions';
 import * as reactRouter from 'react-router';
 import _ from 'lodash';
@@ -173,7 +173,7 @@ class ContentAreaY extends Component {
             <ReactCSSTransitionGroup
             component="div"
             className={`transition-group ${getLastTransitionType(pageHistories, this.context.id)}`}
-            transitionName="tool"
+            transitionName="content"
             transitionEnter={true}
             transitionLeave={true}
             transitionEnterTimeout={0}
