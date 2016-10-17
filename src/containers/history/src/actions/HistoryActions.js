@@ -1,4 +1,4 @@
-import { SET_ROUTER, CHANGE_PAGE, PAGE_CHANGED } from '../constants/ActionTypes';
+import { SET_ROUTER, PAGE_CHANGED } from '../constants/ActionTypes';
 
 export function setRouter({routes, transitions, history}) {
     return {
@@ -8,16 +8,6 @@ export function setRouter({routes, transitions, history}) {
         history
     }
 }
-
-/*
-export function changePage(link, containerId) {
-    return {
-        type: CHANGE_PAGE,
-        containerId,
-        link
-    };
-}
-*/
 
 export function pageChanged(link, containerId) {
     return {
