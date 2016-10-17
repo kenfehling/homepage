@@ -1,10 +1,9 @@
 import { Component, Children, PropTypes, createElement } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { Link, useRouterHistory, match } from 'react-router';
-//import createNoHistory from './createNoHistory';
-import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import createNoHistory from './createNoHistory';
+import { createStore, combineReducers } from 'redux';
 import { connect } from 'react-redux';
-import thunk from 'redux-thunk';
 import styles from './HistoryComponent.scss';
 import { changePage, pageChanged, setRouter } from '../actions/HistoryActions';
 import { LOAD, PUSH, POP, TOP } from '../constants/LinkTypes';
@@ -16,18 +15,11 @@ import _ from 'lodash';
 import {addLeadingSlash} from "../utils/url";
 import {getLastTransitionType} from "../utils/history";
 
-import createBrowserHistory from 'history/lib/createBrowserHistory';
-
 const reducer = combineReducers({
     ...reducers
 });
 
-const store = createStore(
-    reducer, compose(
-        applyMiddleware(thunk),
-        //DevTools.instrument()
-    )
-);
+const store = createStore(reducer);
 
 export class Route extends Component {
     constructor(props) {
@@ -56,7 +48,7 @@ export const RouterX = connect(
 )(class extends Component {
     constructor(props) {
         super(props);
-        this.history = props.history || useRouterHistory(createBrowserHistory)();
+        this.history = props.history || useRouterHistory(createNoHistory)();
         this.routes = props.routes || props.children;
         props.setRouter({routes: this.routes, transitions: props.transitions, history: this.history});
     }
@@ -282,7 +274,7 @@ export function connectComponent(WrappedComponent, id) {
             const {routes, id, lastTransitionTypes} = this.props;
             match({routes, location}, (error, redirectLocation, renderProps) => {
 
-                console.log(renderProps);
+                //console.log(renderProps);
 
                 const component = _.last(renderProps.components)();
                 if (component.props.id === id) {  // if this component
@@ -297,28 +289,16 @@ export function connectComponent(WrappedComponent, id) {
 
         componentDidUpdate(nextProps, nextState) {
             const {id, lastTransitionTypes, pageChanged} = nextProps;
-
-            console.log('lastTransitionTypes (component)', lastTransitionTypes);
-
             const {params, to, name} = nextState;
             if (params !== this.state.params) {
                 const type = lastTransitionTypes[id] || LOAD;
-
-                console.log('pageChanged (component)');
-
                 pageChanged({to, name, type}, id);
             }
         }
 
         componentDidMount() {
-
-            console.log("componentDidMount");
-
             const {history} = this.props;
             this.loadRootPage();
-
-            console.log("LISTEN");
-
             history.listen(this.onHistoryChange.bind(this));
         }
 

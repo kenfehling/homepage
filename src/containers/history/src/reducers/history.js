@@ -13,7 +13,6 @@ const initialState = {
 };
 
 export default (state=initialState, action) => {
-    console.log(action);
     switch(action.type) {
         case SET_ROUTER:
             const {routes, transitions, history} = action;
@@ -21,10 +20,6 @@ export default (state=initialState, action) => {
         case CHANGE_PAGE:
             const lastTransitionTypes = _.clone(state.lastTransitionTypes);
             lastTransitionTypes[action.containerId] = action.link.type;
-
-            console.log('state', state);
-            console.log('lastTransitionTypes (reducer)', lastTransitionTypes);
-
             return {...state, lastTransitionTypes};
         case PAGE_CHANGED:
             return {...state, pageHistories: changePage(state.pageHistories, action.containerId, action.link)};

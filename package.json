@@ -13,7 +13,7 @@
   "author": "Ken Fehling",
   "license": "ISC",
   "dependencies": {
-    "history": "^2.1.2",
+    "history": "2.1.2",
     "invariant": "^2.2.1",
     "lodash": "^4.16.1",
     "react-addons-css-transition-group": "^15.3.2",

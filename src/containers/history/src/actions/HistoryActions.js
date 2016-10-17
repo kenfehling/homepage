@@ -10,15 +10,10 @@ export function setRouter({routes, transitions, history}) {
 }
 
 export function changePage(link, containerId) {
-    return (dispatch, getState) => {
-        dispatch({
-            type: CHANGE_PAGE,
-            containerId,
-            link
-        });
-        const state = getState();
-        const {history} = state.history.router;
-        history.replace(link.to);
+    return {
+        type: CHANGE_PAGE,
+        containerId,
+        link
     };
 }
 

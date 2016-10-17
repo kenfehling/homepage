@@ -1,294 +1,166 @@
-import warning from 'warning';
-import invariant from 'invariant';
-import { createLocation } from 'history';
-import { parsePath, createPath, stripPrefix } from 'history/PathUtils';
-import createTransitionManager from 'history/createTransitionManager';
-import { canUseDOM } from 'history/ExecutionEnvironment';
-import {
-    addEventListener,
-    removeEventListener,
-    getConfirmation,
-    supportsHistory,
-    supportsPopStateOnHashChange
-} from 'history/DOMUtils';
-
-const PopStateEvent = 'popstate';
-const HashChangeEvent = 'hashchange';
-
-const getHistoryState = () => {
-    try {
-        return window.history.state || {};
-    } catch (e) {
-        // IE 11 sometimes throws when accessing window.history.state
-        // See https://github.com/mjackson/history/pull/289
-        return {};
-    }
-};
+import invariant from 'invariant'
+import { PUSH, POP, REPLACE } from 'history/lib/Actions'
+import { parsePath } from 'history/lib/PathUtils'
+import { canUseDOM } from 'history/lib/ExecutionEnvironment'
+import { addEventListener, removeEventListener, getWindowPath, supportsHistory } from 'history/lib/DOMUtils'
+import { saveState, readState } from 'history/lib/DOMStateStorage'
+import createDOMHistory from 'history/lib/createDOMHistory'
 
 /**
- * Creates a history object that uses the HTML5 history API including
- * pushState, replaceState, and the popstate event.
+ * Creates and returns a history object that uses HTML5's history API
+ * (pushState, replaceState, and the popstate event) to manage history.
+ * This is the recommended method of managing history in browsers because
+ * it provides the cleanest URLs.
+ *
+ * Note: In browsers that do not support the HTML5 history API full
+ * page reloads will be used to preserve URLs.
  */
-const createBrowserHistory = (props = {}) => {
+function createBrowserHistory(options={}) {
     invariant(
         canUseDOM,
         'Browser history needs a DOM'
     );
 
-    const globalHistory = window.history;
-    const canUseHistory = supportsHistory();
-    const needsHashChangeListener = !supportsPopStateOnHashChange();
+    const { forceRefresh } = options;
+    const isSupported = supportsHistory();
+    const useRefresh = !isSupported || forceRefresh;
 
-    const {
-        basename = '',
-        forceRefresh = false,
-        getUserConfirmation = getConfirmation,
-        keyLength = 6
-    } = props;
+    function getCurrentLocation(historyState) {
+        try {
+            historyState = historyState || window.history.state || {}
+        } catch (e) {
+            historyState = {}
+        }
 
-    const getDOMLocation = (historyState) => {
-        const { key, state } = (historyState || {});
-        const { pathname, search, hash } = window.location;
+        const path = getWindowPath();
+        let { key } = historyState;
 
-        let path = pathname + search + hash;
+        let state;
+        if (key) {
+            state = readState(key)
+        } else {
+            state = null;
+            key = history.createKey();
 
-        if (basename)
-            path = stripPrefix(path, basename);
+            if (isSupported) {
+                window.history.replaceState({...historyState, key}, null);
+            }
+        }
 
-        return {
-            ...parsePath(path),
-            state,
+        const location = parsePath(path);
+
+        return history.createLocation({ ...location, state }, undefined, key)
+    }
+
+    function startPopStateListener({ transitionTo }) {
+        function popStateListener(event) {
+            if (event.state === undefined)
+                return; // Ignore extraneous popstate events in WebKit.
+
+            transitionTo(
+                getCurrentLocation(event.state)
+            )
+        }
+
+        addEventListener(window, 'popstate', popStateListener);
+
+        return function () {
+            removeEventListener(window, 'popstate', popStateListener)
+        }
+    }
+
+    function finishTransition(location) {
+        const { basename, pathname, search, hash, state, action, key } = location;
+
+        const newAction = action === PUSH ? REPLACE : action;
+
+        if (newAction === POP) {
+            return; // Nothing to do.
+        }
+        saveState(key, state);
+
+        const path = (basename || '') + pathname + search + hash;
+        const historyState = {
             key
         };
-    };
 
-    const createKey = () =>
-        Math.random().toString(36).substr(2, keyLength);
-
-    const transitionManager = createTransitionManager();
-
-    const setState = (nextState) => {
-        Object.assign(history, nextState);
-
-        history.length = globalHistory.length;
-
-        transitionManager.notifyListeners(
-            history.location,
-            history.action
-        );
-    };
-
-    const handlePopState = (event) => {
-        if (event.state === undefined)
-            return; // Ignore extraneous popstate events in WebKit.
-
-        handlePop(getDOMLocation(event.state))
-    };
-
-    const handleHashChange = () => {
-        handlePop(getDOMLocation(getHistoryState()))
-    };
-
-    let forceNextPop = false;
-
-    const handlePop = (location) => {
-        if (forceNextPop) {
-            forceNextPop = false;
-            setState()
-        } else {
-            const action = 'POP';
-
-            transitionManager.confirmTransitionTo(location, action, getUserConfirmation, (ok) => {
-                if (ok) {
-                    setState({ action, location })
-                } else {
-                    revertPop(location)
-                }
-            })
-        }
-    };
-
-    const revertPop = (fromLocation) => {
-        const toLocation = history.location;
-
-        // TODO: We could probably make this more reliable by
-        // keeping a list of keys we've seen in sessionStorage.
-        // Instead, we just default to 0 for keys we don't know.
-
-        let toIndex = allKeys.indexOf(toLocation.key);
-
-        if (toIndex === -1)
-            toIndex = 0;
-
-        let fromIndex = allKeys.indexOf(fromLocation.key);
-
-        if (fromIndex === -1)
-            fromIndex = 0;
-
-        const delta = toIndex - fromIndex;
-
-        if (delta) {
-            forceNextPop = true;
-            go(delta);
-        }
-    };
-
-    const initialLocation = getDOMLocation(getHistoryState());
-    let allKeys = [ initialLocation.key ];
-
-    // Public interface
-
-    const push = (path, state) => {
-        warning(
-            !(typeof path === 'object' && path.state !== undefined && state !== undefined),
-            'You should avoid providing a 2nd state argument to push when the 1st ' +
-            'argument is a location-like object that already has state; it is ignored'
-        );
-
-        const action = 'PUSH';
-        const location = createLocation(path, state, createKey(), history.location);
-
-        transitionManager.confirmTransitionTo(location, action, getUserConfirmation, (ok) => {
-            if (!ok)
-                return;
-
-            const url = basename + createPath(location);
-            const { key, state } = location;
-
-            if (canUseHistory) {
-                globalHistory.pushState({ key, state }, null, url);
-
-                if (forceRefresh) {
-                    window.location.href = url;
-                } else {
-                    const prevIndex = allKeys.indexOf(history.location.key);
-                    const nextKeys = allKeys.slice(0, prevIndex === -1 ? 0 : prevIndex + 1);
-
-                    nextKeys.push(location.key);
-                    allKeys = nextKeys;
-
-                    setState({ action, location });
-                }
+        if (newAction === PUSH) {
+            if (useRefresh) {
+                window.location.href = path;
+                return false; // Prevent location update.
             } else {
-                warning(
-                    state === undefined,
-                    'Browser history cannot push state in browsers that do not support HTML5 history'
-                );
-
-                window.location.href = url;
+                window.history.pushState(historyState, null, path);
             }
-        })
-    };
-
-    const replace = (path, state) => {
-        warning(
-            !(typeof path === 'object' && path.state !== undefined && state !== undefined),
-            'You should avoid providing a 2nd state argument to replace when the 1st ' +
-            'argument is a location-like object that already has state; it is ignored'
-        );
-
-        const action = 'REPLACE';
-        const location = createLocation(path, state, createKey(), history.location);
-
-        transitionManager.confirmTransitionTo(location, action, getUserConfirmation, (ok) => {
-            if (!ok)
-                return;
-
-            const url = basename + createPath(location);
-            const { key, state } = location;
-
-            if (canUseHistory) {
-                globalHistory.replaceState({ key, state }, null, url);
-
-                if (forceRefresh) {
-                    window.location.replace(url);
-                } else {
-                    const prevIndex = allKeys.indexOf(history.location.key);
-
-                    if (prevIndex !== -1)
-                        allKeys[prevIndex] = location.key;
-
-                    setState({ action, location });
-                }
+        } else { // REPLACE
+            if (useRefresh) {
+                window.location.replace(path);
+                return false; // Prevent location update.
             } else {
-                warning(
-                    state === undefined,
-                    'Browser history cannot replace state in browsers that do not support HTML5 history'
-                );
-
-                window.location.replace(url);
+                window.history.replaceState(historyState, null, path);
             }
-        })
-    };
-
-    const go = (n) => globalHistory.go(n);
-
-    const goBack = () => go(-1);
-
-    const goForward = () => go(1);
-
-    let listenerCount = 0;
-
-    const checkDOMListeners = (delta) => {
-        listenerCount += delta;
-
-        if (listenerCount === 1) {
-            addEventListener(window, PopStateEvent, handlePopState);
-
-            if (needsHashChangeListener)
-                addEventListener(window, HashChangeEvent, handleHashChange);
-        } else if (listenerCount === 0) {
-            removeEventListener(window, PopStateEvent, handlePopState);
-
-            if (needsHashChangeListener)
-                removeEventListener(window, HashChangeEvent, handleHashChange)
         }
-    };
+    }
 
-    let isBlocked = false;
+    const history = createDOMHistory({
+        ...options,
+        getCurrentLocation,
+        finishTransition,
+        saveState
+    });
 
-    const block = (prompt = false) => {
-        const unblock = transitionManager.setPrompt(prompt);
+    let listenerCount = 0, stopPopStateListener;
 
-        if (!isBlocked) {
-            checkDOMListeners(1);
-            isBlocked = true
+    function listenBefore(listener) {
+        if (++listenerCount === 1)
+            stopPopStateListener = startPopStateListener(history);
+
+        const unlisten = history.listenBefore(listener);
+
+        return function () {
+            unlisten();
+
+            if (--listenerCount === 0)
+                stopPopStateListener()
         }
+    }
 
-        return () => {
-            if (isBlocked) {
-                isBlocked = false;
-                checkDOMListeners(-1);
-            }
+    function listen(listener) {
+        if (++listenerCount === 1)
+            stopPopStateListener = startPopStateListener(history);
 
-            return unblock();
+        const unlisten = history.listen(listener);
+
+        return function () {
+            unlisten();
+
+            if (--listenerCount === 0)
+                stopPopStateListener()
         }
-    };
+    }
 
-    const listen = (listener) => {
-        const unlisten = transitionManager.appendListener(listener);
-        checkDOMListeners(1);
+    // deprecated
+    function registerTransitionHook(hook) {
+        if (++listenerCount === 1)
+            stopPopStateListener = startPopStateListener(history);
 
-        return () => {
-            checkDOMListeners(-1);
-            return unlisten()
-        };
-    };
+        history.registerTransitionHook(hook)
+    }
 
-    const history = {
-        length: globalHistory.length,
-        action: 'POP',
-        location: initialLocation,
-        push,
-        replace,
-        go,
-        goBack,
-        goForward,
-        block,
-        listen
-    };
+    // deprecated
+    function unregisterTransitionHook(hook) {
+        history.unregisterTransitionHook(hook);
 
-    return history;
-};
+        if (--listenerCount === 0)
+            stopPopStateListener()
+    }
 
-export default createBrowserHistory;
+    return {
+        ...history,
+        listenBefore,
+        listen,
+        registerTransitionHook,
+        unregisterTransitionHook
+    }
+}
+
+export default createBrowserHistory
