@@ -53,10 +53,6 @@ export const RouterX = connect(
         props.setRouter({routes: this.routes, transitions: props.transitions, history: this.history});
     }
     render() {
-
-        console.log("REND");
-        console.log(this.routes, this.history);
-
         const props = _.pick(this.props, ['history', 'children', 'routes', 'render', 'createElement', 'onError', 'onUpdate']);
         return createElement(reactRouter.Router, {...props, routes: this.routes, history: this.history});
     }
@@ -72,8 +68,9 @@ Router.propTypes = {
 
 class HistoryLinkY extends Component {
     render() {
-        const {to, className, children} = this.props;
-        return (<Link to={to} className={className}>
+        const {to, type, className, children} = this.props;
+        return (<Link className={className}
+        to={typeof to === 'string' ? {pathname: to, state: {type}} : {...to, ...{...(to.state || {}), type}}}>
             {children}
         </Link>);
     }
@@ -81,25 +78,18 @@ class HistoryLinkY extends Component {
 
 const HistoryLinkX = connect(
     (state, ownProps) => ({
-        type: ownProps.type || getTransitionType(state.history.transitions, window.location.pathname, ownProps.to)
+        type: ownProps.type || getTransitionType(state.history.router.transitions, window.location.pathname,
+            typeof ownProps.to === 'string' ? ownProps.to : ownProps.to.pathname)
     }),
     {}
 )(HistoryLinkY);
-
-HistoryLinkY.contextTypes = {
-    id: PropTypes.string.isRequired
-};
-
-HistoryLinkY.childContextTypes = {
-    id: PropTypes.string.isRequired
-};
 
 export const HistoryLink = props => (
     <HistoryLinkX store={store} {...props} />
 );
 
 HistoryLink.propTypes = {
-    to: PropTypes.string.isRequired,
+    to: PropTypes.oneOfType([ PropTypes.string, PropTypes.object ]).isRequired,
     name: PropTypes.string.isRequired,
     type: PropTypes.string
 };
@@ -271,16 +261,15 @@ export function connectComponent(WrappedComponent, id) {
         }
 
         onHistoryChange(location) {
-            const {routes, id, transitions, pageChanged} = this.props;
+            const {routes, id, pageChanged} = this.props;
             match({routes, location}, (error, redirectLocation, renderProps) => {
                 const component = _.last(renderProps.components)();
                 if (component.props.id === id) {  // if this component
                     const params = renderProps.params;
                     const route = _.last(renderProps.routes);
                     const to = location.pathname;
-                    const from = window.location.pathname;
                     const name = route.name ? route.name : (route.nameFn ? route.nameFn(params) : null);
-                    const type = getTransitionType(transitions, from, to);
+                    const type = renderProps.location.state.type || LOAD;
                     this.setState({params, to, name});
                     pageChanged({to, name, type}, id);
                 }

@@ -71,7 +71,6 @@ function createBrowserHistory(options={}) {
 
     function finishTransition(location) {
         const { basename, pathname, search, hash, state, action, key } = location;
-
         const newAction = action === PUSH ? REPLACE : action;
 
         if (newAction === POP) {
