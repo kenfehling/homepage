@@ -181,7 +181,7 @@ class ContentAreaY extends Component {
             transitionLeave={true}
             transitionEnterTimeout={0}
             transitionLeaveTimeout={0}>
-                <div className={className} key={id + (currentPage ? '_' + currentPage.name : '')}>{children}</div>
+                <div className={className} key={id + (currentPage ? '-' + currentPage.to : '')}>{children}</div>
             </ReactCSSTransitionGroup>
         </div>;
     }

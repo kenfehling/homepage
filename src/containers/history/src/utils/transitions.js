@@ -5,7 +5,7 @@ export function getTransitionType(transitions, from, to) {
     if (_.isEmpty(transitions)) {
         return undefined;
     }
-    for (let i = 0; i < _.size(transitions); i++) {
+    for (let i = _.size(transitions) - 1; i >= 0; i--) {
         const transition = transitions[i];
         if (!transition.from) {
             if (!transition.from && !from && transition.to.test(to)) {

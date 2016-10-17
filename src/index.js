@@ -34,12 +34,16 @@ const store = createStore(
 const transitions = [
     {from: /^\/$/, to: /^\/tools\/\w+\/\w+$/, type: PUSH},
     {from: /^\/tools$/, to: /^\/tools\/\w+\/\w+$/, type: PUSH},
-    {from: /^\/tools$/, to: /^\/tools\/\w+$/, type: PUSH},
     {from: /^\/tools\/\w+$/, to: /^\/tools\/\w+\/\w+$/, type: PUSH},
     {from: /^\/tools\/\w+\/\w+$/, to: /^\/tools\/\w+\/\w+$/, type: PUSH},
+
     {from: /^\/tools\/\w+\/\w+$/, to: /^\/$/, type: TOP},
     {from: /^\/tools\/\w+\/\w+$/, to: /^\/tools$/, type: TOP},
     {from: /^\/tools\/\w+\/\w+$/, to: /^\/tools\/\w+$/, type: TOP},
+
+    {from: /^\/tools\/\w+$/, to: /^\/tools\/\w+$/, type: LOAD},
+    {from: /^\/tools$/, to: /^\/tools\/\w+$/, type: LOAD},
+    {from: /^\/tools\/\w+$/, to: /^\/tools$/, type: LOAD},
 
     {from: /^\/$/, to: /^\/mobile\/\w+$/, type: PUSH},
     {from: /^\/mobile$/, to: /^\/mobile\/\w+$/, type: PUSH},
