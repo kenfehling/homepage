@@ -14,6 +14,7 @@ import * as reactRouter from 'react-router';
 import _ from 'lodash';
 import {addLeadingSlash} from "../utils/url";
 import {getLastTransitionType} from "../utils/history";
+import {getCurrentPage} from "../utils/history";
 
 const reducer = combineReducers({
     ...reducers
@@ -169,16 +170,18 @@ class ContentAreaY extends Component {
 
     render() {
         const {className, children, pageHistories} = this.props;
-        return <div className={styles['content-container'] + (className ? ' ' + className : '')}>
+        const {id} = this.context;
+        const currentPage = getCurrentPage(pageHistories, id);
+        return <div className={styles['content-container']}>
             <ReactCSSTransitionGroup
             component="div"
-            className={`transition-group ${getLastTransitionType(pageHistories, this.context.id)}`}
+            className={`transition-group ${getLastTransitionType(pageHistories, id)}`}
             transitionName="content"
             transitionEnter={true}
             transitionLeave={true}
             transitionEnterTimeout={0}
             transitionLeaveTimeout={0}>
-                {children}
+                <div className={className} key={id + (currentPage ? '_' + currentPage.name : '')}>{children}</div>
             </ReactCSSTransitionGroup>
         </div>;
     }
@@ -194,7 +197,7 @@ ContentAreaY.childContextTypes = {
 
 const ContentAreaX = connect(
     state => ({
-        pageHistories: state.history.pageHistories
+        pageHistories: state.history.pageHistories,
     }),
     dispatch => ({})
 )(ContentAreaY);

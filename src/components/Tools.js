@@ -515,7 +515,7 @@ class Tools extends Component {
         const filteredTools = category === 'All' ? this.tools :
             _.filter(this.tools, t => _.includes(t.categories, category));
         const n = _.size(filteredTools);
-        return (<div className="tools" key="tools">
+        return (<div className="tools">
             <div className="scroll-area" ref={(ref) => this.scrollArea = ref}
                  onScroll={e => this.setState({lastScrollLeft: e.target.scrollLeft})}>
                 {_.map(_.range(Math.ceil(n / ROWS)), col =>
@@ -530,7 +530,7 @@ class Tools extends Component {
 
     renderDetails() {
         const {name, fullName, stars, description} = this.getSelectedTool();
-        return (<div className="details" key={name}>
+        return (<div className="details">
             <div className="heading">
                 <BackLink />
                 <div className="title">{fullName || name}</div>

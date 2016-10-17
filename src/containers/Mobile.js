@@ -36,7 +36,7 @@ const DashboardItem = ({icon, name, link}) => (
 );
 
 const Dashboard = () => (
-    <div key="dashboard" className="dashboard">
+    <div className="dashboard">
         <div className="section">
             <div className="title">Programming</div>
             <div className="items">
@@ -82,7 +82,7 @@ const List = ({items}) => (
 );
 
 const Tools = () => (
-    <List key="mobile-tools" items={[
+    <List items={[
         {icon: './tools/React.svg', name: 'React'},
         {icon: './tools/JavaScript.svg', name: 'JavaScript'}
     ]} />
