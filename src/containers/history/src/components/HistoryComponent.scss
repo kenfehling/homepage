@@ -21,43 +21,43 @@
     }
   }
 
-  .tool-enter, .tool-leave, .tool-enter-active, .tool-leave-active {
+  .content-enter, .content-leave, .content-enter-active, .content-leave-active {
     width: 50%;
     float: left;
   }
 
-  .tool-enter-active, .tool-leave-active {
+  .content-enter-active, .content-leave-active {
     transition: all 1s;
     width: 50%;
     float: left;
   }
 
   .push {
-    .tool-leave {
+    .content-leave {
       transform: translate(-100%, 0);
     }
-    .tool-leave.tool-leave-active {
+    .content-leave.content-leave-active {
       transform: translate(-200%, 0);
     }
-    .tool-enter {
+    .content-enter {
       transform: translate(100%, 0);
     }
-    .tool-enter.tool-enter-active {
+    .content-enter.content-enter-active {
       transform: translate(0, 0);
     }
   }
 
   .pop, .top {
-    .tool-leave {
+    .content-leave {
       transform: translate(-100%, 0);
     }
-    .tool-leave.tool-leave-active {
+    .content-leave.content-leave-active {
       transform: translate(0, 0);
     }
-    .tool-enter {
+    .content-enter {
       transform: translate(-100%, 0);
     }
-    .tool-enter.tool-enter-active {
+    .content-enter.content-enter-active {
       transform: translate(0, 0);
     }
   }

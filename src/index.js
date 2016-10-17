@@ -1,7 +1,5 @@
 import { render }  from 'react-dom';
-import { browserHistory } from 'react-router';
-import { Router } from './containers/history/src/components/HistoryComponent';
-import { Route } from 'react-router';
+import { Router, Route } from './containers/history/src/components/HistoryComponent';
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import * as reducers from './reducers';
@@ -34,24 +32,27 @@ const store = createStore(
 //const history = createMemoryHistory();
 
 const transitions = [
+    {from: /^\/$/, to: /^\/tools\/\w+\/\w+$/, type: PUSH},
     {from: /^\/tools$/, to: /^\/tools\/\w+\/\w+$/, type: PUSH},
     {from: /^\/tools$/, to: /^\/tools\/\w+$/, type: PUSH},
     {from: /^\/tools\/\w+$/, to: /^\/tools\/\w+\/\w+$/, type: PUSH},
     {from: /^\/tools\/\w+\/\w+$/, to: /^\/tools\/\w+\/\w+$/, type: PUSH},
-    {from: /^\/$/, to: /^\/tools\/\w+\/\w+$/, type: PUSH},
     {from: /^\/tools\/\w+\/\w+$/, to: /^\/$/, type: TOP},
     {from: /^\/tools\/\w+\/\w+$/, to: /^\/tools$/, type: TOP},
-    {from: /^\/tools\/\w+\/\w+$/, to: /^\/tools\/\w+$/, type: TOP}
+    {from: /^\/tools\/\w+\/\w+$/, to: /^\/tools\/\w+$/, type: TOP},
+
+    {from: /^\/$/, to: /^\/mobile\/\w+$/, type: PUSH},
+    {from: /^\/mobile$/, to: /^\/mobile\/\w+$/, type: PUSH},
 ];
 
 render((
     <Provider store={store}>
         <div>
-            <Router history={browserHistory} transitions={transitions}>
+            <Router transitions={transitions}>
                 <Route path="/" component={App}>
                     <Route path="tools" name="Tools" component={Tools} />
-                    <Route path="tools/:category" component={Tools} />
-                    <Route path="tools/:category/:selectedTool" component={Tools} />
+                    <Route path="tools/:category" component={Tools} nameFn={params => params.category}/>
+                    <Route path="tools/:category/:selectedTool" component={Tools} nameFn={params => params.selectedTool} />
                     <Route path="mobile" name="Mobile" component={Mobile} />
                     <Route path="mobile/:category" component={Mobile} />
                     <Route path="mobile/:category/*" component={Mobile} />

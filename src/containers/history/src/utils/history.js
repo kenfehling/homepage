@@ -12,10 +12,15 @@ export function getPageHistoryAtIndex(pageHistories, containerId, index) {
     return _.take(pageHistories[containerId] || [], index + 1);
 }
 
+export function getLastPageChange(pageHistories, containerId) {
+    return _.last(getPageHistoryAtIndex(pageHistories, containerId, getCurrentIndex(pageHistories, containerId)));
+}
+
 export function convertHistoryToStackAtIndex(pageHistories, containerId, index) {
     const pageHistory = getPageHistoryAtIndex(pageHistories, containerId, index);
     return _.reduce(pageHistory, (stack, page) => {
         switch(page.type) {
+            case LOAD: return [page];
             case PUSH: return [...stack, page];
             case POP: return _.initial(stack);
             case TOP: return [page]
@@ -30,12 +35,6 @@ export function getBackLinkAtIndex(pageHistories, containerId, index) {
     }
 }
 
-export function getLastTransitionType(lastTransitionTypes, containerId) {
-    if (!_.isEmpty(lastTransitionTypes)) {
-        return lastTransitionTypes[containerId];
-    }
-}
-
 export function getCurrentIndex(pageHistories, containerId) {
     const pageHistory = pageHistories[containerId];
     if (pageHistory) {
@@ -45,4 +44,18 @@ export function getCurrentIndex(pageHistories, containerId) {
 
 export function getCurrentBackLink(pageHistories, containerId) {
     return getBackLinkAtIndex(pageHistories, containerId, getCurrentIndex(pageHistories, containerId));
+}
+
+export function getPageAtIndex(pageHistories, containerId, index) {
+    const stack = convertHistoryToStackAtIndex(pageHistories, containerId, index);
+    return _.last(stack);
+}
+
+export function getCurrentPage(pageHistories, containerId) {
+    return getPageAtIndex(pageHistories, containerId, getCurrentIndex(pageHistories, containerId));
+}
+
+export function getLastTransitionType(pageHistories, containerId) {
+    const last = getLastPageChange(pageHistories, containerId);
+    return last ? last.type : undefined;
 }
