@@ -5,7 +5,7 @@ import createNoHistory from './createNoHistory';
 import { createStore, combineReducers } from 'redux';
 import { connect } from 'react-redux';
 import styles from './HistoryComponent.scss';
-import { changePage, pageChanged, setRouter } from '../actions/HistoryActions';
+import { pageChanged, setRouter } from '../actions/HistoryActions';
 import { LOAD, PUSH, POP, TOP } from '../constants/LinkTypes';
 import * as reducers from '../reducers';
 import { getCurrentBackLink, getCurrentPage } from '../utils/history';
@@ -72,8 +72,8 @@ Router.propTypes = {
 
 class HistoryLinkY extends Component {
     render() {
-        const {to, name, type, className, changePage, children} = this.props;
-        return (<Link to={to} className={className} onClick={() => changePage({to: to, name, type}, this.context.id)}>
+        const {to, className, children} = this.props;
+        return (<Link to={to} className={className}>
             {children}
         </Link>);
     }
@@ -83,7 +83,7 @@ const HistoryLinkX = connect(
     (state, ownProps) => ({
         type: ownProps.type || getTransitionType(state.history.transitions, window.location.pathname, ownProps.to)
     }),
-    { changePage }
+    {}
 )(HistoryLinkY);
 
 HistoryLinkY.contextTypes = {
@@ -271,29 +271,20 @@ export function connectComponent(WrappedComponent, id) {
         }
 
         onHistoryChange(location) {
-            const {routes, id, lastTransitionTypes} = this.props;
+            const {routes, id, transitions, pageChanged} = this.props;
             match({routes, location}, (error, redirectLocation, renderProps) => {
-
-                //console.log(renderProps);
-
                 const component = _.last(renderProps.components)();
                 if (component.props.id === id) {  // if this component
                     const params = renderProps.params;
                     const route = _.last(renderProps.routes);
                     const to = location.pathname;
+                    const from = window.location.pathname;
                     const name = route.name ? route.name : (route.nameFn ? route.nameFn(params) : null);
+                    const type = getTransitionType(transitions, from, to);
                     this.setState({params, to, name});
+                    pageChanged({to, name, type}, id);
                 }
             });
-        }
-
-        componentDidUpdate(nextProps, nextState) {
-            const {id, lastTransitionTypes, pageChanged} = nextProps;
-            const {params, to, name} = nextState;
-            if (params !== this.state.params) {
-                const type = lastTransitionTypes[id] || LOAD;
-                pageChanged({to, name, type}, id);
-            }
         }
 
         componentDidMount() {
@@ -317,11 +308,8 @@ export function connectComponent(WrappedComponent, id) {
 
     const X = connect(
         state => ({
-            routes: state.history.router.routes,
-            transitions: state.history.router.transitions,
-            history: state.history.router.history,
-            pageHistories: state.history.pageHistories,
-            lastTransitionTypes: state.history.lastTransitionTypes
+            ...state.history.router,
+            pageHistories: state.history.pageHistories
         }),
         { pageChanged }
     )(Connect);

@@ -9,6 +9,7 @@ export function setRouter({routes, transitions, history}) {
     }
 }
 
+/*
 export function changePage(link, containerId) {
     return {
         type: CHANGE_PAGE,
@@ -16,6 +17,7 @@ export function changePage(link, containerId) {
         link
     };
 }
+*/
 
 export function pageChanged(link, containerId) {
     return {
