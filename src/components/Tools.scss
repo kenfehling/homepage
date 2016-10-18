@@ -57,56 +57,53 @@ $header-bottom-color: #a343a4;
   .tools {
     @include no-select();
     background-color: $tools-bg;
-    .scroll-area {
-      display: flex;
-      padding: 3px 5px 1px 5px;
-      overflow-x: scroll;
-      .col {
-        flex: 1 0 auto;
-        max-width: 104px;
-        height: 100%;
-        a {
-          color: inherit;
-          text-decoration: none;
-        }
-        .tool {
-          width: 96px;
-          text-align: center;
-          cursor: pointer;
-          background-color: $item-bg;
-          border: thin solid darken($item-bg, $border-darken);
+    display: flex;
+    padding: 3px 5px 1px 5px;
+    .col {
+      flex: 1 0 auto;
+      max-width: 104px;
+      height: 100%;
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .tool {
+        width: 96px;
+        text-align: center;
+        cursor: pointer;
+        background-color: $item-bg;
+        border: thin solid darken($item-bg, $border-darken);
+        border-radius: 4px;
+        padding: 10px;
+        box-sizing: border-box;
+        margin: 8px 4px;
+        .icon {
+          width: $icon-size;
+          height: $icon-size;
           border-radius: 4px;
-          padding: 10px;
-          box-sizing: border-box;
-          margin: 8px 4px;
-          .icon {
-            width: $icon-size;
-            height: $icon-size;
-            border-radius: 4px;
-            margin: auto;
-          }
-          .name {
-            font-size: 12px;
-            font-weight: $title-weight;
-            text-align: center;
-            margin: 1px 0 3px 0;
-          }
-          .stars {
-            text-align: center;
-            img {
-              height: $tools-star-size;
-            }
+          margin: auto;
+        }
+        .name {
+          font-size: 12px;
+          font-weight: $title-weight;
+          text-align: center;
+          margin: 1px 0 3px 0;
+        }
+        .stars {
+          text-align: center;
+          img {
+            height: $tools-star-size;
           }
         }
-        .tool:hover {
-          background-color: darken($item-bg, 6%);
-          border: thin solid darken($item-bg, 6% + $border-darken);
-        }
+      }
+      .tool:hover {
+        background-color: darken($item-bg, 6%);
+        border: thin solid darken($item-bg, 6% + $border-darken);
+      }
 
-        .tool:active {
-          background-color: darken($item-bg, 10%);
-          border: thin solid darken($item-bg, 10% + $border-darken);
-        }
+      .tool:active {
+        background-color: darken($item-bg, 10%);
+        border: thin solid darken($item-bg, 10% + $border-darken);
       }
     }
   }

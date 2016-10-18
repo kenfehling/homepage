@@ -42,9 +42,6 @@ class Tools extends Component {
     
     constructor(props) {
         super(props);
-        this.state = {
-            lastScrollLeft: 0
-        };
         this.categories = [
             'All',
             LANGUAGES,
@@ -484,12 +481,6 @@ class Tools extends Component {
         }];
     }
 
-    componentDidUpdate() {
-        if (this.scrollArea) {
-            this.scrollArea.scrollLeft = this.state.lastScrollLeft;
-        }
-    }
-
     getSelectedTool() {
         return _.find(this.tools, tool => escapeName(tool.name) === this.props.selectedTool);
     }
@@ -516,15 +507,12 @@ class Tools extends Component {
             _.filter(this.tools, t => _.includes(t.categories, category));
         const n = _.size(filteredTools);
         return (<div className="tools">
-            <div className="scroll-area" ref={(ref) => this.scrollArea = ref}
-                 onScroll={e => this.setState({lastScrollLeft: e.target.scrollLeft})}>
-                {_.map(_.range(Math.ceil(n / ROWS)), col =>
-                    <div className="col" key={col}>
-                        {_.map(_.range(ROWS), row =>
-                            n >= col * ROWS + row + 1 ? this.renderTool(filteredTools[col * ROWS + row]) : '')}
-                    </div>
-                )}
-            </div>
+            {_.map(_.range(Math.ceil(n / ROWS)), col =>
+                <div className="col" key={col}>
+                    {_.map(_.range(ROWS), row =>
+                        n >= col * ROWS + row + 1 ? this.renderTool(filteredTools[col * ROWS + row]) : '')}
+                </div>
+            )}
         </div>);
     }
 

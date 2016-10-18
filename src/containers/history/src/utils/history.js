@@ -47,7 +47,9 @@ export function getCurrentBackLink(pageHistories, containerId) {
 }
 
 export function getPageAtIndex(pageHistories, containerId, index) {
+    console.log(pageHistories, containerId, index);
     const stack = convertHistoryToStackAtIndex(pageHistories, containerId, index);
+    console.log('stack', stack);
     return _.last(stack);
 }
 

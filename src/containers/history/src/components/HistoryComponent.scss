@@ -1,6 +1,10 @@
 :local(.content-container) {
   overflow: hidden;
 
+  .scroll-area {
+    overflow-x: scroll;
+  }
+
   .default-back {
     color: #3366FF;
     font-weight: 500;
