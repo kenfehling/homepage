@@ -54,9 +54,12 @@ $header-bottom-color: #a343a4;
     }
   }
 
+  .scroll-area {
+    background-color: $tools-bg;
+  }
+
   .tools {
     @include no-select();
-    background-color: $tools-bg;
     display: flex;
     padding: 3px 5px 1px 5px;
     .col {

@@ -71,13 +71,6 @@ class Tools extends Component {
                 Description
             </div>
         }, {
-            name: 'CSS',
-            stars: 4.5,
-            categories: [LANGUAGES, WEB],
-            description: () => <div>
-                Description
-            </div>
-        }, {
             name: 'React',
             stars: 4.5,
             categories: [LIBRARIES, WEB],
@@ -104,13 +97,6 @@ class Tools extends Component {
                 This site itself uses Redux to manage things like how the individual windows are layered.
             </div>
         }, {
-            name: 'SASS',
-            stars: 4.5,
-            categories: [LIBRARIES, WEB],
-            description: () => <div>
-                Description
-            </div>
-        }, {
         /*
             name: 'Lodash',
             stars: 4.5,
@@ -120,6 +106,13 @@ class Tools extends Component {
             </div>
         }, {
         */
+            name: 'CSS',
+            stars: 4,
+            categories: [LANGUAGES, WEB],
+            description: () => <div>
+                Description
+            </div>
+        }, {
             name: 'Node',
             stars: 4,
             categories: [PLATFORMS, WEB],
@@ -151,6 +144,13 @@ class Tools extends Component {
             categories: [DEVOPS, WEB],
             description: () => <div>
                 Currently my main {this.linkToTool('JavaScript')} build tool.
+            </div>
+        }, {
+            name: 'SASS',
+            stars: 4,
+            categories: [LIBRARIES, WEB],
+            description: () => <div>
+                Description
             </div>
         }, {
             name: 'Gulp',
@@ -545,7 +545,7 @@ class Tools extends Component {
                     {_.map(this.categories, c => this.linkToCategory(c))}
                 </div>
             </div>
-            <ContentArea>
+            <ContentArea scrollAreaClassName="scroll-area">
                 {selectedTool ? this.renderDetails() : this.renderTools()}
             </ContentArea>
         </div>);

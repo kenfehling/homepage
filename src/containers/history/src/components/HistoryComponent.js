@@ -209,7 +209,7 @@ class ContentAreaY extends Component {
     }
 
     render() {
-        const {className, children, pageHistories} = this.props;
+        const {className, children, pageHistories, scrollAreaClassName} = this.props;
         const {id} = this.context;
         const currentPage = getCurrentPage(pageHistories, id);
         return <div className={styles['content-container']}>
@@ -222,7 +222,7 @@ class ContentAreaY extends Component {
             transitionEnterTimeout={0}
             transitionLeaveTimeout={0}>
                 <div className={className} key={id + (currentPage ? '-' + currentPage.to : '')}>
-                    <div className="scroll-area" ref={(ref) => this.scrollArea = ref}
+                    <div className={`scroll-area ${scrollAreaClassName}`} ref={(ref) => this.scrollArea = ref}
                     onScroll={this.onScroll.bind(this)}>
                         {children}
                     </div>
@@ -258,6 +258,10 @@ export class ContentArea extends Component {
         return <ContentAreaX store={store} {...this.props} />;
     }
 }
+
+ContentArea.propTypes = {
+    scrollAreaClassName: PropTypes.string
+};
 
 ContentArea.contextTypes = {
     id: PropTypes.string.isRequired
