@@ -173,15 +173,15 @@ class ContentAreaY extends Component {
         }
     }
 
-    componentWillReceiveProps(newProps) {
-        const {pageHistories} = newProps;
+    componentDidUpdate() {
+        const {pageHistories} = this.props;
         const {id} = this.context;
         const currentPage = getCurrentPage(pageHistories, id);
         if (currentPage) {
             if (this.scrollArea) {
-                switch (currentPage.type) {
+                const lastTransitionType = getLastTransitionType(pageHistories, id);
+                switch (lastTransitionType) {
                     case POP:
-                        console.log('receive Props', this.scrollPositions);
                         const scrollPosition = this.scrollPositions[currentPage.to];
                         this.scrollArea.scrollTop = scrollPosition.top;
                         this.scrollArea.scrollLeft = scrollPosition.left;
@@ -206,8 +206,6 @@ class ContentAreaY extends Component {
             top: event.target.scrollTop,
             left: event.target.scrollLeft
         };
-
-        console.log('onScroll', this.scrollPositions);
     }
 
     render() {
@@ -321,9 +319,6 @@ export function connectComponent(WrappedComponent, id) {
                     const name = route.name ? route.name : (route.nameFn ? route.nameFn(params) : null);
                     const type = renderProps.location.state.type || LOAD;
                     this.setState({params, to, name});
-
-                    console.log("CHANGE", id, type);
-
                     pageChanged({to, name, type}, id);
                 }
             });
