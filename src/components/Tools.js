@@ -29,15 +29,15 @@ class Tools extends Component {
     linkToTool(name, text=name) {
         const {category=this.categories[0]} = this.props;
         const escapedName = escapeName(name);
-        return <HistoryLink key={name} name={name} to={`/tools/${category}/${escapedName}`}>{text}</HistoryLink>;
+        const to = `/tools/${category}/${escapedName}`;
+        return <HistoryLink key={to + Math.random()} to={to} name={name}>{text}</HistoryLink>;
     }
 
     linkToCategory(name, text=name) {
         const {category=this.categories[0]} = this.props;
-        const path = name === this.categories[0] ? '' : '/' + name;
-        return <HistoryLink key={name} name={name} to={`/tools${path}`} className={name === category ? 'current' : ''}>
-            {text}
-        </HistoryLink>;
+        const to = '/tools' + (name === this.categories[0] ? '' : '/' + name);
+        const className = name === category ? 'current' : '';
+        return <HistoryLink key={to + Math.random()} to={to} name={name} className={className}>{text}</HistoryLink>;
     }
     
     constructor(props) {
