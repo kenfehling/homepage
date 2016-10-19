@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import { Link, browserHistory } from 'react-router';
 import Helmet from "react-helmet";
 import styles from './Tools.scss';
 import _ from 'lodash';
+import { connectNavigator, HistoryLink, BackLink, ContentArea } from '../containers/history/src/components/HistoryComponent';
+import {connectComponent} from "../containers/history/src/components/HistoryComponent";
 
 const ROWS = 2;
 const starIcon = require('img/icons/star.svg');
@@ -17,9 +17,6 @@ const MOBILE = 'Mobile';
 const DATABASES = 'Databases';
 const SOFTWARE = 'Software';
 
-
-let detailsHistory = [];
-
 const escapeName = name => name.replace(' ', '_').replace('#', 'sharp');
 
 const getIcon = ({name, iconType}) =>
@@ -29,42 +26,22 @@ const externalLink = (name, href='http://' + name) =>
     <a target="_blank" href={href}>{name} <i className="fa fa-external-link" /></a>;
 
 class Tools extends Component {
-    linkToTool(name, text=name, back=false) {
+    linkToTool(name, text=name) {
         const {category=this.categories[0]} = this.props;
         const escapedName = escapeName(name);
-        const f = () => {
-            if (back) {
-                detailsHistory.pop();
-            }
-            else {
-                detailsHistory.push(name);
-            }
-            this.setState({...this.state, back});
-            browserHistory.replace(`/tools/${category}/${escapedName}`);
-        };
-        return <Link key={name} onClick={f} to={`/tools/${category}/${escapedName}`}>{text}</Link>;
+        const to = `/tools/${category}/${escapedName}`;
+        return <HistoryLink key={to + Math.random()} to={to} name={name}>{text}</HistoryLink>;
     }
 
-    linkToCategory(name, text=name, back=false) {
+    linkToCategory(name, text=name) {
         const {category=this.categories[0]} = this.props;
-        const path = name === this.categories[0] ? '' : '/' + name;
-        const f = () => {
-            if (!back) {
-                this.setState({lastScrollLeft: 0});
-            }
-            detailsHistory = [];
-            browserHistory.replace(`/tools${path}`);
-        };
-        return <Link className={!back && name === category ? 'current' : ''}
-                     to={`/tools${path}`} key={name} onClick={f}>{text}</Link>;
+        const to = '/tools' + (name === this.categories[0] ? '' : '/' + name);
+        const className = name === category ? 'current' : '';
+        return <HistoryLink key={to + Math.random()} to={to} name={name} className={className}>{text}</HistoryLink>;
     }
     
     constructor(props) {
         super(props);
-        this.state = {
-            lastScrollLeft: 0,
-            back: false
-        };
         this.categories = [
             'All',
             LANGUAGES,
@@ -90,13 +67,6 @@ class Tools extends Component {
             name: 'HTML',
             stars: 5,
             categories: [LANGUAGES, PLATFORMS, WEB],
-            description: () => <div>
-                Description
-            </div>
-        }, {
-            name: 'CSS',
-            stars: 4.5,
-            categories: [LANGUAGES, WEB],
             description: () => <div>
                 Description
             </div>
@@ -127,13 +97,6 @@ class Tools extends Component {
                 This site itself uses Redux to manage things like how the individual windows are layered.
             </div>
         }, {
-            name: 'SASS',
-            stars: 4.5,
-            categories: [LIBRARIES, WEB],
-            description: () => <div>
-                Description
-            </div>
-        }, {
         /*
             name: 'Lodash',
             stars: 4.5,
@@ -143,6 +106,13 @@ class Tools extends Component {
             </div>
         }, {
         */
+            name: 'CSS',
+            stars: 4,
+            categories: [LANGUAGES, WEB],
+            description: () => <div>
+                Description
+            </div>
+        }, {
             name: 'Node',
             stars: 4,
             categories: [PLATFORMS, WEB],
@@ -174,6 +144,13 @@ class Tools extends Component {
             categories: [DEVOPS, WEB],
             description: () => <div>
                 Currently my main {this.linkToTool('JavaScript')} build tool.
+            </div>
+        }, {
+            name: 'SASS',
+            stars: 4,
+            categories: [LIBRARIES, WEB],
+            description: () => <div>
+                Description
             </div>
         }, {
             name: 'Gulp',
@@ -504,14 +481,15 @@ class Tools extends Component {
         }];
     }
 
-    componentDidUpdate() {
-        if (this.scrollArea) {
-            this.scrollArea.scrollLeft = this.state.lastScrollLeft;
-        }
-    }
-
     getSelectedTool() {
         return _.find(this.tools, tool => escapeName(tool.name) === this.props.selectedTool);
+    }
+
+    renderStars(stars) {
+        return <div className="stars">
+            {_.map(_.range(Math.floor(stars)), i => <img key={i} src={starIcon} />)}
+            {stars % 1 === 0.5 ? <img src={halfStarIcon} /> : ''}
+        </div>;
     }
 
     renderTool(tool) {
@@ -519,43 +497,37 @@ class Tools extends Component {
         return this.linkToTool(name, (<div className="tool">
             {getIcon(tool)}
             <div className="name">{name}</div>
-            <div className="stars">
-                {_.map(_.range(Math.floor(stars)), i => <img key={i} src={starIcon} />)}
-                {stars % 1 === 0.5 ? <img src={halfStarIcon} /> : ''}
-            </div>
+            {this.renderStars(stars)}
         </div>));
     }
 
     renderTools() {
         const {category=this.categories[0]} = this.props;
-        const filteredTools = category === 'All' ? this.tools : _.filter(this.tools, t => _.includes(t.categories, category));
+        const filteredTools = category === 'All' ? this.tools :
+            _.filter(this.tools, t => _.includes(t.categories, category));
         const n = _.size(filteredTools);
-        return (<div className="tools" key="tools">
-            <div className="scroll-area" ref={(ref) => this.scrollArea = ref}
-                 onScroll={e => this.setState({lastScrollLeft: e.target.scrollLeft})}>
-                {_.map(_.range(Math.ceil(n / ROWS)), col =>
-                    <div className="col" key={col}>
-                        {_.map(_.range(ROWS), row =>
-                            n >= col * ROWS + row + 1 ? this.renderTool(filteredTools[col * ROWS + row]) : '')}
-                    </div>
-                )}
-            </div>
+        return (<div className="tools">
+            {_.map(_.range(Math.ceil(n / ROWS)), col =>
+                <div className="col" key={col}>
+                    {_.map(_.range(ROWS), row =>
+                        n >= col * ROWS + row + 1 ? this.renderTool(filteredTools[col * ROWS + row]) : '')}
+                </div>
+            )}
         </div>);
     }
 
     renderDetails() {
-        const {category=this.categories[0]} = this.props;
         const {name, fullName, stars, description} = this.getSelectedTool();
-        return (<div className="details" key={name}>
-            <div className="title">{fullName || name}</div>
+        return (<div className="details">
+            <div className="heading">
+                <BackLink />
+                <div className="title">{fullName || name}</div>
+                <div className="skill">
+                    <div className="label">Skill level:</div>
+                    {this.renderStars(stars)}
+                </div>
+            </div>
             <div className="body">{description()}</div>
-
-            <br />
-            <br />
-
-            {detailsHistory.length > 1 ?
-                this.linkToTool(detailsHistory[detailsHistory.length - 2], "Back", true) :
-                this.linkToCategory(category, "Back")}
         </div>);
     }
 
@@ -573,18 +545,9 @@ class Tools extends Component {
                     {_.map(this.categories, c => this.linkToCategory(c))}
                 </div>
             </div>
-            <div className="transition-wrapper">
-                <ReactCSSTransitionGroup
-                    component="div"
-                    className={`transition-group${this.state.back ? ' back' : ''}`}
-                    transitionName="tool"
-                    transitionEnter={true}
-                    transitionLeave={true}
-                    transitionEnterTimeout={0}
-                    transitionLeaveTimeout={0}>
-                    {selectedTool ? this.renderDetails() : this.renderTools()}
-                </ReactCSSTransitionGroup>
-            </div>
+            <ContentArea scrollAreaClassName="scroll-area">
+                {selectedTool ? this.renderDetails() : this.renderTools()}
+            </ContentArea>
         </div>);
     }
 }
@@ -594,4 +557,4 @@ Tools.propTypes = {
     selectedTool: PropTypes.string
 };
 
-export default Tools;
+export default connectComponent(Tools, 'tools');

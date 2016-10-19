@@ -72,10 +72,8 @@ $list-item-icon-size: 32px;
 
   .content {
     height: 100%;
-    padding: 10px 0 10px 10px;
     display: flex;
-    flex-direction: column;
-    overflow-y: scroll;
+    overflow-y: auto;
     -webkit-overflow-scrolling: touch;
   }
 
@@ -83,6 +81,10 @@ $list-item-icon-size: 32px;
     -webkit-appearance: none;
     background-color: $bg-color;
     width: 10px;
+  }
+
+  .dashboard, .list {
+    padding: 10px;
   }
 
   .dashboard {
@@ -108,8 +110,9 @@ $list-item-icon-size: 32px;
       .items {
         display: flex;
         margin-left: 18px;
-        cursor: pointer;
         .item {
+          cursor: pointer;
+          text-decoration: none;
           display: inline-block;
           margin-right: 36px;
           .icon {
@@ -138,7 +141,6 @@ $list-item-icon-size: 32px;
   }
 
   .list {
-    height: 100%;
     .item {
       padding: 8px;
       margin-bottom: 8px;

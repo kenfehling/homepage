@@ -11,7 +11,7 @@ const sassPaths = bourbon
 
 module.exports = {
     entry: './src/index.js',
-    devtool: '#eval-cheap-module-source-map',
+    devtool: 'eval-source-map',
     output: {
         path: './public',
         filename: 'bundle.js',

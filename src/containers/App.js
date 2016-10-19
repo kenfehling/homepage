@@ -1,7 +1,8 @@
+import Desktop from './Desktop';
 import styles from './App.scss';
 
-export default ({children}) => (
+export default props => (
     <div className={styles.container}>
-        {children}
+        <Desktop {...props} />
     </div>
 );
