@@ -42,9 +42,6 @@ class Tools extends Component {
     
     constructor(props) {
         super(props);
-        this.state = {
-            lastScrollLeft: 0
-        };
         this.categories = [
             'All',
             LANGUAGES,
@@ -70,13 +67,6 @@ class Tools extends Component {
             name: 'HTML',
             stars: 5,
             categories: [LANGUAGES, PLATFORMS, WEB],
-            description: () => <div>
-                Description
-            </div>
-        }, {
-            name: 'CSS',
-            stars: 4.5,
-            categories: [LANGUAGES, WEB],
             description: () => <div>
                 Description
             </div>
@@ -107,13 +97,6 @@ class Tools extends Component {
                 This site itself uses Redux to manage things like how the individual windows are layered.
             </div>
         }, {
-            name: 'SASS',
-            stars: 4.5,
-            categories: [LIBRARIES, WEB],
-            description: () => <div>
-                Description
-            </div>
-        }, {
         /*
             name: 'Lodash',
             stars: 4.5,
@@ -123,6 +106,13 @@ class Tools extends Component {
             </div>
         }, {
         */
+            name: 'CSS',
+            stars: 4,
+            categories: [LANGUAGES, WEB],
+            description: () => <div>
+                Description
+            </div>
+        }, {
             name: 'Node',
             stars: 4,
             categories: [PLATFORMS, WEB],
@@ -154,6 +144,13 @@ class Tools extends Component {
             categories: [DEVOPS, WEB],
             description: () => <div>
                 Currently my main {this.linkToTool('JavaScript')} build tool.
+            </div>
+        }, {
+            name: 'SASS',
+            stars: 4,
+            categories: [LIBRARIES, WEB],
+            description: () => <div>
+                Description
             </div>
         }, {
             name: 'Gulp',
@@ -484,12 +481,6 @@ class Tools extends Component {
         }];
     }
 
-    componentDidUpdate() {
-        if (this.scrollArea) {
-            this.scrollArea.scrollLeft = this.state.lastScrollLeft;
-        }
-    }
-
     getSelectedTool() {
         return _.find(this.tools, tool => escapeName(tool.name) === this.props.selectedTool);
     }
@@ -516,15 +507,12 @@ class Tools extends Component {
             _.filter(this.tools, t => _.includes(t.categories, category));
         const n = _.size(filteredTools);
         return (<div className="tools">
-            <div className="scroll-area" ref={(ref) => this.scrollArea = ref}
-                 onScroll={e => this.setState({lastScrollLeft: e.target.scrollLeft})}>
-                {_.map(_.range(Math.ceil(n / ROWS)), col =>
-                    <div className="col" key={col}>
-                        {_.map(_.range(ROWS), row =>
-                            n >= col * ROWS + row + 1 ? this.renderTool(filteredTools[col * ROWS + row]) : '')}
-                    </div>
-                )}
-            </div>
+            {_.map(_.range(Math.ceil(n / ROWS)), col =>
+                <div className="col" key={col}>
+                    {_.map(_.range(ROWS), row =>
+                        n >= col * ROWS + row + 1 ? this.renderTool(filteredTools[col * ROWS + row]) : '')}
+                </div>
+            )}
         </div>);
     }
 
@@ -557,7 +545,7 @@ class Tools extends Component {
                     {_.map(this.categories, c => this.linkToCategory(c))}
                 </div>
             </div>
-            <ContentArea>
+            <ContentArea scrollAreaClassName="scroll-area">
                 {selectedTool ? this.renderDetails() : this.renderTools()}
             </ContentArea>
         </div>);

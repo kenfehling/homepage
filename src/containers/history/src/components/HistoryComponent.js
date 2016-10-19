@@ -162,14 +162,54 @@ BackLink.childContextTypes = {
 };
 
 class ContentAreaY extends Component {
+    constructor(props) {
+        super(props);
+        this.scrollPositions = {};
+    }
+
     getChildContext() {
         return {
             id: this.context.id
         }
     }
 
+    componentDidUpdate() {
+        const {pageHistories} = this.props;
+        const {id} = this.context;
+        const currentPage = getCurrentPage(pageHistories, id);
+        if (currentPage) {
+            if (this.scrollArea) {
+                const lastTransitionType = getLastTransitionType(pageHistories, id);
+                switch (lastTransitionType) {
+                    case POP:
+                        const scrollPosition = this.scrollPositions[currentPage.to];
+                        this.scrollArea.scrollTop = scrollPosition.top;
+                        this.scrollArea.scrollLeft = scrollPosition.left;
+                        break;
+                    case TOP:
+                    case LOAD:
+                        this.scrollPositions[currentPage.to] = {
+                            top: 0,
+                            left: 0
+                        };
+                        break;
+                }
+            }
+        }
+    }
+
+    onScroll(event) {
+        const {pageHistories} = this.props;
+        const {id} = this.context;
+        const currentPage = getCurrentPage(pageHistories, id);
+        this.scrollPositions[currentPage.to] = {
+            top: event.target.scrollTop,
+            left: event.target.scrollLeft
+        };
+    }
+
     render() {
-        const {className, children, pageHistories} = this.props;
+        const {className, children, pageHistories, scrollAreaClassName} = this.props;
         const {id} = this.context;
         const currentPage = getCurrentPage(pageHistories, id);
         return <div className={styles['content-container']}>
@@ -181,7 +221,12 @@ class ContentAreaY extends Component {
             transitionLeave={true}
             transitionEnterTimeout={0}
             transitionLeaveTimeout={0}>
-                <div className={className} key={id + (currentPage ? '-' + currentPage.to : '')}>{children}</div>
+                <div className={className} key={id + (currentPage ? '-' + currentPage.to : '')}>
+                    <div className={`scroll-area ${scrollAreaClassName}`} ref={(ref) => this.scrollArea = ref}
+                    onScroll={this.onScroll.bind(this)}>
+                        {children}
+                    </div>
+                </div>
             </ReactCSSTransitionGroup>
         </div>;
     }
@@ -213,6 +258,10 @@ export class ContentArea extends Component {
         return <ContentAreaX store={store} {...this.props} />;
     }
 }
+
+ContentArea.propTypes = {
+    scrollAreaClassName: PropTypes.string
+};
 
 ContentArea.contextTypes = {
     id: PropTypes.string.isRequired

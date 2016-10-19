@@ -85,4 +85,14 @@ describe('history', () => {
         expect(f(pageHistories, 'id', 4)).toEqual({name: 'd', to: '/d', type: POP});
         expect(f(pageHistories, 'id', 6)).toBeUndefined();
     });
+
+    it('gets last transition type', () => {
+        const f = util.getLastTransitionType;
+        const pageHistories = {id: [
+            {name: 'a', to: '/a', type: LOAD},
+            {name: 'b', to: '/b', type: PUSH},
+            {name: 'a', to: '/a', type: POP}
+        ]};
+        expect(f(pageHistories, 'id')).toBe(POP);
+    });
 });
