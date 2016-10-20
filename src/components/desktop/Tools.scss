@@ -1,5 +1,5 @@
 @import "bourbon";
-@import "../styles/utils";
+@import "../../styles/utils";
 
 $icon-size: 56px;
 $detail-icon-size: 36px;
@@ -55,7 +55,7 @@ $header-bottom-color: #a343a4;
     }
   }
 
-  .scroll-area {
+  .tools-scroll-area {
     background-color: $tools-bg;
   }
 

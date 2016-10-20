@@ -1,6 +1,6 @@
 import { PropTypes } from 'react';
+import List from '../components/mobile/List';
 import styles from './Mobile.scss';
-import _ from 'lodash';
 import { connectNavigator, HistoryLink, ContentArea } from './history/src/components/HistoryComponent';
 import {connectComponent} from "./history/src/components/HistoryComponent";
 
@@ -68,19 +68,6 @@ const Dashboard = () => (
     </div>
 );
 
-const ListItem = ({icon, name}) => (
-   <div className="item">
-       <img className="icon" src={req(icon)} />
-       <div className="name">{name}</div>
-   </div>
-);
-
-const List = ({items}) => (
-    <div className="list">
-        {_.map(items, item => <ListItem key={item.name} {...item} />)}
-    </div>
-);
-
 const Tools = () => (
     <List items={[
         {icon: './tools/React.svg', name: 'React'},
@@ -92,7 +79,7 @@ const Mobile = ({useTopBar, category}) => (
     <div className={styles.container}>
         {useTopBar ? <TopBar /> : ''}
         <Navigator />
-        <ContentArea className="content">
+        <ContentArea className="content" scrollAreaClassName="mobile-scroll-area">
             {category ? <Tools /> : <Dashboard />}
         </ContentArea>
     </div>

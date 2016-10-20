@@ -1,11 +1,11 @@
 import Window from './Window';
 import IFrameWindow from './IFrameWindow';
-import Editor from '../components/Editor';
-import Terminal from '../components/Terminal';
-import AudioPlayer from '../components/AudioPlayer';
-import Tools from '../components/Tools';
+import Editor from '../components/desktop/Editor';
+import Terminal from '../components/desktop/Terminal';
+import AudioPlayer from '../components/desktop/AudioPlayer';
+import Tools from '../components/desktop/Tools';
 import Mobile from './Mobile';
-import Dock from '../components/Dock';
+import Dock from '../components/desktop/Dock';
 import styles from './Desktop.scss';
 
 const menuItems = [

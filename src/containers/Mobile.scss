@@ -6,7 +6,10 @@ $nav-bg-color: #b7b6ac;
 $top-bar-height: 20px;
 $nav-height: 38px;
 $dashboard-icon-size: 52px;
-$list-item-icon-size: 32px;
+
+.mobile-scroll-area {
+  padding: 10px;
+}
 
 :local(.container) {
   font-family: "Helvetica Neue", Helvetica, sans-serif;
@@ -83,10 +86,6 @@ $list-item-icon-size: 32px;
     width: 10px;
   }
 
-  .dashboard, .list {
-    padding: 10px;
-  }
-
   .dashboard {
     @include no-select();
     .section {
@@ -136,27 +135,6 @@ $list-item-icon-size: 32px;
         .item:active {
           @include filter(brightness(0.9));
         }
-      }
-    }
-  }
-
-  .list {
-    .item {
-      padding: 8px;
-      margin-bottom: 8px;
-      display: flex;
-      background-color: white;
-      border: thin solid #DDD;
-      border-radius: 4px;
-      .icon {
-        width: $list-item-icon-size;
-        height: $list-item-icon-size;
-        border-radius: 2px;
-        display: block;
-        margin-right: 10px;
-      }
-      .name {
-        line-height: $list-item-icon-size;
       }
     }
   }

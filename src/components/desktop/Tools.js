@@ -4,21 +4,14 @@ import reactStringReplace from 'react-string-replace';
 import Helmet from "react-helmet";
 import styles from './Tools.scss';
 import _ from 'lodash';
-import { connectNavigator, HistoryLink, BackLink, ContentArea } from '../containers/history/src/components/HistoryComponent';
-import {connectComponent} from "../containers/history/src/components/HistoryComponent";
-import {tools, categories, getMainName} from '../constants/tools';
+import { connectNavigator, HistoryLink, BackLink, ContentArea } from '../../containers/history/src/components/HistoryComponent';
+import {connectComponent} from "../../containers/history/src/components/HistoryComponent";
+import {tools, categories} from '../../constants/tools';
+import {getMainName, escapeName, getIcon} from '../../utils/tools';
 
 const ROWS = 2;
 const starIcon = require('img/icons/star.svg');
 const halfStarIcon = require('img/icons/half-star.svg');
-
-const escapeName = name => name.replace(' ', '_').replace('#', 'sharp');
-
-const getIcon = ({name, iconType}) =>
-    <img className="icon" src={require('img/icons/tools/' + escapeName(name) +'.' + (iconType || 'svg'))} />;
-
-const externalLink = (name, href='http://' + name) =>
-    <a target="_blank" href={href}>{name} <i className="fa fa-external-link" /></a>;
 
 class Tools extends Component {
     linkToTool(name, text=name) {
@@ -106,7 +99,7 @@ class Tools extends Component {
                     {_.map(categories, c => this.linkToCategory(c))}
                 </div>
             </div>
-            <ContentArea scrollAreaClassName="scroll-area">
+            <ContentArea scrollAreaClassName="tools-scroll-area">
                 {selectedTool ? this.renderDetails() : this.renderTools()}
             </ContentArea>
         </div>);

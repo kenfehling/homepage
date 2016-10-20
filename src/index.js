@@ -7,7 +7,7 @@ import { createDevTools } from 'redux-devtools';
 import LogMonitor from 'redux-devtools-log-monitor';
 import DockMonitor from 'redux-devtools-dock-monitor';
 import App from './containers/App';
-import Tools from './components/Tools';
+import Tools from './components/desktop/Tools';
 import Mobile from './containers/Mobile';
 import { LOAD, PUSH, POP, TOP } from './containers/history/src/constants/LinkTypes';
 

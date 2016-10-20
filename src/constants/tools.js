@@ -449,17 +449,3 @@ export const tools = [{
         Description
     </div>
 }];
-
-const getToolByFullName = fullName => {
-    if (fullName) {
-        return _.find(tools, tool => tool.fullName === fullName);
-    }
-    else {
-        throw new Error('You must pass a fullName parameter');
-    }
-};
-
-export const getMainName = fullName => {
-    console.log(fullName);
-    return getToolByFullName(fullName).name;
-};
