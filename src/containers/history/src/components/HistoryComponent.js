@@ -183,8 +183,10 @@ class ContentAreaY extends Component {
                 switch (lastTransitionType) {
                     case POP:
                         const scrollPosition = this.scrollPositions[currentPage.to];
-                        this.scrollArea.scrollTop = scrollPosition.top;
-                        this.scrollArea.scrollLeft = scrollPosition.left;
+                        if (scrollPosition) {
+                            this.scrollArea.scrollTop = scrollPosition.top;
+                            this.scrollArea.scrollLeft = scrollPosition.left;
+                        }
                         break;
                     case TOP:
                     case LOAD:
