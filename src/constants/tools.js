@@ -1,5 +1,3 @@
-import { HistoryLink } from '../containers/history/src/components/HistoryComponent';
-
 const LANGUAGES = 'Languages';
 const LIBRARIES = 'Libraries';
 const DEVOPS = 'DevOps';
@@ -9,26 +7,8 @@ const MOBILE = 'Mobile';
 const DATABASES = 'Databases';
 const SOFTWARE = 'Software';
 
-export const escapeName = name => name.replace(' ', '_').replace('#', 'sharp');
-
-export const getIcon = ({name, iconType}) =>
-    <img className="icon" src={require('img/icons/tools/' + escapeName(name) +'.' + (iconType || 'svg'))} />;
-
-export const externalLink = (name, href='http://' + name) =>
+const externalLink = (name, href='http://' + name) =>
     <a target="_blank" href={href}>{name} <i className="fa fa-external-link" /></a>;
-
-
-export const linkToTool = (name, text=name, currentCategory=categories[0]) => {
-    const escapedName = escapeName(name);
-    const to = `/tools/${currentCategory}/${escapedName}`;
-    return <HistoryLink key={to + Math.random()} to={to} name={name}>{text}</HistoryLink>;
-};
-
-export const linkToCategory = (name, text=name, currentCategory=categories[0]) => {
-    const to = '/tools' + (name === this.categories[0] ? '' : '/' + name);
-    const className = name === currentCategory ? 'current' : '';
-    return <HistoryLink key={to + Math.random()} to={to} name={name} className={className}>{text}</HistoryLink>;
-};
 
 export const categories = [
     'All',
@@ -46,27 +26,27 @@ export const tools = [{
     name: 'JavaScript',
     stars: 5,
     categories: [LANGUAGES, WEB],
-    description: () => <div>
+    description: <div>
         My main programming language.
         Despite the near universal hatred of JavaScript by my peers, I'm actually quite fond of it.
         It's gotten especially good now with some of the features in ES6/ES2015.
-        I use {this.linkToTool('Babel')} to transpile into ES5 for cross-browser support.
+        I use [[Babel]] to transpile into ES5 for cross-browser support.
     </div>
 }, {
     name: 'HTML',
     stars: 5,
     categories: [LANGUAGES, PLATFORMS, WEB],
-    description: () => <div>
+    description: <div>
         Description
     </div>
 }, {
     name: 'React',
     stars: 4.5,
     categories: [LIBRARIES, WEB],
-    description: () => <div>
-        By far my favorite {this.linkToTool('JavaScript')} framework/library,
+    description: <div>
+        By far my favorite [[JavaScript]] framework/library,
         React has drastically changed the way I approach web app
-        development. This site itself is written in React as well as {this.linkToTool('Redux')}.
+        development. This site itself is written in React as well as [[Redux]].
         <br /><br />I've also released a couple of libraries for React into open source:<br />
         <ul>
             <li>{externalLink("react-designable-audio-player",
@@ -77,8 +57,8 @@ export const tools = [{
     name: 'Redux',
     stars: 4.5,
     categories: [LIBRARIES, WEB],
-    description: () => <div>
-        Redux is a great add-on to {this.linkToTool('React')}, and it's renewed my interest
+    description: <div>
+        Redux is a great add-on to [[React]], and it's renewed my interest
         in functional programming. It makes managing client-side state simple and sensible,
         and I appreciate how it's decoupled from the web and can be used in React Native
         and even non-React projects.
@@ -90,7 +70,7 @@ export const tools = [{
      name: 'Lodash',
      stars: 4.5,
      categories: [LIBRARIES, WEB],
-     description: () => <div>
+     description: <div>
      Description
      </div>
      }, {
@@ -98,90 +78,90 @@ export const tools = [{
     name: 'CSS',
     stars: 4,
     categories: [LANGUAGES, WEB],
-    description: () => <div>
+    description: <div>
         Description
     </div>
 }, {
     name: 'Node',
     stars: 4,
     categories: [PLATFORMS, WEB],
-    description: () => <div>
+    description: <div>
         Description
     </div>
 }, {
     name: 'Python',
     stars: 4,
     categories: [LANGUAGES],
-    description: () => <div>
+    description: <div>
         Python is my main go-to language for anything not web or mobile related.
         Since most of my work is on the frontend web I'm usually
-        using {this.linkToTool('JavaScript')}, however I've recently been using Python
+        using [[JavaScript]], however I've recently been using Python
         for the backend for a hackathon registration page, and some data analysis using Pandas.
     </div>
 }, {
     name: 'Java',
     stars: 4,
     categories: [LANGUAGES, MOBILE],
-    description: () => <div>
+    description: <div>
         At my university, the Computer Science curriculum uses Java as its main programming language.
         I've also used Java on my own projects with
-        JSP/Servlets, {this.linkToTool('GWT', 'Google Web Toolkit')},
-        and {this.linkToTool('Android')}.
+        JSP/Servlets, [[GWT', 'Google Web Toolkit]],
+        and [[Android]].
     </div>
 }, {
     name: 'Webpack',
     stars: 4,
     categories: [DEVOPS, WEB],
-    description: () => <div>
-        Currently my main {this.linkToTool('JavaScript')} build tool.
+    description: <div>
+        Currently my main [[JavaScript]] build tool.
     </div>
 }, {
     name: 'SASS',
     stars: 4,
     categories: [LIBRARIES, WEB],
-    description: () => <div>
+    description: <div>
         Description
     </div>
 }, {
     name: 'Gulp',
     stars: 4,
     categories: [DEVOPS, WEB],
-    description: () => <div>
-        Gulp was my main {this.linkToTool('JavaScript')} build tool before switching to
-        {this.linkToTool('Webpack')}. I often used Gulp with {this.linkToTool('Browserify')}.
+    description: <div>
+        Gulp was my main [[JavaScript]] build tool before switching to
+        [[Webpack]]. I often used Gulp with [[Browserify]].
     </div>
 }, {
     name: 'Grunt',
     stars: 4,
     categories: [DEVOPS, WEB],
-    description: () => <div>
-        I used Grunt for a short time before switching to {this.linkToTool('Gulp')},
-        and currently {this.linkToTool('Webpack')}.
-        Grunt and Gulp are pretty similar build tools for {this.linkToTool('JavaScript')} and
-        I used both of them frequently with {this.linkToTool('Browserify')}.
+    description: <div>
+        I used Grunt for a short time before switching to [[Gulp]],
+        and currently [[Webpack]].
+        Grunt and Gulp are pretty similar build tools for [[JavaScript]] and
+        I used both of them frequently with [[Browserify]].
     </div>
 }, {
     name: 'Flask',
     stars: 4,
     categories: [LIBRARIES, WEB],
-    description: () => <div>
-        I usually use Flask when I write web projects in {this.linkToTool('Python')}.
+    description: <div>
+        I usually use Flask when I write web projects in [[Python]].
         I've dabbled with Django a little,
         but my Python web projects tend to be pretty small so Flask is better suited.
-        For larger web apps I typically use {this.linkToTool('Node')} for the backend.
+        For larger web apps I typically use [[Node]] for the backend.
     </div>
 }, {
     name: 'JQuery',
     stars: 4,
     categories: [LIBRARIES, WEB],
-    description: () => <div>
+    description: <div>
         Description
     </div>
 }, {
     name: 'Android',
     stars: 4,
     categories: [PLATFORMS, MOBILE],
-    description: () => <div>
+    description: <div>
         I was passionate about making Android apps for a couple of years,
         before going back to focusing primarily on web development.
         <br /><br />
@@ -196,77 +176,77 @@ export const tools = [{
     name: 'Git',
     stars: 4,
     categories: [SOFTWARE],
-    description: () => <div>
+    description: <div>
         Description
     </div>
 }, {
     name: 'NPM',
     stars: 4,
     categories: [DEVOPS, WEB],
-    description: () => <div>
+    description: <div>
         Description
     </div>
 }, {
     name: 'Babel',
     stars: 4,
     categories: [DEVOPS, WEB],
-    description: () => <div>
+    description: <div>
         Description
     </div>
 }, {
     name: 'MongoDB',
     stars: 3.5,
     categories: [DATABASES],
-    description: () => <div>
+    description: <div>
         Description
     </div>
 }, {
     name: 'Rails',
     stars: 3.5,
     categories: [LIBRARIES, WEB],
-    description: () => <div>
+    description: <div>
         Description
     </div>
 }, {
     name: 'Bootstrap',
     stars: 3.5,
     categories: [LIBRARIES, WEB],
-    description: () => <div>
+    description: <div>
         Description
     </div>
 }, {
     name: 'Keystone',
     stars: 3.5,
     categories: [LIBRARIES, WEB],
-    description: () => <div>
+    description: <div>
         Description
     </div>
 }, {
     name: 'Jest',
     stars: 3.5,
     categories: [DEVOPS, WEB],
-    description: () => <div>
+    description: <div>
         Description
     </div>
 }, {
     name: 'ESLint',
     stars: 3.5,
     categories: [DEVOPS, WEB],
-    description: () => <div>
+    description: <div>
         Description
     </div>
 }, {
     name: 'Bower',
     stars: 3.5,
     categories: [DEVOPS, WEB],
-    description: () => <div>
+    description: <div>
         Description
     </div>
 }, {
     name: 'FFmpeg',
     stars: 3.5,
     categories: [SOFTWARE],
-    description: () => <div>
+    description: <div>
         Description
     </div>
 }, {
@@ -274,20 +254,20 @@ export const tools = [{
     fullName: 'Google Guice',
     stars: 3.5,
     categories: [LIBRARIES],
-    description: () => <div>
-        Google Guice is a dependency injection library for {this.linkToTool('Java')}.
-        I started using Guice while doing {this.linkToTool('GWT')} development,
-        but I continued to use it on almost all of my {this.linkToTool('Java')} projects,
-        including for {this.linkToTool('Android')} (along with {this.linkToTool('RoboGuice')}).
+    description: <div>
+        Google Guice is a dependency injection library for [[Java]].
+        I started using Guice while doing [[GWT]] development,
+        but I continued to use it on almost all of my [[Java]] projects,
+        including for [[Android]] (along with [[RoboGuice]]).
     </div>
 }, {
     name: 'RoboGuice',
     iconType: 'png',
     stars: 3.5,
     categories: [LIBRARIES, MOBILE],
-    description: () => <div>
-        Back when I was doing {this.linkToTool('Android')} development,
-        I used {this.linkToTool('Guice')} and RoboGuice for dependency injection.
+    description: <div>
+        Back when I was doing [[Android]] development,
+        I used [[Guice]] and RoboGuice for dependency injection.
         Android isn't inherently that well suited for DI but RoboGuice smoothed this over a bit,
         helping me strive to write more modular and testable code.
         In 2016 the library was discontinued, however there are now many alternative DI libraries for Android.
@@ -297,63 +277,63 @@ export const tools = [{
     iconType: 'png',
     stars: 3.5,
     categories: [LANGUAGES, WEB, MOBILE],
-    description: () => <div>
+    description: <div>
         Description
     </div>
 }, {
     name: 'Flash',
     stars: 3.5,
     categories: [PLATFORMS, WEB, SOFTWARE],
-    description: () => <div>
+    description: <div>
         Description
     </div>
 }, {
     name: 'Flex',
     stars: 3.5,
     categories: [SOFTWARE],
-    description: () => <div>
+    description: <div>
         Description
     </div>
 }, {
     name: 'Ruby',
     stars: 3,
     categories: [LANGUAGES],
-    description: () => <div>
+    description: <div>
         Description
     </div>
 }, {
     name: 'C#',
     stars: 3,
     categories: [LANGUAGES],
-    description: () => <div>
+    description: <div>
         Description
     </div>
 }, {
     name: 'iOS',
     stars: 3,
     categories: [PLATFORMS, MOBILE],
-    description: () => <div>
+    description: <div>
         Description
     </div>
 }, {
     name: 'TravisCI',
     stars: 3,
     categories: [DEVOPS, WEB],
-    description: () => <div>
+    description: <div>
         Description
     </div>
 }, {
     name: 'Browserify',
     stars: 3,
     categories: [DEVOPS, WEB],
-    description: () => <div>
+    description: <div>
         Description
     </div>
 }, {
     name: 'Bourbon',
     stars: 3,
     categories: [LIBRARIES, WEB],
-    description: () => <div>
+    description: <div>
         Description
     </div>
 }, {
@@ -362,7 +342,7 @@ export const tools = [{
      iconType: 'png',
      stars: 3,
      categories: [MOBILE, SOFTWARE],
-     description: () => <div>
+     description: <div>
      Description
      </div>
      }, {
@@ -370,28 +350,28 @@ export const tools = [{
     name: 'Postgresql',
     stars: 3,
     categories: [DATABASES],
-    description: () => <div>
+    description: <div>
         Description
     </div>
 }, {
     name: 'MySQL',
     stars: 3,
     categories: [DATABASES],
-    description: () => <div>
+    description: <div>
         Description
     </div>
 }, {
     name: 'SQLite',
     stars: 3,
     categories: [DATABASES],
-    description: () => <div>
+    description: <div>
         Description
     </div>
 }, {
     name: 'Firebase',
     stars: 3,
     categories: [DATABASES],
-    description: () => <div>
+    description: <div>
         Description
     </div>
 }, {
@@ -399,23 +379,23 @@ export const tools = [{
     iconType: 'png',
     stars: 3,
     categories: [SOFTWARE],
-    description: () => <div>
+    description: <div>
         Description
     </div>
 }, {
     name: 'Ableton',
     stars: 3,
     categories: [SOFTWARE],
-    description: () => <div>
+    description: <div>
         Description
     </div>
 }, {
     name: 'Clojure',
     stars: 2.5,
     categories: [LANGUAGES],
-    description: () => <div>
+    description: <div>
         I had previously learned Scheme over a summer vacation using the
-        old <a target="_blank" href="http://youtube.com/watch?v=2Op3QLzMgSY">SICP lectures</a> from MIT.
+        old {externalLink("SICP lectures", "http://youtube.com/watch?v=2Op3QLzMgSY")} from MIT.
         I was smitten by the power yet simplicity of it all.
         I later learned some Clojure and ClojureScript,
         which also being Lisp variants are similar to Scheme.
@@ -423,20 +403,20 @@ export const tools = [{
         Although I don't use any of these languages in my daily work,
         I'm glad I learned them because they completely changed the way I approach writing programs,
         even in more imperative languages
-        like {this.linkToTool('JavaScript')} and {this.linkToTool('Python')}.
+        like [[JavaScript]] and [[Python]].
     </div>
 }, {
     name: 'Swift',
     stars: 2.5,
     categories: [LANGUAGES, MOBILE],
-    description: () => <div>
+    description: <div>
         Description
     </div>
 }, {
     name: 'Unity',
     stars: 2.5,
     categories: [PLATFORMS, SOFTWARE, MOBILE],
-    description: () => <div>
+    description: <div>
         Description
     </div>
 }, {
@@ -445,27 +425,41 @@ export const tools = [{
     fullName: 'Google Web Toolkit',
     stars: 2.5,
     categories: [WEB],
-    description: () => <div>
-        In the past {this.linkToTool('Java')} was my primary language, so GWT seemed like an
+    description: <div>
+        In the past [[Java]] was my primary language, so GWT seemed like an
         alluring tool at the time for creating web apps. However I didn't quite care for it overall,
-        and my {this.linkToTool('HTML')}, {this.linkToTool('JavaScript')},
-        and {this.linkToTool('CSS')} skills continued to progress.
+        and my [[HTML]], [[JavaScript]],
+        and [[CSS]] skills continued to progress.
         <br /><br />
         Although I abandoned GWT, I did take away some nice experience with dependency injection,
-        particularly with {this.linkToTool('Guice', 'Google Guice')}, and the observer pattern.
+        particularly with [[Google Guice]], and the observer pattern.
     </div>
 }, {
     name: 'Illustrator',
     stars: 2.5,
     categories: [SOFTWARE],
-    description: () => <div>
+    description: <div>
         Description
     </div>
 }, {
     name: 'Photoshop',
     stars: 1.5,
     categories: [SOFTWARE],
-    description: () => <div>
+    description: <div>
         Description
     </div>
 }];
+
+const getToolByFullName = fullName => {
+    if (fullName) {
+        return _.find(tools, tool => tool.fullName === fullName);
+    }
+    else {
+        throw new Error('You must pass a fullName parameter');
+    }
+};
+
+export const getMainName = fullName => {
+    console.log(fullName);
+    return getToolByFullName(fullName).name;
+};
