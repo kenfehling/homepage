@@ -13,13 +13,16 @@
   "license": "ISC",
   "dependencies": {
     "lodash": "^4.16.1",
+    "react": "^15.3.2",
     "react-addons-css-transition-group": "^15.3.2",
     "react-designable-audio-player": "github:kenfehling/react-designable-audio-player",
+    "react-dom": "^15.3.2",
     "react-draggable": "^2.2.2",
     "react-helmet": "^3.1.0",
     "react-pdf": "0.0.10",
     "react-redux": "^4.4.5",
-    "react-router": "^2.8.1",
+    "react-router": "^4.0.0-alpha.6",
+    "react-router-nested-history": "github:kenfehling/react-router-nested-history",
     "react-router-redux": "^4.0.6",
     "react-tooltip": "^3.2.1",
     "react-typist": "^0.3.0",
@@ -42,15 +45,10 @@
     "node-bourbon": "^4.2.8",
     "node-neat": "^1.7.2",
     "node-sass": "^3.10.0",
-    "react": "^15.3.2",
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.2",
     "@kadira/storybook": "^2.5.2"
-  },
-  "peerDependencies": {
-    "react": "^15.3.2",
-    "react-dom": "^15.3.2"
   }
 }

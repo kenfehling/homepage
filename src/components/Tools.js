@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import { Link, browserHistory } from 'react-router';
+import { Container, ContainerGroup, HistoryMatch, HistoryLink } from 'react-router-nested-history'
 import Helmet from "react-helmet";
 import styles from './Tools.scss';
 import _ from 'lodash';
@@ -16,7 +16,6 @@ const WEB = 'Web';
 const MOBILE = 'Mobile';
 const DATABASES = 'Databases';
 const SOFTWARE = 'Software';
-
 
 let detailsHistory = [];
 
@@ -42,7 +41,9 @@ class Tools extends Component {
             this.setState({...this.state, back});
             browserHistory.replace(`/tools/${category}/${escapedName}`);
         };
-        return <Link key={name} onClick={f} to={`/tools/${category}/${escapedName}`}>{text}</Link>;
+        return (<HistoryLink key={name} onClick={f} to={`/tools/${category}/${escapedName}`}>
+          {text}
+        </HistoryLink>);
     }
 
     linkToCategory(name, text=name, back=false) {
@@ -55,8 +56,8 @@ class Tools extends Component {
             detailsHistory = [];
             browserHistory.replace(`/tools${path}`);
         };
-        return <Link className={!back && name === category ? 'current' : ''}
-                     to={`/tools${path}`} key={name} onClick={f}>{text}</Link>;
+        return <HistoryLink className={!back && name === category ? 'current' : ''}
+                     to={`/tools${path}`} key={name} onClick={f}>{text}</HistoryLink>;
     }
     
     constructor(props) {
@@ -510,8 +511,8 @@ class Tools extends Component {
         }
     }
 
-    getSelectedTool() {
-        return _.find(this.tools, tool => escapeName(tool.name) === this.props.selectedTool);
+    getSelectedTool(tool) {
+        return _.find(this.tools, t => escapeName(t.name) === tool);
     }
 
     renderTool(tool) {
@@ -526,8 +527,7 @@ class Tools extends Component {
         </div>));
     }
 
-    renderTools() {
-        const {category=this.categories[0]} = this.props;
+    renderTools(category) {
         const filteredTools = category === 'All' ? this.tools : _.filter(this.tools, t => _.includes(t.categories, category));
         const n = _.size(filteredTools);
         return (<div className="tools" key="tools">
@@ -543,9 +543,8 @@ class Tools extends Component {
         </div>);
     }
 
-    renderDetails() {
-        const {category=this.categories[0]} = this.props;
-        const {name, fullName, stars, description} = this.getSelectedTool();
+    renderDetails(category, tool) {
+        const {name, fullName, stars, description} = this.getSelectedTool(tool);
         return (<div className="details" key={name}>
             <div className="title">{fullName || name}</div>
             <div className="body">{description()}</div>
@@ -560,38 +559,42 @@ class Tools extends Component {
     }
 
     render() {
-        const {category, selectedTool} = this.props;
-        return (<div className={styles.container}>
-            <Helmet
-                title={`${!selectedTool ? (category || '') : selectedTool || ''}`}
-                titleTemplate="Ken Fehling - %s"
-                defaultTitle="Ken Fehling"
-            />
-            <div className="header">
-                <div className="title">Skills</div>
-                <div className="categories">
-                    {_.map(this.categories, c => this.linkToCategory(c))}
-                </div>
-            </div>
-            <div className="transition-wrapper">
-                <ReactCSSTransitionGroup
-                    component="div"
-                    className={`transition-group${this.state.back ? ' back' : ''}`}
-                    transitionName="tool"
-                    transitionEnter={true}
-                    transitionLeave={true}
-                    transitionEnterTimeout={0}
-                    transitionLeaveTimeout={0}>
-                    {selectedTool ? this.renderDetails() : this.renderTools()}
-                </ReactCSSTransitionGroup>
-            </div>
-        </div>);
+      const {params: {category=this.categories[0], tool}} = this.props
+      return (<div className={styles.container}>
+        <Helmet
+            title={`${!tool ? (category || '') : tool || ''}`}
+            titleTemplate="Ken Fehling - %s"
+            defaultTitle="Ken Fehling"
+        />
+        <div className="header">
+          <div className="title">Skills</div>
+          <div className="categories">
+            {_.map(this.categories, c => this.linkToCategory(c))}
+          </div>
+        </div>
+        <div className="transition-wrapper">
+          <ReactCSSTransitionGroup
+              component="div"
+              className={`transition-group${this.state.back ? ' back' : ''}`}
+              transitionName="tool"
+              transitionEnter={true}
+              transitionLeave={true}
+              transitionEnterTimeout={0}
+              transitionLeaveTimeout={0}>
+            {tool ? this.renderDetails(category, tool) : this.renderTools(category)}
+          </ReactCSSTransitionGroup>
+        </div>
+      </div>)
     }
 }
 
-Tools.propTypes = {
-    category: PropTypes.string,
-    selectedTool: PropTypes.string
-};
-
-export default Tools;
+export default () => (
+    <ContainerGroup>
+      <Container initialUrl='/tools'
+                 patterns={['/tools', '/tools/:category', '/tools/:category/:tool']}>
+        <HistoryMatch pattern='/tools' exactly component={Tools} />
+        <HistoryMatch pattern='/tools/:category' exactly component={Tools} />
+        <HistoryMatch pattern='/tools/:category/:tool' component={Tools} />
+      </Container>
+    </ContainerGroup>
+)
