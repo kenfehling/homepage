@@ -2,7 +2,7 @@ import Window from './Window';
 import IFrameWindow from './IFrameWindow';
 import Editor from '../components/Editor';
 import Terminal from '../components/Terminal';
-import AudioPlayer from '../components/AudioPlayer';
+import Audio from '../components/Audio';
 import Tools from '../components/Tools';
 import Mobile from './Mobile';
 import Dock from '../components/Dock';
@@ -22,8 +22,8 @@ export default () => (
         <Window name="Terminal" menuItems={menuItems} bgColor="#000" fgColor="#3F3">
           <Terminal />
         </Window>
-        <Window name="AudioPlayer" bgColor="#003" fgColor="#36F" usePadding={false}>
-          <AudioPlayer />
+        <Window name="Audio" bgColor="#003" fgColor="#36F" usePadding={false}>
+          <Audio />
         </Window>
         <Window name="Tools" bgColor="#FFF" fgColor="#000" usePadding={false}>
             <Tools />

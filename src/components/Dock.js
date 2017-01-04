@@ -10,8 +10,8 @@ export default () => (
                 <DockIcon name="Terminal" />
                 <DockIcon name="Tools" />
                 <DockIcon name="Editor" />
-                <DockIcon name="RSS" />
-                <DockIcon name="AudioPlayer" />
+                <DockIcon name="Social" />
+                <DockIcon name="Audio" />
                 <DockIcon name="PDF" />
                 <DockIcon name="Mobile" />
             </div>

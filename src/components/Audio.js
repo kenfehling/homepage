@@ -1,5 +1,5 @@
 import {connectAudioPlayer, TitleMarquee, TimeSlider} from 'react-designable-audio-player';
-import styles from './AudioPlayer.scss';
+import styles from './Audio.scss';
 
 const AudioPlayer = ({play, stop, next, prev, isPlaying, timeElapsed}) => (
     <div className={styles.container}>

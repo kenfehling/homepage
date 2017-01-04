@@ -39,7 +39,7 @@ const Dashboard = () => (
         <div className="section">
             <div className="title">Music</div>
             <div className="items">
-                <DashboardItem icon='./dock/AudioPlayer.svg' name="Listen" />
+                <DashboardItem icon='./dock/Audio.svg' name="Listen" />
             </div>
         </div>
         <div className="section">
