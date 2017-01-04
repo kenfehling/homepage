@@ -25,7 +25,7 @@ const externalLink = (name, href='http://' + name) =>
 
 class Tools extends Component {
   replaceLinks(element) {
-    const category = this.props;
+    const {category} = this.props;
     const children = reactStringReplace(element.props.children, /\[\[(\w+)]]/g,
         match => linkToTool(match, category));
     return createElement(element.type, {children});
