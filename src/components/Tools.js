@@ -6,7 +6,7 @@ import Helmet from "react-helmet";
 import styles from './Tools.scss';
 import _ from 'lodash';
 import {tools, categories} from '../constants/tools'
-import {linkToTool, linkToCategory} from "../utils/tools";
+import {linkToTool, linkToCategory, backLinkToTool, backLinkToCategory, getTool} from "../utils/tools";
 
 const ROWS = 2;
 const starIcon = require('img/icons/star.svg');
@@ -34,8 +34,7 @@ class Tools extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      lastScrollLeft: 0,
-      back: false
+      lastScrollLeft: 0
     };
   }
 
@@ -43,10 +42,6 @@ class Tools extends Component {
     if (this.scrollArea) {
       this.scrollArea.scrollLeft = this.state.lastScrollLeft;
     }
-  }
-
-  getSelectedTool(tool) {
-    return _.find(tools, t => escapeName(t.name) === tool);
   }
 
   renderTool(tool) {
@@ -78,7 +73,7 @@ class Tools extends Component {
   }
 
   renderDetails(currentCategory, tool) {
-    const {name, fullName, stars, category, description} = this.getSelectedTool(tool);
+    const {name, fullName, stars, category, description} = getTool(tool);
     return (<div className="details" key={name}>
       <div className="title">{fullName || name}</div>
       <div className="body">{this.replaceLinks(description)}</div>
@@ -87,13 +82,13 @@ class Tools extends Component {
       <br />
 
       {detailsHistory.length > 1 ?
-          linkToTool(detailsHistory[detailsHistory.length - 2], category, "Back") :
-          linkToCategory(category, currentCategory, "Back")}
+          backLinkToTool(detailsHistory[detailsHistory.length - 2], category) :
+          backLinkToCategory(category, currentCategory)}
     </div>);
   }
 
   render() {
-    const {params: {category=categories[0], tool}} = this.props
+    const {params: {category=categories[0], tool}, lastAction} = this.props
     return (<div className={styles.container}>
       <Helmet
           title={`${!tool ? (category || '') : tool || ''}`}
@@ -109,7 +104,7 @@ class Tools extends Component {
       <div className="transition-wrapper">
         <ReactCSSTransitionGroup
             component="div"
-            className={`transition-group${this.state.back ? ' back' : ''}`}
+            className={`transition-group${lastAction === 'back' ? ' back' : ''}`}
             transitionName="tool"
             transitionEnter={true}
             transitionLeave={true}
