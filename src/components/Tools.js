@@ -1,18 +1,16 @@
 import React, { Component, PropTypes, createElement } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import { Container, ContainerGroup, HistoryMatch } from 'react-router-nested-history'
+import { Container, ContainerGroup, HistoryMatch, BackLink } from 'react-router-nested-history'
 import reactStringReplace from 'react-string-replace'
 import Helmet from "react-helmet";
 import styles from './Tools.scss';
 import _ from 'lodash';
 import {tools, categories} from '../constants/tools'
-import {linkToTool, linkToCategory, backLinkToTool, backLinkToCategory, getTool} from "../utils/tools";
+import {linkToTool, linkToCategory, getTool} from "../utils/tools";
 
 const ROWS = 2;
 const starIcon = require('img/icons/star.svg');
 const halfStarIcon = require('img/icons/half-star.svg');
-
-let detailsHistory = [];
 
 const escapeName = name => name.replace(' ', '_').replace('#', 'sharp');
 
@@ -77,13 +75,9 @@ class Tools extends Component {
     return (<div className="details" key={name}>
       <div className="title">{fullName || name}</div>
       <div className="body">{this.replaceLinks(description)}</div>
-
       <br />
       <br />
-
-      {detailsHistory.length > 1 ?
-          backLinkToTool(detailsHistory[detailsHistory.length - 2], category) :
-          backLinkToCategory(category, currentCategory)}
+      <BackLink nameFn={({params: {tool, category}}) => { return tool ? tool : category}} />
     </div>);
   }
 
