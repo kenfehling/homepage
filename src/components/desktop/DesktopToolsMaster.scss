@@ -1,5 +1,5 @@
 @import "bourbon";
-@import "../styles/utils";
+@import "../../styles/utils";
 
 $icon-size: 56px;
 $detail-icon-size: 36px;
@@ -14,7 +14,7 @@ $header-bottom-color: #a343a4;
 
 :local(.container) {
   font-family: Helvetica, sans-serif;
-  width: 100%;
+  width: 200%;
 
   .header {
     @include background-image(linear-gradient(to bottom, $header-top-color, $header-bottom-color));

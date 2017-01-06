@@ -1,11 +1,11 @@
 import Window from './Window';
 import IFrameWindow from './IFrameWindow';
-import Editor from '../components/Editor';
-import Terminal from '../components/Terminal';
-import Audio from '../components/Audio';
-import Tools from '../components/Tools';
+import Editor from '../components/desktop/Editor';
+import Terminal from '../components/desktop/Terminal';
+import Audio from '../components/desktop/Audio';
+import DesktopTools from '../components/desktop/DesktopTools';
 import Mobile from './Mobile';
-import Dock from '../components/Dock';
+import Dock from '../components/desktop/Dock';
 import styles from './Desktop.scss';
 
 const menuItems = [
@@ -25,11 +25,11 @@ export default () => (
         <Window name="Audio" bgColor="#003" fgColor="#36F" usePadding={false}>
           <Audio />
         </Window>
-        <Window name="Tools" bgColor="#FFF" fgColor="#000" usePadding={false}>
-            <Tools />
-        </Window>
         <Window name="Mobile" usePadding={false}>
           <Mobile useTopBar={true} />
+        </Window>
+        <Window name="Tools" bgColor="#FFF" fgColor="#000" usePadding={false}>
+          <DesktopTools />
         </Window>
         <Dock />
     </div>

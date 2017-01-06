@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf, action, linkTo } from '@kadira/storybook';
 import Button from './Button';
 import Welcome from './Welcome';
-import Tools from '../src/components/Tools';
+import Tools from '../src/components/desktop/Tools';
 import Animation from './Animation';
 
 storiesOf('Welcome', module)

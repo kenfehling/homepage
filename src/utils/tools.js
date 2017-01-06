@@ -46,15 +46,16 @@ export const getIcon = ({name, iconType}) => (
         escapeName(name) +'.' + (iconType || 'svg'))} />)
 
 export function linkToTool(name, category=categories[0], text=name) {
-  const names = _.map(tools, t => t.name);
-  const mainName = _.includes(names, name) ? name : getMainName(name).name;
-  const escapedName = escapeName(mainName);
-  const to = `/tools/${category}/${escapedName}`;
-  return <HistoryLink key={to + Math.random()} to={to} name={mainName}>{text}</HistoryLink>;
+  const names = _.map(tools, t => t.name)
+  const mainName = _.includes(names, name) ? name : getMainName(name).name
+  const escapedName = escapeName(mainName)
+  const to = `/tools/${category}/${escapedName}`
+  return <HistoryLink key={to + Math.random()} to={to} name={mainName}>{text}</HistoryLink>
 }
 
 export function linkToCategory(name, currentCategory=categories[0], text=name) {
-  const to = '/tools' + (name === categories[0] ? '' : '/' + name);
-  const className = name === currentCategory ? 'current' : '';
-  return <HistoryLink key={to + Math.random()} to={to} name={name} className={className}>{text}</HistoryLink>;
+  //const to = '/tools' + (name === categories[0] ? '' : '/' + name)
+  const to = '/tools/' + name
+  const className = name === currentCategory ? 'current' : ''
+  return <HistoryLink key={to + Math.random()} to={to} name={name} className={className}>{text}</HistoryLink>
 }

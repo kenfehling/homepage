@@ -1,6 +1,6 @@
 import styles from './DockIcon.scss';
 import { connect } from 'react-redux';
-import { bringToFront } from '../actions/UiActions';
+import { bringToFront } from '../../actions/UiActions';
 const req = require.context("img/icons/dock", true, /^\.\/.*$/);
 
 const DockIcon = ({name, bringToFront}) => (

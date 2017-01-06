@@ -5,8 +5,8 @@ import reactStringReplace from 'react-string-replace'
 import Helmet from "react-helmet";
 import styles from './Tools.scss';
 import _ from 'lodash';
-import {tools, categories} from '../constants/tools'
-import {linkToTool, linkToCategory, getTool} from "../utils/tools";
+import {tools, categories} from '../../constants/tools'
+import {linkToTool, linkToCategory, getTool} from "../../utils/tools";
 
 const ROWS = 2;
 const starIcon = require('img/icons/star.svg');
@@ -55,7 +55,8 @@ class Tools extends Component {
   }
 
   renderTools(category) {
-    const filteredTools = category === 'All' ? tools : _.filter(tools, t => _.includes(t.categories, category));
+    const filteredTools = category === 'All' ? tools :
+        _.filter(tools, t => _.includes(t.categories, category));
     const n = _.size(filteredTools);
     return (<div className="tools" key="tools">
       <div className="scroll-area" ref={(ref) => this.scrollArea = ref}
@@ -77,7 +78,7 @@ class Tools extends Component {
       <div className="body">{this.replaceLinks(description)}</div>
       <br />
       <br />
-      <BackLink nameFn={({params: {tool, category}}) => { return tool ? tool : category}} />
+      <BackLink nameFn={({params: {tool, category}={}}) => { return tool ? tool : category}} />
     </div>);
   }
 
@@ -115,9 +116,9 @@ export default () => (
   <ContainerGroup>
     <Container initialUrl='/tools'
                patterns={['/tools', '/tools/:category', '/tools/:category/:tool']}>
-      <HistoryMatch pattern='/tools' exactly component={Tools} />
-      <HistoryMatch pattern='/tools/:category' exactly component={Tools} />
-      <HistoryMatch pattern='/tools/:category/:tool' component={Tools} />
+      <HistoryMatch pattern='/tools' exactly component={ToolsMaster} />
+      <HistoryMatch pattern='/tools/:category' exactly component={ToolsMaster} />
+      <HistoryMatch pattern='/tools/:category/:tool' component={ToolsDetail} />
     </Container>
   </ContainerGroup>
 )
