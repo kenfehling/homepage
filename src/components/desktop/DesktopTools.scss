@@ -1,4 +1,81 @@
 :local(.container) {
   font-family: Helvetica, sans-serif;
   width: 100%;
+
+  .transition-wrapper {
+    overflow: hidden;
+  }
+
+  .transition-group {
+    width: 200%;
+
+    >* {
+      width: 50%;
+    }
+  }
+
+  .tool-enter {
+    &.tools {
+      transform: translate(-100%, 0);
+    }
+    &.details {
+      transform: translate(100%, 0);
+    }
+    float: left;
+  }
+
+  .tool-enter.tool-enter-active {
+    &.tools {
+      transform: translate(0, 0);
+    }
+    &.details {
+      transform: translate(0, 0);
+    }
+    transition: all 1s;
+    float: left;
+  }
+
+  .tool-leave {
+    &.tools {
+      transform: translate(-100%, 0);
+    }
+    &.details {
+      transform: translate(-100%, 0);
+    }
+    float: left;
+  }
+
+  .tool-leave.tool-leave-active {
+    &.tools {
+      transform: translate(-200%, 0);
+    }
+    &.details {
+      transform: translate(0, 0);
+    }
+    transition: all 1s;
+    float: left;
+  }
+
+  /* When one details is replacing another details */
+  .details + .tool-leave.details {
+    transform: translate(-100%, 0);
+  }
+  .details + .tool-leave.tool-leave-active.details {
+    transform: translate(-200%, 0);
+  }
+
+  .back {
+    .tool-leave.details {
+      transform: translate(-100%, 0);
+    }
+    .tool-leave.tool-leave-active.details {
+      transform: translate(0, 0);
+    }
+    .tool-enter.details {
+      transform: translate(-100%, 0);
+    }
+    .tool-enter.tool-enter-active.details {
+      transform: translate(0, 0);
+    }
+  }
 }
