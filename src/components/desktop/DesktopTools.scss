@@ -9,73 +9,45 @@
   .transition-group {
     width: 200%;
 
-    >* {
-      width: 50%;
+    .tool-enter,
+    .tool-leave,
+    .tool-enter.tool-enter-active,
+    .tool-leave.tool-leave-active {
+      float: left;
     }
   }
 
   .tool-enter {
-    &.tools {
-      transform: translate(-100%, 0);
-    }
-    &.details {
-      transform: translate(100%, 0);
-    }
-    float: left;
+    transform: translateX(100%);
+    background-color: blue;
   }
 
   .tool-enter.tool-enter-active {
-    &.tools {
-      transform: translate(0, 0);
-    }
-    &.details {
-      transform: translate(0, 0);
-    }
+    transform: translateX(0);
     transition: all 1s;
-    float: left;
   }
 
   .tool-leave {
-    &.tools {
-      transform: translate(-100%, 0);
-    }
-    &.details {
-      transform: translate(-100%, 0);
-    }
-    float: left;
+    transform: translateX(0);
   }
 
   .tool-leave.tool-leave-active {
-    &.tools {
-      transform: translate(-200%, 0);
-    }
-    &.details {
-      transform: translate(0, 0);
-    }
+    transform: translateX(-200%);
     transition: all 1s;
-    float: left;
-  }
-
-  /* When one details is replacing another details */
-  .details + .tool-leave.details {
-    transform: translate(-100%, 0);
-  }
-  .details + .tool-leave.tool-leave-active.details {
-    transform: translate(-200%, 0);
   }
 
   .back {
-    .tool-leave.details {
-      transform: translate(-100%, 0);
+    .tool-enter {
+      transform: translateX(-100%);
     }
-    .tool-leave.tool-leave-active.details {
-      transform: translate(0, 0);
+    .tool-enter.tool-enter-active {
+      transform: translateX(0);
     }
-    .tool-enter.details {
-      transform: translate(-100%, 0);
+    .tool-leave {
+      transform: translateX(-100%);
     }
-    .tool-enter.tool-enter-active.details {
-      transform: translate(0, 0);
+    .tool-leave.tool-leave-active {
+      transform: translateX(0);
     }
   }
 }
