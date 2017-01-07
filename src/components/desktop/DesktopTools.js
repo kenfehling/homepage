@@ -26,16 +26,19 @@ class Page extends Component {
 }
 
 class AnimatedMatch extends Component {
-  render() {
-    const {component} = this.props
+  getDirection() {
     const {lastAction} = this.context
+    return lastAction === 'back' ? 'back' : 'forward'
+  }
 
+  render() {
+    const {component, type} = this.props
     return (<HistoryMatch
         {...this.props}
         children={({ matched, ...props }) => {
           return (<ReactCSSTransitionGroup
               component="div"
-              className={`transition-group${lastAction === 'back' ? ' back' : ''}`}
+              className={`transition-group ${type} ${this.getDirection()}`}
               transitionName="tool"
               transitionEnter={true}
               transitionLeave={true}
@@ -59,10 +62,9 @@ class Tools extends Component {
     return (<div>
       <DesktopToolsHeader />
       <div className="transition-wrapper">
-
-          <AnimatedMatch pattern='/tools/:category'
+          <AnimatedMatch pattern='/tools/:category' type="tools"
                         exactly component={DesktopToolsMaster} />
-          <AnimatedMatch pattern='/tools/:category/:tool'
+          <AnimatedMatch pattern='/tools/:category/:tool' type="detail"
                         component={DesktopToolsDetail} />
       </div>
     </div>)

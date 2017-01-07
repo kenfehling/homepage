@@ -14,7 +14,7 @@ $header-bottom-color: #a343a4;
 
 :local(.container) {
   font-family: Helvetica, sans-serif;
-  width: 50%;
+  width: 100%;
 
   .header {
     @include background-image(linear-gradient(to bottom, $header-top-color, $header-bottom-color));

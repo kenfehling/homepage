@@ -3,51 +3,55 @@
   width: 100%;
 
   .transition-wrapper {
-    overflow: hidden;
+    position: relative;
   }
 
   .transition-group {
-    width: 200%;
+    width: 100%;
 
     .tool-enter,
     .tool-leave,
     .tool-enter.tool-enter-active,
     .tool-leave.tool-leave-active {
-      float: left;
+      position: absolute;
+      width: 100%;
     }
   }
 
-  .tool-enter {
-    transform: translateX(100%);
-    background-color: blue;
-  }
-
-  .tool-enter.tool-enter-active {
-    transform: translateX(0);
+  .tool-enter.tool-enter-active, .tool-leave.tool-leave-active {
     transition: all 1s;
   }
 
-  .tool-leave {
-    transform: translateX(0);
-  }
+  .forward {
+    .tool-enter {
+      left: 100%;
+    }
 
-  .tool-leave.tool-leave-active {
-    transform: translateX(-200%);
-    transition: all 1s;
+    .tool-enter.tool-enter-active {
+      left: 0;
+    }
+
+    .tool-leave {
+      right: 0;
+    }
+
+    .tool-leave.tool-leave-active {
+      right: 100%;
+    }
   }
 
   .back {
     .tool-enter {
-      transform: translateX(-100%);
+      right: 100%;
     }
     .tool-enter.tool-enter-active {
-      transform: translateX(0);
+      right: 0;
     }
     .tool-leave {
-      transform: translateX(-100%);
+      left: 0;
     }
     .tool-leave.tool-leave-active {
-      transform: translateX(0);
+      left: 100%;
     }
   }
 }

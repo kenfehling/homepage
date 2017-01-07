@@ -10,6 +10,7 @@
   position: absolute;
   cursor: move;
   .inner-container {
+    overflow: hidden;
     cursor: default;
     display: flex;
     flex-direction: column;
