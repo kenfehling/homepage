@@ -50,12 +50,5 @@ export function linkToTool(name, category=categories[0], text=name) {
   const mainName = _.includes(names, name) ? name : getMainName(name).name
   const escapedName = escapeName(mainName)
   const to = `/tools/${category}/${escapedName}`
-  return <HistoryLink key={to + Math.random()} to={to} name={mainName}>{text}</HistoryLink>
-}
-
-export function linkToCategory(name, currentCategory=categories[0], text=name) {
-  //const to = '/tools' + (name === categories[0] ? '' : '/' + name)
-  const to = '/tools/' + name
-  const className = name === currentCategory ? 'current' : ''
-  return <HistoryLink key={to + Math.random()} to={to} name={name} className={className}>{text}</HistoryLink>
+  return <HistoryLink key={name} to={to} name={mainName}>{text}</HistoryLink>
 }

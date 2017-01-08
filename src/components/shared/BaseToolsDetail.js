@@ -7,7 +7,7 @@ import { BackLink } from 'react-router-nested-history'
 import { tools } from '../../constants/tools'
 import { escapeName, linkToTool, renderStars, getTool} from '../../utils/tools'
 
-export default class BaseTools extends Component {
+export default class BaseToolsDetail extends Component {
   replaceLinks(element) {
     const {params:{category}} = this.props
     const children = reactStringReplace(element.props.children, /\[\[(\w+)]]/g, match => linkToTool(match, category))
@@ -17,7 +17,7 @@ export default class BaseTools extends Component {
   render() {
     const {params:{tool, category}, className} = this.props
     const {name, fullName, stars, description} = getTool(tool)
-    return (<div className={className}>
+    return (<div className={className} key={name}>
       <Helmet
           title={`${!tool ? (category || '') : tool || ''}`}
           titleTemplate="Ken Fehling - %s"
@@ -36,8 +36,8 @@ export default class BaseTools extends Component {
   }
 }
 
-BaseTools.propTypes = {
+BaseToolsDetail.propTypes = {
   category: PropTypes.string,
-  selectedTool: PropTypes.string,
+  tool: PropTypes.string,
   className: PropTypes.string
 }

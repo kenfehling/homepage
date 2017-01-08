@@ -5,6 +5,7 @@ import DesktopToolsHeader from "./DesktopToolsHeader"
 import DesktopToolsMaster from "./DesktopToolsMaster"
 import DesktopToolsDetail from "./DesktopToolsDetail"
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+import { categories } from '../../constants/tools'
 import styles from './DesktopTools.scss'
 
 class Page extends Component {
@@ -33,52 +34,52 @@ class AnimatedMatch extends Component {
 
   render() {
     const {component, type} = this.props
-    return (<HistoryMatch
-        {...this.props}
-        children={({ matched, ...props }) => {
-          return (<ReactCSSTransitionGroup
-              component="div"
-              className={`transition-group ${type} ${this.getDirection()}`}
-              transitionName="tool"
-              transitionEnter={true}
-              transitionLeave={true}
-              transitionEnterTimeout={0}
-              transitionLeaveTimeout={0}>
-            {matched && <Page key={props.pathname}>
-              {createElement(component, props)}
-            </Page>}
-          </ReactCSSTransitionGroup>);
-        }}
-    />);
+    const {activePage} = this.context
+    return (<HistoryMatch {...this.props} children={({ matched, ...props }) => {
+
+      // TODO: Add this to the library?
+      const isOnPage = () => matched && activePage.url === props.pathname
+
+      return (<ReactCSSTransitionGroup
+          component="div"
+          className={`transition-group ${type} ${this.getDirection()}`}
+          transitionName="tool"
+          transitionEnter={true}
+          transitionLeave={true}
+          transitionEnterTimeout={0}
+          transitionLeaveTimeout={0}>
+        {isOnPage() && <Page key={props.pathname}>
+          {createElement(component, props)}
+        </Page>}
+      </ReactCSSTransitionGroup>);
+    }} />);
   }
 }
 
 AnimatedMatch.contextTypes = {
-  lastAction: PropTypes.string.isRequired
+  lastAction: PropTypes.string.isRequired,
+  activePage: PropTypes.object
 }
 
-class Tools extends Component {
-  render() {
-    return (<div>
-      <DesktopToolsHeader />
-      <div className="transition-wrapper">
-          <AnimatedMatch pattern='/tools/:category' type="tools"
-                        exactly component={DesktopToolsMaster} />
-          <AnimatedMatch pattern='/tools/:category/:tool' type="detail"
-                        component={DesktopToolsDetail} />
-      </div>
-    </div>)
-  }
-}
+const regex = c => `:category(${c})`
 
 export default (props) => (
   <div className={styles.container}>
+    <Match pattern='/tools' exactly render={() => <Redirect to="/tools/All" />} />
     <ContainerGroup>
-      <Container initialUrl='/tools'
-                 patterns={['/tools', '/tools/:category', '/tools/:category/:tool']}>
-        <Match pattern='/tools' exactly render={() => <Redirect to="/tools/All" />} />
-        <Tools />
-      </Container>
+      <DesktopToolsHeader />
+      {categories.map(c => (
+          <Container initialUrl={`/tools/${c}`} key={c} keepHistory={false}
+                      patterns={[`/tools/${regex(c)}`,
+                                 `/tools/${regex(c)}/:tool`]}>
+            <div className="transition-wrapper">
+              <AnimatedMatch pattern={`/tools/${regex(c)}`} type="tools"
+                             exactly component={DesktopToolsMaster} />
+              <AnimatedMatch pattern={`/tools/${regex(c)}/:tool`}
+                             type="detail" component={DesktopToolsDetail} />
+            </div>
+          </Container>
+      ))}
     </ContainerGroup>
   </div>
 )
