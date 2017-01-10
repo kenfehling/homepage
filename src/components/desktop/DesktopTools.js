@@ -28,11 +28,15 @@ class Page extends Component {
 }
 
 class AnimatedMatch extends Component {
-  getDirection() {
+  getActionClass() {
     const {lastAction} = this.context
+
+    console.log(lastAction)
+
     switch (lastAction) {
-      case 'back': return 'back'
-      case 'switch-to-container': return 'top'
+      case 'back':
+      case 'top': return lastAction
+      case 'switch-to-container': return 'switch'
       default: return 'forward'
     }
   }
@@ -40,6 +44,7 @@ class AnimatedMatch extends Component {
   render() {
     const {component, type} = this.props
     const {activePage} = this.context
+    const actionClass = this.getActionClass()
     return (<HistoryMatch {...this.props} children={({ matched, ...props }) => {
 
       // TODO: Add this to the library?
@@ -47,7 +52,7 @@ class AnimatedMatch extends Component {
 
       return (<ReactCSSTransitionGroup
           component="div"
-          className={`transition-group ${type} ${this.getDirection()}`}
+          className={`transition-group ${type} ${actionClass}`}
           transitionName="tool"
           transitionEnter={true}
           transitionLeave={true}

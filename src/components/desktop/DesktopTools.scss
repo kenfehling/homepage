@@ -18,13 +18,19 @@
     }
   }
 
-  .forward, .top.details, .back {
+  .forward, .top, .back {
     .tool-enter.tool-enter-active, .tool-leave.tool-leave-active {
       transition: all 1s;
     }
   }
 
-  .top.tools {
+  .top {
+    .tool-enter.tool-enter-active, .tool-leave.tool-leave-active {
+      transition: all 1s ease 1s;
+    }
+  }
+
+  .switch {
     .tool-enter.tool-enter-active, .tool-leave.tool-leave-active {
       transition: all 500ms;
     }
@@ -48,7 +54,7 @@
     }
   }
 
-  .top.details, .back {
+  .top, .back {
     .tool-enter {
       right: 100%;
     }
@@ -63,10 +69,7 @@
     }
   }
 
-  .top.tools {
-    .tool-enter, .tool-leave {
-      left: 0;
-    }
+  .switch {
     .tool-enter {
       opacity: 0;
     }
@@ -80,4 +83,5 @@
       opacity: 0
     }
   }
+
 }

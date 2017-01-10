@@ -10,7 +10,8 @@ import { escapeName, linkToTool, renderStars, getTool} from '../../utils/tools'
 export default class BaseToolsDetail extends Component {
   replaceLinks(element) {
     const {params:{category}} = this.props
-    const children = reactStringReplace(element.props.children, /\[\[(\w+)]]/g, match => linkToTool(match, category))
+    const children = reactStringReplace(element.props.children, /\[\[(\w+)]]/g,
+        match => linkToTool(match, category))
     return createElement(element.type, {children})
   }
 
