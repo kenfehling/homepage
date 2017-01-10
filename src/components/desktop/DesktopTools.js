@@ -7,6 +7,7 @@ import DesktopToolsDetail from "./DesktopToolsDetail"
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import { categories } from '../../constants/tools'
 import styles from './DesktopTools.scss'
+import * as _ from 'lodash'
 
 class Page extends Component {
   componentWillEnter(cb) {
@@ -29,7 +30,11 @@ class Page extends Component {
 class AnimatedMatch extends Component {
   getDirection() {
     const {lastAction} = this.context
-    return lastAction === 'back' ? 'back' : 'forward'
+    switch (lastAction) {
+      case 'back': return 'back'
+      case 'switch-to-container': return 'top'
+      default: return 'forward'
+    }
   }
 
   render() {
