@@ -18,8 +18,22 @@
     }
   }
 
-  .tool-enter.tool-enter-active, .tool-leave.tool-leave-active {
-    transition: all 1s;
+  .forward, .top, .back {
+    .tool-enter.tool-enter-active, .tool-leave.tool-leave-active {
+      transition: all 1s;
+    }
+  }
+
+  .top {
+    .tool-enter.tool-enter-active, .tool-leave.tool-leave-active {
+      transition: all 1s ease 1s;
+    }
+  }
+
+  .switch {
+    .tool-enter.tool-enter-active, .tool-leave.tool-leave-active {
+      transition: all 500ms;
+    }
   }
 
   .forward {
@@ -40,7 +54,7 @@
     }
   }
 
-  .back {
+  .top, .back {
     .tool-enter {
       right: 100%;
     }
@@ -54,4 +68,20 @@
       left: 100%;
     }
   }
+
+  .switch {
+    .tool-enter {
+      opacity: 0;
+    }
+    .tool-enter.tool-enter-active {
+      opacity: 1;
+    }
+    .tool-leave {
+      opacity: 1;
+    }
+    .tool-leave.tool-leave-active {
+      opacity: 0
+    }
+  }
+
 }

@@ -13,7 +13,7 @@ export default class BaseToolsMaster extends Component {
   }
   
   renderTool(tool) {
-    const {category=categories[0]} = this.props
+    const {params:{category}} = this.props
     const {name, stars} = tool
     return linkToTool(name, category, (<div className="tool">
       {getIcon(tool)}
