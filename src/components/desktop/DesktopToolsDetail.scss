@@ -4,6 +4,7 @@
 @import "../../styles/colors";
 
 :local(.container) {
+  height: 300px;
   font-family: inherit;
   background-color: $details-bg-color;
   padding: 35px;

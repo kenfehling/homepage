@@ -1,13 +1,16 @@
 :local(.container) {
   font-family: Helvetica, sans-serif;
   width: 100%;
+  height: 100%;
 
   .transition-wrapper {
     position: relative;
+    width: 100%;
   }
 
   .transition-group {
     width: 100%;
+    height: 100%;
 
     .tool-enter,
     .tool-leave,
