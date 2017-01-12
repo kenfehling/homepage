@@ -15,7 +15,7 @@
     "gsap": "^1.19.0",
     "lodash": "^4.16.1",
     "react": "^15.3.2",
-    "react-addons-css-transition-group": "^15.3.2",
+    "react-addons-transition-group": "^15.4.2",
     "react-designable-audio-player": "github:kenfehling/react-designable-audio-player",
     "react-dom": "^15.3.2",
     "react-draggable": "^2.2.2",

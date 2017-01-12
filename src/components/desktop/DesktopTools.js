@@ -16,13 +16,18 @@ const createSlideAnimation = (utils, x1, x2) =>
         {xPercent: x2, onComplete: utils.options.callback}
     )
 
-const noAnimation = (utils) =>
-    TweenMax.to(utils.target, 1, {onComplete: utils.options.callback})
+const createFadeAnimation = (utils, opacity1, opacity2) =>
+    TweenMax.fromTo(utils.target, 1/3,
+        {opacity: opacity1},
+        {opacity: opacity2, onComplete: utils.options.callback}
+    )
 
 const enterStageRight = (utils) => createSlideAnimation(utils, 100, 0)
 const enterStageLeft = (utils) => createSlideAnimation(utils, -100, 0)
 const exitStateRight = (utils) => createSlideAnimation(utils, 0, 100)
 const exitStateLeft = (utils) => createSlideAnimation(utils, 0, -100)
+const fadeIn = (utils) => createFadeAnimation(utils, 0, 1)
+const fadeOut = (utils) => createFadeAnimation(utils, 1, 0)
 
 const Page = GSAP()(class extends Component {
   static contextTypes = {
@@ -34,7 +39,7 @@ const Page = GSAP()(class extends Component {
     switch (lastAction) {
       case 'back':
       case 'top': return enterStageLeft
-      case 'switch-to-container': return null
+      case 'switch-to-container': return fadeIn
       default: return enterStageRight
     }
   }
@@ -44,7 +49,7 @@ const Page = GSAP()(class extends Component {
     switch (lastAction) {
       case 'back':
       case 'top': return exitStateRight
-      case 'switch-to-container': return null
+      case 'switch-to-container': return fadeOut
       default: return exitStateLeft
     }
   }
@@ -82,13 +87,12 @@ class AnimatedMatch extends Component {
       // TODO: Add this to the library?
       const isOnPage = () => matched && activePage.url === props.pathname
 
-      return (<TransitionGroup
-          component='div'
-          style={{position: 'absolute', width: '100%', height: '100%'}}>
+      return (<TransitionGroup component='div'
+      style={{position: 'absolute', width: '100%', height: '100%'}}>
         {isOnPage() && <Page key={props.pathname}>
-              {createElement(component, props)}
-            </Page>}
-        </TransitionGroup>)
+          {createElement(component, props)}
+        </Page>}
+      </TransitionGroup>)
     }} />);
   }
 }
