@@ -8,16 +8,16 @@ import TransitionGroup from 'react-addons-transition-group'
 import { categories } from '../../constants/tools'
 import styles from './DesktopTools.scss'
 import GSAP from 'react-gsap-enhancer'
-import { TweenMax } from 'gsap'
+import { TweenMax, TimelineMax } from 'gsap'
 
 const createSlideAnimation = (utils, x1, x2) =>
-    TweenMax.fromTo(utils.target, 1,
+    new TimelineMax().fromTo(utils.target, 1,
         {xPercent: x1},
         {xPercent: x2, onComplete: utils.options.callback}
     )
 
 const createFadeAnimation = (utils, opacity1, opacity2) =>
-    TweenMax.fromTo(utils.target, 1/3,
+    new TimelineMax().fromTo(utils.target, 1/3,
         {opacity: opacity1},
         {opacity: opacity2, onComplete: utils.options.callback}
     )

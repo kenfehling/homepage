@@ -5,7 +5,7 @@ import Helmet from "react-helmet"
 import _ from 'lodash'
 import { BackLink } from 'react-router-nested-history'
 import { tools } from '../../constants/tools'
-import { escapeName, linkToTool, renderStars, getTool} from '../../utils/tools'
+import { escapeName, linkToTool, renderStars, getToolByName} from '../../utils/tools'
 
 export default class BaseToolsDetail extends Component {
   replaceLinks(element) {
@@ -17,7 +17,7 @@ export default class BaseToolsDetail extends Component {
 
   render() {
     const {params:{tool, category}, className} = this.props
-    const {name, fullName, stars, description} = getTool(tool)
+    const {name, fullName, stars, description} = getToolByName(tool)
     return (<div className={className} key={name}>
       <Helmet
           title={`${!tool ? (category || '') : tool || ''}`}
