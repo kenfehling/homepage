@@ -5,29 +5,30 @@ import styles from './DesktopToolsMaster.scss';
 
 const ROWS = 2;
 
-export default class DesktopTools extends Component {
+function saveScrollLeft(event) {
+  console.log(event.target.scrollLeft)
+  DesktopToolsMaster.lastScrollLeft = event.target.scrollLeft
+}
+
+export default class DesktopToolsMaster extends Component {
   static propTypes = {
     category: PropTypes.string,
-    tool: PropTypes.string
+    tool: PropTypes.string,
+    scrollLeft: PropTypes.number,
+    onScroll: PropTypes.func
   }
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      lastScrollLeft: 0
-    }
-  }
-
-  componentDidUpdate() {
+  componentDidMount() {
     if (this.scrollArea) {
-      this.scrollArea.scrollLeft = this.state.lastScrollLeft;
+      this.scrollArea.scrollLeft = this.props.scrollLeft
     }
   }
 
   arrangeTools(tools) {
+    const {onScroll, scrollLeft} = this.props
     const n = _.size(tools)
     return (<div className={styles.container} ref={(ref) => this.scrollArea = ref}
-    onScroll={e => this.setState({lastScrollLeft: e.target.scrollLeft})}>
+    onScroll={onScroll}>
       <div className="scroll-area">
         {_.range(Math.ceil(n / ROWS)).map(col =>
           <div className="col" key={col}>

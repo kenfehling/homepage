@@ -9,6 +9,15 @@ import { categories } from '../../constants/tools'
 import styles from './DesktopTools.scss'
 import * as _ from 'lodash'
 
+const regex = c => `:category(${c})`
+const scrollLefts = {}
+const onMasterScroll = (category, event) => {
+  console.log(category, event.target.scrollLeft)
+  scrollLefts[category] = event.target.scrollLeft
+}
+const resetMasterScrolls = () => _.each(categories, c => scrollLefts[c] = 0)
+resetMasterScrolls()
+
 class Page extends Component {
   componentWillEnter(cb) {
     // animate stuff, then call cb();
@@ -39,10 +48,13 @@ class AnimatedMatch extends Component {
   }
 
   render() {
-    const {component} = this.props
+    const {component, children} = this.props
     const {activePage, lastAction} = this.context
     const actionClass = this.getActionClass()
     this.prevAction = lastAction
+    if (lastAction === 'switch-to-container') {
+      resetMasterScrolls()
+    }
     const timeout = lastAction === 'switch-to-container' ? 1 : 1000
     return (<HistoryMatch {...this.props} children={({ matched, ...props }) => {
 
@@ -58,7 +70,7 @@ class AnimatedMatch extends Component {
           transitionEnterTimeout={timeout}
           transitionLeaveTimeout={timeout}>
         {isOnPage && <Page key={props.pathname}>
-          {createElement(component, props)}
+          {createElement(component || children, props)}
         </Page>}
       </ReactCSSTransitionGroup>);
     }} />);
@@ -69,8 +81,6 @@ AnimatedMatch.contextTypes = {
   lastAction: PropTypes.string.isRequired,
   activePage: PropTypes.object
 }
-
-const regex = c => `:category(${c})`
 
 export default (props) => (
   <div className={styles.container}>
@@ -83,7 +93,11 @@ export default (props) => (
                                  `/tools/${regex(c)}/:tool`]}>
             <div className="transition-wrapper">
               <AnimatedMatch pattern={`/tools/${regex(c)}`}
-                             exactly component={DesktopToolsMaster} />
+                             exactly children={({ matched, ...rest}) => (
+                  <DesktopToolsMaster {...rest}
+                      scrollLeft={scrollLefts[c]}
+                      onScroll={e => onMasterScroll(c, e)} />
+              )} />
               <AnimatedMatch pattern={`/tools/${regex(c)}/:tool`}
                              component={DesktopToolsDetail} />
             </div>

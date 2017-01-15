@@ -14,16 +14,15 @@ $header-bottom-color: #a343a4;
 
 :local(.container) {
   @include no-select();
-  @include show-scroll();
-  overflow-x: auto;
+  @include show-scroll($tools-bg);
+  overflow-x: scroll;
   width: 100%;
-  padding-bottom: 2px;
+  background-color: $tools-bg;
 
   .scroll-area {
     white-space: nowrap;
-    background-color: $tools-bg;
     display: flex;
-    padding: 1px 3px;
+    padding: 3px 3px 0 5px;
   }
 
   .col {
@@ -43,7 +42,12 @@ $header-bottom-color: #a343a4;
       border-radius: 4px;
       padding: 10px;
       box-sizing: border-box;
-      margin: 8px 4px;
+      &:first-child {
+        margin: 8px 4px;
+      }
+      &:last-child {
+        margin: 8px 4px 5px 4px;
+      }
       .icon {
         width: $icon-size;
         height: $icon-size;
