@@ -24,12 +24,6 @@
     }
   }
 
-  .top {
-    .tool-enter.tool-enter-active, .tool-leave.tool-leave-active {
-      transition: all 1s ease 1s;
-    }
-  }
-
   .switch {
     .tool-enter.tool-enter-active, .tool-leave.tool-leave-active {
       transition: all 500ms;

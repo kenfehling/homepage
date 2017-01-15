@@ -30,21 +30,22 @@ class Page extends Component {
 class AnimatedMatch extends Component {
   getActionClass() {
     const {lastAction} = this.context
-
-    console.log(lastAction)
-
     switch (lastAction) {
       case 'back':
       case 'top': return lastAction
-      case 'switch-to-container': return 'switch'
+      case 'switch-to-container': return this.prevAction
       default: return 'forward'
     }
   }
 
   render() {
     const {component, type} = this.props
-    const {activePage} = this.context
+    const {activePage, lastAction} = this.context
     const actionClass = this.getActionClass()
+    this.prevAction = lastAction
+
+    console.log(lastAction)
+
     return (<HistoryMatch {...this.props} children={({ matched, ...props }) => {
 
       // TODO: Add this to the library?
@@ -56,8 +57,8 @@ class AnimatedMatch extends Component {
           transitionName="tool"
           transitionEnter={true}
           transitionLeave={true}
-          transitionEnterTimeout={0}
-          transitionLeaveTimeout={0}>
+          transitionEnterTimeout={1000}
+          transitionLeaveTimeout={1000}>
         {isOnPage() && <Page key={props.pathname}>
           {createElement(component, props)}
         </Page>}

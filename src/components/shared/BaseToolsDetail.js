@@ -5,7 +5,7 @@ import Helmet from "react-helmet"
 import _ from 'lodash'
 import { BackLink } from 'react-router-nested-history'
 import { tools } from '../../constants/tools'
-import { escapeName, linkToTool, renderStars, getTool} from '../../utils/tools'
+import { linkToTool, renderStars, getTool} from '../../utils/tools'
 
 export default class BaseToolsDetail extends Component {
   replaceLinks(element) {

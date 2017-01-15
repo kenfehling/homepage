@@ -17,17 +17,9 @@ function getToolByFullName(fullName) {
   }
 }
 
-function getToolByName(name) {
-  if (name) {
-    return _.find(tools, tool => tool.name === name)
-  }
-  else {
-    throw new Error('You must pass a name parameter')
-  }
-}
-
-export function getTool(unescapedName) {
-  return getToolByName(escapeName(unescapedName))
+export function getTool(escapedName) {
+  const name = unescapeName(escapedName)
+  return _.find(tools, tool => tool.name === name)
 }
 
 export function renderStars(stars) {
@@ -40,6 +32,7 @@ export function renderStars(stars) {
 export const getMainName = fullName => getToolByFullName(fullName).name
 
 export const escapeName = name => name.replace(' ', '_').replace('#', 'sharp')
+export const unescapeName = name => name.replace('_', ' ').replace('sharp', '#')
 
 export const getIcon = ({name, iconType}) => (
     <img className="icon" src={require('../../img/icons/tools/' +
