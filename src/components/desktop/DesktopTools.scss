@@ -24,12 +24,6 @@
     }
   }
 
-  .switch {
-    .tool-enter.tool-enter-active, .tool-leave.tool-leave-active {
-      transition: all 500ms;
-    }
-  }
-
   .forward {
     .tool-enter {
       left: 100%;
@@ -60,21 +54,6 @@
     }
     .tool-leave.tool-leave-active {
       left: 100%;
-    }
-  }
-
-  .switch {
-    .tool-enter {
-      opacity: 0;
-    }
-    .tool-enter.tool-enter-active {
-      opacity: 1;
-    }
-    .tool-leave {
-      opacity: 1;
-    }
-    .tool-leave.tool-leave-active {
-      opacity: 0
     }
   }
 

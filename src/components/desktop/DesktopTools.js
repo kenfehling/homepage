@@ -39,27 +39,24 @@ class AnimatedMatch extends Component {
   }
 
   render() {
-    const {component, type} = this.props
+    const {component} = this.props
     const {activePage, lastAction} = this.context
     const actionClass = this.getActionClass()
     this.prevAction = lastAction
-
-    console.log(lastAction)
-
     return (<HistoryMatch {...this.props} children={({ matched, ...props }) => {
 
       // TODO: Add this to the library?
-      const isOnPage = () => matched && activePage.url === props.pathname
+      const isOnPage = matched && activePage.url === props.pathname
 
       return (<ReactCSSTransitionGroup
           component="div"
-          className={`transition-group ${type} ${actionClass}`}
+          className={`transition-group ${actionClass}`}
           transitionName="tool"
           transitionEnter={true}
           transitionLeave={true}
           transitionEnterTimeout={1000}
           transitionLeaveTimeout={1000}>
-        {isOnPage() && <Page key={props.pathname}>
+        {isOnPage && <Page key={props.pathname}>
           {createElement(component, props)}
         </Page>}
       </ReactCSSTransitionGroup>);
@@ -84,10 +81,10 @@ export default (props) => (
                       patterns={[`/tools/${regex(c)}`,
                                  `/tools/${regex(c)}/:tool`]}>
             <div className="transition-wrapper">
-              <AnimatedMatch pattern={`/tools/${regex(c)}`} type="tools"
+              <AnimatedMatch pattern={`/tools/${regex(c)}`}
                              exactly component={DesktopToolsMaster} />
               <AnimatedMatch pattern={`/tools/${regex(c)}/:tool`}
-                             type="detail" component={DesktopToolsDetail} />
+                             component={DesktopToolsDetail} />
             </div>
           </Container>
       ))}
