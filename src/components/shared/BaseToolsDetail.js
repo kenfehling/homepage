@@ -2,9 +2,7 @@ import React, { Component, PropTypes, createElement } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import reactStringReplace from 'react-string-replace'
 import Helmet from "react-helmet"
-import _ from 'lodash'
 import { BackLink } from 'react-router-nested-history'
-import { tools } from '../../constants/tools'
 import { linkToTool, renderStars, getTool} from '../../utils/tools'
 
 export default class BaseToolsDetail extends Component {

@@ -43,6 +43,7 @@ class AnimatedMatch extends Component {
     const {activePage, lastAction} = this.context
     const actionClass = this.getActionClass()
     this.prevAction = lastAction
+    const timeout = lastAction === 'switch-to-container' ? 1 : 1000
     return (<HistoryMatch {...this.props} children={({ matched, ...props }) => {
 
       // TODO: Add this to the library?
@@ -54,8 +55,8 @@ class AnimatedMatch extends Component {
           transitionName="tool"
           transitionEnter={true}
           transitionLeave={true}
-          transitionEnterTimeout={1000}
-          transitionLeaveTimeout={1000}>
+          transitionEnterTimeout={timeout}
+          transitionLeaveTimeout={timeout}>
         {isOnPage && <Page key={props.pathname}>
           {createElement(component, props)}
         </Page>}
