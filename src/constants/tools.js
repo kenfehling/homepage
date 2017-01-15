@@ -16,6 +16,7 @@ const externalLink = (name, href='http://' + name) =>
     </a>;
 
 export const categories = [
+  'All',
   LANGUAGES,
   LIBRARIES,
   DEVOPS,
@@ -23,8 +24,7 @@ export const categories = [
   WEB,
   MOBILE,
   DATABASES,
-  SOFTWARE,
-  'All'
+  SOFTWARE
 ];
 
 export const tools = [{

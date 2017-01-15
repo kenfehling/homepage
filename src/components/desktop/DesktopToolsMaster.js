@@ -26,14 +26,16 @@ export default class DesktopTools extends Component {
 
   arrangeTools(tools) {
     const n = _.size(tools)
-    return (<div className="scroll-area" ref={(ref) => this.scrollArea = ref}
+    return (<div className={styles.container} ref={(ref) => this.scrollArea = ref}
     onScroll={e => this.setState({lastScrollLeft: e.target.scrollLeft})}>
-      {_.range(Math.ceil(n / ROWS)).map(col =>
-        <div className="col" key={col}>
-          {_.range(ROWS).map(row =>
-              n >= col * ROWS + row + 1 ? tools[col * ROWS + row] : '')}
-        </div>
-      )}
+      <div className="scroll-area">
+        {_.range(Math.ceil(n / ROWS)).map(col =>
+          <div className="col" key={col}>
+            {_.range(ROWS).map(row =>
+                n >= col * ROWS + row + 1 ? tools[col * ROWS + row] : '')}
+          </div>
+        )}
+      </div>
     </div>)
   }
 

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.html",
   "scripts": {
-    "start": "webpack-dev-server --progress --colors --history-api-fallback --no-info --content-base ./",
+    "start": "webpack-dev-server --host 0.0.0.0 --progress --colors --history-api-fallback --no-info --content-base ./",
     "test": "jest --watch",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
