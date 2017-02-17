@@ -13,7 +13,7 @@ module.exports = {
     entry: './src/index.js',
     devtool: 'source-map',
     output: {
-        path: './public',
+        path: path.resolve('public'),
         filename: 'bundle.js',
         publicPath: '/public/'
     },
@@ -28,20 +28,20 @@ module.exports = {
         }, {
             test: /\.scss$/,
             exclude: /node_modules/,
-            loaders: ['style', 'css?sourceMap', `sass?sourceMap&${sassPaths}`]
+            loaders: ['style-loader', 'css-loader?sourceMap', `sass-loader?sourceMap&${sassPaths}`]
         }, {
             test: /\.css$/,
-            loader: 'style!css'
+            loader: 'style-loader!css-loader'
         }, {
             test: /\.png?$/,
             exclude: /node_modules/,
-            loader: "url-loader?limit=10000"
+            loader: "url-loader?limit=100000"
         }, {
             test: /\.gif?$/,
-            loader: "url-loader?limit=10000&mimetype=image/png"
+            loader: "url-loader?limit=100000&mimetype=image/png"
         },{
             test: /\.jpg?$/,
-            loader: "url-loader?limit=10000000&mimetype=image/jpg"
+            loader: "url-loader?limit=100000"
         }, {
             test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
             loader: "url-loader?limit=10000&minetype=application/font-woff"
@@ -51,7 +51,8 @@ module.exports = {
         }]
     },
     resolve: {
-        root: path.resolve(__dirname),
-        img: 'img'
+        alias: {
+          img: path.resolve('img')
+        }
     }
 };

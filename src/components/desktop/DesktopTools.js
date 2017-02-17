@@ -1,5 +1,4 @@
 import React, { Component, PropTypes, createElement } from 'react'
-import { Match, Redirect } from 'react-router'
 import { Container, ContainerGroup, HistoryMatch} from 'react-router-nested-history'
 import DesktopToolsHeader from "./DesktopToolsHeader"
 import DesktopToolsMaster from "./DesktopToolsMaster"
@@ -50,18 +49,19 @@ class AnimatedMatch extends Component {
   render() {
     const {component, children} = this.props
     const {activePage, lastAction} = this.context
-    const actionClass = this.getActionClass()
-    this.prevAction = lastAction
-    if (lastAction === 'switch-to-container') {
-      resetMasterScrolls()
-    }
-    const timeout = lastAction === 'switch-to-container' ? 1 : 1000
-    return (<HistoryMatch {...this.props} children={({ matched, ...props }) => {
+    if (activePage) {
+      const actionClass = this.getActionClass()
+      this.prevAction = lastAction
+      if (lastAction === 'switch-to-container') {
+        resetMasterScrolls()
+      }
+      const timeout = lastAction === 'switch-to-container' ? 1 : 1000
+      return (<HistoryMatch {...this.props} children={({ matched, ...props }) => {
 
-      // TODO: Add this to the library?
-      const isOnPage = matched && activePage.url === props.pathname
+        // TODO: Add this to the library?
+        const isOnPage = matched && activePage.url === props.pathname
 
-      return (<ReactCSSTransitionGroup
+        return (<ReactCSSTransitionGroup
           component="div"
           className={`transition-group ${actionClass}`}
           transitionName="tool"
@@ -69,11 +69,15 @@ class AnimatedMatch extends Component {
           transitionLeave={true}
           transitionEnterTimeout={timeout}
           transitionLeaveTimeout={timeout}>
-        {isOnPage && <Page key={props.pathname}>
-          {createElement(component || children, props)}
-        </Page>}
-      </ReactCSSTransitionGroup>);
-    }} />);
+          {isOnPage && <Page key={props.pathname}>
+            {createElement(component || children, props)}
+          </Page>}
+        </ReactCSSTransitionGroup>);
+      }} />);
+    }
+    else {
+      return <div></div>
+    }
   }
 }
 
@@ -84,19 +88,21 @@ AnimatedMatch.contextTypes = {
 
 export default (props) => (
   <div className={styles.container}>
-    <Match pattern='/tools' exactly render={() => <Redirect to="/tools/All" />} />
-    <ContainerGroup>
+    <ContainerGroup name='tools' gotoTopOnSelectActive={true}>
       <DesktopToolsHeader />
       {categories.map(c => (
-          <Container initialUrl={`/tools/${c}`} key={c} keepHistory={false}
-                      patterns={[`/tools/${regex(c)}`,
-                                 `/tools/${regex(c)}/:tool`]}>
+          <Container key={c}
+                     name={c}
+                     resetOnLeave={true}
+                     initialUrl={`/tools/${c}`}
+                     patterns={[`/tools/${regex(c)}`,
+                               `/tools/${regex(c)}/:tool`]}>
             <div className="transition-wrapper">
               <AnimatedMatch pattern={`/tools/${regex(c)}`}
                              exactly children={({ matched, ...rest}) => (
-                  <DesktopToolsMaster {...rest}
-                      scrollLeft={scrollLefts[c]}
-                      onScroll={e => onMasterScroll(c, e)} />
+                <DesktopToolsMaster {...rest}
+                                    scrollLeft={scrollLefts[c]}
+                                    onScroll={e => onMasterScroll(c, e)} />
               )} />
               <AnimatedMatch pattern={`/tools/${regex(c)}/:tool`}
                              component={DesktopToolsDetail} />
