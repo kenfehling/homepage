@@ -12,6 +12,7 @@
   "author": "Ken Fehling",
   "license": "ISC",
   "dependencies": {
+    "bowser": "^1.6.0",
     "lodash": "^4.16.1",
     "react": "^15.4.2",
     "react-addons-css-transition-group": "^15.3.2",
@@ -23,7 +24,7 @@
     "react-router": "^4.0.0-alpha.6",
     "react-router-nested-history": "github:kenfehling/react-router-nested-history",
     "react-string-replace": "^0.4.0",
-    "react-tooltip": "^3.2.1",
+    "react-tooltip": "^3.2.7",
     "react-typist": "^0.3.0"
   },
   "devDependencies": {

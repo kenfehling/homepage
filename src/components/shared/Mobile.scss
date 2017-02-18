@@ -1,0 +1,88 @@
+@import "../../styles/utils";
+@import "../../styles/fonts";
+
+$bg-color: #F6F6F6;
+$nav-bg-color: #b7b6ac;
+$top-bar-height: 20px;
+$nav-height: 38px;
+
+
+.mobile-scroll-area {
+  padding: 10px;
+}
+
+:local(.container) {
+  font-family: $apple-font;
+  background-color: $bg-color;
+  font-size: 16px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .top-bar, .nav {
+    background-color: $nav-bg-color;
+    @include no-select();
+  }
+
+  .top-bar {
+    font-size: 10px;
+    font-weight: 500;
+    height: $top-bar-height;
+    line-height: $top-bar-height;
+    display: flex;
+    padding: 0 6px;
+    i {
+      margin-left: 3px;
+    }
+    .network, .battery {
+      width: 30%;
+    }
+    .network {
+      display: flex;
+      i {
+        font-size: 12px;
+        line-height: 22px;
+      }
+    }
+    .time {
+      flex: 1 1;
+      text-align: center;
+    }
+    .battery {
+      * {
+        float: right;
+      }
+      i {
+        font-size: 14px;
+        line-height: $top-bar-height;
+      }
+    }
+  }
+
+  .nav {
+    font-size: 15px;
+    height: $nav-height;
+    background-color: $nav-bg-color;
+    border-bottom: thin solid darken($nav-bg-color, 9%);
+    h1 {
+      text-align: center;
+      margin: 0;
+      font-size: inherit;
+      line-height: $nav-height;
+    }
+  }
+
+  .content {
+    height: 100%;
+    display: flex;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .content::-webkit-scrollbar {
+    -webkit-appearance: none;
+    background-color: $bg-color;
+    width: 10px;
+  }
+}

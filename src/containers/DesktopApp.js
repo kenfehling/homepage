@@ -5,16 +5,17 @@ import Editor from '../components/desktop/Editor'
 import Terminal from '../components/desktop/Terminal'
 import Audio from '../components/desktop/Audio'
 import DesktopTools from '../components/desktop/DesktopTools'
-import Mobile from './Mobile'
+import Mobile from '../components/shared/Mobile'
 import Dock from '../components/desktop/Dock'
 import {WindowGroup} from 'react-router-nested-history'
 import ContainerWindow from '../components/desktop/ContainerWindow'
+import styles from './DesktopApp.scss'
 
 const menuItems = [
   { name: 'File' }
 ]
 
-export default class Desktop extends Component {
+export default class DesktopApp extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -30,7 +31,13 @@ export default class Desktop extends Component {
 
   render() {
     return (
-      <div>
+      <div className={styles.container}>
+        {/*
+         <Match pattern='/' exactly
+         render={() => <Redirect to="/tools" />} />
+         <Match pattern='/tools' exactly
+         render={() => <Redirect to="/tools/All" />} />
+        */}
         <WindowGroup name='desktop' currentContainerName={this.state.currentWindowName}>
           <IFrameWindow name="PDF" src="/public/Ken_Fehling_resume.pdf" />
           <ContainerWindow name="Editor" menuItems={menuItems} bgColor="#FFF" fgColor="#000">
