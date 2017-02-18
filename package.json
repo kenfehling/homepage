@@ -18,7 +18,7 @@
     "react-addons-css-transition-group": "^15.3.2",
     "react-designable-audio-player": "github:kenfehling/react-designable-audio-player",
     "react-dom": "^15.4.2",
-    "react-draggable": "^2.2.2",
+    "react-draggable": "^2.2.3",
     "react-helmet": "^3.1.0",
     "react-pdf": "0.0.10",
     "react-router": "^4.0.0-alpha.6",

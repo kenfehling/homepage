@@ -1,4 +1,4 @@
-import styles from './Browser.scss';
+import styles from './Browser.scss'
 
 export default () => (
     <div className={styles.container}>
@@ -9,4 +9,4 @@ export default () => (
             <iframe src="http://androidideas.org" style={{border: 0, flexGrow: 1}}></iframe>
         </div>
     </div>
-);
+)

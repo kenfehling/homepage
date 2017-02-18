@@ -1,9 +1,9 @@
-import React, { Component, PropTypes } from 'react';
-import * as _ from 'lodash';
-import BaseToolsMaster from '../shared/BaseToolsMaster';
-import styles from './DesktopToolsMaster.scss';
+import React, { Component, PropTypes } from 'react'
+import * as _ from 'lodash'
+import BaseToolsMaster from '../shared/BaseToolsMaster'
+import styles from './DesktopToolsMaster.scss'
 
-const ROWS = 2;
+const ROWS = 2
 
 function saveScrollLeft(event) {
   console.log(event.target.scrollLeft)

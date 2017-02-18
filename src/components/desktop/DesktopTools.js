@@ -19,15 +19,15 @@ resetMasterScrolls()
 
 class Page extends Component {
   componentWillEnter(cb) {
-    // animate stuff, then call cb();
-    const element = findDOMNode(this);
-    cb();
+    // animate stuff, then call cb()
+    const element = findDOMNode(this)
+    cb()
   }
 
   componentWillLeave(cb) {
-    // animate stuff, then call cb();
-    const element = findDOMNode(this);
-    cb();
+    // animate stuff, then call cb()
+    const element = findDOMNode(this)
+    cb()
   }
 
   render() {
@@ -72,8 +72,8 @@ class AnimatedMatch extends Component {
           {isOnPage && <Page key={props.pathname}>
             {createElement(component || children, props)}
           </Page>}
-        </ReactCSSTransitionGroup>);
-      }} />);
+        </ReactCSSTransitionGroup>)
+      }} />)
     }
     else {
       return <div></div>

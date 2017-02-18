@@ -1,49 +1,49 @@
-import React, { Component, PropTypes, createElement } from 'react';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import React, { Component, PropTypes, createElement } from 'react'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import { Container, ContainerGroup, HistoryMatch, BackLink } from 'react-router-nested-history'
 import reactStringReplace from 'react-string-replace'
-import Helmet from "react-helmet";
-import styles from './Tools.scss';
-import _ from 'lodash';
+import Helmet from "react-helmet"
+import styles from './Tools.scss'
+import _ from 'lodash'
 import {tools, categories} from '../../constants/tools'
-import {linkToTool, linkToCategory, getTool} from "../../utils/tools";
+import {linkToTool, linkToCategory, getTool} from "../../utils/tools"
 
-const ROWS = 2;
-const starIcon = require('img/icons/star.svg');
-const halfStarIcon = require('img/icons/half-star.svg');
+const ROWS = 2
+const starIcon = require('img/icons/star.svg')
+const halfStarIcon = require('img/icons/half-star.svg')
 
-const escapeName = name => name.replace(' ', '_').replace('#', 'sharp');
+const escapeName = name => name.replace(' ', '_').replace('#', 'sharp')
 
 const getIcon = ({name, iconType}) =>
     <img className="icon" src={require('img/icons/tools/' +
-        escapeName(name) +'.' + (iconType || 'svg'))} />;
+        escapeName(name) +'.' + (iconType || 'svg'))} />
 
 const externalLink = (name, href='http://' + name) =>
-    <a target="_blank" href={href}>{name} <i className="fa fa-external-link" /></a>;
+    <a target="_blank" href={href}>{name} <i className="fa fa-external-link" /></a>
 
 class Tools extends Component {
   replaceLinks(element) {
-    const {category} = this.props;
+    const {category} = this.props
     const children = reactStringReplace(element.props.children, /\[\[(\w+)]]/g,
-        match => linkToTool(match, category));
-    return createElement(element.type, {children});
+        match => linkToTool(match, category))
+    return createElement(element.type, {children})
   }
 
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       lastScrollLeft: 0
-    };
+    }
   }
 
   componentDidUpdate() {
     if (this.scrollArea) {
-      this.scrollArea.scrollLeft = this.state.lastScrollLeft;
+      this.scrollArea.scrollLeft = this.state.lastScrollLeft
     }
   }
 
   renderTool(tool) {
-    const {name, category, stars} = tool;
+    const {name, category, stars} = tool
     return linkToTool(name, category, (<div className="tool">
       {getIcon(tool)}
       <div className="name">{name}</div>
@@ -51,13 +51,13 @@ class Tools extends Component {
           {_.map(_.range(Math.floor(stars)), i => <img key={i} src={starIcon} />)}
           {stars % 1 === 0.5 ? <img src={halfStarIcon} /> : ''}
       </div>
-    </div>));
+    </div>))
   }
 
   renderTools(category) {
     const filteredTools = category === 'All' ? tools :
-        _.filter(tools, t => _.includes(t.categories, category));
-    const n = _.size(filteredTools);
+        _.filter(tools, t => _.includes(t.categories, category))
+    const n = _.size(filteredTools)
     return (<div className="tools" key="tools">
       <div className="scroll-area" ref={(ref) => this.scrollArea = ref}
            onScroll={e => this.setState({lastScrollLeft: e.target.scrollLeft})}>
@@ -68,18 +68,18 @@ class Tools extends Component {
           </div>
         )}
       </div>
-    </div>);
+    </div>)
   }
 
   renderDetails(currentCategory, tool) {
-    const {name, fullName, stars, category, description} = getTool(tool);
+    const {name, fullName, stars, category, description} = getTool(tool)
     return (<div className="details" key={name}>
       <div className="title">{fullName || name}</div>
       <div className="body">{this.replaceLinks(description)}</div>
       <br />
       <br />
       <BackLink nameFn={({params: {tool, category}={}}) => { return tool ? tool : category}} />
-    </div>);
+    </div>)
   }
 
   render() {
