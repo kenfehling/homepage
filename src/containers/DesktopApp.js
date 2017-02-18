@@ -9,6 +9,7 @@ import Mobile from '../components/shared/Mobile'
 import Dock from '../components/desktop/Dock'
 import {WindowGroup} from 'react-router-nested-history'
 import ContainerWindow from '../components/desktop/ContainerWindow'
+import Splash from '../components/desktop/Splash'
 import styles from './DesktopApp.scss'
 
 const menuItems = [
@@ -19,7 +20,7 @@ export default class DesktopApp extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      currentWindowName: null
+      currentWindowName: null,
     }
   }
 
@@ -38,6 +39,7 @@ export default class DesktopApp extends Component {
          <Match pattern='/tools' exactly
          render={() => <Redirect to="/tools/All" />} />
         */}
+        <Splash />
         <WindowGroup name='desktop' currentContainerName={this.state.currentWindowName}>
           <IFrameWindow name="PDF" src="/public/Ken_Fehling_resume.pdf" />
           <ContainerWindow name="Editor" menuItems={menuItems} bgColor="#FFF" fgColor="#000">

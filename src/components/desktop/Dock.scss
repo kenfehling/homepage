@@ -24,7 +24,7 @@ $border-radius: 8px;
   bottom: 0;
   width: 2px + 52px * $num_icons;
   height: $height + 7px;
-  z-index: 9999999999;
+  z-index: 100;
 
   .inner-container {
     position: relative;
