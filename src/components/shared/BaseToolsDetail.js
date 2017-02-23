@@ -7,14 +7,14 @@ import { linkToTool, renderStars, getTool} from '../../utils/tools'
 
 export default class BaseToolsDetail extends Component {
   replaceLinks(element) {
-    const {params:{category}} = this.props
+    const {match:{params:{category}}} = this.props
     const children = reactStringReplace(element.props.children, /\[\[(\w+)]]/g,
         match => linkToTool(match, category))
     return createElement(element.type, {children})
   }
 
   render() {
-    const {params:{tool, category}, className} = this.props
+    const {match:{params:{tool, category}}, className} = this.props
     const {name, fullName, stars, description} = getTool(tool)
     return (<div className={className} key={name}>
       <Helmet

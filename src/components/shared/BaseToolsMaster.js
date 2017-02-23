@@ -13,7 +13,7 @@ export default class BaseToolsMaster extends Component {
   }
   
   renderTool(tool) {
-    const {params:{category}} = this.props
+    const {match:{params:{category}}} = this.props
     const {name, stars} = tool
     return linkToTool(name, category, (<div className="tool">
       {getIcon(tool)}
@@ -23,7 +23,7 @@ export default class BaseToolsMaster extends Component {
   }
 
   render() {
-    const {arrangeTools, params:{category}, tool, className} = this.props
+    const {arrangeTools, match:{params:{category}}, tool, className} = this.props
     const filteredTools = !category || category === 'All' ? tools :
         _.filter(tools, t => _.includes(t.categories, category))
     const renderedTools = _.map(filteredTools, this.renderTool.bind(this))

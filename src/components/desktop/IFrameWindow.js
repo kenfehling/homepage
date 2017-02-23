@@ -4,12 +4,12 @@ import ContainerWindow from './ContainerWindow'
 
 const IFrameWindow = ({name, src}) => {
   return (
-    <ContainerWindow name={name} usePadding={false} children={({isOnTop}) => (
+    <ContainerWindow name={name} usePadding={false}>
       <div className={styles.container}>
-        <div className="click-shield" style={{zIndex: isOnTop ? 1 : 2}}/>
-        <iframe src={src} style={{flexGrow: 1, zIndex: isOnTop ? 2 : 1}}/>
+        <div className="click-shield" />
+        <iframe src={src} className='frame' />
       </div>
-    )} />
+    </ContainerWindow>
   )
 }
 

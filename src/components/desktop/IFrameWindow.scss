@@ -2,6 +2,7 @@
   position: relative;
   width: 100%;
   height: 100%;
+  display: flex;
   > * {
     position: absolute;
     width: 100%;
@@ -10,7 +11,26 @@
   .click-shield {
     opacity: 0;
   }
-  iframe {
+  .frame {
     border: 0;
+    flex-grow: 1;
+  }
+}
+
+.top-window :local(.container) {
+  .click-shield {
+    z-index: 1;
+  }
+  .frame {
+    z-index: 2;
+  }
+}
+
+.background-window :local(.container) {
+  .click-shield {
+    z-index: 2;
+  }
+  .frame {
+    z-index: 1;
   }
 }
