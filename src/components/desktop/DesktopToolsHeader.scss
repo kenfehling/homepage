@@ -30,7 +30,7 @@ $header-bottom-color: #a343a4;
       &:hover {
         text-decoration: underline;
       }
-      &.current {
+      &.active-header-item {
         background-color: $item-bg-color;
         border-radius: 2px;
         color: $header-bottom-color;

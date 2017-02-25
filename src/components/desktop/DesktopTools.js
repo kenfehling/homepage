@@ -5,15 +5,8 @@ import DesktopToolsMaster from './DesktopToolsMaster'
 import DesktopToolsDetail from './DesktopToolsDetail'
 import {categories} from '../../constants/tools'
 import styles from './DesktopTools.scss'
-import * as _ from 'lodash'
 
 const regex = c => `:category(${c})`
-const scrollLefts = {}
-const onMasterScroll = (category, event) => {
-  scrollLefts[category] = event.target.scrollLeft
-}
-const resetMasterScrolls = () => _.each(categories, c => scrollLefts[c] = 0)
-resetMasterScrolls()
 
 export default (props) => (
   <div className={styles.container}>
@@ -26,16 +19,13 @@ export default (props) => (
                      initialUrl={`/tools/${c}`}
                      patterns={[`/tools/${regex(c)}`,
                                `/tools/${regex(c)}/:tool`]}>
-            <div className='transition-wrapper'>
-              <HistoryRoute path={`/tools/${regex(c)}`}
-                            exact children={({ matched, ...rest}) => (
-                <DesktopToolsMaster {...rest}
-                                    scrollLeft={scrollLefts[c]}
-                                    onScroll={e => onMasterScroll(c, e)} />
-              )} />
-              <HistoryRoute path={`/tools/${regex(c)}/:tool`}
+              <HistoryRoute path={`/tools/${regex(c)}`} exact>
+                {({ matched, ...rest}) => (
+                  <DesktopToolsMaster {...rest} />
+                )}
+              </HistoryRoute>
+              <HistoryRoute path={`/tools/${regex(c)}/:tool`} exact
                             component={DesktopToolsDetail} />
-            </div>
           </Container>
       ))}
     </ContainerGroup>

@@ -35,10 +35,10 @@ module.exports = {
         }, {
             test: /\.png?$/,
             exclude: /node_modules/,
-            loader: "url-loader?limit=100000"
+            loader: "url-loader?limit=10000000"
         }, {
             test: /\.gif?$/,
-            loader: "url-loader?limit=100000&mimetype=image/png"
+            loader: "url-loader?limit=10000000&mimetype=image/png"
         },{
             test: /\.jpg?$/,
             loader: "url-loader?limit=10000000"
@@ -47,7 +47,7 @@ module.exports = {
             loader: "url-loader?limit=10000&minetype=application/font-woff"
         }, {
             test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-            loader: "file-loader?name=[name].[ext]"
+            loader: "file-loader?name=[name].[ext]&limit=10000000"
         }]
     },
     resolve: {

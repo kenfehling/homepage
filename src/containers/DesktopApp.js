@@ -20,14 +20,8 @@ export default class DesktopApp extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      currentWindowName: null,
+      currentWindow: null,
     }
-  }
-
-  onDockIconClick(name) {
-    this.setState({
-      currentWindowName: name.toLowerCase()
-    })
   }
 
   render() {
@@ -39,8 +33,10 @@ export default class DesktopApp extends Component {
          <Match pattern='/tools' exactly
          render={() => <Redirect to="/tools/All" />} />
         */}
-        <Splash />
-        <WindowGroup name='desktop' currentContainerName={this.state.currentWindowName}>
+
+        {/* <Splash /> */}
+
+        <WindowGroup name='desktop' currentContainerName={this.state.currentWindow}>
           <IFrameWindow name="PDF" src="/public/Ken_Fehling_resume.pdf" />
           <ContainerWindow name="Editor" menuItems={menuItems} bgColor="#FFF" fgColor="#000">
             <Editor />
@@ -59,7 +55,7 @@ export default class DesktopApp extends Component {
             <DesktopTools />
           </Window>
         </WindowGroup>
-        <Dock onIconClick={this.onDockIconClick.bind(this)} />
+        <Dock onIconClick={name => this.setState({currentWindow: name})} />
       </div>
     )
   }

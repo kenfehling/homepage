@@ -2,8 +2,8 @@ import {Component} from 'react'
 import {Line} from 'rc-progress';
 import styles from './Splash.scss'
 
-const duration = 4
-const hideAfter = 1
+const duration = 3
+const hideAfter = 0.5
 
 export default class Splash extends Component {
   constructor(props) {
