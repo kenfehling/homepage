@@ -15,8 +15,6 @@ $header-bottom-color: #a343a4;
 :local(.container) {
   @include no-select();
   @include show-scroll($tools-bg);
-  overflow-x: scroll;
-  width: 100%;
   background-color: $tools-bg;
 
   .scroll-area {

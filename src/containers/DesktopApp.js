@@ -37,7 +37,7 @@ export default class DesktopApp extends Component {
         {/* <Splash /> */}
 
         <WindowGroup name='desktop' currentContainerName={this.state.currentWindow}>
-          <IFrameWindow name="PDF" src="/public/Ken_Fehling_resume.pdf" />
+          <IFrameWindow name="PDF" src={require('img/Ken_Fehling-resume.pdf')} />
           <ContainerWindow name="Editor" menuItems={menuItems} bgColor="#FFF" fgColor="#000">
             <Editor />
           </ContainerWindow>

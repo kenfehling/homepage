@@ -20,7 +20,6 @@
     "react-dom": "^15.4.2",
     "react-draggable": "^2.2.3",
     "react-helmet": "^3.1.0",
-    "react-pdf": "0.0.10",
     "react-router": "^4.0.0-beta.6",
     "react-router-dom": "^4.0.0-beta.6",
     "react-router-nested-history": "github:kenfehling/react-router-nested-history",
