@@ -13,14 +13,14 @@ const TopBar = () => (
     </div>
     <div className="battery">
       <i className="fa fa-battery-full "/>
-      <div>100%</div>
+      <div>96%</div>
     </div>
   </div>
 )
 
-const Mobile = ({isDesktop}) => {
+const Mobile = ({useTopBar}) => {
   return (<div className={styles.container}>
-    {isDesktop ? <TopBar /> : ''}
+    {useTopBar ? <TopBar /> : ''}
     <div className="nav">
       <h1>Ken Fehling</h1>
     </div>
@@ -32,8 +32,7 @@ const Mobile = ({isDesktop}) => {
 
 Mobile.propTypes = {
   children: PropTypes.object,
-  isDesktop: PropTypes.bool,
-  category: PropTypes.string
+  useTopBar: PropTypes.bool
 }
 
 export default Mobile
