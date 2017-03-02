@@ -4,35 +4,28 @@
   "description": "",
   "main": "index.html",
   "scripts": {
-    "start": "webpack-dev-server --progress --colors --history-api-fallback --no-info --content-base ./",
-    "test": "jest",
-    "test:watch": "jest --watch",
+    "start": "webpack-dev-server --host 0.0.0.0 --progress --colors --history-api-fallback --no-info --content-base ./",
+    "test": "jest --watch",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
   "author": "Ken Fehling",
   "license": "ISC",
   "dependencies": {
-    "history": "2.1.2",
-    "invariant": "^2.2.1",
+    "bowser": "^1.6.0",
     "lodash": "^4.16.1",
-    "react-addons-css-transition-group": "^15.3.2",
+    "rc-progress": "^2.0.6",
+    "react": "^15.4.2",
     "react-designable-audio-player": "github:kenfehling/react-designable-audio-player",
-    "react-draggable": "^2.2.2",
+    "react-dom": "^15.4.2",
+    "react-draggable": "^2.2.3",
     "react-helmet": "^3.1.0",
-    "react-pdf": "0.0.10",
-    "react-redux": "^4.4.5",
-    "react-router": "^2.8.1",
-    "react-router-redux": "^4.0.6",
-    "react-string-replace": "^0.3.4",
-    "react-tooltip": "^3.2.1",
-    "react-typist": "^0.3.0",
-    "redux": "^3.6.0",
-    "redux-devtools": "^3.3.1",
-    "redux-devtools-dock-monitor": "^1.1.1",
-    "redux-devtools-log-monitor": "^1.0.11",
-    "redux-thunk": "^2.1.0",
-    "warning": "^3.0.0"
+    "react-router": "^4.0.0-beta.6",
+    "react-router-dom": "^4.0.0-beta.6",
+    "react-router-nested-history": "github:kenfehling/react-router-nested-history",
+    "react-string-replace": "^0.4.0",
+    "react-tooltip": "^3.2.7",
+    "react-typist": "^0.3.0"
   },
   "devDependencies": {
     "@kadira/storybook": "^2.5.2",
@@ -45,18 +38,14 @@
     "css-loader": "^0.25.0",
     "expose-loader": "^0.7.1",
     "file-loader": "^0.9.0",
-    "jest-cli": "^16.0.1",
+    "jest-cli": "^15.1.1",
     "node-bourbon": "^4.2.8",
     "node-neat": "^1.7.2",
     "node-sass": "^3.10.0",
-    "react": "^15.3.2",
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
-    "webpack": "^1.13.2"
-  },
-  "peerDependencies": {
-    "react": "^15.3.2",
-    "react-dom": "^15.3.2"
+    "webpack": "^2.2.0",
+    "webpack-dev-server": "^2.3.0"
   }
 }

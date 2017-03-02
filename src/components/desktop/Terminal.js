@@ -1,4 +1,4 @@
-import Typist from 'react-typist';
+import Typist from 'react-typist'
 
 export default () => (
     <Typist>
@@ -9,4 +9,4 @@ export default () => (
         </div>
         Final sentence
     </Typist>
-);
+)

@@ -15,7 +15,7 @@ export default () => (
         <div className="title">Education</div>
         <div>Stony Brook University</div>
         {keyValueItem('Major', 'Computer Science')}
-        {keyValueItem('Minors', 'Digital Art, Music and Technology, Entrepreneurship')}
+        {keyValueItem('Minors', 'Digital Art, Music Technology')}
         <br />
         <div className="title">Work Experience</div>
         <div>
