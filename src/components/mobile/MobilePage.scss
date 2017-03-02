@@ -1,0 +1,31 @@
+@import '../../styles/colors';
+
+$nav-height: 38px;
+
+:local(.container) {
+  .nav {
+    font-size: 15px;
+    height: $nav-height;
+    background-color: $mobile-nav-bg-color;
+    border-bottom: thin solid darken($mobile-nav-bg-color, 9%);
+    h1 {
+      text-align: center;
+      margin: 0;
+      font-size: inherit;
+      line-height: $nav-height;
+    }
+  }
+
+  .content {
+    height: 100%;
+    display: flex;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .content::-webkit-scrollbar {
+    -webkit-appearance: none;
+    background-color: $mobile-bg-color;
+    width: 10px;
+  }
+}

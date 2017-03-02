@@ -1,0 +1,7 @@
+@import "../../styles/colors";
+
+:local(.container) {
+  background-color: $mobile-bg-color;
+  width: 100%;
+  height: 100%;
+}

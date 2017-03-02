@@ -1,0 +1,10 @@
+$icon-size: 52px;
+
+:local(.container) {
+  width: $icon-size;
+  height: $icon-size;
+  img.icon {
+    width: 100%;
+    height: 100%
+  }
+}
