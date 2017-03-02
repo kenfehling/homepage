@@ -1,7 +1,7 @@
 import styles from './DockIcon.scss'
 import ReactTooltip from 'react-tooltip'
 
-export default ({name, onClick}) => (
+const DockIcon = ({name, onClick}) => (
   <div className={styles.container}>
     <img data-tip data-for={name} src={require('img/icons/dock/' + name + '.svg')} onClick={onClick} />
     <ReactTooltip id={name} type="light" place="top" effect="solid">
@@ -9,3 +9,5 @@ export default ({name, onClick}) => (
     </ReactTooltip>
   </div>
 )
+
+export default DockIcon

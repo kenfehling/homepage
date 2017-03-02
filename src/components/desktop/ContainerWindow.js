@@ -1,12 +1,12 @@
 import React, {Children, cloneElement} from 'react'
-import Window from './Window'
+import DesktopWindow from './DesktopWindow'
 import {Container, HistoryRoute} from 'react-router-nested-history'
 
 export default ({children, name, ...windowProps}) => {
   const id = name.toLowerCase()
   const path = `/${id}`
   return (
-    <Window {...windowProps} name={name} children={({isOnTop}) => (
+    <DesktopWindow {...windowProps} name={name} children={({isOnTop}) => (
       <Container name={id}
                  initialUrl={path}
                  patterns={[path]}

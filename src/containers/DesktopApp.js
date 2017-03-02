@@ -1,5 +1,5 @@
 import {Component} from 'react'
-import Window from '../components/desktop/Window'
+import DesktopWindow from '../components/desktop/DesktopWindow'
 import IFrameWindow from '../components/desktop/IFrameWindow'
 import Editor from '../components/desktop/Editor'
 import Terminal from '../components/desktop/Terminal'
@@ -20,7 +20,7 @@ export default class DesktopApp extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      currentWindow: null,
+      currentWindow: null
     }
   }
 
@@ -48,9 +48,9 @@ export default class DesktopApp extends Component {
           <ContainerWindow name="Audio" bgColor="#003" fgColor="#36F" usePadding={false}>
             <Audio />
           </ContainerWindow>
-          <ContainerWindow name="Mobile" usePadding={false}>
+          <DesktopWindow name="Mobile" usePadding={false}>
             <Mobile useTopBar={true} />
-          </ContainerWindow>
+          </DesktopWindow>
           <Window name="Tools" bgColor="#FFF" fgColor="#000" usePadding={false}>
             <DesktopTools />
           </Window>

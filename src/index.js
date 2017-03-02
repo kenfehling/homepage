@@ -1,13 +1,11 @@
 import {render}  from 'react-dom';
 import {HistoryRouter} from 'react-router-nested-history'
-import DesktopApp from './containers/DesktopApp'
-import MobileApp from './containers/MobileApp'
-import bowser from 'bowser'
+import App from './containers/App'
 
 render((
   <div>
     <HistoryRouter>
-      {bowser.mobile || bowser.tablet ? <MobileApp /> : <DesktopApp />}
+      <App />
     </HistoryRouter>
   </div>
 ), document.getElementById('root'));
