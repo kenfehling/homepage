@@ -1,0 +1,78 @@
+@import "bourbon";
+@import "../../styles/utils";
+
+$icon-size: 56px;
+$detail-icon-size: 36px;
+$star-size: 12px;
+$tools-bg: #F2F1F0;
+$item-bg: #FCFBFC;
+$border-darken: 15%;
+$title-size: 15px;
+$title-weight: 700;
+$header-top-color: #7946a1;
+$header-bottom-color: #a343a4;
+
+:local(.container) {
+  @include no-select();
+  @include show-scroll($tools-bg);
+  background-color: $tools-bg;
+
+  .scroll-area {
+    white-space: nowrap;
+    display: flex;
+    padding: 3px 3px 0 5px;
+  }
+
+  .col {
+    flex: 1 0 auto;
+    max-width: 104px;
+    height: 100%;
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .tool {
+      width: 96px;
+      text-align: center;
+      cursor: pointer;
+      background-color: $item-bg;
+      border: thin solid darken($item-bg, $border-darken);
+      border-radius: 4px;
+      padding: 10px;
+      box-sizing: border-box;
+      &:first-child {
+        margin: 8px 4px;
+      }
+      &:last-child {
+        margin: 8px 4px 5px 4px;
+      }
+      .icon {
+        width: $icon-size;
+        height: $icon-size;
+        border-radius: 4px;
+        margin: auto;
+      }
+      .name {
+        font-size: 12px;
+        font-weight: $title-weight;
+        text-align: center;
+        margin: 1px 0 3px 0;
+      }
+      .stars {
+        text-align: center;
+        img {
+          height: $star-size;
+        }
+      }
+    }
+    .tool:hover {
+      background-color: darken($item-bg, 6%);
+      border: thin solid darken($item-bg, 6% + $border-darken);
+    }
+
+    .tool:active {
+      background-color: darken($item-bg, 10%);
+      border: thin solid darken($item-bg, 10% + $border-darken);
+    }
+  }
+}

@@ -1,0 +1,44 @@
+@import "bourbon";
+@import "../../styles/utils";
+@import "../../styles/dimens";
+@import "../../styles/colors";
+
+$header-top-color: #7946a1;
+$header-bottom-color: #a343a4;
+
+:local(.container) {
+  @include background-image(linear-gradient(to bottom, $header-top-color, $header-bottom-color));
+  @include no-select();
+  color: $item-bg-color;
+  padding: 10px 0;
+  .title {
+    padding: 10px 0;
+    font-weight: $title-weight;
+    font-size: $title-size;
+    text-align: center;
+  }
+  .categories {
+    padding-left: 9px;
+    display: flex;
+    > * {
+      color: inherit;
+      text-decoration: none;
+      display: block;
+      padding: 3px 6px;
+      margin-right: 3px;
+      cursor: pointer;
+      &:hover {
+        text-decoration: underline;
+      }
+      &.active-header-item {
+        background-color: $item-bg-color;
+        border-radius: 2px;
+        color: $header-bottom-color;
+        cursor: default;
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}

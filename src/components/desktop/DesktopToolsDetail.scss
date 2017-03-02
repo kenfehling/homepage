@@ -1,0 +1,54 @@
+@import "bourbon";
+@import "../../styles/utils";
+@import "../../styles/dimens";
+@import "../../styles/colors";
+
+:local(.container) {
+  height: 300px;  // a stopgap for now
+  font-family: inherit;
+  background-color: $details-bg-color;
+  padding: 35px;
+  box-sizing: border-box;
+  .heading {
+    display: flex;
+    margin-bottom: 20px;
+    padding-right: 5px;
+    font-weight: $title-weight;
+    font-size: $title-size + 3px;
+    line-height: $title-size + 3px;
+    .title {
+      flex: 1;
+      text-align: center;
+    }
+    .skill {
+      display: flex;
+      font-weight: 400;
+      .label {
+        font-size: $title-size;
+        line-height: $details-star-size;
+      }
+      .stars {
+        margin-left: 5px;
+        img {
+          height: $details-star-size;
+        }
+      }
+    }
+  }
+  .body {
+    padding-right: 10px;
+    line-height: 1.45em;
+    a {
+      color: #4670d3;
+      font-weight: $title-weight;
+      cursor: pointer;
+      text-decoration: none;
+      * {
+        font-weight: inherit;
+      }
+    }
+    a:hover, a:hover * {
+      text-decoration: underline;
+    }
+  }
+}
