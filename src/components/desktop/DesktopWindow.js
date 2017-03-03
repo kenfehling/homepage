@@ -7,7 +7,7 @@ import styles from './DesktopWindow.scss'
 const DesktopWindow = ({name, menuItems, children, fgColor='#000', bgColor='#FFF',
                 usePadding=true, className=''}) => (
   <Draggable cancel=".inner-container">
-    <Window className={`${styles.container} ${name} ${className}`}>
+    <Window forName={name} className={`${styles.container} ${name} ${className}`}>
      {props => (
        <div className="inner-container"
             style={{

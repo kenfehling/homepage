@@ -41,7 +41,7 @@ export default class Mobile extends Component {
       <div className={styles.container}>
         {useTopBar ? <TopBar /> : ''}
         <WindowGroup name='mobile' currentContainerName={this.state.currentWindow}>
-          <MobileWindow name='Home' path='/mobile'>
+          <MobileWindow name='Home' path='/mobile' isDefault={true}>
             {() => (
               <HomeScreen onIconClick={name => this.setState({currentWindow: name})} />
             )}

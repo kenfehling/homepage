@@ -4,11 +4,12 @@ import styles from './MobileWindow.scss'
 const toId = name => name.toLowerCase()
 const toPath = name => `/mobile/${toId(name)}`
 
-const MobileWindow = ({name, path=toPath(name), component, children}) => (
-  <Window className={styles.container}>
+const MobileWindow = ({name, path=toPath(name), component, children, isDefault=false}) => (
+  <Window forName={toId(name)} className={styles.container}>
     <Container name={toId(name)}
                initialUrl={path}
                patterns={[path]}
+               isDefault={isDefault}
                animate={false}
     >
       {component ? <HistoryRoute path={path} exact component={component}/> :
