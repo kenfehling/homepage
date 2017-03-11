@@ -1,31 +1,26 @@
+import React, {PropTypes} from 'react'
 import styles from './HomeScreen.scss'
-import HomeScreenIcon from './HomeScreenIcon'
+import {HeaderLink} from 'react-router-nested-history'
 
-const icons = [
-  'Map',
-  'Terminal',
-  'Tools',
-  'Editor',
-  'Social',
-  'Audio',
-  'PDF',
-  'Mobile'
-]
-
-export default ({onIconClick}) => {
+const HomeScreen = ({apps}) => {
   return (
     <div className={styles.container}>
       <div className="inner-container">
         <div className="back-container"></div>
         <div className="front-container">
-          {icons.map(name => (
-            <HomeScreenIcon key={name}
-                      name={name}
-                      onClick={() => onIconClick(name.toLowerCase())}
-            />
+          {apps.map(app => (
+            <HeaderLink className='icon' key={app} toContainer={app.toLowerCase()}>
+              <img src={require('img/icons/dock/' + app + '.svg')} />
+            </HeaderLink>
           ))}
         </div>
       </div>
     </div>
   )
 }
+
+HomeScreen.propTypes = {
+  apps: PropTypes.arrayOf(PropTypes.string).isRequired
+}
+
+export default HomeScreen

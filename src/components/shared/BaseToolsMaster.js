@@ -1,8 +1,7 @@
-import React, { Component, PropTypes } from 'react'
+import React, {Component, PropTypes} from 'react'
 import Helmet from "react-helmet"
 import _ from 'lodash'
-import { tools, categories } from '../../constants/tools'
-import { linkToTool, getIcon, renderStars } from '../../utils/tools'
+import {linkToTool, getIcon, renderStars, filterTools} from '../../utils/tools'
 
 export default class BaseToolsMaster extends Component {
   static propTypes = {
@@ -24,16 +23,16 @@ export default class BaseToolsMaster extends Component {
 
   render() {
     const {arrangeTools, match:{params:{category}}, tool, className} = this.props
-    const filteredTools = !category || category === 'All' ? tools :
-        _.filter(tools, t => _.includes(t.categories, category))
-    const renderedTools = _.map(filteredTools, this.renderTool.bind(this))
+    const renderedTools = _.map(filterTools(category), this.renderTool.bind(this))
     return (<div className={className}>
       <Helmet
           title={`${!tool ? (category || '') : tool || ''}`}
           titleTemplate="Ken Fehling - %s"
           defaultTitle="Ken Fehling"
       />
-      <div className="tools">{arrangeTools ? arrangeTools(renderedTools) : renderedTools}</div>
+      <div className="tools">
+        {arrangeTools ? arrangeTools(renderedTools) : renderedTools}
+      </div>
     </div>)
   }
 }

@@ -1,15 +1,14 @@
-import _ from 'lodash'
-import styles from './List.scss'
+import React, {PropTypes} from 'react'
+import ListItem from './ListItem'
 
-const ListItem = ({icon, name}) => (
-  <div className="item">
-    <img className="icon" src={require('img/icons/' + icon)} />
-    <div className="name">{name}</div>
-  </div>
-)
-
-export default ({items}) => {
-  return (<div className={styles.list}>
-    {_.map(items, item => <ListItem key={item.name} {...item} />)}
+const List = ({items}) => {
+  return (<div>
+    {items.map(item => <ListItem key={item.name} {...item} />)}
   </div>)
 }
+
+List.propTypes = {
+  items: PropTypes.arrayOf(PropTypes.object).isRequired
+}
+
+export default List

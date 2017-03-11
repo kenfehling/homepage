@@ -5,8 +5,7 @@ import DesktopToolsMaster from './DesktopToolsMaster'
 import DesktopToolsDetail from './DesktopToolsDetail'
 import {categories} from '../../constants/tools'
 import styles from './DesktopTools.scss'
-
-const regex = c => `:category(${c})`
+import {categoryRegex} from '../../utils/tools'
 
 export default (props) => (
   <div className={styles.container}>
@@ -17,14 +16,14 @@ export default (props) => (
                      name={c}
                      resetOnLeave={true}
                      initialUrl={`/tools/${c}`}
-                     patterns={[`/tools/${regex(c)}`,
-                               `/tools/${regex(c)}/:tool`]}>
-              <HistoryRoute path={`/tools/${regex(c)}`} exact>
+                     patterns={[`/tools/:category(${c})`,
+                               `/tools/:category(${c})/:tool`]}>
+              <HistoryRoute path={`/tools/:category(${c})`} exact>
                 {({ matched, ...rest}) => (
                   <DesktopToolsMaster {...rest} />
                 )}
               </HistoryRoute>
-              <HistoryRoute path={`/tools/${regex(c)}/:tool`} exact
+              <HistoryRoute path={`/tools/:category(${c})/:tool`} exact
                             component={DesktopToolsDetail} />
           </Container>
       ))}

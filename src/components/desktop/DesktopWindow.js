@@ -1,13 +1,13 @@
 import {PropTypes} from 'react'
 import Draggable from 'react-draggable'
-import {Window} from 'react-router-nested-history'
+import {HistoryWindow} from 'react-router-nested-history'
 import * as _ from 'lodash'
 import styles from './DesktopWindow.scss'
 
 const DesktopWindow = ({name, menuItems, children, fgColor='#000', bgColor='#FFF',
                 usePadding=true, className=''}) => (
   <Draggable cancel=".inner-container">
-    <Window forName={name} className={`${styles.container} ${name} ${className}`}>
+    <HistoryWindow forName={name} className={`${styles.container} ${name} ${className}`}>
      {props => (
        <div className="inner-container"
             style={{
@@ -26,7 +26,7 @@ const DesktopWindow = ({name, menuItems, children, fgColor='#000', bgColor='#FFF
          </div>
        </div>
       )}
-    </Window>
+    </HistoryWindow>
   </Draggable>
 )
 

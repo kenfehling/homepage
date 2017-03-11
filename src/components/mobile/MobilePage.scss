@@ -1,18 +1,45 @@
 @import '../../styles/colors';
 
 $nav-height: 38px;
+$font-size: 15px;
+$link-color: #36F;
 
 :local(.container) {
   .nav {
-    font-size: 15px;
+    font-size: $font-size;
     height: $nav-height;
     background-color: $mobile-nav-bg-color;
+    padding: 0 5px;
     border-bottom: thin solid darken($mobile-nav-bg-color, 9%);
-    h1 {
-      text-align: center;
+    display: flex;
+    .back, .title {
       margin: 0;
       font-size: inherit;
       line-height: $nav-height;
+    }
+    .back {
+      position: absolute;
+      .link {
+        display: flex;
+      }
+      a, a:hover, a:active, a:visited {
+        font-weight: 400;
+        text-decoration: none;
+        color: $link-color;
+      }
+      .fa-chevron-left {
+        font-weight: 100;
+        display: block;
+        line-height: inherit;
+        margin-right: 3px;
+      }
+      .text {
+        font-size: round($font-size * 0.9);
+      }
+    }
+    .title {
+      width: 100%;
+      text-align: center;
     }
   }
 

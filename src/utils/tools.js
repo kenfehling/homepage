@@ -47,3 +47,7 @@ export function linkToTool(name, category=categories[0], text=name) {
     {text}
   </HistoryLink>
 }
+
+export const filterTools = (category) =>
+    category && category !== 'All' ?
+        _.filter(tools, t => _.includes(t.categories, category)) : tools

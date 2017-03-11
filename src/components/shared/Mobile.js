@@ -2,10 +2,27 @@ import React, {Component, PropTypes} from 'react'
 import {WindowGroup} from 'react-router-nested-history'
 import styles from './Mobile.scss'
 import MobileWindow from '../mobile/MobileWindow'
-import Dashboard from '../mobile/Dashboard'
 import MobileAudio from '../mobile/MobileAudio'
 import HomeScreen from '../mobile/HomeScreen'
+import MobileTools from '../mobile/MobileTools'
 
+const apps = [
+  {
+    name: 'Audio',
+    component: MobileAudio
+  },
+  {
+    name: 'Tools',
+    component: MobileTools,
+    patterns: [
+      '/mobile/tools',
+      '/mobile/tools/:category',
+      '/mobile/tools/:category/:tool'
+    ]
+  }
+]
+
+const timeFormat = {hour: '2-digit', minute:'2-digit'}
 const TopBar = () => (
   <div className="top-bar">
     <div className="network">
@@ -13,7 +30,7 @@ const TopBar = () => (
       <i className="fa fa-wifi" />
     </div>
     <div className="time">
-      {new Date().toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'})}
+      {new Date().toLocaleTimeString(navigator.language, timeFormat)}
     </div>
     <div className="battery">
       <i className="fa fa-battery-full "/>
@@ -22,34 +39,23 @@ const TopBar = () => (
   </div>
 )
 
-export default class Mobile extends Component {
-  static propTypes = {
-    children: PropTypes.object,
-    useTopBar: PropTypes.bool
-  }
+const Mobile = ({useTopBar}) => (
+  <div className={styles.container}>
+    {useTopBar ? <TopBar /> : ''}
+    <WindowGroup name='mobile' allowInterContainerHistory={true}>
+      <MobileWindow isDefault={true} name='Home' path='/mobile'>
+        <HomeScreen apps={apps.map(app => app.name)} />
+      </MobileWindow>
+      {apps.map(({name, component}) =>
+        <MobileWindow key={name} name={name} component={component} />
+      )}
+    </WindowGroup>
+  </div>
+)
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      currentWindow: null
-    }
-  }
-
-  render() {
-    const {useTopBar} = this.props
-    return (
-      <div className={styles.container}>
-        {useTopBar ? <TopBar /> : ''}
-        <WindowGroup name='mobile' currentContainerName={this.state.currentWindow}>
-          <MobileWindow name='Home' path='/mobile' isDefault={true}>
-            {() => (
-              <HomeScreen onIconClick={name => this.setState({currentWindow: name})} />
-            )}
-          </MobileWindow>
-          <MobileWindow name='Audio' component={MobileAudio} />
-        </WindowGroup>
-      </div>
-    )
-  }
-
+Mobile.propTypes = {
+  children: PropTypes.object,
+  useTopBar: PropTypes.bool
 }
+
+export default Mobile
