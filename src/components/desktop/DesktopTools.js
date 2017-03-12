@@ -9,20 +9,17 @@ import {categoryRegex} from '../../utils/tools'
 
 export default (props) => (
   <div className={styles.container}>
-    <ContainerGroup name='tools' gotoTopOnSelectActive={true}>
+    <ContainerGroup name='desktop_tools' gotoTopOnSelectActive={true}>
       <DesktopToolsHeader />
       {categories.map(c => (
           <Container key={c}
-                     name={c}
+                     name={c + '_tools'}
                      resetOnLeave={true}
                      initialUrl={`/tools/${c}`}
                      patterns={[`/tools/:category(${c})`,
                                `/tools/:category(${c})/:tool`]}>
-              <HistoryRoute path={`/tools/:category(${c})`} exact>
-                {({ matched, ...rest}) => (
-                  <DesktopToolsMaster {...rest} />
-                )}
-              </HistoryRoute>
+              <HistoryRoute path={`/tools/:category(${c})`} exact
+                            component={DesktopToolsMaster} />
               <HistoryRoute path={`/tools/:category(${c})/:tool`} exact
                             component={DesktopToolsDetail} />
           </Container>

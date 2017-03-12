@@ -9,7 +9,7 @@ export default () => (
     <div className="categories">
       {categories.map(c => (
         <HeaderLink key={c}
-                    toContainer={c}
+                    toContainer={c + '_tools'}
                     className='header-item'
                     activeClassName='active-header-item'>
           {c}

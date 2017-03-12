@@ -2,7 +2,7 @@
 
 $nav-height: 38px;
 $font-size: 15px;
-$link-color: #36F;
+$link-color: #007fd3;
 
 :local(.container) {
   .nav {
@@ -15,9 +15,9 @@ $link-color: #36F;
     .back, .title {
       margin: 0;
       font-size: inherit;
-      line-height: $nav-height;
     }
     .back {
+      line-height: $nav-height;
       position: absolute;
       .link {
         display: flex;
@@ -38,6 +38,7 @@ $link-color: #36F;
       }
     }
     .title {
+      line-height: $nav-height - 1;
       width: 100%;
       text-align: center;
     }

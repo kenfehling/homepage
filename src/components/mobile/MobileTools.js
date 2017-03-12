@@ -37,7 +37,7 @@ const Detail = props => (
 const MobileTools = () => (
   <MobilePage title='Tools'>
     <HistoryRoute path='/mobile/tools' exact component={Categories} />
-    <HistoryRoute path='/mobile/tools/:category' exact component={Category} />
+    <HistoryRoute path='/mobile/tools/:Languages' exact component={Category} />
     <HistoryRoute path='/mobile/tools/:category/:tool' exact component={Detail} />
   </MobilePage>
 )

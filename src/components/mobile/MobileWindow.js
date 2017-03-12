@@ -1,3 +1,4 @@
+import React, {createElement} from 'react'
 import {HistoryWindow, Container, HistoryRoute} from 'react-router-nested-history'
 import styles from './MobileWindow.scss'
 
@@ -12,10 +13,9 @@ const MobileWindow = ({name, path=toPath(name), patterns=[path],
                patterns={patterns}
                isDefault={isDefault}
     >
-      {component ?
-        <HistoryRoute path={path} exact component={component}/> :
-        <HistoryRoute path={path} exact children={children} />
-      }
+      <HistoryRoute path={path} exact
+                    children={children ? children :
+                        props => createElement(component, props)} />
     </Container>
   </HistoryWindow>
 )
