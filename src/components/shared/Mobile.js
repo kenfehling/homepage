@@ -2,24 +2,14 @@ import React, {Component, PropTypes} from 'react'
 import {WindowGroup} from 'react-router-nested-history'
 import styles from './Mobile.scss'
 import MobileWindow from '../mobile/MobileWindow'
+import ContainerWindow from '../mobile/MobileContainerWindow'
 import MobileAudio from '../mobile/MobileAudio'
 import HomeScreen from '../mobile/HomeScreen'
 import MobileTools from '../mobile/MobileTools'
 
 const apps = [
-  {
-    name: 'Audio',
-    component: MobileAudio
-  },
-  {
-    name: 'Tools',
-    component: MobileTools,
-    patterns: [
-      '/mobile/tools',
-      '/mobile/tools/:category',
-      '/mobile/tools/:category/:tool'
-    ]
-  }
+  {name: 'Tools'},
+  {name: 'Audio'}
 ]
 
 const timeFormat = {hour: '2-digit', minute:'2-digit'}
@@ -43,12 +33,11 @@ const Mobile = ({useTopBar}) => (
   <div className={styles.container}>
     {useTopBar ? <TopBar /> : ''}
     <WindowGroup name='mobile' allowInterContainerHistory={true}>
-      <MobileWindow isDefault={true} name='Home' path='/mobile'>
+      <ContainerWindow isDefault={true} name='Home' path='/mobile'>
         <HomeScreen apps={apps.map(app => app.name)} />
-      </MobileWindow>
-      {apps.map(({name, component}) =>
-        <MobileWindow key={name} name={name} component={component} />
-      )}
+      </ContainerWindow>
+      <MobileWindow name='Tools'><MobileTools /></MobileWindow>
+      <ContainerWindow name="Audio"><MobileAudio /></ContainerWindow>
     </WindowGroup>
   </div>
 )

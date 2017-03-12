@@ -9,7 +9,7 @@ import DesktopSocial from '../components/desktop/DesktopSocial'
 import Mobile from '../components/shared/Mobile'
 import Dock from '../components/desktop/Dock'
 import {WindowGroup} from 'react-router-nested-history'
-import ContainerWindow from '../components/desktop/ContainerWindow'
+import ContainerWindow from '../components/desktop/DesktopContainerWindow'
 import styles from './DesktopApp.scss'
 
 const menuItems = [

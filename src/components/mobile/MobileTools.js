@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react'
-import {HistoryRoute} from 'react-router-nested-history'
+import {HistoryRoute, Container} from 'react-router-nested-history'
 import MobilePage from './MobilePage'
 import List from './List'
 import BaseToolsDetail from '../shared/BaseToolsDetail'
@@ -36,9 +36,18 @@ const Detail = props => (
 
 const MobileTools = () => (
   <MobilePage title='Tools'>
-    <HistoryRoute path='/mobile/tools' exact component={Categories} />
-    <HistoryRoute path='/mobile/tools/:Languages' exact component={Category} />
-    <HistoryRoute path='/mobile/tools/:category/:tool' exact component={Detail} />
+    <Container name='mobile_tools'
+               initialUrl='/mobile/tools'
+               patterns={[
+                 '/mobile/tools',
+                 '/mobile/tools/:category',
+                 '/mobile/tools/:category/:tool'
+               ]}
+    >
+      <HistoryRoute path='/mobile/tools' exact component={Categories} />
+      <HistoryRoute path='/mobile/tools/:category' exact component={Category} />
+      <HistoryRoute path='/mobile/tools/:category/:tool' exact component={Detail} />
+    </Container>
   </MobilePage>
 )
 

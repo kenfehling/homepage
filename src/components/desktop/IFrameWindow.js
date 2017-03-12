@@ -1,6 +1,6 @@
 import { PropTypes } from 'react'
 import styles from './IFrameWindow.scss'
-import ContainerWindow from './ContainerWindow'
+import ContainerWindow from './DesktopContainerWindow'
 
 const IFrameWindow = ({name, src}) => {
   return (

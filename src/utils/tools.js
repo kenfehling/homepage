@@ -3,8 +3,6 @@ import {tools, categories} from '../constants/tools'
 import * as _ from 'lodash'
 import { HistoryLink } from 'react-router-nested-history'
 
-//const req = require.context("img/icons/tools", true, /^\.\/.*$/)
-
 const starIcon = require('../../img/icons/star.svg')
 const halfStarIcon = require('../../img/icons/half-star.svg')
 

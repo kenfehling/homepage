@@ -5,6 +5,7 @@ $font-size: 15px;
 $link-color: #007fd3;
 
 :local(.container) {
+  height: 100%;
   .nav {
     font-size: $font-size;
     height: $nav-height;
