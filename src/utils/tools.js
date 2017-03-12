@@ -38,11 +38,11 @@ export const getIcon = ({name, iconType}) => (
     <img className="icon" src={require('../../img/icons/tools/' +
         escapeName(name) +'.' + (iconType || 'svg'))} />)
 
-export function linkToTool(name, category=categories[0], text=name) {
+export function linkToTool(name, category=categories[0], text=name, path='') {
   const names = _.map(tools, t => t.name)
   const mainName = _.includes(names, name) ? name : getMainName(name).name
   const escapedName = escapeName(mainName)
-  const to = `/tools/${category}/${escapedName}`
+  const to = `${path}/tools/${category}/${escapedName}`
   return <HistoryLink key={mainName + Math.random()} to={to} name={mainName}>
     {text}
   </HistoryLink>

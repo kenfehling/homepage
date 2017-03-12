@@ -7,9 +7,8 @@ import Audio from '../components/desktop/Audio'
 import DesktopTools from '../components/desktop/DesktopTools'
 import Mobile from '../components/shared/Mobile'
 import Dock from '../components/desktop/Dock'
-import {WindowGroup} from 'react-router-nested-history'
+import {WindowGroup, HistoryWindow} from 'react-router-nested-history'
 import ContainerWindow from '../components/desktop/ContainerWindow'
-import Splash from '../components/desktop/Splash'
 import styles from './DesktopApp.scss'
 
 const menuItems = [
@@ -51,9 +50,9 @@ export default class DesktopApp extends Component {
           <DesktopWindow name="Mobile" usePadding={false}>
             <Mobile useTopBar={true} />
           </DesktopWindow>
-          <Window name="Tools" bgColor="#FFF" fgColor="#000" usePadding={false}>
+          <HistoryWindow name="Tools" bgColor="#FFF" fgColor="#000" usePadding={false}>
             <DesktopTools />
-          </Window>
+          </HistoryWindow>
         </WindowGroup>
         <Dock onIconClick={name => this.setState({currentWindow: name})} />
       </div>
