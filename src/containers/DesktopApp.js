@@ -16,6 +16,18 @@ const menuItems = [
   { name: 'File' }
 ]
 
+const windows = [
+  {name: 'Map'},
+  {name: 'Terminal'},
+  {name: 'Tools'},
+  {name: 'Editor'},
+  {name: 'Social'},
+  {name: 'Audio'},
+  {name: 'PDF'},
+  {name: 'Mobile', container: 'mobile'}
+]
+
+
 const DesktopApp = () => (
   <div className={styles.container}>
     {/*
@@ -39,7 +51,7 @@ const DesktopApp = () => (
       <ContainerWindow name="Audio" bgColor="#003" fgColor="#36F" usePadding={false}>
         <Audio />
       </ContainerWindow>
-      <DesktopWindow name="Mobile" usePadding={false}>
+      <DesktopWindow name="Mobile" container='mobile' usePadding={false}>
         <Mobile useTopBar={true} />
       </DesktopWindow>
       <ContainerWindow name="Tools" bgColor="#FFF" fgColor="#000" usePadding={false}>
@@ -48,7 +60,7 @@ const DesktopApp = () => (
       <ContainerWindow name="Social" bgColor="#FFF" fgColor="#000">
         <DesktopSocial />
       </ContainerWindow>
-      <Dock />
+      <Dock windows={windows} />
     </WindowGroup>
   </div>
 )

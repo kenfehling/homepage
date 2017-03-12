@@ -2,24 +2,13 @@ import {HeaderLink} from 'react-router-nested-history'
 import ReactTooltip from 'react-tooltip'
 import styles from './Dock.scss'
 
-const icons = [
-  {name: 'Map'},
-  {name: 'Terminal'},
-  {name: 'Tools'},
-  {name: 'Editor'},
-  {name: 'Social'},
-  {name: 'Audio'},
-  {name: 'PDF'},
-  {name: 'Mobile', container: 'mobile'}
-]
-
-export default () => {
+export default ({windows}) => {
   return (
     <div className={styles.container}>
         <div className="inner-container">
             <div className="back-container"></div>
             <div className="front-container">
-              {icons.map(({name, container}) => (
+              {windows.map(({name, container}) => (
                 <HeaderLink className='icon'
                             key={name}
                             toContainer={container || `desktop_${name.toLowerCase()}`}>

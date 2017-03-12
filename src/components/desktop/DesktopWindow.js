@@ -4,10 +4,11 @@ import {HistoryWindow} from 'react-router-nested-history'
 import * as _ from 'lodash'
 import styles from './DesktopWindow.scss'
 
-const DesktopWindow = ({name, menuItems, children, fgColor='#000', bgColor='#FFF',
-                usePadding=true, className=''}) => (
+const DesktopWindow = ({name, container='desktop_' + name.toLowerCase(),
+                        menuItems, children, fgColor='#000', bgColor='#FFF',
+                        usePadding=true, className=''}) => (
   <Draggable cancel=".inner-container">
-    <HistoryWindow forName={'desktop_' + name.toLowerCase()}
+    <HistoryWindow forName={container}
                    className={`${styles.container} ${name} ${className}`}>
      {props => (
        <div className="inner-container"
