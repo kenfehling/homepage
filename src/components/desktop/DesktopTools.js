@@ -1,5 +1,7 @@
 import React, {Component, PropTypes, createElement} from 'react'
-import {Container, ContainerGroup, HistoryRoute} from 'react-router-nested-history'
+import {
+  Container, ContainerGroup, HistoryRoute
+} from 'react-router-nested-history'
 import DesktopToolsHeader from './DesktopToolsHeader'
 import DesktopToolsMaster from './DesktopToolsMaster'
 import DesktopToolsDetail from './DesktopToolsDetail'
@@ -17,7 +19,7 @@ export default (props) => (
                      resetOnLeave={true}
                      initialUrl={`/tools/${c}`}
                      patterns={[`/tools/:category(${c})`,
-                               `/tools/:category(${c})/:tool`]}>
+                                `/tools/:category(${c})/:tool`]}>
               <HistoryRoute path={`/tools/:category(${c})`} exact
                             component={DesktopToolsMaster} />
               <HistoryRoute path={`/tools/:category(${c})/:tool`} exact

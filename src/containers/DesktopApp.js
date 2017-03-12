@@ -54,9 +54,9 @@ const DesktopApp = () => (
       <DesktopWindow name="Mobile" container='mobile' usePadding={false}>
         <Mobile useTopBar={true} />
       </DesktopWindow>
-      <ContainerWindow name="Tools" bgColor="#FFF" fgColor="#000" usePadding={false}>
+      <DesktopWindow name="Tools" bgColor="#FFF" fgColor="#000" usePadding={false}>
         <DesktopTools />
-      </ContainerWindow>
+      </DesktopWindow>
       <ContainerWindow name="Social" bgColor="#FFF" fgColor="#000">
         <DesktopSocial />
       </ContainerWindow>

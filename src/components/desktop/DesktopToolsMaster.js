@@ -1,10 +1,20 @@
 import React, {Component, PropTypes} from 'react'
 import {ScrollArea} from 'react-router-nested-history'
 import * as _ from 'lodash'
-import BaseToolsMaster from '../shared/BaseToolsMaster'
+import {linkToTool, getIcon, renderStars, filterTools} from '../../utils/tools'
 import styles from './DesktopToolsMaster.scss'
+import Helmet from 'react-helmet'
 
 const ROWS = 2
+
+const renderTool = (tool, category) => {
+  const {name, stars} = tool
+  return linkToTool(name, category, (<div className="tool">
+    {getIcon(tool)}
+    <div className="name">{name}</div>
+    {renderStars(stars)}
+  </div>))
+}
 
 const arrangeTools = (tools) => {
   const n = _.size(tools)
@@ -22,11 +32,12 @@ const arrangeTools = (tools) => {
   )
 }
 
-const DesktopToolsMaster = props => (
-  <BaseToolsMaster {...props}
-                   className={styles.container}
-                   arrangeTools={arrangeTools}
-  />
+const DesktopToolsMaster = ({match:{params:{category}}}) => (
+  <div className={styles.container}>
+    {arrangeTools(_.map(filterTools(category), t => renderTool(t, category)))}
+    <Helmet title={category} titleTemplate="Ken Fehling - %s" />
+  </div>
 )
+
 
 export default DesktopToolsMaster
