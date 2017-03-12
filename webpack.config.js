@@ -51,7 +51,7 @@ module.exports = {
       loader: "url-loader?limit=10000000"
     }, {
       test: /\.pdf$/,
-      loader: "url-loader?limit=10000000&mimetype=application/pdf"
+      loader: "file-loader?mimetype=application/pdf"
     }]
   },
   resolve: {
