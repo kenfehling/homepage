@@ -9,7 +9,9 @@ const HomeScreen = ({apps}) => {
         <div className="back-container"></div>
         <div className="front-container">
           {apps.map(app => (
-            <HeaderLink className='icon' key={app} toContainer={app.toLowerCase()}>
+            <HeaderLink className='icon'
+                        key={app}
+                        toContainer={'mobile_' + app.toLowerCase()}>
               <img src={require('img/icons/dock/' + app + '.svg')} />
             </HeaderLink>
           ))}
