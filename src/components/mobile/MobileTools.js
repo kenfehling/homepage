@@ -20,35 +20,38 @@ const mapTool = ({name, iconType}, category) => ({
 })
 
 const Categories = () => (
-  <List items={mappedCategories} />
+  <MobilePage title='Tools'>
+    <List items={mappedCategories} />
+  </MobilePage>
 )
 
 const Category = ({match:{params:{category}}, className}) => (
-  <div>
+  <MobilePage title={category}>
     <List items={filterTools(category).map(tool => mapTool(tool, category))} />
     <Helmet title={category} titleTemplate='Ken Fehling - Tools: %s' />
-  </div>
+  </MobilePage>
 )
 
-const Detail = props => (
-  <BaseToolsDetail {...props} />
+const Detail = (props) => (
+  <MobilePage title={props.match.params.tool}
+              backLinkText={props.match.params.category}>
+    <BaseToolsDetail {...props} />
+  </MobilePage>
 )
 
 const MobileTools = () => (
-  <MobilePage title='Tools'>
-    <Container name='mobile_tools'
-               initialUrl='/mobile/tools'
-               patterns={[
-                 '/mobile/tools',
-                 '/mobile/tools/:category',
-                 '/mobile/tools/:category/:tool'
-               ]}
-    >
-      <HistoryRoute path='/mobile/tools' exact component={Categories} />
-      <HistoryRoute path='/mobile/tools/:category' exact component={Category} />
-      <HistoryRoute path='/mobile/tools/:category/:tool' exact component={Detail} />
-    </Container>
-  </MobilePage>
+  <Container name='mobile_tools'
+             initialUrl='/mobile/tools'
+             patterns={[
+               '/mobile/:app(tools)',
+               '/mobile/:app(tools)/:category',
+               '/mobile/:app(tools)/:category/:tool'
+             ]}
+  >
+    <HistoryRoute path='/mobile/:app(tools)' exact component={Categories} />
+    <HistoryRoute path='/mobile/:app(tools)/:category' exact component={Category} />
+    <HistoryRoute path='/mobile/:app(tools)/:category/:tool' exact component={Detail} />
+  </Container>
 )
 
 MobileTools.propTypes = {

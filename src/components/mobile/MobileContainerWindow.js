@@ -3,7 +3,7 @@ import MobileWindow from './MobileWindow'
 import {Container, HistoryRoute} from 'react-router-nested-history'
 
 const toId = name => 'mobile_' + name.toLowerCase()
-const toPath = name => `/mobile/${name.toLowerCase()}`
+const toPath = name => `/mobile/:app(${name.toLowerCase()})`
 
 const MobileContainerWindow = ({children, name, isDefault=false,
                                 id=toId(name), path=toPath(name)}) => (

@@ -1,15 +1,17 @@
+import React, {PropTypes} from 'react'
 import {BackLink} from 'react-router-nested-history'
 import styles from './MobilePage.scss'
+import '../../utils/string'
 
-const MobilePage = ({title, children}) => (
+const MobilePage = ({title, children, backLinkText}) => (
   <div className={styles.container}>
     <div className='nav'>
       <div className='back'>
         <BackLink>
-          {({page='Home'}) => (
+          {({params:{app='Home'}}) => (
             <div className='link'>
               <i className="fa fa-chevron-left" />
-              <div className='text'>{page}</div>
+              <div className='text'>{(backLinkText || app).capitalize()}</div>
             </div>
           )}
         </BackLink>
@@ -21,5 +23,10 @@ const MobilePage = ({title, children}) => (
     </div>
   </div>
 )
+
+MobilePage.propTypes = {
+  title: PropTypes.string.isRequired,
+  backLinkText: PropTypes.string
+}
 
 export default MobilePage
