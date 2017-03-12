@@ -1,8 +1,8 @@
 import {HistoryWindow, Container, HistoryRoute} from 'react-router-nested-history'
 import styles from './MobileWindow.scss'
 
-const toId = name => name.toLowerCase()
-const toPath = name => `/mobile/${toId(name)}`
+const toId = name => 'mobile_' + name.toLowerCase()
+const toPath = name => `/mobile/${name.toLowerCase()}`
 
 const MobileWindow = ({name, path=toPath(name), patterns=[path],
                       component, children, isDefault=false}) => (

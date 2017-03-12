@@ -47,7 +47,7 @@ const Mobile = ({useTopBar}) => (
         <HomeScreen apps={apps.map(app => app.name)} />
       </MobileWindow>
       {apps.map(({name, component}) =>
-        <MobileWindow key={name} name={'mobile_' + name} component={component} />
+        <MobileWindow key={name} name={name} component={component} />
       )}
     </WindowGroup>
   </div>
