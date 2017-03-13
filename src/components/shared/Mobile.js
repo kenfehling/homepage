@@ -3,13 +3,17 @@ import {WindowGroup} from 'react-router-nested-history'
 import styles from './Mobile.scss'
 import MobileWindow from '../mobile/MobileWindow'
 import ContainerWindow from '../mobile/MobileContainerWindow'
-import MobileAudio from '../mobile/MobileAudio'
 import HomeScreen from '../mobile/HomeScreen'
 import MobileTools from '../mobile/MobileTools'
+import MobileAudio from '../mobile/MobileAudio'
+import MobileSocial from '../mobile/MobileSocial'
+import MobileNotes from '../mobile/MobileNotes'
 
 const apps = [
   {name: 'Tools'},
-  {name: 'Music'}
+  {name: 'Music'},
+  {name: 'Notes'},
+  {name: 'Social'},
 ]
 
 const timeFormat = {hour: '2-digit', minute:'2-digit'}
@@ -38,6 +42,8 @@ const Mobile = ({useTopBar}) => (
       </ContainerWindow>
       <MobileWindow name='Tools'><MobileTools /></MobileWindow>
       <ContainerWindow name="Music"><MobileAudio /></ContainerWindow>
+      <ContainerWindow name="Notes"><MobileNotes /></ContainerWindow>
+      <ContainerWindow name="Social"><MobileSocial /></ContainerWindow>
     </WindowGroup>
   </div>
 )

@@ -1,6 +1,6 @@
 @import "bourbon";
 @import "../../styles/utils";
-$icon-size: 52px;
+$icon-size: 55px;
 
 :local(.container) {
   @include no-select();
@@ -18,7 +18,7 @@ $icon-size: 52px;
     width: $icon-size;
     height: $icon-size;
     text-decoration: none;
-    margin: 7px;
+    margin: 8px;
     cursor: pointer;
     img {
       width: 100%;
