@@ -1,11 +1,11 @@
 @import "bourbon";
 @import "../../styles/utils";
-$icon-size: 55px;
+$icon-size: 56px;
 
 :local(.container) {
   @include no-select();
   height: 100%;
-  padding: 30px 10px;
+  padding: 20px 10px;
   background-image: url('../../../img/mobile_wallpaper.jpg');
   background-size: cover;
 
