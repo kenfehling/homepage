@@ -5,7 +5,7 @@ $icon-size: 55px;
 :local(.container) {
   @include no-select();
   height: 100%;
-  padding: 10px;
+  padding: 30px 10px;
   background-image: url('../../../img/mobile_wallpaper.jpg');
   background-size: cover;
 

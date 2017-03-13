@@ -1,3 +1,6 @@
-:local(.container) {
+$nav-bg-color: #09F;
 
+:local(.nav) {
+  background-color: $nav-bg-color !important;
+  border-color: thin solid darken($nav-bg-color, 9%);
 }

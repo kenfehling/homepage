@@ -16,37 +16,45 @@ const apps = [
   {name: 'Social'},
 ]
 
-const timeFormat = {hour: '2-digit', minute:'2-digit'}
-const TopBar = () => (
-  <div className="top-bar">
-    <div className="network">
-      <div>Network</div>
-      <i className="fa fa-wifi" />
+const Mobile = ({useTopBar}) => {
+  const SimpleWindow = ({name, isDefault=false, topBar=useTopBar, navBar=true,
+                         navClassName='', path=undefined, children}) => (
+    <ContainerWindow name={name}
+                     useTopBar={topBar}
+                     useNavBar={navBar}
+                     navClassName={navClassName}
+                     isDefault={isDefault}
+                     path={path}
+    >
+      {children}
+    </ContainerWindow>
+  )
+  const LowLevelWindow = ({name, topBar=useTopBar, children}) => (
+    <MobileWindow name={name} useTopBar={topBar}>
+      {children}
+    </MobileWindow>
+  )
+  return (
+    <div className={styles.container}>
+      <WindowGroup name='mobile' allowInterContainerHistory={true}>
+        <SimpleWindow isDefault={true}
+                      name='Home'
+                      path='/mobile'
+                      navBar={false}
+                      navClassName={styles.homeScreenNav}
+        >
+          <HomeScreen apps={apps.map(app => app.name)}/>
+        </SimpleWindow>
+        <LowLevelWindow name='Tools'>
+          <MobileTools useTopBar={useTopBar} />
+        </LowLevelWindow>
+        <SimpleWindow name="Music"><MobileAudio /></SimpleWindow>
+        <SimpleWindow name="Notes"><MobileNotes /></SimpleWindow>
+        <SimpleWindow name="Social"><MobileSocial /></SimpleWindow>
+      </WindowGroup>
     </div>
-    <div className="time">
-      {new Date().toLocaleTimeString(navigator.language, timeFormat)}
-    </div>
-    <div className="battery">
-      <i className="fa fa-battery-full "/>
-      <div>96%</div>
-    </div>
-  </div>
-)
-
-const Mobile = ({useTopBar}) => (
-  <div className={styles.container}>
-    {useTopBar ? <TopBar /> : ''}
-    <WindowGroup name='mobile' allowInterContainerHistory={true}>
-      <ContainerWindow isDefault={true} name='Home' path='/mobile'>
-        <HomeScreen apps={apps.map(app => app.name)} />
-      </ContainerWindow>
-      <MobileWindow name='Tools'><MobileTools /></MobileWindow>
-      <ContainerWindow name="Music"><MobileAudio /></ContainerWindow>
-      <ContainerWindow name="Notes"><MobileNotes /></ContainerWindow>
-      <ContainerWindow name="Social"><MobileSocial /></ContainerWindow>
-    </WindowGroup>
-  </div>
-)
+  )
+}
 
 Mobile.propTypes = {
   children: PropTypes.object,
