@@ -9,7 +9,7 @@ import MobileTools from '../mobile/MobileTools'
 
 const apps = [
   {name: 'Tools'},
-  {name: 'Audio'}
+  {name: 'Music'}
 ]
 
 const timeFormat = {hour: '2-digit', minute:'2-digit'}
@@ -37,7 +37,7 @@ const Mobile = ({useTopBar}) => (
         <HomeScreen apps={apps.map(app => app.name)} />
       </ContainerWindow>
       <MobileWindow name='Tools'><MobileTools /></MobileWindow>
-      <ContainerWindow name="Audio"><MobileAudio /></ContainerWindow>
+      <ContainerWindow name="Music"><MobileAudio /></ContainerWindow>
     </WindowGroup>
   </div>
 )
