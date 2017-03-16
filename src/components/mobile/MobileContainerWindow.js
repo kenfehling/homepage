@@ -9,23 +9,23 @@ const toPattern = name => `/mobile/:app(${name.toLowerCase()})`
 
 const MobileContainerWindow = ({children, name, isDefault=false,
                                 useTopBar, useNavBar=true, navClassName='',
-                                id=toId(name), path=toPath(name)}) => (
-  <MobileWindow name={name} children={({isOnTop}) => (
+                                id=toId(name), path=toPath(name),
+                                patterns=[toPattern(name)]}) => (
+  <MobileWindow name={name}>
     <Container name={id}
                initialUrl={path}
-               patterns={[toPattern(name)]}
+               patterns={patterns}
                isDefault={isDefault}>
-      <MobilePage title={name}
-                  useTopBar={useTopBar}
-                  useNavBar={useNavBar}
-                  navClassName={navClassName}>
-        <HistoryRoute
-          path={path} exact
-          children={children instanceof Function ?
-            hProps => children({...hProps}) : () => children} />
-      </MobilePage>
+      <HistoryRoute path={path} exact>
+        <MobilePage title={name}
+                    useTopBar={useTopBar}
+                    useNavBar={useNavBar}
+                    navClassName={navClassName}>
+          {children}
+        </MobilePage>
+      </HistoryRoute>
     </Container>
-  )} />
+  </MobileWindow>
 )
 
 export default MobileContainerWindow

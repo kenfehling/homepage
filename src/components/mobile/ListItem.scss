@@ -1,11 +1,14 @@
+@import "bourbon";
+
 $list-item-icon-size: 32px;
+$bg-color: white;
 
 :local(.container) {
   padding: 8px;
   margin: 4px;
   display: flex;
-  background-color: white;
-  border: thin solid #DDD;
+  background-color: $bg-color;
+  border: thin solid darken($bg-color, 15%);
   border-radius: 4px;
   color: #222;
   text-decoration: none;
@@ -18,5 +21,13 @@ $list-item-icon-size: 32px;
   }
   .name {
     line-height: $list-item-icon-size;
+  }
+
+  &:hover {
+    background-color: darken($bg-color, 7%);
+  }
+
+  &:active {
+    @include filter(brightness(0.94));
   }
 }

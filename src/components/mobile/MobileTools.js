@@ -58,7 +58,7 @@ const MobileTools = ({useTopBar}) => {
       <HistoryRoute path='/mobile/:app(tools)/:category/:tool' exact>
         {(props) => (
           <Page title={props.match.params.tool}
-                      backLinkText={props.match.params.category}>
+                backLinkText={props.match.params.category}>
             <BaseToolsDetail {...props} />
           </Page>
         )}
