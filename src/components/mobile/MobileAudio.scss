@@ -1,3 +1,66 @@
-:local(.container) {
+@import "bourbon";
+@import "../../styles/utils";
 
+$text-color: #333;
+
+:local(.container) {
+  @include no-select();
+  background-color: #FFF;
+  width: 100%;
+  height: 100%;
+
+  .picture {
+    background-image: linear-gradient(to bottom, #FFF, #d0f0ff, #FFF);
+    height: 270px;
+    border-radius: 4px;
+    img {
+      width: 100%;
+      height: 100%;
+      padding: 20%;
+      box-sizing: border-box;
+    }
+  }
+  .time-slider {
+    padding: 5% 10%;
+    .rc-slider {
+      background-color: #d0f0ff;
+      cursor: pointer;
+    }
+    .rc-slider-track {
+      background-color: #007FD3;
+    }
+  }
+  .current-track {
+    width: 90%;
+    margin: 5px auto;
+    text-align: center;
+    color: $text-color;
+    .title, .artist {
+      margin: 3px auto;
+    }
+    .title {
+      font-weight: 800;
+      font-size: 16px;
+    }
+    .artist {
+      font-weight: 500;
+      font-size: 12px;
+    }
+  }
+  .controls {
+    width: 96%;
+    margin: 20px auto;
+    text-align: center;
+    display: flex;
+    i.fa {
+      display: block;
+      flex: 1;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: $text-color;
+    }
+    i.fa:active {
+      opacity: 0.5;
+    }
+  }
 }

@@ -12,7 +12,7 @@ const HomeScreen = ({apps}) => {
             <HeaderLink className='icon'
                         key={app}
                         toContainer={'mobile_' + app.toLowerCase()}>
-              <img src={require('img/icons/mobile/' + app + '.svg')} />
+              <img src={require('img/icons/mobile/home/' + app + '.svg')} />
               {app}
             </HeaderLink>
           ))}
