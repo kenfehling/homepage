@@ -8,12 +8,14 @@ import MobileTools from '../mobile/MobileTools'
 import MobileAudio from '../mobile/MobileAudio'
 import MobileSocial from '../mobile/MobileSocial'
 import MobileNotes from '../mobile/MobileNotes'
+import Contacts from '../mobile/Contacts'
 
 const apps = [
   {name: 'Tools'},
   {name: 'Music'},
   {name: 'Notes'},
   {name: 'Social'},
+  {name: 'Contacts'}
 ]
 
 const SimpleWindow = ({name, isDefault=false, topBar=useTopBar, navBar=true,
@@ -52,6 +54,7 @@ const Mobile = ({useTopBar}) => {
           <SimpleWindow name="Music" topBar={useTopBar}><MobileAudio /></SimpleWindow>
           <SimpleWindow name="Notes" topBar={useTopBar}><MobileNotes /></SimpleWindow>
           <SimpleWindow name="Social" topBar={useTopBar}><MobileSocial /></SimpleWindow>
+          <SimpleWindow name="Contacts" topBar={useTopBar}><Contacts /></SimpleWindow>
         </div>
       </WindowGroup>
     </div>
