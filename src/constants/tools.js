@@ -51,9 +51,11 @@ export const tools = [{
   description: <div>
     By far my favorite [[JavaScript]] framework/library,
     React has drastically changed the way I approach web app
-    development. This site itself is written in React as well as [[Redux]].
-    <br /><br />I've also released a couple of libraries for React into open source:<br />
+    development.<br /><br />
+    This site itself is written in React and two of my own libraries:<br />
     <ul>
+      <li>{externalLink("react-router-nested-history",
+        "http://github.com/kenfehling/react-router-nested-history")}</li>
       <li>{externalLink("react-designable-audio-player",
           "http://github.com/kenfehling/react-designable-audio-player")}</li>
     </ul>

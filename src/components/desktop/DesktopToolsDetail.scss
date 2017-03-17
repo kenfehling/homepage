@@ -12,13 +12,13 @@ $link-color: #007fd3;
   height: 300px;  // a stopgap for now
   font-family: inherit;
   background-color: $details-bg-color;
-  padding: 27px 30px;
+  padding: 20px;
   box-sizing: border-box;
   .heading {
     @include background-image(linear-gradient(to right, #FFF, #F9F9F9, #F9F9F9, #FFF));
     display: flex;
     margin-bottom: 20px;
-    padding: 4px 12px;
+    padding: 4px 14px;
     font-weight: $title-weight;
     font-size: $title-size;
 
@@ -79,8 +79,7 @@ $link-color: #007fd3;
   }
 
   .body {
-    padding-left: 2px;
-    padding-right: 5px;
+    padding: 0 16px;
     line-height: 1.45em;
     a {
       color: #4670d3;

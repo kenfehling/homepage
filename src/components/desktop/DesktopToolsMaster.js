@@ -19,7 +19,7 @@ const renderTool = (tool, category) => {
 const arrangeTools = (tools) => {
   const n = _.size(tools)
   return (
-    <ScrollArea resetOnLeave={true} className={styles.container}>
+    <ScrollArea resetOnLeave={true} className={styles.container} horizontal={true}>
       <div className="scroll-area">
         {_.range(Math.ceil(n / ROWS)).map(col =>
           <div className="col" key={col}>
