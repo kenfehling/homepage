@@ -1,0 +1,16 @@
+@import './colors';
+
+@mixin link-style($font-weight: bold) {
+  a {
+    color: $link-color;
+    font-weight: $font-weight;
+    cursor: pointer;
+    text-decoration: none;
+    * {
+      font-weight: inherit;
+    }
+  }
+  a:hover, a:hover * {
+    text-decoration: underline;
+  }
+}

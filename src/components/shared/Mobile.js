@@ -54,7 +54,9 @@ const Mobile = ({useTopBar}) => {
           <SimpleWindow name="Music" topBar={useTopBar}><MobileAudio /></SimpleWindow>
           <SimpleWindow name="Notes" topBar={useTopBar}><MobileNotes /></SimpleWindow>
           <SimpleWindow name="Social" topBar={useTopBar}><MobileSocial /></SimpleWindow>
-          <SimpleWindow name="Contacts" topBar={useTopBar}><Contacts /></SimpleWindow>
+          <LowLevelWindow name='Contacts' topBar={useTopBar}>
+            <Contacts useTopBar={useTopBar} />
+          </LowLevelWindow>
         </div>
       </WindowGroup>
     </div>

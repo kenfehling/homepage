@@ -1,0 +1,40 @@
+@import '../../styles/mixins';
+
+$icon-size: 72px;
+
+:local(.container) {
+  padding: 15px;
+  font-size: 15px;
+  @include link-style(400);
+
+  .heading {
+    display: flex;
+    margin-bottom: 20px;
+    .icon {
+      img {
+        width: $icon-size;
+        border-radius: 36px;
+        margin-right: 10px;
+      }
+    }
+    .name {
+      line-height: $icon-size;
+      font-size: 18px;
+      font-weight: 500;
+    }
+  }
+
+  .section {
+    .label {
+      font-size: 12px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 5px;
+    }
+  }
+
+  .section {
+    padding: 10px 0;
+    border-bottom: thin solid #CCC;
+  }
+}

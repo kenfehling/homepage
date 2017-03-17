@@ -2,11 +2,11 @@
 @import "../../styles/utils";
 @import "../../styles/dimens";
 @import "../../styles/colors";
+@import '../../styles/mixins';
 
 $top-bar-height: 20px;
 $nav-height: 38px;
 $font-size: 15px;
-$link-color: #007fd3;
 
 :local(.container) {
   height: 300px;  // a stopgap for now
@@ -81,17 +81,6 @@ $link-color: #007fd3;
   .description {
     padding: 0 16px;
     line-height: 1.45em;
-    a {
-      color: #4670d3;
-      font-weight: $title-weight;
-      cursor: pointer;
-      text-decoration: none;
-      * {
-        font-weight: inherit;
-      }
-    }
-    a:hover, a:hover * {
-      text-decoration: underline;
-    }
+    @include link-style()
   }
 }

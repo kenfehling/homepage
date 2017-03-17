@@ -36,7 +36,7 @@ const NavBar = ({title, backLinkText, className=''}) => (
   </div>
 )
 
-const MobilePage = ({title, children, backLinkText, useTopBar, useNavBar=true,
+const MobilePage = ({title='', children, backLinkText, useTopBar, useNavBar=true,
                      navClassName=''}) => (
   <div className={styles.container}>
     {useTopBar && <TopBar className={navClassName} />}
@@ -50,7 +50,7 @@ const MobilePage = ({title, children, backLinkText, useTopBar, useNavBar=true,
 )
 
 MobilePage.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   backLinkText: PropTypes.string,
   useTopBar: PropTypes.bool,
   useNavBar: PropTypes.bool,

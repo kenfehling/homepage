@@ -11,26 +11,27 @@ import styles from './MobileTools.scss'
 const mappedCategories = categories.map(c => ({
   name: c,
   icon: `tools/categories/${c}.svg`,
-  link: `/mobile/tools/${c}`
+  page: `/mobile/tools/${c}`
 }))
 
 const mapTool = ({name, iconType}, category) => ({
   name,
   icon: `tools/${escapeName(name)}.${iconType || 'svg'}`,
-  link: `/mobile/tools/${category}/${escapeName(name)}`
+  page: `/mobile/tools/${category}/${escapeName(name)}`
 })
 
+const Page = ({title, backLinkText, children, useTopBar}) => (
+  <MobilePage title={title}
+              backLinkText={backLinkText}
+              navClassName={styles.nav}
+              useTopBar={useTopBar}
+  >
+    {children}
+  </MobilePage>
+)
+
 const MobileTools = ({useTopBar}) => {
-  const Page = ({title, backLinkText, children}) => (
-    <MobilePage title={title}
-                backLinkText={backLinkText}
-                navClassName={styles.nav}
-                useTopBar={useTopBar}
-    >
-      {children}
-    </MobilePage>
-  )
-  
+
   return (
     <Container name='mobile_tools'
                initialUrl='/mobile/tools'
@@ -41,14 +42,14 @@ const MobileTools = ({useTopBar}) => {
                ]}
     >
       <HistoryRoute path='/mobile/:app(tools)' exact>
-        <Page title='Tools'>
+        <Page title='Tools' useTopBar={useTopBar}>
           <List items={mappedCategories} />
         </Page>
       </HistoryRoute>
 
       <HistoryRoute path='/mobile/:app(tools)/:category' exact>
         {({match:{params:{category}}}) => (
-          <Page title={category}>
+          <Page title={category} useTopBar={useTopBar}>
             <List items={filterTools(category).map(tool => mapTool(tool, category))} />
             <Helmet title={category} titleTemplate='Ken Fehling - Tools: %s' />
           </Page>
@@ -58,7 +59,9 @@ const MobileTools = ({useTopBar}) => {
       <HistoryRoute path='/mobile/:app(tools)/:category/:tool' exact>
         {(props) => (
           <Page title={props.match.params.tool}
-                backLinkText={props.match.params.category}>
+                backLinkText={props.match.params.category}
+                useTopBar={useTopBar}
+          >
             <MobileToolsDetail {...props} />
           </Page>
         )}

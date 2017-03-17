@@ -1,3 +1,5 @@
+@import '../../styles/mixins';
+
 :local(.container) {
   display: flex;
   flex-direction: column;
@@ -30,17 +32,6 @@
     flex: 1 1 auto;
     line-height: 1.45em;
     background-color: #EBEBEB;
-    a {
-      color: #4670d3;
-      font-weight: bold;
-      cursor: pointer;
-      text-decoration: none;
-      * {
-        font-weight: inherit;
-      }
-    }
-    a:hover, a:hover * {
-      text-decoration: underline;
-    }
+    @include link-style()
   }
 }
