@@ -3,20 +3,14 @@
 @import "../../styles/dimens";
 @import "../../styles/colors";
 
-$header-top-color: #7946a1;
-$header-bottom-color: #a343a4;
+$header-top-color: #007fd3;
+$header-bottom-color: #337ab7;
 
 :local(.container) {
   @include background-image(linear-gradient(to bottom, $header-top-color, $header-bottom-color));
   @include no-select();
   color: $item-bg-color;
   padding: 10px 0;
-  .title {
-    padding: 10px 0;
-    font-weight: $title-weight;
-    font-size: $title-size;
-    text-align: center;
-  }
   .categories {
     padding-left: 9px;
     display: flex;

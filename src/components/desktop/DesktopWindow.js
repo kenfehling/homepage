@@ -21,6 +21,16 @@ const DesktopWindow = ({name, container='desktop_' + name.toLowerCase(),
     <Bridge>
       <Draggable cancel=".inner-container">
         <div>
+          <div className='toolbar'>
+            <div className='buttons left'>
+              <img src={require('img/icons/desktop/close.svg')} />
+              <img src={require('img/icons/desktop/minimize.svg')} />
+            </div>
+            <div className='buttons right'>
+              <img src={require('img/icons/desktop/share.svg')} />
+            </div>
+            <div className='title'>{name}</div>
+          </div>
           <div className="inner-container"
               style={{
                 backgroundColor:bgColor,
