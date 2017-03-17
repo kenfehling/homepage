@@ -3,29 +3,71 @@
 @import "../../styles/dimens";
 @import "../../styles/colors";
 
+$top-bar-height: 20px;
+$nav-height: 38px;
+$font-size: 15px;
+$link-color: #007fd3;
+
 :local(.container) {
   height: 300px;  // a stopgap for now
   font-family: inherit;
   background-color: $details-bg-color;
-  padding: 35px;
+  padding: 27px 30px;
   box-sizing: border-box;
   .heading {
+    @include background-image(linear-gradient(to right, #FFF, #F9F9F9, #F9F9F9, #FFF));
     display: flex;
     margin-bottom: 20px;
-    padding-right: 5px;
+    padding: 4px 12px;
     font-weight: $title-weight;
-    font-size: $title-size + 3px;
-    line-height: $title-size + 3px;
+    font-size: $title-size;
+
+    .back, .title, .skill {
+      line-height: $nav-height;
+    }
+    .back, .icon, .title  {
+      margin-right: auto;
+    }
+    .icon, .title, .skill {
+      margin-left: auto;
+    }
+    .back {
+      .link {
+        display: flex;
+      }
+      a, a:hover, a:active, a:visited {
+        font-weight: 400;
+        text-decoration: none;
+        color: $link-color;
+      }
+      .fa-chevron-left {
+        font-weight: 100;
+        display: block;
+        line-height: inherit;
+        margin-right: 3px;
+      }
+      .text {
+        font-size: round($font-size * 0.85);
+      }
+    }
+
+    .icon {
+      line-height: $nav-height - 5px;
+      img {
+        width: 20px;
+        height: 20px;
+        vertical-align: middle;
+      }
+    }
     .title {
-      flex: 1;
       text-align: center;
     }
+
     .skill {
       display: flex;
       font-weight: 400;
       .label {
         font-size: $title-size;
-        line-height: $details-star-size;
       }
       .stars {
         margin-left: 5px;
@@ -35,8 +77,10 @@
       }
     }
   }
+
   .body {
-    padding-right: 10px;
+    padding-left: 2px;
+    padding-right: 5px;
     line-height: 1.45em;
     a {
       color: #4670d3;

@@ -19,9 +19,9 @@ $dashboard-icon-size: 52px;
     .title::after {
       content: '';
       display: block;
-      @include background-image(linear-gradient(to right, rgba(150, 150, 150, 1), rgba(150, 150, 150, 0)));
       height: 1px;
       width: 100%;
+      @include background-image(linear-gradient(to right, rgba(150, 150, 150, 1), rgba(150, 150, 150, 0)));
     }
     .items {
       display: flex;
