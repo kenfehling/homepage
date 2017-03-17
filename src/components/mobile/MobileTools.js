@@ -1,6 +1,7 @@
 import React, {PropTypes} from 'react'
 import {HistoryRoute, Container} from 'react-router-nested-history'
 import MobilePage from './MobilePage'
+import MobileToolsDetail from './MobileToolsDetail'
 import List from './List'
 import {categories} from '../../constants/tools'
 import {filterTools, escapeName} from '../../utils/tools'
@@ -58,7 +59,7 @@ const MobileTools = ({useTopBar}) => {
         {(props) => (
           <Page title={props.match.params.tool}
                 backLinkText={props.match.params.category}>
-            {/* <BaseToolsDetail {...props} /> */}
+            <MobileToolsDetail {...props} />
           </Page>
         )}
       </HistoryRoute>
