@@ -6,7 +6,9 @@ const toId = name => 'mobile_' + name.toLowerCase()
 
 const MobileWindow = ({name, children, container=toId(name)}) => (
   <HistoryWindow forName={container} className={styles.container}>
-    {children}
+    <div>
+      {children}
+    </div>
   </HistoryWindow>
 )
 

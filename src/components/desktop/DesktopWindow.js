@@ -5,12 +5,11 @@ import * as _ from 'lodash'
 import styles from './DesktopWindow.scss'
 
 const Bridge = ({className, children, onMouseDown, ...props}) =>
-    cloneElement(Children.only(children),
-      {defaultClassName: className,
-       onMouseDown: onMouseDown,
-       children: cloneElement(Children.only(children.props.children), {
-         ...props,
-       })})
+    cloneElement(Children.only(children), {
+      defaultClassName: className,
+      onMouseDown,
+      children: cloneElement(Children.only(children.props.children), props)
+    })
 
 const DesktopWindow = ({name, container='desktop_' + name.toLowerCase(),
                         menuItems, children, fgColor='#000', bgColor='#FFF',
