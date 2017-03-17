@@ -1,7 +1,9 @@
-import React from 'react'
+import React, {createElement} from 'react'
+import {renderToStaticMarkup} from 'react-dom/server'
 import {tools, categories} from '../constants/tools'
 import * as _ from 'lodash'
-import { HistoryLink } from 'react-router-nested-history'
+import {HistoryLink} from 'react-router-nested-history'
+import reactStringReplace from 'react-string-replace'
 
 const starIcon = require('../../img/icons/star.svg')
 const halfStarIcon = require('../../img/icons/half-star.svg')
@@ -49,3 +51,9 @@ export function linkToTool(name, category=categories[0], text=name) {
 export const filterTools = (category) =>
     category && category !== 'All' ?
         _.filter(tools, t => _.includes(t.categories, category)) : tools
+
+export const replaceLinks = (element, category) => {
+  const children = reactStringReplace(element.props.children, /\[\[(\w+)]]/g,
+    match => linkToTool(match, category))
+  return createElement(element.type, {children})
+}

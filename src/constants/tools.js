@@ -67,8 +67,6 @@ export const tools = [{
     in functional programming. It makes managing client-side state simple and sensible,
     and I appreciate how it's decoupled from the web and can be used in React Native
     and even non-React projects.
-    <br /><br />
-    This site itself uses Redux to manage things like how the individual windows are layered.
   </div>
 }, {
   /*

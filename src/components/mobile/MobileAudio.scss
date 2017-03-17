@@ -10,7 +10,7 @@ $text-color: #333;
   height: 100%;
 
   .picture {
-    background-image: linear-gradient(to bottom, #FFF, #d0f0ff, #FFF);
+    @include background-image(linear-gradient(to bottom, #FFF, #d0f0ff, #FFF));
     height: 270px;
     border-radius: 4px;
     img {
