@@ -446,7 +446,7 @@ export const tools = [{
     and [[CSS]] skills continued to progress.
     <br /><br />
     Although I abandoned GWT, I did take away some nice experience with dependency injection,
-    particularly with [[Google Guice]], and the observer pattern.
+    particularly with [[Guice]], and the observer pattern.
   </div>
 }, {
   name: 'Illustrator',
