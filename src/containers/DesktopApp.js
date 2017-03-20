@@ -40,24 +40,32 @@ const DesktopApp = () => (
     {/* <Splash /> */}
 
     <WindowGroup name='desktop'>
-      <IFrameWindow name="PDF" src={require('img/Ken_Fehling-resume.pdf')} />
-      <ContainerWindow name="Editor" menuItems={menuItems} bgColor="#FFF" fgColor="#000">
+      <IFrameWindow name="PDF" x={200} y={25}
+                    src={require('img/Ken_Fehling-resume.pdf')} />
+      <ContainerWindow name="Editor" x={50} y={100}
+                       menuItems={menuItems} bgColor="#FFF" fgColor="#000">
         <Editor />
       </ContainerWindow>
-      <IFrameWindow name="Map" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d162592.24519068224!2d-73.99662330680499!3d40.70626928598335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1474841748950" />
-      <ContainerWindow name="Terminal" menuItems={menuItems} bgColor="#000" fgColor="#3F3">
+      <IFrameWindow name="Map" x={240} y={200}
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d162592.24519068224!2d-73.99662330680499!3d40.70626928598335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1474841748950" />
+      <ContainerWindow name="Terminal" x={300} y={100}
+                       menuItems={menuItems} bgColor="#000" fgColor="#3F3">
         <Terminal />
       </ContainerWindow>
-      <ContainerWindow name="Audio" bgColor="#003" fgColor="#36F" usePadding={false}>
+      <ContainerWindow name="Audio" x={260} y={30}
+                       bgColor="#003" fgColor="#36F" usePadding={false}>
         <Audio />
       </ContainerWindow>
-      <DesktopWindow name="Mobile" container='mobile' usePadding={false}>
+      <DesktopWindow visible={true} name="Mobile" x={250} y={10}
+                     container='mobile' usePadding={false}>
         <Mobile useTopBar={true} />
       </DesktopWindow>
-      <DesktopWindow name="Tools" bgColor="#FFF" fgColor="#000" usePadding={false}>
+      <DesktopWindow name="Tools" x={300} y={10}
+                     bgColor="#FFF" fgColor="#000" usePadding={false}>
         <DesktopTools />
       </DesktopWindow>
-      <ContainerWindow name="Social" bgColor="#FFF" fgColor="#000">
+      <ContainerWindow name="Social" x={150} y={100}
+                       bgColor="#FFF" fgColor="#000">
         <DesktopSocial />
       </ContainerWindow>
       <Dock windows={windows} />

@@ -20,47 +20,47 @@ const ToolbarButton = ({name, onClick}) => (
   <img src={require(`img/icons/desktop/${name}.svg`)} onClick={onClick} />
 )
 
-const DesktopWindow = ({name, container='desktop_' + name.toLowerCase(),
+const DesktopWindow = ({name, container='desktop_' + name.toLowerCase(), x=0, y=0,
                         menuItems, children, fgColor='#000', bgColor='#FFF',
-                        usePadding=true, className, topClassName}) => (
-  <HistoryWindow forName={container}
-                 className={`${styles.window} ${name} ${className}`}
-                 topClassName={`${styles.window} ${name} ${topClassName}`}
+                        visible=false, usePadding=true, className, topClassName}) => (
+  <HistoryWindow forName={container} visible={visible}
+                 className={className}
+                 topClassName={topClassName}
+                 style={{width: 0, height: 0}}
   >
     {({close}) => (
-    <Draggable cancel=".inner-container">
+      <Draggable cancel=".inner-container"
+                 defaultPosition={{x, y}}>
 
-
-          <div className='outer-container'>
-            <div className='toolbar'>
-              <div className='buttons left'>
-                <ToolbarButton name='close' onClick={close} />
-                <ToolbarButton name='minimize' onClick={close} />
-              </div>
-              <div className='buttons right'>
-                <ToolbarButton name='share' onClick={() => {}} />
-              </div>
-              <div className='title'>{name}</div>
+        <div className={`${styles.window} ${name}`}>
+          <div className='toolbar'>
+            <div className='buttons left'>
+              <ToolbarButton name='close' onClick={close} />
+              <ToolbarButton name='minimize' onClick={close} />
             </div>
-            <div className="inner-container"
-                 style={{
-                   backgroundColor:bgColor,
-                   color:fgColor,
-                   padding:usePadding ? '6px 5px' : null
-                 }}
-            >
-              {menuItems ?
-                <div className="menu" style={{backgroundColor:fgColor, color:bgColor}}>
-                  <div>{name}</div>
-                  {_.map(menuItems, item => <div key={item.name}>{item.name}</div>)}
-                </div> : ''}
-              <div className="body" style={{padding: usePadding ? '15px 10px' : null}}>
-                {children instanceof Function ? children() : children}
-              </div>
+            <div className='buttons right'>
+              <ToolbarButton name='share' onClick={() => {}} />
+            </div>
+            <div className='title'>{name}</div>
+          </div>
+          <div className="inner-container"
+               style={{
+                 backgroundColor:bgColor,
+                 color:fgColor,
+                 padding:usePadding ? '6px 5px' : null
+               }}
+          >
+            {menuItems ?
+              <div className="menu" style={{backgroundColor:fgColor, color:bgColor}}>
+                <div>{name}</div>
+                {_.map(menuItems, item => <div key={item.name}>{item.name}</div>)}
+              </div> : ''}
+            <div className="body" style={{padding: usePadding ? '15px 10px' : null}}>
+              {children instanceof Function ? children() : children}
             </div>
           </div>
-
-    </Draggable>
+        </div>
+      </Draggable>
     )}
   </HistoryWindow>
 )
