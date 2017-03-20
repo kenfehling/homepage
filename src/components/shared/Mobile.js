@@ -18,7 +18,7 @@ const apps = [
   {name: 'Contacts'}
 ]
 
-const SimpleWindow = ({name, isDefault=false, topBar=useTopBar, navBar=true,
+const SimpleWindow = ({name, isDefault=false, topBar, navBar=true,
   navClassName='', path, children}) => (
   <ContainerWindow name={name}
                    useTopBar={topBar}
@@ -29,11 +29,11 @@ const SimpleWindow = ({name, isDefault=false, topBar=useTopBar, navBar=true,
                    children={children}
   />
 )
-const LowLevelWindow = ({name, topBar=useTopBar, children}) => (
+const LowLevelWindow = ({name, topBar, children}) => (
   <MobileWindow name={name} useTopBar={topBar} children={children} />
 )
 
-const Mobile = ({useTopBar}) => {
+const Mobile = ({useTopBar=true}) => {
 
   return (
     <div className={styles.container}>

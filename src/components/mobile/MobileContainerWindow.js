@@ -20,9 +20,9 @@ const MobileContainerWindow = ({children, name, isDefault=false,
         <MobilePage title={name}
                     useTopBar={useTopBar}
                     useNavBar={useNavBar}
-                    navClassName={navClassName}>
-          {children}
-        </MobilePage>
+                    navClassName={navClassName}
+                    children={children}
+        />
       </HistoryRoute>
     </Container>
   </MobileWindow>

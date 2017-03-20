@@ -5,7 +5,7 @@ import styles from './MobileApp.scss'
 
 const MobileApp = () => (
   <div className={styles.container}>
-    <Mobile isDesktop={false} />
+    <Mobile useTopBar={false} />
     <Helmet meta={[
       {
         name: 'viewport',
