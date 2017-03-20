@@ -1,23 +1,61 @@
 @import "bourbon";
+@import "../../styles/fonts";
 
-:local(.container) {
+:local(.window) {
   @include background-image(linear-gradient(to bottom, #777, #555));
   @include filter(drop-shadow(3px 3px 3px black));
   width: 100%;
   height: 100%;
   padding: 8px;
   border-radius: 8px;
-
   cursor: move;
+  display: flex;
+  flex-direction: column;
+
+  .toolbar {
+    font-family: $apple-font;
+    $icon-size: 12px;
+    height: $icon-size;
+    padding-bottom: 8px;
+    position: relative;
+    width: 100%;
+    .buttons {
+      display: flex;
+      position: absolute;
+      z-index: 999;
+      img {
+        display: block;
+        width: $icon-size;
+        height: $icon-size;
+        cursor: pointer;
+      }
+      &.left {
+        img {
+          margin: 0 6px 0 2px;
+        }
+      }
+      &.right {
+        right: 0;
+        img {
+          margin: 0 2px 0 6px;
+        }
+      }
+    }
+    .title {
+      color: #111;
+      font-size: 12px;
+      text-align: center;
+    }
+  }
+
   .inner-container {
     overflow: hidden;
     cursor: default;
-    display: flex;
     flex-direction: column;
     box-sizing: border-box;
     width: 100%;
-    height: 100%;
-    border-radius: 4px;
+    flex: 1 1;
+    border-radius: 0;
     .menu {
       padding-bottom: 2px;
       display: flex;
@@ -31,65 +69,47 @@
       }
     }
     .body {
-      flex: 1;
-      display: flex;
-      border-radius: 4px;
+      height: 100%;
     }
   }
 }
 
-:local(.container).Editor {
-  top: 100px;
-  left: 50px;
+:local(.window).Editor {
   height: 420px;
   width: 420px;
 }
 
-:local(.container).Terminal {
-  top: 100px;
-  right: 200px;
+:local(.window).Terminal {
   height: 240px;
   width: 320px;
 }
 
-:local(.container).Map {
-  top: 200px;
-  left: 240px;
+:local(.window).Map {
   height: 300px;
   width: 400px;
 }
 
-:local(.container).Audio {
-  top: 30px;
-  right: 240px;
+:local(.window).Audio {
   height: 190px;
   width: 200px;
 }
 
-:local(.container).PDF {
-  top: 25px;
-  right: 300px;
+:local(.window).PDF {
   height: 640px;
   width: 480px;
 }
 
-:local(.container).Tools {
-  top: 10px;
-  right: 100px;
-  height: 343px;
+:local(.window).Tools {
+  height: 327px;
   width: 530px;
 }
 
-:local(.container).Mobile {
-  top: 10px;
-  right: 150px;
+:local(.window).Mobile {
   height: 480px;
   width: 310px;
 }
 
-:local(.container).Social {
-  bottom: 100px;
-  right: 250px;
-  height: 240px;
-  width: 320px;
+:local(.window).Social {
+  height: 200px;
+  width: 450px;
 }

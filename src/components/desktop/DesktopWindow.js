@@ -4,29 +4,51 @@ import {HistoryWindow} from 'react-router-nested-history'
 import * as _ from 'lodash'
 import styles from './DesktopWindow.scss'
 
-const Bridge = ({className, children, onMouseDown, ...props}) =>
+const Bridge = ({children, onMouseDown, ...props}) =>
     cloneElement(Children.only(children), {
-      defaultClassName: className,
-      onMouseDown,
-      children: cloneElement(Children.only(children.props.children), props)
+      onMouseDown: (e) => {
+
+        console.log(children.props.children)
+
+
+        children.props.onMouseDown(e)
+
+      }
     })
 
-const DesktopWindow = ({name, container='desktop_' + name.toLowerCase(),
+const ToolbarButton = ({name, onClick}) => (
+  <img src={require(`img/icons/desktop/${name}.svg`)} onClick={onClick} />
+)
+
+const DesktopWindow = ({name, container='desktop_' + name.toLowerCase(), x=0, y=0,
                         menuItems, children, fgColor='#000', bgColor='#FFF',
-                        usePadding=true, className, topClassName}) => (
-  <HistoryWindow forName={container}
-                 className={`${styles.container} ${name} ${className}`}
-                 topClassName={`${styles.container} ${name} ${topClassName}`}
+                        visible=false, usePadding=true, className, topClassName}) => (
+  <HistoryWindow forName={container} visible={visible}
+                 className={className}
+                 topClassName={topClassName}
+                 style={{width: 0, height: 0}}
   >
-    <Bridge>
-      <Draggable cancel=".inner-container">
-        <div>
+    {({close}) => (
+      <Draggable cancel=".inner-container"
+                 defaultPosition={{x, y}}>
+
+        <div className={`${styles.window} ${name}`}>
+          <div className='toolbar'>
+            <div className='buttons left'>
+              <ToolbarButton name='close' onClick={close} />
+              <ToolbarButton name='minimize' onClick={close} />
+            </div>
+            <div className='buttons right'>
+              <ToolbarButton name='share' onClick={() => {}} />
+            </div>
+            <div className='title'>{name}</div>
+          </div>
           <div className="inner-container"
-              style={{
-                backgroundColor:bgColor,
-                color:fgColor,
-                padding:usePadding ? '6px 5px' : null
-              }}
+               style={{
+                 backgroundColor:bgColor,
+                 color:fgColor,
+                 padding:usePadding ? '6px 5px' : null
+               }}
           >
             {menuItems ?
               <div className="menu" style={{backgroundColor:fgColor, color:bgColor}}>
@@ -39,7 +61,7 @@ const DesktopWindow = ({name, container='desktop_' + name.toLowerCase(),
           </div>
         </div>
       </Draggable>
-    </Bridge>
+    )}
   </HistoryWindow>
 )
 

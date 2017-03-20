@@ -2,12 +2,13 @@ import React, {Children, cloneElement} from 'react'
 import DesktopWindow from './DesktopWindow'
 import {Container, HistoryRoute} from 'react-router-nested-history'
 
-export default ({children, name, ...windowProps}) => {
+export default ({children, name, visible=false, ...windowProps, x, y}) => {
   const id = 'desktop_' + name.toLowerCase()
   const path = `/${name.toLowerCase()}`
   return (
     <DesktopWindow {...windowProps}
                    name={name}
+                   visible={visible}
                    className='background-window'
                    topClassName='top-window'
   >

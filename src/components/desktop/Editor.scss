@@ -1,4 +1,7 @@
+@import '../../styles/fonts';
+
 :local(.container) {
+  font-family: $code-font;
   .title {
     color: #8c800a;
   }

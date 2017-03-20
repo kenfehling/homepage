@@ -5,7 +5,6 @@ import styles from './DesktopToolsHeader.scss'
 
 export default () => (
   <div className={styles.container}>
-    <div className="title">Skills</div>
     <div className="categories">
       {categories.map(c => (
         <HeaderLink key={c}
