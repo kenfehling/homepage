@@ -1,3 +1,26 @@
-:local(.container) {
+$icon-size: 64px;
+@import "../../styles/fonts";
 
+:local(.container) {
+  display: flex;
+  padding-top: 20px;
+  .icon {
+    margin: 0 auto;
+    text-align: center;
+    text-decoration: none;
+    width: $icon-size;
+    img {
+      width: $icon-size;
+      height: $icon-size;
+    }
+    .text {
+      font-weight: bold;
+      margin-top: 5px;
+    }
+    opacity: 0.67;
+  }
+
+  .icon:hover {
+    opacity: 1;
+  }
 }
