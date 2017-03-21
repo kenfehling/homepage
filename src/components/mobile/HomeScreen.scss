@@ -33,3 +33,13 @@ $icon-size: 54px;
     }
   }
 }
+
+:local(.nav) {
+  background-color: transparent !important;
+  color: white !important;
+  font-weight: 400 !important;
+  position: absolute;
+  z-index: 999;
+  width: 100%;
+  box-sizing: border-box;
+}

@@ -1,8 +1,5 @@
 @import "../../styles/utils";
 
-$nav-bg-color: #09F;
-
 :local(.nav) {
-  background-color: $nav-bg-color !important;
-  border-color: nav-border-color($nav-bg-color) !important;
+
 }

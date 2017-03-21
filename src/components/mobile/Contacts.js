@@ -3,6 +3,7 @@ import List from './List'
 import Page from './MobilePage'
 import Contact from './Contact'
 import * as _ from 'lodash'
+import styles from './Contacts.scss'
 
 const escapeName = name => name.replace('_', ' ')
 const findContact = name => _.find(contacts, c => c.name === escapeName(name))
@@ -25,14 +26,14 @@ const Contacts = ({useTopBar}) => (
              ]}
   >
     <HistoryRoute path='/mobile/:app(contacts)' exact>
-      <Page title='Contacts' useTopBar={useTopBar}>
+      <Page title='Contacts' useTopBar={useTopBar} navClassName={styles.nav}>
         <List items={contacts} />
       </Page>
     </HistoryRoute>
 
     <HistoryRoute path='/mobile/:app(contacts)/:name' exact>
       {({match:{params:{name}}}) => (
-        <Page useTopBar={useTopBar}>
+        <Page useTopBar={useTopBar} navClassName={styles.nav}>
           <Contact contact={findContact(name)} />
         </Page>
       )}

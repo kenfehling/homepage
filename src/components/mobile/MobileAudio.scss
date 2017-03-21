@@ -64,3 +64,14 @@ $text-color: #333;
     }
   }
 }
+
+$color: lighten(#007FD3, 3%);
+
+:local(.nav) {
+  background-color: white !important;
+  border-color: white !important;
+
+  .back {
+    color: $color !important;
+  }
+}

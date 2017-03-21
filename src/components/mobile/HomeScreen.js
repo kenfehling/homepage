@@ -1,24 +1,27 @@
 import React, {PropTypes} from 'react'
 import styles from './HomeScreen.scss'
 import {HeaderLink} from 'react-router-nested-history'
+import MobilePage from './MobilePage'
 
-const HomeScreen = ({apps}) => {
+const HomeScreen = ({apps, useTopBar}) => {
   return (
-    <div className={styles.container}>
-      <div className="inner-container">
-        <div className="back-container"></div>
-        <div className="front-container">
-          {apps.map(app => (
-            <HeaderLink className='icon'
-                        key={app}
-                        toContainer={'mobile_' + app.toLowerCase()}>
-              <img src={require('img/icons/mobile/home/' + app + '.svg')} />
-              {app}
-            </HeaderLink>
-          ))}
+    <MobilePage useTopBar={useTopBar} useNavBar={false} navClassName={styles.nav}>
+      <div className={styles.container}>
+        <div className="inner-container">
+          <div className="back-container"></div>
+          <div className="front-container">
+            {apps.map(app => (
+              <HeaderLink className='icon'
+                          key={app}
+                          toContainer={'mobile_' + app.toLowerCase()}>
+                <img src={require('img/icons/mobile/home/' + app + '.svg')} />
+                {app}
+              </HeaderLink>
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+    </MobilePage>
   )
 }
 

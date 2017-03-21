@@ -2,7 +2,7 @@
 @import "../../styles/utils";
 
 $top-bar-height: 20px;
-$nav-height: 38px;
+$nav-height: 40px;
 $font-size: 15px;
 
 :local(.container) {
@@ -55,14 +55,15 @@ $font-size: 15px;
     font-size: $font-size;
     height: $nav-height;
     padding: 0 5px;
-    border-bottom: thin solid nav-border-color($mobile-nav-bg-color);
+    border-bottom: thin solid darken($mobile-nav-bg-color, 7%);
     display: flex;
     .back, .title {
       margin: 0;
       font-size: inherit;
     }
     .back {
-      line-height: $nav-height;
+      color: $link-color;
+      line-height: $nav-height - 4;
       position: absolute;
       .link {
         display: flex;
@@ -70,7 +71,7 @@ $font-size: 15px;
       a, a:hover, a:active, a:visited {
         font-weight: 400;
         text-decoration: none;
-        color: $link-color;
+        color: inherit;
       }
       .fa-chevron-left {
         font-weight: 100;
@@ -83,7 +84,7 @@ $font-size: 15px;
       }
     }
     .title {
-      line-height: $nav-height - 1;
+      line-height: $nav-height - 4;
       width: 100%;
       text-align: center;
     }
@@ -93,7 +94,7 @@ $font-size: 15px;
     width: 100%;
     height: 100%;
     overflow-y: auto;
-    background-color: #F6F6F6;
+    background-color: $default-mobile-bg-color;
     //@include mobile-scroll-fix();
   }
 }

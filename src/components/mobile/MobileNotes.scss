@@ -1,3 +1,13 @@
-:local(.container) {
+@import "../../styles/utils";
+@import "../../styles/colors";
 
+$color: #EEDD00;
+
+:local(.nav) {
+  background-color: $default-mobile-bg-color !important;
+  border-color: darken($color, 2%) !important;
+
+  .back {
+    color: darken($color, 6%) !important;
+  }
 }

@@ -1,0 +1,7 @@
+$color: darken(#00AAEC, 7%);
+
+:local(.nav) {
+  .back {
+    color: $color !important;
+  }
+}

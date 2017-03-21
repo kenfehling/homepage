@@ -1,9 +1,12 @@
 import styles from './MobileNotes.scss'
+import MobilePage from './MobilePage'
 
-const MobileNotes = () => (
-  <div className={styles.container}>
+const MobileNotes = ({useTopBar, useNa}) => (
+  <MobilePage title='Notes' useTopBar={useTopBar} navClassName={styles.nav}>
+    <div className={styles.container}>
 
-  </div>
+    </div>
+  </MobilePage>
 )
 
 export default MobileNotes
