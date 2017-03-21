@@ -5,7 +5,7 @@ $color: #EEDD00;
 
 :local(.container) {
   padding: 15px;
-  font-size: 14px;
+  font-size: 13px;
 
   .title {
     font-weight: bold;
@@ -18,6 +18,6 @@ $color: #EEDD00;
   border-color: darken($color, 2%) !important;
 
   .back {
-    color: darken($color, 6%) !important;
+    color: darken($color, 7%) !important;
   }
 }
