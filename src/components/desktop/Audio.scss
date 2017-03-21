@@ -1,7 +1,9 @@
 @import "../../styles/utils";
+@import "../../styles/fonts";
 
 :local(.container) {
   @include no-select();
+  font-family: $code-font;
   margin: auto;
   width: 90%;
   .controls {

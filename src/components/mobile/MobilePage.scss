@@ -94,11 +94,6 @@ $font-size: 15px;
     height: 100%;
     overflow-y: auto;
     background-color: #F6F6F6;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .content::-webkit-scrollbar {
-    -webkit-appearance: none;
-    width: 10px;
+    //@include mobile-scroll-fix();
   }
 }

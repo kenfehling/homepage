@@ -26,3 +26,12 @@
     background-color: rgba(0, 0, 0, .5);
   }
 }
+
+@mixin mobile-scroll-fix() {
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 10px;
+  }
+}

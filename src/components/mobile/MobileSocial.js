@@ -1,9 +1,8 @@
-import styles from './MobileSocial.scss'
+import List from './List'
+import {sites} from '../../constants/social'
 
 const MobileSocial = () => (
-  <div className={styles.container}>
-
-  </div>
+  <List items={sites} />
 )
 
 export default MobileSocial

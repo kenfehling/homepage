@@ -4,30 +4,36 @@ $list-item-icon-size: 32px;
 $bg-color: white;
 
 :local(.container) {
-  padding: 8px;
-  margin: 4px;
-  display: flex;
-  background-color: $bg-color;
-  border: thin solid darken($bg-color, 15%);
-  border-radius: 4px;
-  color: #222;
-  text-decoration: none;
-  .icon {
-    width: $list-item-icon-size;
-    height: $list-item-icon-size;
-    border-radius: 2px;
-    display: block;
-    margin-right: 10px;
-  }
-  .name {
-    line-height: $list-item-icon-size;
-  }
+  padding: 2px;
 
-  &:hover {
-    background-color: darken($bg-color, 7%);
-  }
+  .inner-container {
+    text-decoration: none;
+    padding: 8px;
+    display: flex;
+    flex-direction: row;
+    background-color: $bg-color;
+    border: thin solid darken($bg-color, 15%);
+    border-radius: 4px;
+    cursor: pointer;
+    color: #222;
 
-  &:active {
-    @include filter(brightness(0.94));
+    .icon {
+      width: $list-item-icon-size;
+      height: $list-item-icon-size;
+      border-radius: 2px;
+      display: block;
+      margin-right: 10px;
+    }
+    .name {
+      line-height: $list-item-icon-size;
+    }
+
+    &:hover {
+      background-color: darken($bg-color, 7%);
+    }
+
+    &:active {
+      @include filter(brightness(0.94));
+    }
   }
 }
