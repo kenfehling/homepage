@@ -43,7 +43,7 @@ const DesktopApp = () => (
       <IFrameWindow name="PDF" x={200} y={25}
                     src={require('img/Ken_Fehling-resume.pdf')} />
       <ContainerWindow name="Editor" x={50} y={100}
-                       menuItems={menuItems} bgColor="#FFF" fgColor="#000">
+                       bgColor="#2B2B2B" fgColor="#BABABA">
         <Editor />
       </ContainerWindow>
       <IFrameWindow name="Map" x={240} y={200}

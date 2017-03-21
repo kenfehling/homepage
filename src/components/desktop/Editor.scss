@@ -2,18 +2,22 @@
 
 :local(.container) {
   font-family: $code-font;
+
   .title {
-    color: #8c800a;
+    //color: #6A8759;
+    color: #FFC66D;
   }
+
+  /*
   .key {
-    color: #b71fb6;
+    color: #FFC66D;
   }
+  */
+
   .symbol {
-    color: #D00;
+    color: #CC7832;
   }
-  .value {
-    color: #685;
-  }
+
   .tooltip {
     font-size: 0.67rem;
     max-width: 320px;
@@ -21,9 +25,9 @@
       padding: 3px 0;
     }
   }
-  *[data-tip] {
-    background-color: #EEE;
-    border: thin solid #CCC;
-    border-radius: 2px;
+
+  a {
+    color: #6897BB;
+    text-decoration: none;
   }
 }
