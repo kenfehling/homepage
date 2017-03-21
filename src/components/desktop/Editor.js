@@ -1,5 +1,5 @@
-import ReactTooltip from 'react-tooltip'
 import styles from './Editor.scss'
+import {GITHUB_REPO} from '../../constants/links'
 
 const keyValueItem = (key, value) => (
   <div>
@@ -7,12 +7,6 @@ const keyValueItem = (key, value) => (
     <span className="symbol">:</span> <span className="value">{value}</span>
   </div>
 );
-
-const listItem = (text) => (
-  <div>
-    <span className="symbol">*</span> {text}
-  </div>
-)
 
 const colon = <span className="symbol">:</span>
 const period = <span className="symbol">.</span>
@@ -39,6 +33,6 @@ export default () => (
     <div>Used for the desktop and mobile music players</div>
     <br />
     <br />
-    {keyValueItem('Source code', <a target="_blank" href="https://github.com/kenfehling/me">GitHub</a>)}
+    {keyValueItem('Source code', <a target="_blank" href={GITHUB_REPO}>GitHub</a>)}
   </div>
 );

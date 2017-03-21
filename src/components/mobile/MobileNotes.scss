@@ -3,6 +3,16 @@
 
 $color: #EEDD00;
 
+:local(.container) {
+  padding: 15px;
+  font-size: 14px;
+
+  .title {
+    font-weight: bold;
+    margin-bottom: 1px;
+  }
+}
+
 :local(.nav) {
   background-color: $default-mobile-bg-color !important;
   border-color: darken($color, 2%) !important;
