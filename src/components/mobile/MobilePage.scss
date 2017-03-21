@@ -55,7 +55,7 @@ $font-size: 15px;
     font-size: $font-size;
     height: $nav-height;
     padding: 0 5px;
-    border-bottom: thin solid darken($mobile-nav-bg-color, 9%);
+    border-bottom: thin solid nav-border-color($mobile-nav-bg-color);
     display: flex;
     .back, .title {
       margin: 0;

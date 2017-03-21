@@ -27,6 +27,11 @@
   }
 }
 
+@function nav-border-color($color) {
+  @return darken($color, 7%)
+}
+
+/*
 @mixin mobile-scroll-fix() {
   -webkit-overflow-scrolling: touch;
 
@@ -35,3 +40,4 @@
     width: 10px;
   }
 }
+*/

@@ -65,7 +65,7 @@ export const tools = [{
   stars: 4.5,
   categories: [LIBRARIES, WEB],
   description: <div>
-    Redux is a great add-on to [[React]], and it's renewed my interest
+    Redux is a great add-on to [[React]], and it's contributed to renewing my interest
     in functional programming. It makes managing client-side state simple and sensible,
     and I appreciate how it's decoupled from the web and can be used in React Native
     and even non-React projects.
