@@ -1,3 +1,4 @@
+import React from 'react'
 import DesktopApp from './DesktopApp'
 import MobileApp from './MobileApp'
 import bowser from 'bowser'

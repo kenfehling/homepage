@@ -1,22 +1,22 @@
-const webpack = require('webpack');
-const path = require('path');
+import webpack from 'webpack'
+import path from 'path'
+import bourbon from 'node-bourbon'
+import neat from 'node-neat'
 
-const bourbon = require('node-bourbon');
-const neat = require('node-neat');
-
-const sassPaths = bourbon
+export const sassPaths = bourbon
   .includePaths
   .map((sassPath)=>`includePaths[]=${sassPath}`)
-  .join('&');
+  .join('&')
 
-module.exports = {
-  entry: './src/index.js',
-  devtool: 'source-map',
+const root = path.join(__dirname, '..')
+
+export default {
+  context: root,
+  entry: path.join(root, 'src/index.js'),
   output: {
-    path: path.resolve('public'),
-    filename: 'bundle.js',
     publicPath: '/public/'
   },
+  devtool: 'source-map',
   plugins: [
     new webpack.ProvidePlugin({ 'React': 'react'})
   ],
@@ -25,17 +25,6 @@ module.exports = {
       test: /\.js$/,
       exclude: /node_modules/,
       loader: 'babel-loader'
-    }, {
-      test: /\.scss$/,
-      exclude: /node_modules/,
-      loaders: [
-        'style-loader',
-        'css-loader?sourceMap',
-        `sass-loader?sourceMap&${sassPaths}`
-      ]
-    }, {
-      test: /\.css$/,
-      loader: 'style-loader!css-loader'
     }, {
       test: /\.png?$/,
       exclude: /node_modules/,
@@ -50,13 +39,17 @@ module.exports = {
       test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
       loader: "url-loader?limit=10000000"
     }, {
-      test: /\.pdf$/,
+      test: /\.pdf?$/,
       loader: "file-loader?mimetype=application/pdf"
     }]
   },
   resolve: {
+    extensions: ['.js', '.jsx'],
     alias: {
-      img: path.resolve('img')
-    }
+      img: path.join(root, 'img')
+    },
+    modules: [
+      "node_modules"
+    ]
   }
-};
+}

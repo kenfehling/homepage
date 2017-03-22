@@ -1,3 +1,4 @@
+import React from 'react'
 import {connectAudioPlayer, TitleMarquee, TimeSlider} from 'react-designable-audio-player'
 import {tracks} from '../../constants/music'
 import styles from './Audio.scss'

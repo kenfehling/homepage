@@ -1,3 +1,4 @@
+import React from 'react'
 import Typist from 'react-typist'
 import styles from './Terminal.scss'
 

@@ -1,3 +1,4 @@
+import React from 'react'
 import styles from './DesktopSocial.scss'
 import {sites} from '../../constants/social'
 

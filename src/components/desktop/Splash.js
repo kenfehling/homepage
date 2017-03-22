@@ -1,4 +1,4 @@
-import {Component} from 'react'
+import React, {Component} from 'react'
 import {Line} from 'rc-progress';
 import styles from './Splash.scss'
 

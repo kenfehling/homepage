@@ -11,7 +11,8 @@ const TopBar = ({className=''}) => (
       <i className="fa fa-wifi" />
     </div>
     <div className="time">
-      {new Date().toLocaleTimeString(navigator.language, timeFormat)}
+      {/* new Date().toLocaleTimeString(navigator.language, timeFormat) */}
+      2:55 PM
     </div>
     <div className="battery">
       <i className="fa fa-battery-full "/>

@@ -1,3 +1,4 @@
+import React from 'react'
 import styles from './Editor.scss'
 import {GITHUB_REPO} from '../../constants/links'
 

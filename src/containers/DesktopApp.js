@@ -1,3 +1,4 @@
+import React from 'react'
 import {Component} from 'react'
 import DesktopWindow from '../components/desktop/DesktopWindow'
 import IFrameWindow from '../components/desktop/IFrameWindow'

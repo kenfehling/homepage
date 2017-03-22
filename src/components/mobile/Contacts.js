@@ -1,3 +1,4 @@
+import React from 'react'
 import {Container, HistoryRoute} from 'react-router-nested-history'
 import List from './List'
 import Page from './MobilePage'

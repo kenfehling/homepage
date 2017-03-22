@@ -1,3 +1,4 @@
+import React from 'react'
 import {HeaderLink} from 'react-router-nested-history'
 import ReactTooltip from 'react-tooltip'
 import styles from './Dock.scss'

@@ -1,3 +1,4 @@
+import React from 'react'
 import {connectAudioPlayer, TimeSlider} from 'react-designable-audio-player'
 import {tracks} from '../../constants/music'
 import MobilePage from './MobilePage'

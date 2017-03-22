@@ -1,3 +1,4 @@
+import React from 'react'
 import List from './List'
 import {sites} from '../../constants/social'
 import MobilePage from './MobilePage'
