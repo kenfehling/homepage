@@ -3,11 +3,10 @@ import styles from './Terminal.scss'
 
 export default () => (
   <Typist className={styles.container}>
-      <span className="my-custom-class"> First Sentence </span>
+      <span className="my-custom-class">Hello</span>
       <br />
       <div className="container">
-          <p> This will be animated after first sentence is complete </p>
+          <p>I'm not sure what to do with this component yet</p>
       </div>
-      Final sentence
   </Typist>
 )
