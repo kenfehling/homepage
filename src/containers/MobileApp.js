@@ -6,12 +6,20 @@ import styles from './MobileApp.scss'
 const MobileApp = () => (
   <div className={styles.container}>
     <Mobile useTopBar={false} />
-    <Helmet meta={[
-      {
-        name: 'viewport',
-        content: 'width=device-width, initial-scale=1, maximum-scale=1'
-      }
-    ]} />
+    <Helmet 
+      meta={[
+        {
+          name: 'viewport',
+          content: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'
+        }
+    ]} 
+      link={[
+        {
+          rel: 'manifest',
+          href: '/manifest.json'
+        }
+      ]}
+    />
   </div>
 )
 

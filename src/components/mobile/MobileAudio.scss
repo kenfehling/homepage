@@ -11,7 +11,7 @@ $text-color: #333;
 
   .picture {
     @include background-image(linear-gradient(to bottom, #FFF, #d0f0ff, #FFF));
-    height: 270px;
+    height: 240px;
     border-radius: 4px;
     img {
       width: 100%;
@@ -31,7 +31,6 @@ $text-color: #333;
     }
   }
   .current-track {
-    width: 90%;
     margin: 5px auto;
     text-align: center;
     color: $text-color;

@@ -1,11 +1,12 @@
 @import "../../styles/utils";
 @import "../../styles/colors";
+@import "../../styles/dimens";
 
 $color: #EEDD00;
 
 :local(.container) {
   padding: 15px;
-  font-size: 13px;
+  font-size: $mobile-body-text-size;
 
   .title {
     font-weight: bold;

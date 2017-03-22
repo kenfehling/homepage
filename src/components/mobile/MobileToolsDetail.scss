@@ -1,9 +1,10 @@
 @import '../../styles/mixins';
+@import '../../styles/dimens';
 
 :local(.container) {
   display: flex;
   flex-direction: column;
-  font-size: 12px;
+  font-size: $mobile-body-text-size;
   height: 100%;
 
   .heading, .description {

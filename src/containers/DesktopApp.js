@@ -46,7 +46,7 @@ const DesktopApp = () => (
                        bgColor="#2B2B2B" fgColor="#BABABA">
         <Editor />
       </ContainerWindow>
-      <IFrameWindow name="Map" x={240} y={200}
+      <IFrameWindow name="Map" x={0} y={200}
                     src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d162592.24519068224!2d-73.99662330680499!3d40.70626928598335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1474841748950" />
       <ContainerWindow name="Terminal" x={300} y={100}
                        menuItems={menuItems} bgColor="#000" fgColor="#3F3">
