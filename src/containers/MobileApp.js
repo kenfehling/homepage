@@ -6,9 +6,9 @@ import styles from './MobileApp.scss'
 
 const MobileApp = () => (
   <div className={styles.container}>
-    <Route path='/mobile/*' render={({match}) => {
-      return <Redirect to={`${match.url.substring('/mobile'.length)}`}/>
-    }} />
+    <Route path='/mobile/*' render={({match}) => (
+      <Redirect to={`${match.url.substring('/mobile'.length)}`}/>
+    )} />
     <Mobile isDesktop={false} />
     <Helmet 
       meta={[

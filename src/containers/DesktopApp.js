@@ -12,6 +12,7 @@ import Dock from '../components/desktop/Dock'
 import {WindowGroup} from 'react-router-nested-history'
 import ContainerWindow from '../components/desktop/DesktopContainerWindow'
 import styles from './DesktopApp.scss'
+import {redirectMobileToDesktop} from '../utils/mobile'
 
 const menuItems = [
   { name: 'File' }
@@ -31,6 +32,7 @@ const windows = [
 
 const DesktopApp = () => (
   <div className={styles.container}>
+    {redirectMobileToDesktop('/contacts')}
     {/*
      <Match pattern='/' exactly
      render={() => <Redirect to="/tools" />} />

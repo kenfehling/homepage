@@ -23,27 +23,29 @@ const Contacts = ({isDesktop}) => {
       _.find(contacts, c => c.name === escapeName(name))
 
   return (
-    <Container name='mobile_contacts'
-             initialUrl={devicePath('/contacts', isDesktop)}
-             patterns={[
-               devicePath('/:app(contacts)', isDesktop),
-               devicePath('/:app(contacts)/:name', isDesktop)
-             ]}
-    >
-      <HistoryRoute path={devicePath('/:app(contacts)', isDesktop)} exact>
-        <Page title='Contacts' isDesktop={isDesktop} navClassName={styles.nav}>
-          <List items={contacts}/>
-        </Page>
-      </HistoryRoute>
-
-      <HistoryRoute path={devicePath('/:app(contacts)/:name', isDesktop)} exact>
-        {({match:{params:{name}}}) => (
-          <Page isDesktop={isDesktop} navClassName={styles.nav}>
-            <Contact contact={findContact(name)}/>
+    <div style={{width: '100%', height: '100%'}}>
+      <Container name='mobile_contacts'
+               initialUrl={devicePath('/contacts', isDesktop)}
+               patterns={[
+                 devicePath('/:app(contacts)', isDesktop),
+                 devicePath('/:app(contacts)/:name', isDesktop)
+               ]}
+      >
+        <HistoryRoute path={devicePath('/:app(contacts)', isDesktop)} exact>
+          <Page title='Contacts' isDesktop={isDesktop} navClassName={styles.nav}>
+            <List items={contacts}/>
           </Page>
-        )}
-      </HistoryRoute>
-    </Container>
+        </HistoryRoute>
+
+        <HistoryRoute path={devicePath('/:app(contacts)/:name', isDesktop)} exact>
+          {({match:{params:{name}}}) => (
+            <Page isDesktop={isDesktop} navClassName={styles.nav}>
+              <Contact contact={findContact(name)}/>
+            </Page>
+          )}
+        </HistoryRoute>
+      </Container>
+    </div>
   )
 }
 
