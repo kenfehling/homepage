@@ -42,7 +42,7 @@ const DesktopApp = () => (
 
     <WindowGroup name='desktop'>
       <IFrameWindow name="PDF" x={200} y={25}
-                    src={require('img/Ken_Fehling-resume.pdf')} />
+                    src='/static/Ken_Fehling-resume.pdf' />
       <ContainerWindow name="Editor" x={50} y={100}
                        bgColor="#2B2B2B" fgColor="#BABABA">
         <Editor />

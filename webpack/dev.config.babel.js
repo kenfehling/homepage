@@ -5,7 +5,7 @@ export default {
   ...baseConfig,
   output: {
     ...baseConfig.output,
-    path: path.resolve('./public'),
+    path: path.resolve('./static'),
     filename: 'client.js'
   },
   module: {

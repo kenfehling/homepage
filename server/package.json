@@ -35,7 +35,7 @@
     "clean": "rm -rf build/*",
     "build:client": "webpack --config prod.client.config.babel.js",
     "build:server": "webpack --config prod.server.config.babel.js",
-    "build": "npm run clean; npm run build:client; npm run build:server; cp -r ../public .",
+    "build": "npm run clean; npm run build:client; npm run build:server; cp -r ../static/* build",
     "start": "node build/server",
     "dev": "npm run build; npm start"
   },

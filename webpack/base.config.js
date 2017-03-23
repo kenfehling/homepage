@@ -14,7 +14,7 @@ export default {
   context: root,
   entry: path.join(root, 'src/index.js'),
   output: {
-    publicPath: '/public/'
+    publicPath: '/static/'
   },
   devtool: 'source-map',
   plugins: [
@@ -38,15 +38,13 @@ export default {
     }, {
       test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
       loader: "url-loader?limit=10000000"
-    }, {
-      test: /\.pdf?$/,
-      loader: "file-loader?mimetype=application/pdf"
     }]
   },
   resolve: {
     extensions: ['.js', '.jsx'],
     alias: {
-      img: path.join(root, 'img')
+      img: path.join(root, 'img'),
+      'static': path.join(root, 'static'),
     },
     modules: [
       "node_modules"

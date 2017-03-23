@@ -16,7 +16,7 @@ const MobileApp = () => (
       link={[
         {
           rel: 'manifest',
-          href: '/manifest.json'
+          href: '/static/manifest.json'
         }
       ]}
     />
