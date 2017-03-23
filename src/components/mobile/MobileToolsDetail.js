@@ -1,12 +1,13 @@
 import React, {Component, PropTypes} from 'react'
 import Helmet from "react-helmet"
-import {BackLink} from 'react-router-nested-history'
 import {renderStars, getTool, replaceLinks, getIcon} from '../../utils/tools'
 import styles from './MobileToolsDetail.scss'
+import {devicePath} from '../../utils/mobile'
 
-const MobileToolsDetail = ({match:{params:{tool, category}}}) => {
+const MobileToolsDetail = ({match:{params:{tool, category}}, isDesktop}) => {
   const toolObject = getTool(tool)
   const {name, fullName, stars, description} = toolObject
+  const path = devicePath(`/tools/${category}`, isDesktop)
   return (<div className={styles.container} key={name}>
     <Helmet
       title={`${!toolObject ? (category || '') : tool || ''}`}
@@ -23,7 +24,7 @@ const MobileToolsDetail = ({match:{params:{tool, category}}}) => {
         </div>
       </div>
     </div>
-    <div className="description">{replaceLinks(description, category)}</div>
+    <div className="description">{replaceLinks(description, path)}</div>
   </div>)
 }
 

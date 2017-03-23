@@ -9,6 +9,7 @@ import MobileAudio from '../mobile/MobileAudio'
 import MobileSocial from '../mobile/MobileSocial'
 import MobileNotes from '../mobile/MobileNotes'
 import Contacts from '../mobile/Contacts'
+import {devicePath} from '../../utils/mobile'
 
 const apps = [
   {name: 'Tools'},
@@ -18,7 +19,7 @@ const apps = [
   {name: 'Contacts'}
 ]
 
-const SimpleWindow = ({name, isDefault=false, topBar, navBar=true,
+const SimpleWindow = ({name, isDefault=false, isDesktop, navBar=true,
   navClassName='', path, children}) => (
   <ContainerWindow name={name}
                    isDefault={isDefault}
@@ -26,31 +27,31 @@ const SimpleWindow = ({name, isDefault=false, topBar, navBar=true,
                    children={children}
   />
 )
-const LowLevelWindow = ({name, topBar, children}) => (
-  <MobileWindow name={name} useTopBar={topBar} children={children} />
+const LowLevelWindow = ({name, isDesktop, children}) => (
+  <MobileWindow name={name} isDesktop={isDesktop} children={children} />
 )
 
-const Mobile = ({useTopBar=true}) => (
+const Mobile = ({isDesktop}) => (
   <div className={styles.container}>
     <WindowGroup name='mobile' allowInterContainerHistory={true}>
       <div className='phone'>
-        <SimpleWindow isDefault={true} name='Home' path='/mobile'>
-          <HomeScreen apps={apps.map(app => app.name)} useTopBar={useTopBar} />
+        <SimpleWindow isDefault={true} name='Home' path={devicePath('/', isDesktop)}>
+          <HomeScreen apps={apps.map(app => app.name)} isDesktop={isDesktop} />
         </SimpleWindow>
-        <LowLevelWindow name='Tools' topBar={useTopBar}>
-          <MobileTools useTopBar={useTopBar} />
+        <LowLevelWindow name='Tools' isDesktop={isDesktop}>
+          <MobileTools isDesktop={isDesktop} />
         </LowLevelWindow>
         <SimpleWindow name="Music" >
-          <MobileAudio useTopBar={useTopBar} />
+          <MobileAudio isDesktop={isDesktop} />
         </SimpleWindow>
         <SimpleWindow name="Notes">
-          <MobileNotes useTopBar={useTopBar} />
+          <MobileNotes isDesktop={isDesktop} />
         </SimpleWindow>
         <SimpleWindow name="Social">
-          <MobileSocial useTopBar={useTopBar} />
+          <MobileSocial isDesktop={isDesktop} />
         </SimpleWindow>
-        <LowLevelWindow name='Contacts' topBar={useTopBar}>
-          <Contacts useTopBar={useTopBar} />
+        <LowLevelWindow name='Contacts' isDesktop={isDesktop}>
+          <Contacts isDesktop={isDesktop} />
         </LowLevelWindow>
       </div>
     </WindowGroup>
@@ -58,7 +59,7 @@ const Mobile = ({useTopBar=true}) => (
 )
 
 Mobile.propTypes = {
-  useTopBar: PropTypes.bool
+  isDesktop: PropTypes.bool
 }
 
 export default Mobile

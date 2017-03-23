@@ -3,9 +3,9 @@ import styles from './HomeScreen.scss'
 import {HeaderLink} from 'react-router-nested-history'
 import MobilePage from './MobilePage'
 
-const HomeScreen = ({apps, useTopBar}) => {
+const HomeScreen = ({apps, isDesktop}) => {
   return (
-    <MobilePage useTopBar={useTopBar} useNavBar={false} navClassName={styles.nav}>
+    <MobilePage isDesktop={isDesktop} useNavBar={false} navClassName={styles.nav}>
       <div className={styles.container}>
         <div className="inner-container">
           <div className="back-container"></div>

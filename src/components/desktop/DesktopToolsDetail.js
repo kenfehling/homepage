@@ -7,6 +7,7 @@ import styles from './DesktopToolsDetail.scss'
 const DesktopToolsDetail = ({match:{params:{tool, category}}}) => {
   const toolObject = getTool(tool)
   const {name, fullName, stars, description} = toolObject
+  const path = `/tools/${category}`
   return (<div className={styles.container} key={name}>
     <Helmet
       title={`${!toolObject ? (category || '') : tool || ''}`}
@@ -31,7 +32,7 @@ const DesktopToolsDetail = ({match:{params:{tool, category}}}) => {
         {renderStars(stars)}
       </div>
     </div>
-    <div className="description">{replaceLinks(description, category)}</div>
+    <div className="description">{replaceLinks(description, path)}</div>
   </div>)
 }
 

@@ -273,6 +273,7 @@ export const tools = [{
     I started using Guice while doing [[GWT]] development,
     but I continued to use it on almost all of my [[Java]] projects,
     including for [[Android]] (along with [[RoboGuice]]).
+    I appreciated how it kept things more modular and testable.
   </div>
 }, {
   name: 'RoboGuice',

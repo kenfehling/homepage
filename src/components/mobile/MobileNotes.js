@@ -3,8 +3,8 @@ import styles from './MobileNotes.scss'
 import MobilePage from './MobilePage'
 import {GITHUB_REPO} from '../../constants/links'
 
-const MobileNotes = ({useTopBar, useNa}) => (
-  <MobilePage title='Notes' useTopBar={useTopBar} navClassName={styles.nav}>
+const MobileNotes = ({isDesktop, useNa}) => (
+  <MobilePage title='Notes' isDesktop={isDesktop} navClassName={styles.nav}>
     <div className={styles.container}>
       <div>Ken Fehling</div>
       <div>Personal home page</div>

@@ -38,11 +38,11 @@ export const getIcon = ({name, iconType}) => (
     <img className="icon" src={require('../../img/icons/tools/' +
         escapeName(name) +'.' + (iconType || 'svg'))} />)
 
-export function linkToTool(name, category=categories[0], text=name) {
+export function linkToTool(name, path, text=name) {
   const names = _.map(tools, t => t.name)
   const mainName = _.includes(names, name) ? name : getMainName(name).name
   const escapedName = escapeName(mainName)
-  const to = `/tools/${category}/${escapedName}`
+  const to = `${path}/${escapedName}`
   return <HistoryLink key={mainName + Math.random()} to={to} name={mainName}>
     {text}
   </HistoryLink>
@@ -52,8 +52,8 @@ export const filterTools = (category) =>
     category && category !== 'All' ?
         _.filter(tools, t => _.includes(t.categories, category)) : tools
 
-export const replaceLinks = (element, category) => {
+export const replaceLinks = (element, path) => {
   const children = reactStringReplace(element.props.children, /\[\[(\w+)]]/g,
-    match => linkToTool(match, category))
+                   (match) => linkToTool(match, path))
   return createElement(element.type, {children})
 }

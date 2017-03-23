@@ -9,11 +9,13 @@ const ROWS = 2
 
 const renderTool = (tool, category) => {
   const {name, stars} = tool
-  return linkToTool(name, category, (<div className="tool">
-    {getIcon(tool)}
-    <div className="name">{name}</div>
-    {renderStars(stars)}
-  </div>))
+  return linkToTool(name, `/tools/${category}`, (
+    <div className="tool">
+      {getIcon(tool)}
+      <div className="name">{name}</div>
+      {renderStars(stars)}
+    </div>
+  ))
 }
 
 const arrangeTools = (tools) => {

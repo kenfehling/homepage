@@ -5,41 +5,46 @@ import Page from './MobilePage'
 import Contact from './Contact'
 import * as _ from 'lodash'
 import styles from './Contacts.scss'
+import {devicePath} from '../../utils/mobile'
 
 const escapeName = name => name.replace('_', ' ')
-const findContact = name => _.find(contacts, c => c.name === escapeName(name))
 
-const contacts = [{
-  name: 'Ken Fehling',
-  icon: 'mobile/contacts/Ken_Fehling.jpg',
-  page: '/mobile/contacts/Ken_Fehling',
-  email: 'ken@androidideas.org',
-  website: 'kenfehling.com',
-  twitter: 'kenfehling'
-}]
+const Contacts = ({isDesktop}) => {
+  const contacts = [{
+    name: 'Ken Fehling',
+    icon: 'mobile/contacts/Ken_Fehling.jpg',
+    page: devicePath('/contacts/Ken_Fehling', isDesktop),
+    email: 'ken@androidideas.org',
+    website: 'kenfehling.com',
+    twitter: 'kenfehling'
+  }]
 
-const Contacts = ({useTopBar}) => (
-  <Container name='mobile_contacts'
-             initialUrl='/mobile/contacts'
+  const findContact = name =>
+      _.find(contacts, c => c.name === escapeName(name))
+
+  return (
+    <Container name='mobile_contacts'
+             initialUrl={devicePath('/contacts', isDesktop)}
              patterns={[
-               '/mobile/:app(contacts)',
-               '/mobile/:app(contacts)/:name'
+               devicePath('/:app(contacts)', isDesktop),
+               devicePath('/:app(contacts)/:name', isDesktop)
              ]}
-  >
-    <HistoryRoute path='/mobile/:app(contacts)' exact>
-      <Page title='Contacts' useTopBar={useTopBar} navClassName={styles.nav}>
-        <List items={contacts} />
-      </Page>
-    </HistoryRoute>
-
-    <HistoryRoute path='/mobile/:app(contacts)/:name' exact>
-      {({match:{params:{name}}}) => (
-        <Page useTopBar={useTopBar} navClassName={styles.nav}>
-          <Contact contact={findContact(name)} />
+    >
+      <HistoryRoute path={devicePath('/:app(contacts)', isDesktop)} exact>
+        <Page title='Contacts' isDesktop={isDesktop} navClassName={styles.nav}>
+          <List items={contacts}/>
         </Page>
-      )}
-    </HistoryRoute>
-  </Container>
-)
+      </HistoryRoute>
+
+      <HistoryRoute path={devicePath('/:app(contacts)/:name', isDesktop)} exact>
+        {({match:{params:{name}}}) => (
+          <Page isDesktop={isDesktop} navClassName={styles.nav}>
+            <Contact contact={findContact(name)}/>
+          </Page>
+        )}
+      </HistoryRoute>
+    </Container>
+  )
+}
 
 export default Contacts

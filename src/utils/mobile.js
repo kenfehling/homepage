@@ -1,0 +1,1 @@
+export const devicePath = (path, isDesktop) => isDesktop ? `/mobile${path}` : path

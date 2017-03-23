@@ -5,7 +5,8 @@ import styles from './MobileApp.scss'
 
 const MobileApp = () => (
   <div className={styles.container}>
-    <Mobile useTopBar={false} />
+    <Match pattern='/' exactly render={() => <Redirect to="/tools" />} />
+    <Mobile isDesktop={false} />
     <Helmet 
       meta={[
         {
