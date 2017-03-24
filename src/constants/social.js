@@ -1,7 +1,7 @@
 const _sites = [
   {name: 'Twitter', color: '#00AAEC', url: 'http://twitter.com/kenfehling'},
   {name: 'LinkedIn', color: '#0077B5', url: 'http://linkedin.com/in/kenfehling'},
-  {name: 'GitHub', color: '#000', url: 'http://github.com/kenfehling'},
+  {name: 'GitHub', color: '#333', url: 'http://github.com/kenfehling'},
   {name: 'Stack Overflow', color: '#FF8000', url: 'http://stackoverflow.com/users/591530/ken-fehling'}
 ]
 
