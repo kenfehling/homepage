@@ -3,12 +3,16 @@
 
 :local(.container) {
   @include no-select();
+  background-color: #003;
+  color: #36F;
   font-family: $code-font;
-  margin: auto;
-  width: 90%;
+  padding: 0 5%;
+  height: 100%;
+
   .controls {
     width: 96%;
-    margin: 20px auto;
+    margin: 0 auto;
+    padding: 20px 0;
     text-align: center;
     display: flex;
     i.fa {

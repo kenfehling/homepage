@@ -1,8 +1,10 @@
 $icon-size: 60px;
 
 :local(.container) {
+  background-color: #FFF;
   display: flex;
-  padding-top: 20px;
+  padding-top: 35px;
+  height: 100%;
   .icon {
     margin: 0 auto;
     text-align: center;

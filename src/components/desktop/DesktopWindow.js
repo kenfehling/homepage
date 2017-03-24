@@ -1,20 +1,7 @@
 import React, {PropTypes, Children, cloneElement} from 'react'
 import Draggable from 'react-draggable'
 import {HistoryWindow} from 'react-router-nested-history'
-import * as _ from 'lodash'
 import styles from './DesktopWindow.scss'
-
-const Bridge = ({children, onMouseDown, ...props}) =>
-    cloneElement(Children.only(children), {
-      onMouseDown: (e) => {
-
-        console.log(children.props.children)
-
-
-        children.props.onMouseDown(e)
-
-      }
-    })
 
 const ToolbarButton = ({name, onClick}) => (
   <img src={require(`img/icons/desktop/${name}.svg`)} onClick={onClick} />
@@ -22,7 +9,6 @@ const ToolbarButton = ({name, onClick}) => (
 
 const DesktopWindow = ({name, container='desktop_' + name.toLowerCase(),
                         x=0, y=0, width, height, children,
-                        fgColor='#000', bgColor='#FFF',
                         visible=false, className, topClassName}) => (
   <HistoryWindow forName={container} visible={visible}
                  className={className}
@@ -30,9 +16,7 @@ const DesktopWindow = ({name, container='desktop_' + name.toLowerCase(),
                  style={{width: 0, height: 0}}
   >
     {({close}) => (
-      <Draggable cancel=".inner-container"
-                 defaultPosition={{x, y}}>
-
+      <Draggable cancel=".inner-container" defaultPosition={{x, y}}>
         <div className={`${styles.window} ${name}`}>
           <div className='toolbar'>
             <div className='buttons left'>
@@ -44,12 +28,7 @@ const DesktopWindow = ({name, container='desktop_' + name.toLowerCase(),
             </div>
             <div className='title'>{name}</div>
           </div>
-          <div className="inner-container"
-               style={{
-                 backgroundColor:bgColor,
-                 color:fgColor,
-               }}
-          >
+          <div className="inner-container">
             <div className="body">
               {children instanceof Function ? children() : children}
             </div>
@@ -62,8 +41,14 @@ const DesktopWindow = ({name, container='desktop_' + name.toLowerCase(),
 
 DesktopWindow.propTypes = {
   name: PropTypes.string.isRequired,
-  fgColor: PropTypes.string,
-  bgColor: PropTypes.string
+  container: PropTypes.string,
+  x: PropTypes.number,
+  y: PropTypes.number,
+  width: PropTypes.number,
+  height: PropTypes.number,
+  visible: PropTypes.bool,
+  className: PropTypes.string,
+  topClassName: PropTypes.string
 }
 
 export default DesktopWindow
