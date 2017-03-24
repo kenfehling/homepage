@@ -2,4 +2,27 @@
 
 :local(.container) {
   font-family: $code-font;
+  box-sizing: border-box;
+  padding: 15px 12px;
+
+  .menu {
+    color: #000;
+    background-color: #3F3;
+    padding-bottom: 2px;
+    margin-bottom: 15px;
+    display: flex;
+    font-weight: bold;
+    > div {
+      cursor: pointer;
+      margin: 3px 5px 0 10px;
+    }
+    > div:not(:first-child) {
+      font-weight: 200;
+    }
+  }
+
+  .content {
+    padding: 6px;
+  }
+
 }

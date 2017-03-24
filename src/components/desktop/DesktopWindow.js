@@ -20,9 +20,10 @@ const ToolbarButton = ({name, onClick}) => (
   <img src={require(`img/icons/desktop/${name}.svg`)} onClick={onClick} />
 )
 
-const DesktopWindow = ({name, container='desktop_' + name.toLowerCase(), x=0, y=0,
-                        menuItems, children, fgColor='#000', bgColor='#FFF',
-                        visible=false, usePadding=true, className, topClassName}) => (
+const DesktopWindow = ({name, container='desktop_' + name.toLowerCase(),
+                        x=0, y=0, width, height, children,
+                        fgColor='#000', bgColor='#FFF',
+                        visible=false, className, topClassName}) => (
   <HistoryWindow forName={container} visible={visible}
                  className={className}
                  topClassName={topClassName}
@@ -47,15 +48,9 @@ const DesktopWindow = ({name, container='desktop_' + name.toLowerCase(), x=0, y=
                style={{
                  backgroundColor:bgColor,
                  color:fgColor,
-                 padding:usePadding ? '6px 5px' : null
                }}
           >
-            {menuItems ?
-              <div className="menu" style={{backgroundColor:fgColor, color:bgColor}}>
-                <div>{name}</div>
-                {_.map(menuItems, item => <div key={item.name}>{item.name}</div>)}
-              </div> : ''}
-            <div className="body" style={{padding: usePadding ? '15px 10px' : null}}>
+            <div className="body">
               {children instanceof Function ? children() : children}
             </div>
           </div>
@@ -67,10 +62,8 @@ const DesktopWindow = ({name, container='desktop_' + name.toLowerCase(), x=0, y=
 
 DesktopWindow.propTypes = {
   name: PropTypes.string.isRequired,
-  menuItems: PropTypes.arrayOf(PropTypes.object),
   fgColor: PropTypes.string,
-  bgColor: PropTypes.string,
-  usePadding: PropTypes.bool
+  bgColor: PropTypes.string
 }
 
 export default DesktopWindow
