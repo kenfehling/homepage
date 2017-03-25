@@ -19,40 +19,32 @@ const apps = [
   {name: 'Contacts'}
 ]
 
-const SimpleWindow = ({name, isDefault=false, isDesktop, navBar=true,
-  navClassName='', path, children}) => (
-  <ContainerWindow name={name}
-                   isDefault={isDefault}
-                   path={path}
-                   children={children}
-  />
-)
-const LowLevelWindow = ({name, isDesktop, children}) => (
-  <MobileWindow name={name} isDesktop={isDesktop} children={children} />
-)
-
 const Mobile = ({isDesktop}) => (
   <div className={styles.container}>
     <WindowGroup name='mobile' allowInterContainerHistory={true}>
       <div className='phone'>
-        <SimpleWindow isDefault={true} name='Home' path={devicePath('/', isDesktop)}>
+        <ContainerWindow isDefault={true}
+                         name='Home'
+                         path={devicePath('', isDesktop)}
+                         patterns={[devicePath('', isDesktop)]}
+        >
           <HomeScreen apps={apps.map(app => app.name)} isDesktop={isDesktop} />
-        </SimpleWindow>
-        <LowLevelWindow name='Tools' isDesktop={isDesktop}>
+        </ContainerWindow>
+        <MobileWindow name='Tools' isDesktop={isDesktop}>
           <MobileTools isDesktop={isDesktop} />
-        </LowLevelWindow>
-        <SimpleWindow name="Music" >
+        </MobileWindow>
+        <ContainerWindow name="Music" >
           <MobileAudio isDesktop={isDesktop} />
-        </SimpleWindow>
-        <SimpleWindow name="Notes">
+        </ContainerWindow>
+        <ContainerWindow name="Notes">
           <MobileNotes isDesktop={isDesktop} />
-        </SimpleWindow>
-        <SimpleWindow name="Social">
+        </ContainerWindow>
+        <ContainerWindow name="Social">
           <MobileSocial isDesktop={isDesktop} />
-        </SimpleWindow>
-        <LowLevelWindow name='Contacts' isDesktop={isDesktop}>
+        </ContainerWindow>
+        <MobileWindow name='Contacts' isDesktop={isDesktop}>
           <Contacts isDesktop={isDesktop} />
-        </LowLevelWindow>
+        </MobileWindow>
       </div>
     </WindowGroup>
   </div>

@@ -16,6 +16,7 @@ export default (props) => (
       {categories.map(c => (
           <Container key={c}
                      name={c + '_tools'}
+                     isDefault={c === 'All'}
                      resetOnLeave={true}
                      initialUrl={`/tools/${c}`}
                      patterns={[`/tools/:category(${c})`,
