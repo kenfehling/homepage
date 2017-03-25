@@ -11,8 +11,9 @@ import Mobile from '../components/shared/Mobile'
 import Dock from '../components/desktop/Dock'
 import {WindowGroup} from 'react-router-nested-history'
 import ContainerWindow from '../components/desktop/DesktopContainerWindow'
-import styles from './DesktopApp.scss'
+import SimpleRedirect from '../components/shared/SimpleRedirect'
 import {redirectMobileToDesktop} from '../utils/mobile'
+import styles from './DesktopApp.scss'
 
 const windows = [
   {name: 'Map'},
@@ -30,8 +31,8 @@ const middle = -28
 const DesktopApp = () => (
   <div className={styles.container}>
     {redirectMobileToDesktop('/contacts')}
-    <Route path='/' exact render={() => <Redirect to='/editor' />} />
-    <Route path='/tools' exact render={() => <Redirect to='/tools/All' />} />
+    <SimpleRedirect from='/' to='/editor' />
+    <SimpleRedirect from='/tools' to='/tools/All' />
 
     {/* <Splash /> */}
 

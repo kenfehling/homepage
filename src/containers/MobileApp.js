@@ -1,14 +1,12 @@
 import React, {PropTypes} from 'react'
-import {Route, Redirect}from 'react-router'
 import Mobile from '../components/shared/Mobile'
 import Helmet from 'react-helmet'
+import {redirectDesktopToMobile} from '../utils/mobile'
 import styles from './MobileApp.scss'
 
 const MobileApp = () => (
   <div className={styles.container}>
-    <Route path='/mobile/*' render={({match}) => (
-      <Redirect to={`${match.url.substring('/mobile'.length)}`}/>
-    )} />
+    {redirectDesktopToMobile()}
     <Mobile isDesktop={false} />
     <Helmet 
       meta={[
