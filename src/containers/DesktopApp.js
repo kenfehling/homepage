@@ -39,7 +39,7 @@ const DesktopApp = () => (
     <WindowGroup name='desktop'>
       <IFrameWindow name="PDF" right={5} top={5}
                     src='/static/Ken_Fehling-resume.pdf' />
-      <ContainerWindow name="Editor" center={0} middle={middle}>
+      <ContainerWindow name="Editor" visible={true} center={0} middle={middle}>
         <Editor />
       </ContainerWindow>
       <IFrameWindow name="Map" left={10} middle={middle}
@@ -57,7 +57,7 @@ const DesktopApp = () => (
       <DesktopWindow name="Tools" left={10} top={10}>
         <DesktopTools />
       </DesktopWindow>
-      <ContainerWindow name="Social" right={5} bottom={5}>
+      <ContainerWindow name="Social" right={10} bottom={10}>
         <DesktopSocial />
       </ContainerWindow>
       <Dock windows={windows} />

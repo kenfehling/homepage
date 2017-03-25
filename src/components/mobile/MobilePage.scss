@@ -92,7 +92,8 @@ $font-size: 15px;
 
   .content {
     width: 100%;
-    height: 100%;
+    flex: 1 1;
+    display: flex;
     overflow-y: auto;
     background-color: $default-mobile-bg-color;
     //@include mobile-scroll-fix();
