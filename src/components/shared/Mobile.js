@@ -24,6 +24,7 @@ const Mobile = ({isDesktop}) => (
     <WindowGroup name='mobile' allowInterContainerHistory={true}>
       <div className='phone'>
         <ContainerWindow isDefault={true}
+                         isDesktop={isDesktop}
                          name='Home'
                          path={devicePath('', isDesktop)}
                          patterns={[devicePath('', isDesktop)]}
@@ -33,13 +34,13 @@ const Mobile = ({isDesktop}) => (
         <MobileWindow name='Tools' isDesktop={isDesktop}>
           <MobileTools isDesktop={isDesktop} />
         </MobileWindow>
-        <ContainerWindow name="Music" >
+        <ContainerWindow name="Music" isDesktop={isDesktop}>
           <MobileAudio isDesktop={isDesktop} />
         </ContainerWindow>
-        <ContainerWindow name="Notes">
+        <ContainerWindow name="Notes" isDesktop={isDesktop}>
           <MobileNotes isDesktop={isDesktop} />
         </ContainerWindow>
-        <ContainerWindow name="Social">
+        <ContainerWindow name="Social" isDesktop={isDesktop}>
           <MobileSocial isDesktop={isDesktop} />
         </ContainerWindow>
         <MobileWindow name='Contacts' isDesktop={isDesktop}>
