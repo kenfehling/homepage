@@ -7,6 +7,10 @@
   user-select: none;
 }
 
+@mixin no-highlight() {
+  -webkit-tap-highlight-color:transparent;
+}
+
 @mixin show-scroll($bg) {
   &::-webkit-scrollbar {
     -webkit-appearance: none;

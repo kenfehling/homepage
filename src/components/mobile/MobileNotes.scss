@@ -2,7 +2,7 @@
 @import "../../styles/colors";
 @import "../../styles/dimens";
 
-$color: #EEDD00;
+$color: darken(#EEDD00, 7%);
 
 :local(.container) {
   padding: 15px;
@@ -16,9 +16,9 @@ $color: #EEDD00;
 
 :local(.nav) {
   background-color: $default-mobile-bg-color !important;
-  border-color: darken($color, 2%) !important;
+  border-color: transparentize($color, 0.85) !important;
 
   .back {
-    color: darken($color, 7%) !important;
+    color: $color !important;
   }
 }

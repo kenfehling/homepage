@@ -56,6 +56,7 @@ $text-color: #333;
       font-size: 1.5rem;
       cursor: pointer;
       color: $text-color;
+      @include no-highlight();
     }
     i.fa:active {
       opacity: 0.5;
