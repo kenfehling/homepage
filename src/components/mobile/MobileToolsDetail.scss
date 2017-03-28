@@ -5,6 +5,7 @@
   display: flex;
   flex-direction: column;
   font-size: $mobile-body-text-size;
+  width: 100%;
   height: 100%;
 
   .heading, .description {

@@ -1,11 +1,12 @@
 import React, {PropTypes} from 'react'
+import {ScrollArea} from 'react-router-nested-history'
 import ListItem from './ListItem'
 import styles from './List.scss'
 
 const List = ({items}) => {
-  return (<div className={styles.container}>
+  return (<ScrollArea className={styles.container}>
     {items.map(item => <ListItem key={item.name} {...item} />)}
-  </div>)
+  </ScrollArea>)
 }
 
 List.propTypes = {

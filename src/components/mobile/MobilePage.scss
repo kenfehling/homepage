@@ -94,8 +94,6 @@ $font-size: 15px;
     width: 100%;
     flex: 1 1;
     display: flex;
-    overflow-y: auto;
     background-color: $default-mobile-bg-color;
-    //@include mobile-scroll-fix();
   }
 }

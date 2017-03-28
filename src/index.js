@@ -3,6 +3,11 @@ import {render}  from 'react-dom';
 import {HistoryRouter} from 'react-router-nested-history'
 import App from './containers/App'
 
+// Exposes React performance profiling tools for use in console
+if (process.env.NODE_ENV !== 'production') {
+  require('expose-loader?Perf!react-addons-perf')
+}
+
 render((
   <HistoryRouter>
     <App />

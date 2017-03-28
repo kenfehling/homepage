@@ -6,6 +6,6 @@ import styles from './App.scss';
 
 export default () => (
   <div className={styles.container}>
-    {bowser.mobile || bowser.tablet ? <MobileApp /> : <DesktopApp />}
+    {bowser.mobile /* || bowser.tablet */ ? <MobileApp /> : <DesktopApp />}
   </div>
 );
