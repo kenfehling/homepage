@@ -4,7 +4,7 @@ import ListItem from './ListItem'
 import styles from './List.scss'
 
 const List = ({items}) => {
-  return (<ScrollArea className={styles.container}>
+  return (<ScrollArea className={styles.container} vertical={true}>
     {items.map(item => <ListItem key={item.name} {...item} />)}
   </ScrollArea>)
 }

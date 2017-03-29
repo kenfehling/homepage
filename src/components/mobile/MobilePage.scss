@@ -22,6 +22,7 @@ $font-size: 15px;
     height: $top-bar-height;
     line-height: $top-bar-height;
     display: flex;
+    border-bottom: 1px solid $mobile-nav-bg-color;
     padding: 0 6px;
     i {
       margin-left: 3px;
@@ -56,14 +57,13 @@ $font-size: 15px;
     height: $nav-height;
     padding: 0 6px;
     border-bottom: thin solid darken($mobile-nav-bg-color, 7%);
-    display: flex;
     .back, .title {
       margin: 0;
       font-size: inherit;
+      line-height: $nav-height;
     }
     .back {
       color: $link-color;
-      line-height: $nav-height - 4;
       position: absolute;
       .link {
         display: flex;
@@ -84,7 +84,6 @@ $font-size: 15px;
       }
     }
     .title {
-      line-height: $nav-height - 4;
       width: 100%;
       text-align: center;
     }
