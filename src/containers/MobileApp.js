@@ -8,13 +8,7 @@ const MobileApp = () => (
   <div className={styles.container}>
     {redirectDesktopToMobile()}
     <Mobile isDesktop={false} />
-    <Helmet 
-      meta={[
-        {
-          name: 'viewport',
-          content: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'
-        }
-    ]} 
+    <Helmet
       link={[
         {
           rel: 'manifest',

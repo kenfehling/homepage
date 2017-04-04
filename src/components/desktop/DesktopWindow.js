@@ -15,6 +15,7 @@ const DesktopWindow = ({name, container='desktop_' + name.toLowerCase(),
                  draggableProps={{
                    cancel: ".inner-container"
                  }}
+                 rememberPosition={false}
   >
     {({close}) => (
       <div className={`${styles.window} ${name}`}>
