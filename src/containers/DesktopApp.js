@@ -30,7 +30,7 @@ const windows = [
 const middle = -28
 
 const DesktopApp = () => (
-  <div className={styles.container}>
+  <div className={styles.container} style={{height: '100%'}}>
     {redirectMobileToDesktop('/contacts')}
     <SimpleRedirect from='/' to='/editor' />
     <SimpleRedirect from='/tools' to='/tools/All' />
