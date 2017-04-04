@@ -1,7 +1,6 @@
 import webpack from 'webpack'
 import path from 'path'
 import bourbon from 'node-bourbon'
-import neat from 'node-neat'
 
 export const sassPaths = bourbon
   .includePaths

@@ -7,7 +7,7 @@ export default ({windows}) => {
   return (
     <div className={styles.container}>
         <div className="inner-container">
-            <div className="back-container"></div>
+            <div className="back-container" />
             <div className="front-container">
               {windows.map(({name, container}) => (
                 <HeaderLink className='icon'

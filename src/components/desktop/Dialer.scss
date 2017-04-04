@@ -1,0 +1,36 @@
+$button-size: 40px;
+@import "../../styles/utils";
+
+:local(.container) {
+  @include no-select();
+  background-color: #CCC;
+  display: flex;
+  .controls {
+    flex: 1 1;
+    text-align: center;
+    .speed-dial {
+      height: $button-size;
+    }
+  }
+  .buttons {
+    width: $button-size * 4;
+    .button {
+      width: $button-size;
+      height: $button-size;
+    }
+    .special {
+      background-color: #9CF;
+      border: thin solid gray;
+    }
+    .special:active, .special:focus {
+      outline: 0;
+    }
+    .special:active {
+      background-color: #69F;
+    }
+  }
+
+  button {
+    cursor: pointer;
+  }
+}

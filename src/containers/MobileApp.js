@@ -1,4 +1,4 @@
-import React, {PropTypes} from 'react'
+import React from 'react'
 import Mobile from '../components/shared/Mobile'
 import Helmet from 'react-helmet'
 import {redirectDesktopToMobile} from '../utils/mobile'
