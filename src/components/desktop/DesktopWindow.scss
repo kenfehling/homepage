@@ -1,5 +1,6 @@
 @import "bourbon";
 @import "../../styles/fonts";
+@import "../../styles/utils";
 
 :local(.window) {
   @include background-image(linear-gradient(to bottom, #777, #555));
@@ -13,6 +14,8 @@
   flex-direction: column;
 
   .toolbar {
+    @include no-select();
+    @include no-highlight();
     font-family: $apple-font;
     $icon-size: 12px;
     height: $icon-size;
@@ -45,6 +48,40 @@
       color: #111;
       font-size: 12px;
       text-align: center;
+    }
+
+    .share-window {
+      $border-radius: 4px;
+      color: #111;
+      width: 110px;
+      border-radius: $border-radius !important;
+      opacity: 1 !important;
+      pointer-events: auto !important;
+      padding: 0 0 5px 0 !important;
+      .share-title {
+        background-color: #BBB;
+        font-weight: 500;
+        font-size: 12px;
+        text-align: center;
+        border-top-left-radius: $border-radius;
+        border-top-right-radius: $border-radius;
+        padding: 5px 0;
+        margin-bottom: 4px;
+      }
+      .item {
+        color: inherit;
+        display: flex;
+        cursor: pointer;
+        text-decoration: none;
+        padding: 4px 10px;
+        img {
+          height: 14px;
+          margin-right: 6px;
+        }
+      }
+      .item:hover {
+        background-color: #e6f3ff;
+      }
     }
   }
 

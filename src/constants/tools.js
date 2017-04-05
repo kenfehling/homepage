@@ -10,9 +10,15 @@ const DATABASES = 'Databases';
 const SOFTWARE = 'Software';
 
 const externalLink = (name, href='http://' + name) =>
-    <a target="_blank" href={href}>
+    <a target='_blank' href={href}>
       {name}
-      <i style={{paddingLeft: '0.33em', paddingRight: '0.1em'}} className="fa fa-external-link" />
+      <i className='fa fa-external-link'
+         style={{
+           paddingLeft: '0.3em',
+           paddingRight: '0.2ex',
+           verticalAlign: 'middle'
+         }}
+      />
     </a>;
 
 export const categories = [
@@ -71,6 +77,17 @@ export const tools = [{
     and even non-React projects.
   </div>
 }, {
+  name: 'TypeScript',
+  stars: 4.5,
+  categories: [LANGUAGES, WEB],
+  description: <div>
+    TypeScript is currently my main compile-to-[[JavaScript]] library.
+    <br/><br/>
+    My [[React]] library {externalLink("react-router-nested-history",
+    "http://github.com/kenfehling/react-router-nested-history")} is written
+    in TypeScript.
+  </div>
+}, {
   /*
    name: 'Lodash',
    stars: 4.5,
@@ -84,7 +101,11 @@ export const tools = [{
   stars: 4,
   categories: [LANGUAGES, WEB],
   description: <div>
-    Description
+    Unlike many web developers I actually enjoy styling.
+    I don't get to spend as much time doing it as I'd like to since even
+    front-end development alone has so many other facets.
+    My current preprocessor of choice is [[SASS]];
+    in the past I've also used LESS and Stylus.
   </div>
 }, {
   name: 'Node',
@@ -102,8 +123,8 @@ export const tools = [{
     Since most of my work is on the frontend web I'm usually
     using [[JavaScript]], however I've recently been using Python
     for the backend of
-    a {externalLink('hackathon registration page', 'http://kenfehling.github.io/hack-health-2016-website')} and
-    some data analysis using the Pandas library.
+    the {externalLink('HackHealth', 'http://kenfehling.github.io/hack-health-2016-website')} registration
+    page and some data analysis using the Pandas library.
   </div>
 }, {
   name: 'Java',
@@ -127,14 +148,17 @@ export const tools = [{
   stars: 4,
   categories: [LIBRARIES, WEB],
   description: <div>
-    Description
+    After trying LESS and Stylus I settled on SASS as my CSS preprocessor
+    of choice. I prefer to use the SCSS syntax because it's just a superset
+    of regular [[CSS]] syntax.
   </div>
 }, {
   name: 'Gulp',
   stars: 4,
   categories: [DEVOPS, WEB],
   description: <div>
-    Gulp was my main [[JavaScript]] build tool before switching to
+    Gulp was my main [[JavaScript]] build tool
+    after a short time with [[Grunt]] and before switching to
     [[Webpack]]. I often used Gulp with [[Browserify]].
   </div>
 }, {
@@ -158,11 +182,11 @@ export const tools = [{
     For larger web apps I typically use [[Node]] for the backend.
   </div>
 }, {
-  name: 'JQuery',
+  name: 'jQuery',
   stars: 4,
   categories: [LIBRARIES, WEB],
   description: <div>
-    Description
+    jQuery used to be my go-to [[JavaScript]] library before I discovered [[React]].
   </div>
 }, {
   name: 'Android',
@@ -182,30 +206,54 @@ export const tools = [{
 }, {
   name: 'Git',
   stars: 4,
-  categories: [SOFTWARE],
+  categories: [DEVOPS, SOFTWARE],
   description: <div>
-    Description
+    I use Git for all of my projects. Using version control brings an extra
+    level of confidence and organization to my work.
+    <br/><br/>
+    The main Git server I use
+    is {externalLink("GitHub", "http://github.com/kenfehling")}
   </div>
 }, {
   name: 'NPM',
   stars: 4,
   categories: [DEVOPS, WEB],
   description: <div>
-    Description
+    I first encountered NPM when using [[Node]] and I've gone on to use it
+    on the front-end via [[Webpack]] and [[Browserify]]. In the past I had used
+    things like [[Bower]], RequireJS and Volo for dependency management but
+    I'm much happier since adopting NPM.
   </div>
 }, {
   name: 'Babel',
   stars: 4,
   categories: [DEVOPS, WEB],
   description: <div>
-    Description
+    I first got into Babel when I started with [[React]].
+    This was also my first real look at ES6, and of course React’s JSX syntax.
+    In the beginning I was using Babel with [[Browserify]] and [[Gulp]],
+    but soon moved to [[Webpack]] which is my current build tool of choice.
+    Webpack's babel-loader plugin works great.
   </div>
 }, {
   name: 'Mocha',
   stars: 4,
   categories: [DEVOPS, WEB],
   description: <div>
-    Description
+    My [[JavaScript]] test framework of choice.
+    I use it with the Chai assertion library.
+    I've also been using [[Jest]] recently but I prefer Mocha for its
+    better integration with other tools like [[Webpack]] and [[Babel]], and
+    also better [[WebStorm]] IDE integration for debugging.
+  </div>
+}, {
+  name: 'WebStorm',
+  stars: 4,
+  categories: [SOFTWARE],
+  description: <div>
+    My favorite IDE. PyCharm and of course IntelliJ IDEA are good too,
+    but I spend almost all of my time these days working on web projects.
+    JetBrains just makes awesome software.
   </div>
 }, {
   name: 'MongoDB',
@@ -219,49 +267,88 @@ export const tools = [{
   stars: 3.5,
   categories: [LIBRARIES, WEB],
   description: <div>
-    Description
+    I thought learning [[Ruby]] on Rails would be a good experience since
+    it's the gold standard of back-end web frameworks.
+    It certainly was an enlightening experience.
+    Nowadays I mostly use [[JavaScript]], [[Node]] and [[Express]]
+    or occasionally [[Python]] with [[Flask]] but I'm glad
+    I spent some time learning an opinionated framework,
+    especially one as influential as Rails.
   </div>
 }, {
   name: 'Bootstrap',
   stars: 3.5,
   categories: [LIBRARIES, WEB],
   description: <div>
-    Description
+    I have used Bootstrap on a few projects and find it good when something
+    needs to be done simply and quickly, although for any large project I
+    feel more like it gets in my way.
+    <br /><br />
+    I used Bootstrap for the front-end of
+    the {externalLink('HackHealth', 'http://kenfehling.github.io/hack-health-2016-website')} website.
   </div>
 }, {
   name: 'Keystone',
   stars: 3.5,
   categories: [LIBRARIES, WEB],
   description: <div>
-    Description
+    I used Keystone on an internship project for my university's radio station, WUSB.
+    I was on the team who initially created the project,
+    and subsequent teams have taken the project over.
+    Unfortunately it hasn't been deployed yet to replace the existing website.
+    <br /><br />
+    {externalLink('Project GitHub repository', 'https://github.com/kingofirony/WUSB-Website')}
   </div>
 }, {
   name: 'Jest',
   stars: 3.5,
   categories: [DEVOPS, WEB],
   description: <div>
-    Description
+    [[Mocha]] is my main [[JavaScript]] test framework, but recently I've been
+    trying Jest more. It has some appealing features but for my uses Mocha
+    is just more tried-and-true. However Jest is fairly new and it will continue
+    to mature, so being such a testing freak I'll definitely be keeping a close eye on it.
   </div>
 }, {
   name: 'ESLint',
   stars: 3.5,
   categories: [DEVOPS, WEB],
   description: <div>
-    Description
+    ESLint is a great tool for enforcing coding standards on
+    a [[JavaScript]] or [[TypeScript]] project.
+    Also its integration with my favorite IDE [[WebStorm]] is great.
+  </div>
+}, {
+  name: 'Nightwatch',
+  stars: 3.5,
+  categories: [DEVOPS, WEB],
+  description: <div>
+    I had been using Enzyme a bit for testing React components,
+    however my main technique I’ve been using for testing is to have a suite of
+    unit tests written in [[Mocha]] or [[Jest]] and end-to-end tests using
+    Nightwatch and Selenium. I feel this gives good coverage,
+    and the e2e tests are really no harder to maintain than the component tests.
   </div>
 }, {
   name: 'Bower',
   stars: 3.5,
   categories: [DEVOPS, WEB],
   description: <div>
-    Description
+    I used to use Bower before adopting [[NPM]] as my main
+    front-end package management tool.
+    I much prefer NPM because it works more seamlessly with [[JavaScript]] modules,
+    and it can be used from both front-end and back-end dependency management.
   </div>
 }, {
   name: 'FFmpeg',
   stars: 3.5,
   categories: [SOFTWARE],
   description: <div>
-    Description
+    FFmpeg is a great command line tool for editing and converting video files.
+    One of my [[Android]]
+    apps, {externalLink('Video Toolbox', 'http://androidideas.org/videotoolbox')} is
+    based on FFmpeg's C libraries. It uses the Android NDK to load the libraries
+    for use in [[Java]] using the Java Native Interface (JNI).
   </div>
 }, {
   name: 'Guice',
@@ -293,35 +380,24 @@ export const tools = [{
   stars: 3.5,
   categories: [LANGUAGES, WEB, MOBILE],
   description: <div>
-    Description
-  </div>
-}, {
-  name: 'Flash',
-  stars: 3.5,
-  categories: [PLATFORMS, WEB, SOFTWARE],
-  description: <div>
-    Description
-  </div>
-}, {
-  name: 'Flex',
-  stars: 3.5,
-  categories: [SOFTWARE],
-  description: <div>
-    Description
+    I learned ActionScript and [[Adobe Flex]] to rewrite one of my [[Android]]
+    apps, {externalLink('Color Sounds', 'http://androidideas.org/colorsounds')}.
   </div>
 }, {
   name: 'Ruby',
   stars: 3,
   categories: [LANGUAGES],
   description: <div>
-    Description
+    Most of my Ruby experience has been with the [[Rails]] framework.
+    I prefer [[Python]] to Ruby mainly for its readability,
+    however Ruby has some interesting features like blocks.
   </div>
 }, {
   name: 'C#',
   stars: 3,
   categories: [LANGUAGES],
   description: <div>
-    Description
+    Most of my C# experience has been with [[Unity]].
   </div>
 }, {
   name: 'iOS',
@@ -331,11 +407,18 @@ export const tools = [{
     Description
   </div>
 }, {
+  name: 'Raspberry Pi',
+  stars: 3,
+  categories: [PLATFORMS],
+  description: <div>
+    I've used Raspberry Pi for a few projects.
+  </div>
+}, {
   name: 'TravisCI',
   stars: 3,
-  categories: [DEVOPS, WEB],
+  categories: [DEVOPS],
   description: <div>
-    Description
+    Travis is currently my main Continuous Integration (CI) service.
   </div>
 }, {
   name: 'Browserify',
@@ -390,6 +473,16 @@ export const tools = [{
     Description
   </div>
 }, {
+  name: 'Flex',
+  fullName: 'Adobe Flex',
+  stars: 3,
+  categories: [SOFTWARE],
+  description: <div>
+    I learned [[ActionScript]] and Flex to rewrite one of my [[Android]]
+    apps, {externalLink('Color Sounds', 'http://androidideas.org/colorsounds')}.
+    Flex was used for the main menu interface.
+  </div>
+}, {
   name: 'Logic',
   iconType: 'png',
   stars: 3,
@@ -428,13 +521,6 @@ export const tools = [{
     Description
   </div>
 }, {
-  name: 'Unity',
-  stars: 2.5,
-  categories: [PLATFORMS, SOFTWARE, MOBILE],
-  description: <div>
-    Description
-  </div>
-}, {
   name: 'GWT',
   iconType: 'png',
   fullName: 'Google Web Toolkit',
@@ -455,6 +541,32 @@ export const tools = [{
   categories: [SOFTWARE],
   description: <div>
     Description
+  </div>
+}, {
+  name: 'Flash',
+  stars: 2.5,
+  categories: [PLATFORMS, WEB, SOFTWARE],
+  description: <div>
+    Description
+  </div>
+}, {
+  name: 'Unity',
+  stars: 2,
+  categories: [PLATFORMS, SOFTWARE, MOBILE],
+  description: <div>
+    As secretary of the Stony Brook Game Developers club
+    I was exposed to Unity a lot.
+    I experimented with using it for some of my own projects
+    but always ultimately went another way,
+    usually [[HTML]] or occasionally [[Flash]].
+    <br /><br />
+    When I did experiment with Unity I spent a lot of time trying to learn
+    best practices and tools like Strange IoC and the Unity Testing Tools.
+    It's just how I am I guess.
+    <br /><br />
+    Unity and the entire 3D ecosystem has always been very interesting to me
+    but I've chosen to focus mostly on web development,
+    which is a very large area on its own.
   </div>
 }, {
   name: 'Photoshop',

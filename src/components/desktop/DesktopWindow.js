@@ -1,9 +1,37 @@
-import React, {PropTypes, Children, cloneElement} from 'react'
+import React, {PropTypes} from 'react'
 import {HistoryWindow} from 'react-router-nested-history'
+import ReactTooltip from 'react-tooltip'
 import styles from './DesktopWindow.scss'
 
-const ToolbarButton = ({name, onClick}) => (
+const noop = () => {}
+
+const ToolbarButton = ({name, onClick=noop}) => (
   <img src={require(`img/icons/desktop/${name}.svg`)} onClick={onClick} />
+)
+
+const ShareItem = ({name, text=name, url}) => (
+  <a className='item'
+     target='_blank'
+     href={url}
+  >
+    <img alt={name} src={require(`img/icons/social/${name}.svg`)} />
+    {name}
+  </a>
+)
+
+const Share = ({location=window.location.href}) => (
+  <div>
+    <div className='share-title'>Share</div>
+    <ShareItem name='Twitter'
+               url={`https://twitter.com/intent/tweet?text=${location}`}
+    />
+    <ShareItem name='Facebook'
+               url={`https://www.facebook.com/sharer/sharer.php?u=${location}`}
+    />
+    <ShareItem name='Reddit'
+               url={`https://www.reddit.com/submit?url=${location}`}
+    />
+  </div>
 )
 
 const DesktopWindow = ({name, container='desktop_' + name.toLowerCase(),
@@ -25,7 +53,19 @@ const DesktopWindow = ({name, container='desktop_' + name.toLowerCase(),
             <ToolbarButton name='minimize' onClick={close} />
           </div>
           <div className='buttons right'>
-            <ToolbarButton name='share' onClick={() => {}} />
+            <a data-tip data-for={`${name}-share`}>
+              <ToolbarButton name='share' />
+            </a>
+            <ReactTooltip place='right'
+                          type='light'
+                          effect='solid'
+                          event='click'
+                          globalEventOff='click'
+                          className='share-window'
+                          id={`${name}-share`}
+            >
+              <Share />
+            </ReactTooltip>
           </div>
           <div className='title'>{name}</div>
         </div>

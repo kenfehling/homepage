@@ -1,6 +1,6 @@
 @import './colors';
 
-@mixin link-style($font-weight: bold) {
+@mixin link-style($font-weight: 600) {
   a {
     color: $link-color;
     font-weight: $font-weight;
@@ -11,6 +11,10 @@
     }
   }
   a:hover, a:hover * {
-    text-decoration: underline;
+    color: lighten($link-color, 15%);
+  }
+
+  a:active, a:active * {
+    color: #ff795e;
   }
 }

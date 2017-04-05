@@ -14,10 +14,10 @@ export default ({windows}) => {
                 <HeaderLink className='icon'
                             key={name}
                             toContainer={container || `desktop_${name.toLowerCase()}`}>
-                  <img data-tip data-for={name}
+                  <img data-tip data-for={`${name}-dock`}
                        src={require('img/icons/dock/' + name + '.svg')} />
                   {!bowser.tablet &&
-                    <ReactTooltip id={name} type="light" place="top"
+                    <ReactTooltip id={`${name}-dock`} type="light" place="top"
                                   effect="solid">
                       <div className="tooltip">{name}</div>
                     </ReactTooltip>

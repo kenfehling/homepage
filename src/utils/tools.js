@@ -1,5 +1,4 @@
 import React, {createElement} from 'react'
-import {renderToStaticMarkup} from 'react-dom/server'
 import {tools, categories} from '../constants/tools'
 import * as _ from 'lodash'
 import {HistoryLink} from 'react-router-nested-history'
