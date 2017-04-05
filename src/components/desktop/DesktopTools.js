@@ -11,7 +11,7 @@ import {categoryRegex} from '../../utils/tools'
 
 export default (props) => (
   <div className={styles.container}>
-    <ContainerGroup name='desktop_tools' gotoTopOnSelectActive={true}>
+    <ContainerGroup name='desktop_tools' gotoTopOnSelectActive={true} hideInactiveContainers={true}>
       <DesktopToolsHeader />
       {categories.map(c => (
           <Container key={c}

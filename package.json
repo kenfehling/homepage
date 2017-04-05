@@ -24,6 +24,7 @@
     "react-string-replace": "^0.4.0",
     "react-tooltip": "^3.2.7",
     "react-typist": "^0.3.0",
+    "recompose": "^0.22.0",
     "tone": "^0.10.0"
   },
   "devDependencies": {

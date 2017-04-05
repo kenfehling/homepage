@@ -2,8 +2,9 @@ import React from 'react'
 import {categories} from '../../constants/tools'
 import {HeaderLink} from 'react-router-nested-history'
 import styles from './DesktopToolsHeader.scss'
+import {neverUpdate} from '../../enhancers'
 
-export default () => (
+const DesktopToolsHeader = () => (
   <div className={styles.container}>
     <div className="categories">
       {categories.map(c => (
@@ -17,3 +18,5 @@ export default () => (
     </div>
   </div>
 )
+
+export default DesktopToolsHeader

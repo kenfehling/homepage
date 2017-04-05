@@ -4,6 +4,7 @@ import * as _ from 'lodash'
 import {linkToTool, getIcon, renderStars, filterTools} from '../../utils/tools'
 import styles from './DesktopToolsMaster.scss'
 import Helmet from 'react-helmet'
+import {neverUpdate} from '../../enhancers'
 
 const ROWS = 2
 
@@ -42,4 +43,4 @@ const DesktopToolsMaster = ({match:{params:{category}}}) => (
 )
 
 
-export default DesktopToolsMaster
+export default neverUpdate(DesktopToolsMaster)
