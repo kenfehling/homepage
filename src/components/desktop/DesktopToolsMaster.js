@@ -1,4 +1,4 @@
-import React, {Component, PropTypes} from 'react'
+import React from 'react'
 import {ScrollArea} from 'react-router-nested-history'
 import * as _ from 'lodash'
 import {linkToTool, getIcon, renderStars, filterTools} from '../../utils/tools'

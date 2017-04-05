@@ -404,14 +404,15 @@ export const tools = [{
   stars: 3,
   categories: [PLATFORMS, MOBILE],
   description: <div>
-    Description
+    I've done one iOS project using [[Swift]], an Apple Watch and iPhone app for
+    doing sleep-tracking.
   </div>
 }, {
   name: 'Raspberry Pi',
   stars: 3,
   categories: [PLATFORMS],
   description: <div>
-    I've used Raspberry Pi for a few projects.
+    I've used Raspberry Pi for a few Internet of Things (IoT) and MIDI projects.
   </div>
 }, {
   name: 'TravisCI',
@@ -425,14 +426,18 @@ export const tools = [{
   stars: 3,
   categories: [DEVOPS, WEB],
   description: <div>
-    Description
+    I used to use Browserify before switching to [[Webpack]], which is what I
+    presently use. Both are a huge step up from things like Require.js and
+    they make [[NPM]] available to use as well as the [[Node]] module setup
+    I was used to on the back-end.
   </div>
 }, {
   name: 'Bourbon',
   stars: 3,
   categories: [LIBRARIES, WEB],
   description: <div>
-    Description
+    The [[SASS]] mixin library Bourbon is a relatively new addition
+    to my tool belt. Previously I had used Compass.
   </div>
 }, {
   /*
@@ -449,28 +454,34 @@ export const tools = [{
   stars: 3,
   categories: [DATABASES],
   description: <div>
-    Description
+    Before NoSQL databases like [[MongoDB]] my database of choice was Postgres.
   </div>
 }, {
   name: 'MySQL',
   stars: 3,
   categories: [DATABASES],
   description: <div>
-    Description
+    I've used MySQL on a couple of projects,
+    but I always tended to prefer [[Postgresql]].
   </div>
 }, {
   name: 'SQLite',
   stars: 3,
   categories: [DATABASES],
   description: <div>
-    Description
+    SQLite is a useful little database that I mostly used on mobile apps,
+    especially [[Android]].
   </div>
 }, {
   name: 'Firebase',
   stars: 3,
   categories: [DATABASES],
   description: <div>
-    Description
+    I used Firebase on one project for the TLT Media Lab because the client
+    wanted it. It was interesting, but I felt sort of boxed in by it.
+    In retrospect, I think it would have been a much similar and more robust
+    to solution to use a full back-end on that project, but I could see how
+    solutions like Firebase might have a use on simpler projects.
   </div>
 }, {
   name: 'Flex',
@@ -488,14 +499,18 @@ export const tools = [{
   stars: 3,
   categories: [SOFTWARE],
   description: <div>
-    Description
+    Logic was the first Digital Audio Workstation (DAW) I fell in love with,
+    and probably still currently my favorite. I first came across Logic while
+    taking a class on Sound Design.
   </div>
 }, {
   name: 'Ableton',
+  fullName: 'Ableton Live',
   stars: 3,
   categories: [SOFTWARE],
   description: <div>
-    Description
+    Ableton Live is probably my second favorite Digital Audio Workstation (DAW),
+    after [[Logic]]. One great feature is its integration with Max/MSP.
   </div>
 }, {
   name: 'Clojure',
@@ -518,7 +533,8 @@ export const tools = [{
   stars: 2.5,
   categories: [LANGUAGES, MOBILE],
   description: <div>
-    Description
+    I've done one [[iOS]] project using Swift, an Apple Watch and iPhone app for
+    doing sleep-tracking.
   </div>
 }, {
   name: 'GWT',
@@ -537,24 +553,21 @@ export const tools = [{
   </div>
 }, {
   name: 'Illustrator',
+  fullName: 'Adobe Illustrator',
   stars: 2.5,
   categories: [SOFTWARE],
   description: <div>
-    Description
-  </div>
-}, {
-  name: 'Flash',
-  stars: 2.5,
-  categories: [PLATFORMS, WEB, SOFTWARE],
-  description: <div>
-    Description
+    Illustrator by far is my favorite Adobe software.
+    It's great for making icons, logos, and other vector graphics.
+    Most of the icons on this site are SVG files made with or modified in
+    Illustrator.
   </div>
 }, {
   name: 'Unity',
   stars: 2,
   categories: [PLATFORMS, SOFTWARE, MOBILE],
   description: <div>
-    As secretary of the Stony Brook Game Developers club
+    As secretary of the Stony Brook Game Developers (SBGD)
     I was exposed to Unity a lot.
     I experimented with using it for some of my own projects
     but always ultimately went another way,
@@ -569,10 +582,22 @@ export const tools = [{
     which is a very large area on its own.
   </div>
 }, {
+  name: 'Flash',
+  fullName: 'Adobe Flash',
+  stars: 2,
+  categories: [PLATFORMS, WEB, SOFTWARE],
+  description: <div>
+    I've used Adobe Flash the actual program a little bit, but I have much
+    more experience with its scripting language [[ActionScript]].
+  </div>
+}, {
   name: 'Photoshop',
+  fullName: 'Adobe Photoshop',
   stars: 1.5,
   categories: [SOFTWARE],
   description: <div>
-    Description
+    I first learned Photoshop in a digital art class at my university.
+    It comes in handy sometimes, but I use [[Illustrator]] far more often
+    in the kinds of projects I do.
   </div>
 }];
