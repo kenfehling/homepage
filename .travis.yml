@@ -4,8 +4,7 @@ node_js:
 script:
 - npm run lint
 - npm test
-- npm run build
-before_deploy: cd server
+before_deploy: cd server; npm run build
 deploy:
   provider: elasticbeanstalk
   bucket_name: kenfehling
