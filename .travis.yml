@@ -5,8 +5,8 @@ script:
 - npm run lint
 - npm test
 - npm run build
+before_deploy: cd server
 deploy:
-  local_dir: server
   provider: elasticbeanstalk
   bucket_name: kenfehling
   access_key_id: AKIAIJLANAWI5VK7AV3Q
