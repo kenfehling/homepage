@@ -1,1 +1,1 @@
-export const GITHUB_REPO = 'https://github.com/kenfehling/me'
+export const GITHUB_REPO = 'https://github.com/kenfehling/homepage'
