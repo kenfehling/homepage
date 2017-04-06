@@ -6,6 +6,7 @@ script:
 - npm test
 - npm run build
 deploy:
+  local_dir: server/build
   provider: elasticbeanstalk
   bucket_name: kenfehling
   access_key_id: AKIAIJLANAWI5VK7AV3Q
