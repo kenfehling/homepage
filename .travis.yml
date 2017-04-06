@@ -14,5 +14,6 @@ deploy:
   region: us-east-1
   app: Homepage
   env: homepage-env
+  skip_cleanup: true
   on:
     repo: kenfehling/homepage
