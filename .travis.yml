@@ -4,6 +4,7 @@ node_js:
 script:
 - npm run lint
 - npm test
+- npm run build
 deploy:
   provider: elasticbeanstalk
   access_key_id: AKIAIJLANAWI5VK7AV3Q
