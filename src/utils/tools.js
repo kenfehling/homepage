@@ -42,9 +42,11 @@ export function linkToTool(name, path, text=name) {
   const mainName = _.includes(names, name) ? name : getMainName(name).name
   const escapedName = escapeName(mainName)
   const to = `${path}/${escapedName}`
-  return <HistoryLink key={mainName + Math.random()} to={to} name={mainName}>
-    {text}
-  </HistoryLink>
+  return (
+    <HistoryLink key={mainName + Math.random()} to={to} name={mainName}>
+      {text}
+    </HistoryLink>
+  )
 }
 
 export const filterTools = (category) =>

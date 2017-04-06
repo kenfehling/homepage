@@ -1,21 +1,23 @@
 {
-  "parser": "babel-eslint",
-  "plugins": [
-    "import"
-  ],
   "env": {
     "browser": true,
     "jest": true,
     "node": true
   },
-  "extends": [
-    "eslint:recommended",
-    "plugin:import/errors"
-  ],
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true,
+      "experimentalObjectRestSpread": true
+    }
+  },
   "rules": {
-    "prefer-arrow-callback": 2,
-    "semi": [ 2, "never" ],
-    "no-extra-semi": 2,
-    "no-unused-vars": 1
-  }
+    "react/jsx-uses-react": 1,
+    "react/jsx-no-undef": 2,
+    "react/jsx-wrap-multilines": 2
+  },
+  "plugins": [
+    "react"
+  ]
 }
