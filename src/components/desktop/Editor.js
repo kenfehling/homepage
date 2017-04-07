@@ -9,6 +9,14 @@ const keyValueItem = (key, value) => (
   </div>
 );
 
+const gitHubLink = (name) => (
+  <div className='title'>
+    <a target="_blank" href={`https://www.github.com/kenfehling/${name}`}>
+      {name}
+    </a>
+  </div>
+)
+
 const colon = <span className="symbol">:</span>
 const period = <span className="symbol">.</span>
 const comma = <span className="symbol">,</span>
@@ -27,10 +35,10 @@ export default () => (
       which I authored{colon}
     </div>
     <br />
-    <div className='title'>react-router-nested-history</div>
+    {gitHubLink('react-router-nested-history')}
     <div>Handles the windows, tabs, browser history, and transition animations</div>
     <br />
-    <div className='title'>react-designable-audio-player</div>
+    {gitHubLink('react-designable-audio-player')}
     <div>Used for the desktop and mobile music players</div>
     <br />
     <br />

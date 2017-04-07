@@ -82,7 +82,11 @@ export const tools = [{
   categories: [LANGUAGES, WEB],
   description: <div>
     TypeScript is currently my main compile-to-[[JavaScript]] library.
-    <br/><br/>
+    In the past I've used [[Flow]] but I prefer TypeScript especially
+    for its more mature tooling. In many ways they're pretty similar though.
+    Static typing has become another weapon in my arsenal for keeping my web
+    projects organized and stable.
+    <br /><br />
     My [[React]] library {externalLink("react-router-nested-history",
     "http://github.com/kenfehling/react-router-nested-history")} is written
     in TypeScript.
@@ -245,6 +249,23 @@ export const tools = [{
     I've also been using [[Jest]] recently but I prefer Mocha for its
     better integration with other tools like [[Webpack]] and [[Babel]], and
     also better [[WebStorm]] IDE integration for debugging.
+  </div>
+}, {
+  name: 'Flow',
+  stars: 4,
+  categories: [WEB],
+  description: <div>
+    Becoming overwhelmed with the complexity of one of my
+    libraries {externalLink("react-router-nested-history", "http://github.com/kenfehling/react-router-nested-history")} I
+    I decided to give static typing a try via Facebook's Flow.
+    <br /><br />
+    I was extremely pleased with the result.
+    Everything was much more organized and I now had a second place to turn to,
+    in addition to unit tests, for catching bugs early and keeping my code
+    clean and manageable.
+    <br /><br />
+    In the end however I switched to using [[TypeScript]] which is currently
+    my main compile-to-[[JavaScript]] language.
   </div>
 }, {
   name: 'WebStorm',

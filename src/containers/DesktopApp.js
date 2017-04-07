@@ -18,7 +18,7 @@ import styles from './DesktopApp.scss'
 const windows = [
   {name: 'Map'},
   //{name: 'Terminal'},
-  {name: 'Tools'},
+  {name: 'Tools', bounce: true},
   {name: 'Editor'},
   {name: 'Social'},
   {name: 'Audio'},

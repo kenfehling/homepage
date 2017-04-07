@@ -9,7 +9,11 @@ const halfStarIcon = require('../../img/icons/half-star.svg')
 
 function getToolByFullName(fullName) {
   if (fullName) {
-    return _.find(tools, tool => tool.fullName === fullName)
+    const tool = _.find(tools, tool => tool.fullName === fullName)
+    if (!tool) {
+      throw new Error(`Tool '${fullName}' not found`)
+    }
+    return tool
   }
   else {
     throw new Error('You must pass a fullName parameter')
@@ -18,7 +22,11 @@ function getToolByFullName(fullName) {
 
 export function getTool(escapedName) {
   const name = unescapeName(escapedName)
-  return _.find(tools, tool => tool.name === name)
+  const tool = _.find(tools, tool => tool.name === name)
+  if (!tool) {
+    throw new Error(`Tool '${name}' not found`)
+  }
+  return tool
 }
 
 export function renderStars(stars) {

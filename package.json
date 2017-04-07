@@ -4,7 +4,7 @@
   "description": "Ken Fehling",
   "main": "index.html",
   "scripts": {
-    "start": "webpack-dev-server --host 0.0.0.0 --progress --colors --history-api-fallback --config webpack/dev.config.babel.js",
+    "start": "webpack-dev-server --host 0.0.0.0 --port 8081 --progress --colors --history-api-fallback --config webpack/dev.config.babel.js",
     "lint": "eslint src",
     "test": "echo 'No tests yet'",
     "build": "cd server; npm install; npm run build"

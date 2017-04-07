@@ -7,10 +7,15 @@
   color: #BABABA;
   height: 100%;
 
+  /*
   .title {
     //color: #6A8759;
     color: #FFC66D;
+    a {
+      color: inherit;
+    }
   }
+  */
 
   /*
   .key {
@@ -33,5 +38,9 @@
   a {
     color: #6897BB;
     text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
   }
 }
