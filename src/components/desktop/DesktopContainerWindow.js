@@ -8,7 +8,6 @@ export default ({children, name, ...windowProps}) => {
   return (
     <DesktopWindow {...windowProps}
                    name={name}
-                   className='background-window'
                    topClassName='top-window'
   >
       <Container name={id} initialUrl={path} patterns={[path]}>

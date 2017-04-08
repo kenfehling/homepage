@@ -2,12 +2,15 @@
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="RSSicon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="320px" height="320px" viewBox="-15 -15 320 320" enable-background="new -15 -15 320 320" xml:space="preserve">
-<rect x="7.5" y="7.5" fill="#FFA500" width="275" height="275"/>
-<title>RSS feed icon</title>
+	 width="34px" height="34px" viewBox="143 143 34 34" enable-background="new 143 143 34 34" xml:space="preserve">
+<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="159.9995" y1="144" x2="159.9995" y2="176.0005">
+	<stop  offset="0.0132" style="stop-color:#FFA500"/>
+	<stop  offset="1" style="stop-color:#5D3C2C"/>
+</linearGradient>
+<circle fill="url(#SVGID_1_)" cx="160" cy="160" r="16"/>
 <g>
-	<circle fill="#FFFFFF" cx="88.333" cy="201.667" r="28.333"/>
-	<path fill="#FFFFFF" d="M60,145c46.944,0,85,38.056,85,85h28.333c0-62.592-50.741-113.333-113.333-113.333V145z"/>
-	<path fill="#FFFFFF" d="M60,88.333c78.241,0,141.667,63.427,141.667,141.667H230c0-93.889-76.111-170-170-170V88.333z"/>
+	<circle fill="#E6E6E6" cx="156" cy="163.998" r="2.5"/>
+	<path fill="#E6E6E6" d="M153.501,158.998c4.142,0,7.5,3.358,7.5,7.5h2.5c0-5.523-4.477-10-10-10V158.998z"/>
+	<path fill="#E6E6E6" d="M153.501,153.998c6.904,0,12.501,5.597,12.501,12.5h2.499c0-8.285-6.716-15-15-15V153.998z"/>
 </g>
 </svg>
