@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react'
 import {WindowGroup} from 'react-router-nested-history'
-import styles from './Mobile.scss'
+import * as styles from './Mobile.scss'
 import MobileWindow from '../mobile/MobileWindow'
 import ContainerWindow from '../mobile/MobileContainerWindow'
 import HomeScreen from '../mobile/HomeScreen'
@@ -26,6 +26,7 @@ const Mobile = ({isDesktop}) => (
         <ContainerWindow isDefault={true}
                          isDesktop={isDesktop}
                          name='Home'
+                         title=''
                          path={devicePath('', isDesktop)}
                          patterns={[devicePath('', isDesktop)]}
         >

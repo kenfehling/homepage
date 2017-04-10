@@ -1,7 +1,7 @@
 import React from 'react'
 import {categories} from '../../constants/tools'
 import {HeaderLink} from 'react-router-nested-history'
-import styles from './DesktopToolsHeader.scss'
+import * as styles from './DesktopToolsHeader.scss'
 import {neverUpdate} from '../../enhancers'
 
 const DesktopToolsHeader = () => (

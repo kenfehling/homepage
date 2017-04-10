@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './DesktopSocial.scss'
+import * as styles from './DesktopSocial.scss'
 import {sites} from '../../constants/social'
 
 const DesktopSocial = () => (

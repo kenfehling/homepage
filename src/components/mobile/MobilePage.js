@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react'
 import {BackLink} from 'react-router-nested-history'
-import styles from './MobilePage.scss'
+import * as styles from './MobilePage.scss'
 import '../../utils/string'
 
 const timeFormat = {hour: '2-digit', minute:'2-digit'}

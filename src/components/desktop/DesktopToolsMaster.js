@@ -2,7 +2,7 @@ import React from 'react'
 import {ScrollArea} from 'react-router-nested-history'
 import * as _ from 'lodash'
 import {linkToTool, getIcon, renderStars, filterTools} from '../../utils/tools'
-import styles from './DesktopToolsMaster.scss'
+import * as styles from './DesktopToolsMaster.scss'
 import Helmet from 'react-helmet'
 import {neverUpdate} from '../../enhancers'
 
@@ -38,7 +38,7 @@ const arrangeTools = (tools) => {
 const DesktopToolsMaster = ({match:{params:{category}}}) => (
   <div className={styles.container}>
     {arrangeTools(_.map(filterTools(category), t => renderTool(t, category)))}
-    <Helmet title={category} titleTemplate="Ken Fehling - %s" />
+    <Helmet title={category} titleTemplate="Ken Fehling - Tools: %s" />
   </div>
 )
 

@@ -125,6 +125,7 @@ export const tools = [{
   categories: [PLATFORMS, WEB],
   description: <div>
     Node.js is currently my main back-end platform, along with [[Express]].
+    <br /><br />
     In the past I've used [[Java]] Servlets, [[Rails]], and [[Python]],
     but Node is very appealing for its use in "Universal JS"
     or Server Side Rendered (SSR) apps with [[React]].

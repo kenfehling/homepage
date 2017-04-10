@@ -6,7 +6,7 @@ import List from './List'
 import {categories} from '../../constants/tools'
 import {filterTools, escapeName} from '../../utils/tools'
 import Helmet from 'react-helmet'
-import styles from './MobileTools.scss'
+import * as styles from './MobileTools.scss'
 import {devicePath} from '../../utils/mobile'
 
 const Page = ({title, backLinkText, children, isDesktop}) => (

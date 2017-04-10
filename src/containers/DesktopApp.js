@@ -13,7 +13,7 @@ import {WindowGroup} from 'react-router-nested-history'
 import ContainerWindow from '../components/desktop/DesktopContainerWindow'
 import SimpleRedirect from '../components/shared/SimpleRedirect'
 import {redirectMobileToDesktop} from '../utils/mobile'
-import styles from './DesktopApp.scss'
+import * as styles from './DesktopApp.scss'
 
 const windows = [
   //{name: 'Map'},

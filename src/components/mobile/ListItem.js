@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react'
 import {HistoryLink} from 'react-router-nested-history'
-import styles from './ListItem.scss'
+import * as styles from './ListItem.scss'
 
 /**
  * Internal link (page) or external link (url)
