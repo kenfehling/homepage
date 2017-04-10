@@ -39,16 +39,24 @@ export const tools = [{
   categories: [LANGUAGES, WEB],
   description: <div>
     My main programming language.
-    Despite the near universal hatred of JavaScript by my peers, I'm actually quite fond of it.
-    It's gotten especially good now with some of the features in ES6/ES2015.
+    Despite the near universal hatred of JavaScript by my peers
+    I'm actually quite fond of it.
+    <br /><br />
+    JavaScript has gotten especially good now with some of the features in
+    ES6/ES2015.
     I use [[Babel]] to transpile into ES5 for cross-browser support.
+    I'm also interested in adding static typing to JavaScript through
+    [[Flow]] and especially [[TypeScript]].
   </div>
 }, {
   name: 'HTML',
   stars: 5,
   categories: [LANGUAGES, PLATFORMS, WEB],
   description: <div>
-    Description
+    HTML is the first thing that sparked my interest in programming.
+    Since then it's usually been at the center of everything I do,
+    whether it's server-side code in [[Java]] Servlets, [[Rails]], [[[Python]],
+    or [[Node]], or client-side web apps written with [[JavaScript]].
   </div>
 }, {
   name: 'React',
@@ -116,7 +124,10 @@ export const tools = [{
   stars: 4,
   categories: [PLATFORMS, WEB],
   description: <div>
-    Description
+    Node.js is currently my main back-end platform, along with [[Express]].
+    In the past I've used [[Java]] Servlets, [[Rails]], and [[Python]],
+    but Node is very appealing for its use in "Universal JS"
+    or Server Side Rendered (SSR) apps with [[React]].
   </div>
 }, {
   name: 'Python',
@@ -268,6 +279,18 @@ export const tools = [{
     my main compile-to-[[JavaScript]] language.
   </div>
 }, {
+  name: 'Express',
+  stars: 4,
+  categories: [WEB],
+  description: <div>
+    Express is my main back-end web framework;
+    it's what I use on almost all [[Node]] projects.
+    <br /><br />
+    In the past I've used [[Ruby]] on [[Rails]] and [[Flask]] with [[Python]],
+    but have settled mostly on Node, especially for its ability to create
+    "Universal JS" or Server-Side Rendered (SSR) apps with [[React]].
+  </div>
+}, {
   name: 'WebStorm',
   stars: 4,
   categories: [SOFTWARE],
@@ -281,7 +304,11 @@ export const tools = [{
   stars: 3.5,
   categories: [DATABASES],
   description: <div>
-    Description
+    NoSQL databases like Mongo are becoming more prevalent in my projects than
+    relational ones like [[Postgresql]] or [[MySQL]].
+    <br /><br />
+    I've had good experiences with the [[Keystone] CMS platform for [[Node]]
+    which uses Mongo as its default storage.
   </div>
 }, {
   name: 'Rails',
@@ -291,6 +318,7 @@ export const tools = [{
     I thought learning [[Ruby]] on Rails would be a good experience since
     it's the gold standard of back-end web frameworks.
     It certainly was an enlightening experience.
+    <br /><br />
     Nowadays I mostly use [[JavaScript]], [[Node]] and [[Express]]
     or occasionally [[Python]] with [[Flask]] but I'm glad
     I spent some time learning an opinionated framework,
@@ -313,7 +341,9 @@ export const tools = [{
   stars: 3.5,
   categories: [LIBRARIES, WEB],
   description: <div>
-    I used Keystone on an internship project for my university's radio station, WUSB.
+    I used the [[Node]]-based CMS platform Keystone with [[MongoDB]]
+    on an internship project for my university's radio station, WUSB.
+    <br /><br />
     I was on the team who initially created the project,
     and subsequent teams have taken the project over.
     Unfortunately it hasn't been deployed yet to replace the existing website.
@@ -501,8 +531,9 @@ export const tools = [{
     I used Firebase on one project for the TLT Media Lab because the client
     wanted it. It was interesting, but I felt sort of boxed in by it.
     In retrospect, I think it would have been a much similar and more robust
-    to solution to use a full back-end on that project, but I could see how
-    solutions like Firebase might have a use on simpler projects.
+    to solution to use a traditional back-end on that project,
+    but I could see how solutions like Firebase
+    might have a use on simpler projects.
   </div>
 }, {
   name: 'Flex',
