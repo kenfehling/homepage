@@ -1,8 +1,16 @@
 import React, {Component} from 'react'
+import validator from 'validator'
 import * as styles from './DesktopEmail.scss'
 import {EMAIL} from '../../constants/links'
 
 class DesktopEmail extends Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      valid: true
+    }
+  }
 
   setOpenInEmailLink() {
     const subject = this.subject.value
@@ -14,19 +22,33 @@ class DesktopEmail extends Component {
     this.setOpenInEmailLink()
   }
 
+  validate(e) {
+    const valid = validator.isEmail(this.from.value)
+    if (!valid) {
+      e.preventDefault()
+    }
+    this.setState({valid})
+  }
+
   render() {
     return (
       <div className={styles.container}>
-        <form action='/contact' method='POST'>
+        <form action='/contact'
+              method='POST'
+              onSubmit={this.validate.bind(this)}
+        >
           <div>
             <span className='label'>To:</span>
             Ken Fehling &lt;<a href={`mailto:${EMAIL}`}>{EMAIL}</a>&gt;
           </div>
           <br />
           <label>
-            <span className='label'>From:</span>
+            <span className={['label', this.state.valid ? '' : 'invalid'].join(' ')}>
+              From:
+            </span>
             <input type='text'
                    name='from'
+                   ref={(el) => {this.from = el}}
                    placeholder='Your email address' />
           </label>
           <br />
@@ -36,7 +58,7 @@ class DesktopEmail extends Component {
                    name='subject'
                    ref={(el) => {this.subject = el}}
                    onChange={this.setOpenInEmailLink.bind(this)}
-                   placeholder="Consulting/freelance work"
+                   placeholder="Freelance work/consulting"
             />
           </label>
           <br />
