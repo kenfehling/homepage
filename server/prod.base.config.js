@@ -7,32 +7,32 @@ export default {
   context: path.resolve('.'),
   output: {
     ...baseConfig.output,
+    publicPath: '/static',
     path: path.resolve('./build')
   },
   module: {
     ...baseConfig.module,
     loaders: [
-      ...baseConfig.module.loaders, ...[
-        {
-          test: /\.scss$/,
-          use: ExtractTextPlugin.extract({
-            fallback: "isomorphic-style-loader",
-            use: [
-              'css-loader?sourceMap',
-              `sass-loader?sourceMap&${sassPaths}`
-            ]
-          })
-        }, {
-          test: /\.css$/,
-          use: ExtractTextPlugin.extract({
-            fallback: "isomorphic-style-loader",
-            use: "css-loader"
-          })
-        }
-      ]
+      ...baseConfig.module.loaders,
+      {
+        test: /\.scss$/,
+        use: ExtractTextPlugin.extract({
+          fallback: "isomorphic-style-loader",
+          use: [
+            'css-loader?sourceMap',
+            `sass-loader?sourceMap&${sassPaths}`
+          ]
+        })
+      }, {
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+          fallback: "isomorphic-style-loader",
+          use: "css-loader"
+        })
+      }
     ]
   },
   plugins: [
-    new ExtractTextPlugin('style.css')
+    new ExtractTextPlugin('style.css'),
   ]
 }

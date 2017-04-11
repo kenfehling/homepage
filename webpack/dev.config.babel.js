@@ -1,5 +1,10 @@
+import webpack from 'webpack'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+import FaviconsWebpackPlugin from 'favicons-webpack-plugin'
 import baseConfig, {sassPaths} from './base.config'
 import path from 'path'
+
+const root = path.join(__dirname, '..')
 
 export default {
   ...baseConfig,
@@ -8,6 +13,19 @@ export default {
     path: path.resolve('./static'),
     filename: 'client.js'
   },
+  plugins: [
+    new webpack.ProvidePlugin({ 'React': 'react'}),
+    new FaviconsWebpackPlugin({
+      logo: path.join(root, 'favicon.png'),
+      prefix: 'static/',
+    }),
+    new HtmlWebpackPlugin({
+      template: path.join(root, 'public/index.html'),
+      files: {
+        "png": 'static/*.png'
+      }
+    })
+  ],
   module: {
     ...baseConfig.module,
     loaders: [

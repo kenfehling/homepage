@@ -1,24 +1,20 @@
-import webpack from 'webpack'
 import path from 'path'
 import bourbon from 'node-bourbon'
+
+const root = path.join(__dirname, '..')
 
 export const sassPaths = bourbon
   .includePaths
   .map((sassPath)=>`includePaths[]=${sassPath}`)
   .join('&')
 
-const root = path.join(__dirname, '..')
-
 export default {
   context: root,
   entry: path.join(root, 'src/index.js'),
   output: {
-    publicPath: '/static/'
+    publicPath: '/'
   },
   devtool: 'source-map',
-  plugins: [
-    new webpack.ProvidePlugin({ 'React': 'react'})
-  ],
   module: {
     loaders: [{
       test: /\.js$/,

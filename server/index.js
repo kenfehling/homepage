@@ -8,15 +8,14 @@ import App from '../src/containers/App'
 import {renderToString} from 'react-dom/server'
 import {HistoryRouter} from 'react-router-nested-history'
 
+const buildPath = path.join(__dirname, 'build')
 const app = express()
-const serve = serveStatic(path.join(__dirname, 'build'))
+const serve = serveStatic(buildPath)
 app.use('/static', serve)
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
-app.set('views', path.join(__dirname, 'views'))
+app.use(serve)
+app.set('views', buildPath)
 app.set('view engine', 'ejs')
 app.use(compression())
-
-app.use(serve)
 
 app.use((req, res) => {
   const context = {};
@@ -33,7 +32,7 @@ app.use((req, res) => {
 
   return res
     .status(context.status || 200)
-    .render('index.ejs', {html})
+    .render('index', {html})
 })
 
 const port = process.env.PORT || 3000;
