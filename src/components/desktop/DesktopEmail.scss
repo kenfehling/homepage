@@ -42,6 +42,9 @@ $text-area-padding-x: 0.7em;
     textarea {
       resize: none;
       padding:$text-area-padding-y $text-area-padding-y;
+      -webkit-appearance: textfield;
+      border-color: initial;
+      border-image: initial;
     }
 
     .buttons {

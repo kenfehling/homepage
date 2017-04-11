@@ -27,7 +27,7 @@ class DesktopEmail extends Component {
             <span className='label'>From:</span>
             <input type='text'
                    name='from'
-                   defaultValue='Your email address' />
+                   placeholder='Your email address' />
           </label>
           <br />
           <label>
@@ -36,7 +36,7 @@ class DesktopEmail extends Component {
                    name='subject'
                    ref={(el) => {this.subject = el}}
                    onChange={this.setOpenInEmailLink.bind(this)}
-                   defaultValue="Consulting/freelance work"
+                   placeholder="Consulting/freelance work"
             />
           </label>
           <br />
@@ -45,7 +45,7 @@ class DesktopEmail extends Component {
                     rows='10'
                     ref={(el) => {this.body = el}}
                     onChange={this.setOpenInEmailLink.bind(this)}
-                    defaultValue={'Hi Ken,\n\n' +
+                    placeholder={'Hi Ken,\n\n' +
                     'I love your website.\n\n' +
                     'I\'d like to hire you for training or contract work.'}
           />
