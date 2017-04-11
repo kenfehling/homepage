@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react'
 import {ScrollArea} from 'react-router-nested-history'
 import ListItem from './ListItem'
-import styles from './List.scss'
+import * as styles from './List.scss'
 
 const List = ({items}) => {
   return (<ScrollArea className={styles.container} vertical={true}>

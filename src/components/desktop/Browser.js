@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './Browser.scss'
+import * as styles from './Browser.scss'
 
 export default () => (
     <div className={styles.container}>

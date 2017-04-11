@@ -1,6 +1,6 @@
 import React from 'react'
 import Typist from 'react-typist'
-import styles from './Terminal.scss'
+import * as styles from './Terminal.scss'
 
 const menuItems = [
   { name: 'File' }

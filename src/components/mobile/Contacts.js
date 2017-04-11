@@ -4,7 +4,7 @@ import List from './List'
 import Page from './MobilePage'
 import Contact from './Contact'
 import * as _ from 'lodash'
-import styles from './Contacts.scss'
+import * as styles from './Contacts.scss'
 import {devicePath} from '../../utils/mobile'
 
 const escapeName = name => name.replace('_', ' ')

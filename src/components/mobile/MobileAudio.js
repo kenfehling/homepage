@@ -2,7 +2,7 @@ import React from 'react'
 import {connectAudioPlayer, TimeSlider} from 'react-designable-audio-player'
 import {tracks} from '../../constants/music'
 import MobilePage from './MobilePage'
-import styles from './MobileAudio.scss'
+import * as styles from './MobileAudio.scss'
 
 const AudioPlayer = ({play, stop, next, prev, isPlaying, currentTrack, isDesktop}) => (
   <MobilePage title='Music' isDesktop={isDesktop} navClassName={styles.nav}>

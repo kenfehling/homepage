@@ -2,7 +2,7 @@ import React from 'react'
 import Mobile from '../components/shared/Mobile'
 import Helmet from 'react-helmet'
 import {redirectDesktopToMobile} from '../utils/mobile'
-import styles from './MobileApp.scss'
+import * as styles from './MobileApp.scss'
 
 const MobileApp = () => (
   <div className={styles.container}>

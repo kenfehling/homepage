@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './MobileNotes.scss'
+import * as styles from './MobileNotes.scss'
 import MobilePage from './MobilePage'
 import {GITHUB_REPO} from '../../constants/links'
 

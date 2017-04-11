@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {HeaderLink} from 'react-router-nested-history'
 import ReactTooltip from 'react-tooltip'
 import bowser from 'bowser'
-import styles from './Dock.scss'
+import * as styles from './Dock.scss'
 
 const noop = () => {}
 

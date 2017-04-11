@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react'
-import styles from './HomeScreen.scss'
+import * as styles from './HomeScreen.scss'
 import {HeaderLink} from 'react-router-nested-history'
 import MobilePage from './MobilePage'
 

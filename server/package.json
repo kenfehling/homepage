@@ -11,9 +11,12 @@
     "babel-preset-react": "^6.16.0",
     "babel-preset-stage-1": "^6.3.13",
     "css-loader": "^0.25.0",
+    "ejs-compiled-loader": "^1.1.0",
     "eslint": "^3.7.1",
     "eslint-plugin-import": "^2.2.0",
     "extract-text-webpack-plugin": "^2.1.0",
+    "favicons-webpack-plugin": "0.0.7",
+    "html-webpack-plugin": "^2.28.0",
     "isomorphic-style-loader": "^1.1.0",
     "source-map-support": "^0.4.11",
     "webpack": "^2.2.0",
@@ -29,7 +32,7 @@
     "react-dom": "^15.4.2",
     "react-router": "4.0.0",
     "react-router-dom": "4.0.0",
-    "serve-favicon": "^2.4.0"
+    "serve-static": "^1.12.1"
   },
   "scripts": {
     "clean": "rm -rf build/*",

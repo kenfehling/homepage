@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react'
-import styles from './Contact.scss'
+import * as styles from './Contact.scss'
 
 const Contact = ({contact:{name, icon, email, website, twitter}}) => (
   <div className={styles.container}>

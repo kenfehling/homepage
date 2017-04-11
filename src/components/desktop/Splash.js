@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {Line} from 'rc-progress';
-import styles from './Splash.scss'
+import * as styles from './Splash.scss'
 
 const duration = 3
 const hideAfter = 0.5

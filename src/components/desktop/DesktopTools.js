@@ -6,7 +6,7 @@ import DesktopToolsHeader from './DesktopToolsHeader'
 import DesktopToolsMaster from './DesktopToolsMaster'
 import DesktopToolsDetail from './DesktopToolsDetail'
 import {categories} from '../../constants/tools'
-import styles from './DesktopTools.scss'
+import * as styles from './DesktopTools.scss'
 import {categoryRegex} from '../../utils/tools'
 
 export default (props) => (

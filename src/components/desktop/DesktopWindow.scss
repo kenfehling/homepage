@@ -85,7 +85,7 @@
     }
   }
 
-  .inner-container {
+  .body {
     overflow: hidden;
     cursor: default;
     flex-direction: column;
@@ -94,10 +94,6 @@
     height: 100%;
     flex: 1 1;
     border-radius: 0;
-    .body {
-      width: 100%;
-      height: 100%;
-    }
   }
 }
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import Tone from 'tone'
-import styles from './Dialer.scss'
+import * as styles from './Dialer.scss'
 
 const createOsc = () => new Tone.MonoSynth({
   "portamento" : 0.01,

@@ -1,12 +1,18 @@
-import React, {createElement} from 'react'
+import React from 'react'
 import {HistoryWindow} from 'react-router-nested-history'
-import styles from './MobileWindow.scss'
+import Helmet from 'react-helmet'
+import * as styles from './MobileWindow.scss'
 
 const toId = name => 'mobile_' + name.toLowerCase()
 
-const MobileWindow = ({name, children, container=toId(name)}) => (
+const MobileWindow = ({name, title=name, children, container=toId(name)}) => (
   <HistoryWindow forName={container} className={styles.container}>
-    {children}
+    <div className='inner-container'>
+      <Helmet title={title}
+              defaultTitle='Ken Fehling'
+              titleTemplate='Ken Fehling - %s' />
+      {children}
+    </div>
   </HistoryWindow>
 )
 

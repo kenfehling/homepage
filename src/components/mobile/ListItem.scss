@@ -6,7 +6,7 @@ $bg-color: white;
 :local(.container) {
   padding: 2px;
 
-  .inner-container {
+  > .inner-container {
     text-decoration: none;
     padding: 8px;
     display: flex;
