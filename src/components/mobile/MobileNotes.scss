@@ -16,8 +16,7 @@ $color: darken(#EEDD00, 7%);
 
 :local(.nav) {
   background-color: $default-mobile-bg-color !important;
-  border-color: transparentize($color, 0.85) !important;
-
+  border-color: $default-mobile-bg-color !important;
   .back {
     color: $color !important;
   }

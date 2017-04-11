@@ -20,11 +20,11 @@ const windows = [
   //{name: 'Map'},
   //{name: 'Terminal'},
   {name: 'Editor'},
-  {name: 'Tools', bounce: true},
+  {name: 'Tools'},
   {name: 'Audio'},
   {name: 'PDF'},
   //{name: 'Dialer'},
-  {name: 'Email'},
+  {name: 'Email', bounce: true},
   {name: 'Social'},
   {name: 'Mobile', container: 'mobile'}
 ]

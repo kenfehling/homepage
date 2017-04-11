@@ -10,7 +10,7 @@ const DATABASES = 'Databases';
 const SOFTWARE = 'Software';
 
 const externalLink = (name, href='http://' + name) =>
-    <a target='_blank' href={href}>
+    <a target='_blank' href={href} style={{whiteSpace: 'nowrap'}}>
       {name}
       <i className='fa fa-external-link'
          style={{

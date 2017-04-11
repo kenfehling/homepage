@@ -10,9 +10,9 @@ const ToolbarButton = ({name, onClick=noop}) => (
   <img src={require(`img/icons/desktop/${name}.svg`)} onClick={onClick} />
 )
 
-const ShareItem = ({name, text=name, url}) => (
+const ShareItem = ({name, text=name, url, target='_blank'}) => (
   <a className='item'
-     target='_blank'
+     target={target}
      href={url}
   >
     <img alt={name} src={require(`img/icons/social/${name}.svg`)} />
@@ -31,6 +31,10 @@ const Share = ({location=window.location.href}) => (
     />
     <ShareItem name='Reddit'
                url={`https://www.reddit.com/submit?url=${location}`}
+    />
+    <ShareItem name='Email'
+               target='_top'
+               url={`mailto:?subject=${document.title}&body=${location}`}
     />
   </div>
 )
