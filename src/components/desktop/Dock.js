@@ -43,7 +43,7 @@ const DockItem = ({name, container=`desktop_${name.toLowerCase()}`,
     {({isActive}) => (
       <BouncingDockItem bounce={bounce} isActive={isActive}>
         <img data-tip data-for={`${name}-dock`}
-             src={require('img/icons/dock/' + name + '.svg')} />
+             src={require('img/icons/desktop/dock/' + name + '.svg')} />
         {!bowser.tablet &&
         <ReactTooltip id={`${name}-dock`} type="light" place="top"
                       effect="solid">

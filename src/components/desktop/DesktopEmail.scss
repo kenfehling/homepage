@@ -1,0 +1,96 @@
+@import "bourbon";
+@import "../../styles/utils";
+
+$text-box-padding-y: 0.2em;
+$text-box-padding-x: 0.3em;
+$text-area-padding-y: 0.5em;
+$text-area-padding-x: 0.7em;
+
+:local(.container) {
+  background-color: #EEE;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+
+  form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    label {
+      width: 100%;
+      display: flex;
+    }
+
+    .label {
+      line-height: 1.5em + $text-box-padding-y * 2;
+      font-weight: bold;
+      margin-right: 1ex;
+    }
+
+    input[type=text], textarea {
+      flex: 1 1;
+    }
+
+    input[type=text] {
+      padding: $text-box-padding-y $text-box-padding-x
+               $text-box-padding-y * 1.1 $text-box-padding-x;
+    }
+
+    textarea {
+      resize: none;
+      padding:$text-area-padding-y $text-area-padding-y;
+    }
+
+    .buttons {
+      display: flex;
+
+      $darken-factor: 5%;
+      @mixin button-colors($bg1, $bg2, $border) {
+        @include background-image(linear-gradient(to bottom, $bg1, $bg2));
+        &, &:hover, &:active, &:focus {
+          border: 1px solid $border;
+        }
+        &:hover {
+          @include background-image(linear-gradient(to bottom,
+                          darken($bg1, $darken-factor),
+                          darken($bg2, $darken-factor)));
+        }
+        &:active {
+          @include background-image(linear-gradient(to bottom,
+                          darken($bg1, $darken-factor * 2),
+                          darken($bg2, $darken-factor * 2)));
+        }
+      }
+
+      input[type=submit], input[type=button], a {
+        @include no-highlight();
+        display: block;
+        cursor: pointer;
+        margin: 0 auto;
+      }
+
+      input[type=submit], input[type=button] {
+        border-radius: 4px;
+        font-weight: 600;
+        padding: 8px 16px;
+      }
+
+      input[type=submit] {
+        @include button-colors(#4787ed, #4d90fe, #3079ed);
+        color: white;
+      }
+
+      input[type=button] {
+        @include button-colors(#CCC, #DDD, #BBB);
+      }
+
+      a {
+        text-decoration: none;
+      }
+    }
+  }
+
+}
