@@ -8,7 +8,16 @@
 }
 
 @mixin no-highlight() {
-  -webkit-tap-highlight-color:transparent;
+  -webkit-tap-highlight-color: transparent;
+
+  &:active {
+    outline: none;
+    border: none;
+  }
+
+  &:focus {
+    outline: none;
+  }
 }
 
 @mixin show-scroll($bg) {

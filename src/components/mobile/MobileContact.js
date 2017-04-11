@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react'
-import * as styles from './Contact.scss'
+import * as styles from './MobileContact.scss'
 
-const Contact = ({contact:{name, icon, email, website, twitter}}) => (
+const MobileContact = ({contact:{name, icon, email, website, twitter}}) => (
   <div className={styles.container}>
     <div className='heading'>
       <div className='icon'><img src={require('img/icons/' + icon)} /></div>
@@ -22,7 +22,7 @@ const Contact = ({contact:{name, icon, email, website, twitter}}) => (
   </div>
 )
 
-Contact.propTypes = {
+MobileContact.propTypes = {
   contact: PropTypes.shape({
     name: PropTypes.string.isRequired,
     icon: PropTypes.string.isRequired,
@@ -32,4 +32,4 @@ Contact.propTypes = {
   }).isRequired
 }
 
-export default Contact
+export default MobileContact

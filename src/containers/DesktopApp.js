@@ -4,10 +4,11 @@ import IFrameWindow from '../components/desktop/IFrameWindow'
 import Editor from '../components/desktop/Editor'
 //import Terminal from '../components/desktop/Terminal'
 import Audio from '../components/desktop/Audio'
-import DesktopTools from '../components/desktop/DesktopTools'
-import DesktopSocial from '../components/desktop/DesktopSocial'
+import Tools from '../components/desktop/DesktopTools'
+import Social from '../components/desktop/DesktopSocial'
 import Mobile from '../components/shared/Mobile'
 //import Dialer from '../components/desktop/Dialer'
+import Email from '../components/desktop/DesktopEmail'
 import Dock from '../components/desktop/Dock'
 import {WindowGroup} from 'react-router-nested-history'
 import ContainerWindow from '../components/desktop/DesktopContainerWindow'
@@ -23,6 +24,7 @@ const windows = [
   {name: 'Audio'},
   {name: 'PDF'},
   //{name: 'Dialer'},
+  {name: 'Email'},
   {name: 'Social'},
   {name: 'Mobile', container: 'mobile'}
 ]
@@ -58,10 +60,13 @@ const DesktopApp = () => (
         <Mobile isDesktop={true} />
       </DesktopWindow>
       <DesktopWindow name="Tools" left={10} top={10}>
-        <DesktopTools />
+        <Tools />
       </DesktopWindow>
+      <ContainerWindow name="Email" right={100} middle={middle}>
+        <Email />
+      </ContainerWindow>
       <ContainerWindow name="Social" right={10} bottom={10}>
-        <DesktopSocial />
+        <Social />
       </ContainerWindow>
       {/*
       <ContainerWindow name="Dialer" right={100} bottom={100}>

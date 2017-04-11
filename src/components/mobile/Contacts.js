@@ -2,10 +2,11 @@ import React from 'react'
 import {Container, HistoryRoute} from 'react-router-nested-history'
 import List from './List'
 import Page from './MobilePage'
-import Contact from './Contact'
+import Contact from './MobileContact'
 import * as _ from 'lodash'
 import * as styles from './Contacts.scss'
 import {devicePath} from '../../utils/mobile'
+import {EMAIL} from '../../constants/links'
 
 const escapeName = name => name.replace('_', ' ')
 
@@ -14,7 +15,7 @@ const Contacts = ({isDesktop}) => {
     name: 'Ken Fehling',
     icon: 'mobile/contacts/Ken_Fehling.jpg',
     page: devicePath('/contacts/Ken_Fehling', isDesktop),
-    email: 'ken@androidideas.org',
+    email: EMAIL,
     website: 'kenfehling.com',
     twitter: 'kenfehling'
   }]

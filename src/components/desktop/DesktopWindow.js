@@ -42,7 +42,7 @@ const DesktopWindow = ({name, container='desktop_' + name.toLowerCase(),
                  {...windowProps}
                  draggable={true}
                  draggableProps={{
-                   cancel: ".inner-container"
+                   cancel: ".body"
                  }}
                  rememberPosition={false}
   >
