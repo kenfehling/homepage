@@ -19,12 +19,12 @@ import * as styles from './DesktopApp.scss'
 const windows = [
   //{name: 'Map'},
   //{name: 'Terminal'},
-  {name: 'Editor'},
+  {name: 'Editor' /*, bounce: true */},
   {name: 'Tools'},
-  {name: 'Audio'},
+  {name: 'Music'},
   {name: 'PDF'},
   //{name: 'Dialer'},
-  {name: 'Email', bounce: true},
+  {name: 'Email'},
   {name: 'Social'},
   {name: 'Mobile', container: 'mobile'}
 ]
@@ -34,7 +34,6 @@ const middle = -28
 const DesktopApp = () => (
   <div className={styles.container} style={{height: '100%'}}>
     {redirectMobileToDesktop('/contacts')}
-    <SimpleRedirect from='/' to='/editor' />
     <SimpleRedirect from='/tools' to='/tools/All' />
 
     {/* <Splash /> */}
@@ -42,7 +41,7 @@ const DesktopApp = () => (
     <WindowGroup name='desktop'>
       <IFrameWindow name="PDF" right={5} top={5}
                     src='/static/Ken_Fehling-resume.pdf' />
-      <ContainerWindow name="Editor" visible={true} center={0} middle={middle}>
+      <ContainerWindow name="Editor" center={0} middle={middle}>
         <Editor />
       </ContainerWindow>
       {/*
@@ -52,7 +51,7 @@ const DesktopApp = () => (
         <Terminal />
       </ContainerWindow>
       */}
-      <ContainerWindow name="Audio" right={200} middle={-120}>
+      <ContainerWindow name="Music" right={200} middle={-120}>
         <Audio />
       </ContainerWindow>
       <DesktopWindow name="Mobile" center={-200} middle={50}

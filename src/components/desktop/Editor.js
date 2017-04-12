@@ -27,9 +27,6 @@ export default () => (
     <div>Personal home page</div>
     <br />
     <br />
-    <div>Use the dock at the bottom to open more applications{period}</div>
-    <br />
-    <br />
     <div>
       This site was built using React and some other libraries{comma} two of
       which I authored{colon}

@@ -1,11 +1,11 @@
 export const tracks = [{
+  title: 'Putter',
+  artist: 'Ken Fehling & Yi Han',
+  file: '//archive.org/download/kenfehling_music/putter.mp3'
+}, {
   title: 'Cyclotron',
   artist: 'Ken Fehling',
   file: '//archive.org/download/kenfehling_music/cyclotron.mp3'
-}, {
-  title: 'Putter',
-  artist: 'Ken Fehling',
-  file: '//archive.org/download/kenfehling_music/putter.mp3'
 }, {
   title: 'Magnetic',
   artist: 'Ken Fehling',

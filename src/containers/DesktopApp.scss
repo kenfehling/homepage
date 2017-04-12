@@ -1,6 +1,14 @@
+@import "bourbon";
 @import '../styles/utils';
 
 :local(.container) {
+  /*
   background-image: url('../../img/desktop_wallpaper.jpg');
   background-size: cover;
+  */
+  @include background-image(linear-gradient(to bottom,
+          #15407A, #1A457E, #214F85, #2B598A,
+          #37638A, #476C87, #617785, #798386,
+          #8A8982, #A19279, #BF9B6D, #D79E5E,
+          #E89943, #F5942B, #FB8118));
 }
