@@ -23,10 +23,6 @@ class DesktopEmail extends Component {
   }
 
   validate(e) {
-
-    alert('Not implemented yet. Please send an email!')
-    e.preventDefault()
-
     const valid = validator.isEmail(this.from.value)
     if (!valid) {
       e.preventDefault()
