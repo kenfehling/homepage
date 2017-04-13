@@ -8,6 +8,7 @@ $top-gray: 90;
 $bottom-gray: 80;
 $opacity: 0.85;
 $border-radius: 8px;
+$leftPad: 3px;
 
 $icon-size: 44px;
 $tooltip-bg-color: #F0F0F0;
@@ -27,7 +28,7 @@ $tooltip-opacity: 0.98;
   left: 0;
   right: 0;
   bottom: 0;
-  width: 2px + 52px * $num_icons;
+  width: $leftPad + 52px * $num_icons;
   height: $dock-height;
   z-index: 100;
 
@@ -37,12 +38,16 @@ $tooltip-opacity: 0.98;
     height: 100%;
     margin: 3px;
 
+    .back-container, .front-container {
+      padding-left: $leftPad + 2px;
+    }
+
     .back-container {
       position: absolute;
       z-index: 1;
       @include bg();
       background-color: #FFF;
-      opacity: 0.85;
+      opacity: 0.8;
       @include filter(blur(0));
     }
 
