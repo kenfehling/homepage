@@ -1,22 +1,36 @@
 import React from 'react'
-import {ScrollArea} from 'react-router-nested-history'
+import {ScrollArea, HistoryLink} from 'react-router-nested-history'
 import * as _ from 'lodash'
-import {linkToTool, getIcon, renderStars, filterTools} from '../../utils/tools'
+import {
+  linkToTool, getIcon, renderStars, filterTools,
+  getMainName, escapeName
+} from '../../utils/tools'
 import * as styles from './DesktopToolsMaster.scss'
 import Helmet from 'react-helmet'
 import {neverUpdate} from '../../enhancers'
+import {tools} from '../../constants/tools'
 
 const ROWS = 2
 
 const renderTool = (tool, category) => {
   const {name, stars} = tool
-  return linkToTool(name, `/tools/${category}`, (
-    <div className="tool">
+
+  const names = _.map(tools, t => t.name)
+  const mainName = _.includes(names, name) ? name : getMainName(name).name
+  const escapedName = escapeName(mainName)
+
+  const to = `/tools/${category}/${escapedName}`
+  return (
+    <HistoryLink key={mainName + Math.random()}
+                 to={to}
+                 name={mainName}
+                 className='tool'
+    >
       {getIcon(tool)}
       <div className="name">{name}</div>
       {renderStars(stars)}
-    </div>
-  ))
+    </HistoryLink>
+  )
 }
 
 const arrangeTools = (tools) => {

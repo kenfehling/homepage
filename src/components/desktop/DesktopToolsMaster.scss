@@ -1,26 +1,24 @@
 @import "bourbon";
 @import "../../styles/utils";
+@import "../../styles/colors";
 
 $icon-size: 56px;
 $detail-icon-size: 36px;
 $star-size: 12px;
-$tools-bg: #F2F1F0;
-$item-bg: #FCFBFC;
+
 $border-darken: 15%;
 $title-size: 15px;
 $title-weight: bold;
-$header-top-color: #7946a1;
-$header-bottom-color: #a343a4;
 
 :local(.container) {
   @include no-select();
-  @include show-scroll($tools-bg);
-  background-color: $tools-bg;
+  @include show-scroll($desktop-tools-bg-color);
+  background-color: $desktop-tools-bg-color;
 
   .scroll-area {
     white-space: nowrap;
     display: flex;
-    padding: 3px 3px 0 5px;
+    padding: 0 3px 0 5px;
   }
 
   .col {
@@ -32,19 +30,20 @@ $header-bottom-color: #a343a4;
       text-decoration: none;
     }
     .tool {
+      display: block;
       width: 96px;
       text-align: center;
       cursor: pointer;
-      background-color: $item-bg;
-      border: thin solid darken($item-bg, $border-darken);
+      background-color: $desktop-tools-item-bg-color;
+      border: thin solid darken($desktop-tools-item-bg-color, $border-darken);
       border-radius: 4px;
       padding: 10px;
       box-sizing: border-box;
       &:first-child {
-        margin: 8px 4px;
+        margin: 1px 4px 8px 4px;
       }
       &:last-child {
-        margin: 8px 4px 5px 4px;
+        margin: 1px 4px 5px 4px;
       }
       .icon {
         width: $icon-size;
@@ -65,14 +64,19 @@ $header-bottom-color: #a343a4;
         }
       }
     }
+
+    &:last-child {
+      padding-right: 5px;
+    }
+
     .tool:hover {
-      background-color: darken($item-bg, 6%);
-      border: thin solid darken($item-bg, 6% + $border-darken);
+      background-color: darken($desktop-tools-item-bg-color, 6%);
+      border: thin solid darken($desktop-tools-item-bg-color, 6% + $border-darken);
     }
 
     .tool:active {
-      background-color: darken($item-bg, 10%);
-      border: thin solid darken($item-bg, 10% + $border-darken);
+      background-color: darken($desktop-tools-item-bg-color, 10%);
+      border: thin solid darken($desktop-tools-item-bg-color, 10% + $border-darken);
     }
   }
 }

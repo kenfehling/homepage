@@ -51,7 +51,10 @@ export function linkToTool(name, path, text=name) {
   const escapedName = escapeName(mainName)
   const to = `${path}/${escapedName}`
   return (
-    <HistoryLink key={mainName + Math.random()} to={to} name={mainName}>
+    <HistoryLink key={mainName + Math.random()}
+                 to={to}
+                 name={mainName}
+    >
       {text}
     </HistoryLink>
   )

@@ -1,9 +1,11 @@
 @import "bourbon";
 @import "../../styles/fonts";
 @import "../../styles/utils";
+@import "../../styles/colors";
 
 :local(.window) {
-  @include background-image(linear-gradient(to bottom, #777, #555));
+  @include background-image(linear-gradient(to bottom,
+          $desktop-window-bg-color-top, $desktop-window-bg-color-bottom));
   box-shadow: 0 2px 6px black;
   width: 100%;
   height: 100%;
@@ -93,6 +95,7 @@
     width: 100%;
     height: 100%;
     flex: 1 1;
+    border: 1px solid $desktop-window-bg-color-bottom;
     border-radius: 0;
   }
 }
@@ -128,7 +131,7 @@
 }
 
 :local(.window).Tools {
-  height: 327px;
+  height: 325px;
   width: 530px;
 }
 

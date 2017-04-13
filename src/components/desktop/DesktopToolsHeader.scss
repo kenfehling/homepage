@@ -3,14 +3,12 @@
 @import "../../styles/dimens";
 @import "../../styles/colors";
 
-$header-top-color: #007fd3;
-$header-bottom-color: #337ab7;
-
 :local(.container) {
-  @include background-image(linear-gradient(to bottom, $header-top-color, $header-bottom-color));
+  @include background-image(linear-gradient(to bottom,
+          darken($desktop-tools-bg-color, 15%), $desktop-tools-bg-color));
   @include no-select();
-  color: $item-bg-color;
-  padding: 10px 0;
+  color: #252525;
+  padding: 12px 0;
   .categories {
     padding-left: 9px;
     display: flex;
@@ -18,16 +16,16 @@ $header-bottom-color: #337ab7;
       color: inherit;
       text-decoration: none;
       display: block;
-      padding: 3px 6px;
+      padding: 3px 5px;
       margin-right: 3px;
       cursor: pointer;
+      border: thin solid transparent;
       &:hover {
         text-decoration: underline;
       }
       &.active-header-item {
-        background-color: $item-bg-color;
-        border-radius: 2px;
-        color: $header-bottom-color;
+        border-color: rgba(0, 0, 0, 0.275);
+        border-radius: 3px;
         &:hover {
           text-decoration: none;
         }

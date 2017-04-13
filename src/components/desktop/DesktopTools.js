@@ -1,4 +1,4 @@
-import React, {Component, PropTypes, createElement} from 'react'
+import React from 'react'
 import {
   Container, ContainerGroup, HistoryRoute
 } from 'react-router-nested-history'
@@ -7,11 +7,14 @@ import DesktopToolsMaster from './DesktopToolsMaster'
 import DesktopToolsDetail from './DesktopToolsDetail'
 import {categories} from '../../constants/tools'
 import * as styles from './DesktopTools.scss'
-import {categoryRegex} from '../../utils/tools'
 
-export default (props) => (
+const DesktopTools = (props) => (
   <div className={styles.container}>
-    <ContainerGroup name='desktop_tools' gotoTopOnSelectActive={true} hideInactiveContainers={true}>
+    <ContainerGroup name='desktop_tools'
+                    className='container-group'
+                    gotoTopOnSelectActive={true}
+                    hideInactiveContainers={true}
+    >
       <DesktopToolsHeader />
       {categories.map(c => (
           <Container key={c}
@@ -30,3 +33,5 @@ export default (props) => (
     </ContainerGroup>
   </div>
 )
+
+export default DesktopTools

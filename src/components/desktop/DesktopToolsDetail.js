@@ -9,23 +9,25 @@ const DesktopToolsDetail = ({match:{params:{tool, category}}}) => {
   const {name, fullName, stars, description} = toolObject
   const path = `/tools/${category}`
   return (<div className={styles.container} key={name}>
-    <Helmet title={tool} titleTemplate="Ken Fehling - Tools: %s" />
-    <div className="heading">
-      <div className='back'>
-        <BackLink>
-          {({params:{tool, category}}) => (
-            <div className='link'>
-              <i className="fa fa-chevron-left" />
-              <div className='text'>{tool || category}</div>
-            </div>
-          )}
-        </BackLink>
-      </div>
-      <div className='icon'>{getIcon(toolObject)}</div>
-      <div className="title">{fullName || name}</div>
-      <div className="skill">
-        <div className="label">Skill level:</div>
-        {renderStars(stars)}
+    <Helmet title={tool} titleTemplate='Ken Fehling - Tools: %s' />
+    <div className='heading'>
+      <div className='inner-heading'>
+        <div className='back'>
+          <BackLink>
+            {({params:{tool, category}}) => (
+              <div className='link'>
+                <i className="fa fa-chevron-left" />
+                <div className='text'>{tool || category}</div>
+              </div>
+            )}
+          </BackLink>
+        </div>
+        <div className='icon'>{getIcon(toolObject)}</div>
+        <div className="title">{fullName || name}</div>
+        <div className="skill">
+          <div className="label">Skill level:</div>
+          {renderStars(stars)}
+        </div>
       </div>
     </div>
     <div className="description">{replaceLinks(description, path)}</div>
