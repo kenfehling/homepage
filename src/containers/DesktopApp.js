@@ -19,7 +19,7 @@ import * as styles from './DesktopApp.scss'
 const windows = [
   //{name: 'Map'},
   //{name: 'Terminal'},
-  {name: 'Editor' /*, bounce: true */},
+  {name: 'Editor', bounce: true},
   {name: 'Tools'},
   {name: 'Music'},
   {name: 'PDF'},
