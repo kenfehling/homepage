@@ -36,6 +36,9 @@ $text-area-padding-x: 0.7em;
 
     input[type=text], textarea {
       flex: 1 1;
+      @include placeholder {
+        color: #BBB;
+      }
     }
 
     input[type=text] {
@@ -100,4 +103,8 @@ $text-area-padding-x: 0.7em;
     }
   }
 
+  .success {
+    background-color: #9F9;
+    color: #090;
+  }
 }
