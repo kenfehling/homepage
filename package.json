@@ -13,6 +13,8 @@
   "license": "ISC",
   "dependencies": {
     "bowser": "^1.6.0",
+    "form-serialize": "^0.7.1",
+    "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.16.1",
     "rc-progress": "^2.0.6",
     "react": "^15.4.2",
@@ -24,6 +26,7 @@
     "react-router-nested-history": "github:kenfehling/react-router-nested-history",
     "react-string-replace": "^0.4.0",
     "react-tooltip": "^3.2.7",
+    "react-transition-group": "^1.1.1",
     "react-typist": "^0.3.0",
     "recompose": "^0.22.0",
     "tone": "^0.10.0",
