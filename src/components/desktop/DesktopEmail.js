@@ -5,8 +5,18 @@ import {EMAIL} from '../../constants/links'
 import * as _ from 'lodash'
 import serialize from 'form-serialize'
 import fetch from 'isomorphic-fetch'
+import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'
 
-class DesktopEmail extends Component {
+const SUCCESS_DURATION = 5000
+
+const Success = () => (
+  <div className='success'>
+    <div className='title'>Thank you!</div>
+    <div>You'll hear from me soon.</div>
+  </div>
+)
+
+class Form extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -43,12 +53,18 @@ class DesktopEmail extends Component {
   submit(event) {
     event.preventDefault()
     if (this.validate()) {
+      this.submitBtn.disabled = true
       fetch('/contact', {
+        mode: 'cors',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
         method: "POST",
-        body: serialize(event.target, { hash: true })
+        body: JSON.stringify(serialize(event.target, {hash: true}))
       }).then(response => {
         if (response.status === 200) {
-
+          this.props.onSuccess()
         }
         else {
           alert(response.statusText)
@@ -59,7 +75,7 @@ class DesktopEmail extends Component {
 
   render() {
     return (
-      <div className={styles.container}>
+      <div className='form'>
         <form onSubmit={this.submit.bind(this)}>
           <div>
             <span className='label'>To:</span>
@@ -97,13 +113,47 @@ class DesktopEmail extends Component {
           />
           <br />
           <div className='buttons'>
-            <input type='submit' value='Send' />
+            <input type='submit'
+                   value='Send'
+                   ref={(el) => {this.submitBtn = el}}
+            />
             <a ref={(el) => {this.openInEmailBtn = el}}>
               <input type='button' value='Open in email' />
             </a>
           </div>
         </form>
       </div>
+    )
+  }
+}
+
+class DesktopEmail extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      submitted: false
+    }
+  }
+
+  showSuccess() {
+    this.setState({submitted: true})
+    setTimeout(() => this.setState({submitted: false}), SUCCESS_DURATION)
+  }
+
+  render() {
+    return (
+      <CSSTransitionGroup
+        component='div'
+        className={styles.container}
+        transitionName='transition'
+        transitionEnterTimeout={0}
+        transitionLeaveTimeout={0}>
+        {
+          this.state.submitted ?
+          <Success key='success' /> :
+          <Form key='form' onSuccess={this.showSuccess.bind(this)} />
+        }
+      </CSSTransitionGroup>
     )
   }
 }

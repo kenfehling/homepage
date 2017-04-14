@@ -15,7 +15,7 @@ import auth from './mail.json'
 const buildPath = path.join(__dirname, 'build')
 const app = express()
 const serve = serveStatic(buildPath)
-app.use(serve)
+app.get('*', serve)
 app.use('/static', serve)
 app.set('views', buildPath)
 app.set('view engine', 'ejs')
@@ -32,7 +32,8 @@ app.post("/contact", function (req, res) {
   // create transporter object capable of sending email using the default SMTP transport
   const transporter = nodemailer.createTransport(mg(auth))
 
-  // TODO: We might need to do from: form@kenfehling, reply-to: from
+  console.log(req)
+
   const mailOptions = {
     'h:Reply-To': from,
     from: 'form@kenfehling.com',
@@ -44,8 +45,8 @@ app.post("/contact", function (req, res) {
   // send mail with defined transport object
   transporter.sendMail(mailOptions, function (error, info) {
     if (error) {
-      console.error('\nERROR: ' + error+'\n')
-      res.json({error})
+      console.log('\nERROR: ' + error+'\n')
+      res.status(error.status || 400).json({error})
     } else {
       console.log('\nRESPONSE SENT: ' + info.response+'\n')
       res.json({ yo: info.response })
