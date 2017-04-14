@@ -1,5 +1,6 @@
 @import "bourbon";
 @import "../../styles/utils";
+@import "../../styles/dimens";
 
 $text-box-padding-y: 0.2em;
 $text-box-padding-x: 0.3em;
@@ -7,97 +8,138 @@ $text-area-padding-y: 0.5em;
 $text-area-padding-x: 0.7em;
 
 :local(.container) {
-  background-color: #F3F3F3;
+  position: relative;
   width: 100%;
   height: 100%;
-  padding: 20px;
-  box-sizing: border-box;
-
-  form {
+  .form, .success {
+    position: absolute;
     width: 100%;
     height: 100%;
-    display: flex;
-    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  .form {
+    background-color: #F3F3F3;
 
-    label {
+    form {
       width: 100%;
+      height: 100%;
       display: flex;
-    }
+      flex-direction: column;
 
-    .label {
-      line-height: 1.5em + $text-box-padding-y * 2;
-      font-weight: bold;
-      margin-right: 1ex;
-    }
+      label {
+        width: 100%;
+        display: flex;
+      }
 
-    .invalid.label {
-      color: red;
-    }
+      .label {
+        line-height: 1.5em + $text-box-padding-y * 2;
+        font-weight: bold;
+        margin-right: 1ex;
+      }
 
-    input[type=text], textarea {
-      flex: 1 1;
-    }
+      .invalid.label {
+        color: red;
+      }
 
-    input[type=text] {
-      padding: $text-box-padding-y $text-box-padding-x
-               $text-box-padding-y * 1.1 $text-box-padding-x;
-    }
-
-    textarea {
-      resize: none;
-      padding:$text-area-padding-y $text-area-padding-y;
-      -webkit-appearance: textfield;
-      border-color: initial;
-      border-image: initial;
-    }
-
-    .buttons {
-      display: flex;
-
-      $darken-factor: 5%;
-      @mixin button-colors($bg1, $bg2, $border) {
-        @include background-image(linear-gradient(to bottom, $bg1, $bg2));
-        &, &:hover, &:active, &:focus {
-          border: 1px solid $border;
-        }
-        &:hover {
-          @include background-image(linear-gradient(to bottom,
-                          darken($bg1, $darken-factor),
-                          darken($bg2, $darken-factor)));
-        }
-        &:active {
-          @include background-image(linear-gradient(to bottom,
-                          darken($bg1, $darken-factor * 2),
-                          darken($bg2, $darken-factor * 2)));
+      input[type=text], textarea {
+        flex: 1 1;
+        @include placeholder {
+          color: #BBB;
         }
       }
 
-      input[type=submit], input[type=button], a {
-        @include no-highlight();
-        display: block;
-        cursor: pointer;
-        margin: 0 auto;
+      input[type=text] {
+        padding: $text-box-padding-y $text-box-padding-x
+        $text-box-padding-y * 1.1 $text-box-padding-x;
       }
 
-      input[type=submit], input[type=button] {
-        border-radius: 2px;
-        font-weight: 600;
-        padding: 8px 24px;
+      textarea {
+        resize: none;
+        padding:$text-area-padding-y $text-area-padding-y;
+        -webkit-appearance: textfield;
+        border-color: initial;
+        border-image: initial;
       }
 
-      input[type=submit] {
-        @include button-colors(#4787ed, #4d90fe, #3079ed);
-        color: white;
-      }
+      .buttons {
+        display: flex;
 
-      input[type=button] {
-        @include button-colors(#EEE, #E9E9E9, #C3C3C3);
-      }
+        $darken-factor: 5%;
+        @mixin button-colors($bg1, $bg2, $border) {
+          @include background-image(linear-gradient(to bottom, $bg1, $bg2));
+          &, &:hover, &:active, &:focus {
+            border: 1px solid $border;
+          }
+          &:hover {
+            @include background-image(linear-gradient(to bottom,
+                    darken($bg1, $darken-factor),
+                    darken($bg2, $darken-factor)));
+          }
+          &:active {
+            @include background-image(linear-gradient(to bottom,
+                    darken($bg1, $darken-factor * 2),
+                    darken($bg2, $darken-factor * 2)));
+          }
+        }
 
-      a {
-        text-decoration: none;
+        input[type=submit], input[type=button], a {
+          @include no-highlight();
+          display: block;
+          cursor: pointer;
+          margin: 0 auto;
+        }
+
+        input[type=submit], input[type=button] {
+          border-radius: 2px;
+          font-weight: 600;
+          padding: 8px 24px;
+        }
+
+        input[type=submit] {
+          @include button-colors(#4787ed, #4d90fe, #3079ed);
+          color: white;
+        }
+
+        input[type=button] {
+          @include button-colors(#EEE, #E9E9E9, #C3C3C3);
+        }
+
+        a {
+          text-decoration: none;
+        }
       }
     }
   }
 
+  .success {
+    background-color: #BFB;
+    color: #050;
+    text-align: center;
+    .title {
+      font-weight: 600;
+      font-size: $title-size;
+      margin: 100px 0 20px 0;
+    }
+  }
+
+  .transition-enter {
+    opacity: 0;
+    z-index: 1;
+  }
+
+  .transition-enter.transition-enter-active {
+    opacity: 1;
+    transition: opacity 1s ease-out;
+  }
+
+  .transition-leave {
+    opacity: 1;
+    z-index: 2;
+  }
+
+  .transition-leave.transition-leave-active {
+    opacity: 0;
+    transition: opacity 1s ease-in;
+  }
 }
