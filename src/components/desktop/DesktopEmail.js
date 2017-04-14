@@ -2,14 +2,26 @@ import React, {Component} from 'react'
 import validator from 'validator'
 import * as styles from './DesktopEmail.scss'
 import {EMAIL} from '../../constants/links'
+import * as _ from 'lodash'
+import serialize from 'form-serialize'
+import fetch from 'isomorphic-fetch'
 
 class DesktopEmail extends Component {
-
   constructor(props) {
     super(props)
     this.state = {
-      valid: true
+      invalidFields: []
     }
+
+    this.validators = {
+      from: () => validator.isEmail(this.from.value),
+      subject: () => this.subject.value && this.subject.value.trim() !== '',
+      body: () => this.body.value && this.body.value.trim() !== ''
+    }
+  }
+
+  getLabelClass(el) {
+    return 'label' + (_.includes(this.state.invalidFields, el) ? ' invalid' : '')
   }
 
   setOpenInEmailLink() {
@@ -22,28 +34,40 @@ class DesktopEmail extends Component {
     this.setOpenInEmailLink()
   }
 
-  validate(e) {
-    const valid = validator.isEmail(this.from.value)
-    if (!valid) {
-      e.preventDefault()
+  validate() {
+    const invalids = _.keys(this.validators).filter(k => !this.validators[k]())
+    this.setState({invalidFields: invalids})
+    return _.isEmpty(invalids)
+  }
+
+  submit(event) {
+    event.preventDefault()
+    if (this.validate()) {
+      fetch('/contact', {
+        method: "POST",
+        body: serialize(event.target, { hash: true })
+      }).then(response => {
+        if (response.status === 200) {
+
+        }
+        else {
+          alert(response.statusText)
+        }
+      })
     }
-    this.setState({valid})
   }
 
   render() {
     return (
       <div className={styles.container}>
-        <form action='/contact'
-              method='POST'
-              onSubmit={this.validate.bind(this)}
-        >
+        <form onSubmit={this.submit.bind(this)}>
           <div>
             <span className='label'>To:</span>
             Ken Fehling &lt;<a href={`mailto:${EMAIL}`}>{EMAIL}</a>&gt;
           </div>
           <br />
           <label>
-            <span className={['label', this.state.valid ? '' : 'invalid'].join(' ')}>
+            <span className={this.getLabelClass('from')}>
               From:
             </span>
             <input type='text'
@@ -53,7 +77,7 @@ class DesktopEmail extends Component {
           </label>
           <br />
           <label>
-            <span className='label'>Subject:</span>
+            <span className={this.getLabelClass('subject')}>Subject:</span>
             <input type='text'
                    name='subject'
                    ref={(el) => {this.subject = el}}
@@ -62,7 +86,7 @@ class DesktopEmail extends Component {
             />
           </label>
           <br />
-          <span className='label'>Message:</span>
+          <span className={this.getLabelClass('body')}>Message:</span>
           <textarea name='body'
                     rows='10'
                     ref={(el) => {this.body = el}}

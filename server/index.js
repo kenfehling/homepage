@@ -45,7 +45,7 @@ app.post("/contact", function (req, res) {
   transporter.sendMail(mailOptions, function (error, info) {
     if (error) {
       console.error('\nERROR: ' + error+'\n')
-      res.json({ yo: 'error' })
+      res.json({error})
     } else {
       console.log('\nRESPONSE SENT: ' + info.response+'\n')
       res.json({ yo: info.response })

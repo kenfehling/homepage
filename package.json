@@ -13,6 +13,8 @@
   "license": "ISC",
   "dependencies": {
     "bowser": "^1.6.0",
+    "form-serialize": "^0.7.1",
+    "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.16.1",
     "rc-progress": "^2.0.6",
     "react": "^15.4.2",
