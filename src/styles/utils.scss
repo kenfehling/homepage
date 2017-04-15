@@ -20,6 +20,7 @@
   }
 }
 
+/*
 @mixin show-scroll($bg) {
   &::-webkit-scrollbar {
     -webkit-appearance: none;
@@ -47,15 +48,5 @@
 
 @mixin mobile-scroll() {
   -webkit-overflow-scrolling: touch;
-}
-
-/*
-@mixin mobile-scroll-fix() {
-  -webkit-overflow-scrolling: touch;
-
-  &::-webkit-scrollbar {
-    -webkit-appearance: none;
-    width: 10px;
-  }
 }
 */

@@ -60,7 +60,7 @@ export const tools = [{
   </div>
 }, {
   name: 'React',
-  stars: 4.5,
+  stars: 5,
   categories: [LIBRARIES, WEB],
   description: <div>
     By far my favorite [[JavaScript]] framework/library,
@@ -76,7 +76,7 @@ export const tools = [{
   </div>
 }, {
   name: 'Redux',
-  stars: 4.5,
+  stars: 5,
   categories: [LIBRARIES, WEB],
   description: <div>
     Redux is a great add-on to [[React]], and it's contributed to renewing my interest
@@ -86,7 +86,7 @@ export const tools = [{
   </div>
 }, {
   name: 'TypeScript',
-  stars: 4.5,
+  stars: 5,
   categories: [LANGUAGES, WEB],
   description: <div>
     TypeScript is currently my main compile-to-[[JavaScript]] library.
@@ -110,7 +110,7 @@ export const tools = [{
    }, {
    */
   name: 'CSS',
-  stars: 4,
+  stars: 4.5,
   categories: [LANGUAGES, WEB],
   description: <div>
     Unlike many web developers I actually enjoy styling.
@@ -121,7 +121,7 @@ export const tools = [{
   </div>
 }, {
   name: 'Node',
-  stars: 4,
+  stars: 4.5,
   categories: [PLATFORMS, WEB],
   description: <div>
     Node.js is currently my main back-end platform, along with [[Express]].
@@ -220,6 +220,18 @@ export const tools = [{
     </ul>
   </div>
 }, {
+  name: 'Express',
+  stars: 4,
+  categories: [WEB],
+  description: <div>
+    Express is my main back-end web framework;
+    it's what I use on almost all [[Node]] projects.
+    <br /><br />
+    In the past I've used [[Ruby]] on [[Rails]] and [[Flask]] with [[Python]],
+    but have settled mostly on Node, especially for its ability to create
+    "Universal JS" or Server-Side Rendered (SSR) apps with [[React]].
+  </div>
+}, {
   name: 'Git',
   stars: 4,
   categories: [DEVOPS, SOFTWARE],
@@ -278,18 +290,6 @@ export const tools = [{
     <br /><br />
     In the end however I switched to using [[TypeScript]] which is currently
     my main compile-to-[[JavaScript]] language.
-  </div>
-}, {
-  name: 'Express',
-  stars: 4,
-  categories: [WEB],
-  description: <div>
-    Express is my main back-end web framework;
-    it's what I use on almost all [[Node]] projects.
-    <br /><br />
-    In the past I've used [[Ruby]] on [[Rails]] and [[Flask]] with [[Python]],
-    but have settled mostly on Node, especially for its ability to create
-    "Universal JS" or Server-Side Rendered (SSR) apps with [[React]].
   </div>
 }, {
   name: 'WebStorm',
@@ -392,6 +392,15 @@ export const tools = [{
     and it can be used from both front-end and back-end dependency management.
   </div>
 }, {
+  name: 'Ruby',
+  stars: 3.5,
+  categories: [LANGUAGES],
+  description: <div>
+    Most of my Ruby experience has been with the [[Rails]] framework.
+    I prefer [[Python]] to Ruby mainly for its readability,
+    however Ruby has some interesting features like blocks.
+  </div>
+}, {
   name: 'FFmpeg',
   stars: 3.5,
   categories: [SOFTWARE],
@@ -436,20 +445,13 @@ export const tools = [{
     apps, {externalLink('Color Sounds', 'http://androidideas.org/colorsounds')}.
   </div>
 }, {
-  name: 'Ruby',
-  stars: 3,
-  categories: [LANGUAGES],
-  description: <div>
-    Most of my Ruby experience has been with the [[Rails]] framework.
-    I prefer [[Python]] to Ruby mainly for its readability,
-    however Ruby has some interesting features like blocks.
-  </div>
-}, {
   name: 'C#',
   stars: 3,
   categories: [LANGUAGES],
   description: <div>
-    Most of my C# experience has been with [[Unity]].
+    Most of my C# experience has been with [[Unity]],
+    not so much with the .NET platform.
+    C#'s similarity to Java however made it very easy to pick up.
   </div>
 }, {
   name: 'iOS',
@@ -537,14 +539,15 @@ export const tools = [{
     might have a use on simpler projects.
   </div>
 }, {
-  name: 'Flex',
-  fullName: 'Adobe Flex',
+  name: 'Illustrator',
+  fullName: 'Adobe Illustrator',
   stars: 3,
   categories: [SOFTWARE],
   description: <div>
-    I learned [[ActionScript]] and Flex to rewrite one of my [[Android]]
-    apps, {externalLink('Color Sounds', 'http://androidideas.org/colorsounds')}.
-    Flex was used for the main menu interface.
+    Illustrator by far is my favorite Adobe software.
+    It's great for making icons, logos, and other vector graphics.
+    Most of the icons on this site are SVG files made with or modified in
+    Illustrator.
   </div>
 }, {
   name: 'Logic',
@@ -605,15 +608,14 @@ export const tools = [{
     particularly with [[Guice]], and the observer pattern.
   </div>
 }, {
-  name: 'Illustrator',
-  fullName: 'Adobe Illustrator',
+  name: 'Flex',
+  fullName: 'Adobe Flex',
   stars: 2.5,
-  categories: [SOFTWARE],
+  categories: [WEB, SOFTWARE],
   description: <div>
-    Illustrator by far is my favorite Adobe software.
-    It's great for making icons, logos, and other vector graphics.
-    Most of the icons on this site are SVG files made with or modified in
-    Illustrator.
+    I learned [[ActionScript]] and Flex to rewrite one of my [[Android]]
+    apps, {externalLink('Color Sounds', 'http://androidideas.org/colorsounds')}.
+    Flex was used for the main menu interface.
   </div>
 }, {
   name: 'Unity',

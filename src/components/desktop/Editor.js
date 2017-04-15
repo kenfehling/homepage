@@ -33,7 +33,10 @@ export default () => (
     </div>
     <br />
     {gitHubLink('react-router-nested-history')}
-    <div>Handles the windows, tabs, browser history, and transition animations</div>
+    <div>
+      Handles the windows{comma} tabs{comma} browser history{comma} and
+      transition animations
+    </div>
     <br />
     {gitHubLink('react-designable-audio-player')}
     <div>Used for the desktop and mobile music players</div>

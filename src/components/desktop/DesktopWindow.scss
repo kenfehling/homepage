@@ -90,7 +90,6 @@
   .body {
     overflow: hidden;
     cursor: default;
-    flex-direction: column;
     box-sizing: border-box;
     width: 100%;
     height: 100%;
@@ -131,8 +130,8 @@
 }
 
 :local(.window).Tools {
-  height: 325px;
-  width: 530px;
+  height: 332px;
+  width: 548px;
 }
 
 :local(.window).Mobile {

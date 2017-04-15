@@ -1,4 +1,4 @@
-@import "bourbon";
+@import "../../styles/utils";
 
 $list-item-icon-size: 32px;
 $bg-color: white;
@@ -28,12 +28,16 @@ $bg-color: white;
       line-height: $list-item-icon-size;
     }
 
+    @include no-highlight();
+
     &:hover {
       background-color: darken($bg-color, 7%);
+      border: thin solid darken($bg-color, 18%);
     }
 
-    &:active {
-      @include filter(brightness(0.94));
+    &:active, &:focus {
+      background-color: darken($bg-color, 10%);
+      border: thin solid darken($bg-color, 25%);
     }
   }
 }

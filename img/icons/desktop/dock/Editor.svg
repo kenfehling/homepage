@@ -3,18 +3,31 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="128px" height="128px" viewBox="0 0 128 128" enable-background="new 0 0 128 128" xml:space="preserve">
-<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="63.9995" y1="8" x2="63.9995" y2="120.0005">
+<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="306" y1="-211" x2="306" y2="-323.0005" gradientTransform="matrix(1 0 0 -1 -242 -203)">
 	<stop  offset="0" style="stop-color:#4B4B4B"/>
 	<stop  offset="1" style="stop-color:#2B2B2B"/>
 </linearGradient>
-<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="63.9995" y1="5" x2="63.9995" y2="123.0005">
+<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="306" y1="-208" x2="306" y2="-326.0005" gradientTransform="matrix(1 0 0 -1 -242 -203)">
 	<stop  offset="0" style="stop-color:#AAAAAA"/>
 	<stop  offset="1" style="stop-color:#909090"/>
 </linearGradient>
 <path fill="url(#SVGID_1_)" stroke="url(#SVGID_2_)" stroke-width="6" stroke-miterlimit="10" d="M120,112.533
 	c0,4.123-3.344,7.467-7.467,7.467H15.467C11.343,120,8,116.656,8,112.533V15.467C8,11.343,11.343,8,15.467,8h97.066
 	c4.123,0,7.467,3.343,7.467,7.467V112.533z"/>
-<text transform="matrix(1 0 0 1 20.0151 87.3721)" fill="#CC7832" stroke="#CC7832" stroke-width="2" stroke-miterlimit="10" font-family="'OCRAStd'" font-size="61.0909">{}</text>
+<g enable-background="new    ">
+	<path fill="#CC7832" stroke="#CC7832" stroke-width="2" stroke-miterlimit="10" d="M54.045,81.263c1.588,0,3.055,0.855,3.055,3.055
+		s-1.466,3.055-3.055,3.055h-8.309c-2.261,0-3.91-0.428-5.438-2.261c-1.283-1.527-1.344-2.688-1.344-4.582v-9.653
+		c0-3.177-0.794-4.216-4.033-4.216h-4.949c-1.588,0-3.055-0.855-3.055-3.055s1.466-3.055,3.055-3.055h4.949
+		c3.238,0,4.033-1.038,4.033-4.216v-9.653c0-1.894,0.061-3.055,1.344-4.582c1.527-1.833,3.177-2.261,5.438-2.261h8.309
+		c1.588,0,3.055,0.855,3.055,3.055c0,2.2-1.466,3.056-3.055,3.056h-8.981v10.936c0,2.628-0.55,4.827-2.444,6.721
+		c1.833,2.017,2.444,4.216,2.444,6.782v10.875H54.045z"/>
+	<path fill="#CC7832" stroke="#CC7832" stroke-width="2" stroke-miterlimit="10" d="M82.939,81.263V70.388
+		c0-2.566,0.61-4.766,2.443-6.782c-1.895-1.894-2.443-4.093-2.443-6.721V45.949h-8.982c-1.588,0-3.055-0.855-3.055-3.056
+		c0-2.199,1.467-3.055,3.055-3.055h8.31c2.261,0,3.91,0.428,5.438,2.261c1.283,1.527,1.345,2.688,1.345,4.582v9.653
+		c0,3.178,0.794,4.216,4.032,4.216h4.948c1.589,0,3.055,0.855,3.055,3.055s-1.466,3.055-3.055,3.055h-4.948
+		c-3.238,0-4.032,1.039-4.032,4.216v9.653c0,1.894-0.062,3.055-1.345,4.582c-1.527,1.833-3.177,2.261-5.438,2.261h-8.31
+		c-1.588,0-3.055-0.855-3.055-3.055s1.467-3.055,3.055-3.055H82.939z"/>
+</g>
 <path fill="none" stroke="#2B2B2B" stroke-miterlimit="10" d="M116.5,112.3c0,2.32-1.88,4.2-4.2,4.2H15.7c-2.319,0-4.2-1.88-4.2-4.2
 	V15.7c0-2.319,1.881-4.2,4.2-4.2h96.6c2.32,0,4.2,1.881,4.2,4.2V112.3z"/>
 </svg>
