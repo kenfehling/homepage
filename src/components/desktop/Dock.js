@@ -4,6 +4,7 @@ import ReactTooltip from 'react-tooltip'
 import bowser from 'bowser'
 import * as styles from './Dock.scss'
 
+const BOUNCE_WAIT = 6000
 const noop = () => {}
 
 class BouncingDockItem extends Component {
@@ -11,8 +12,13 @@ class BouncingDockItem extends Component {
     super(props)
     const {bounce, isActive} = props
     this.state = {
+      waiting: true,
       bouncing: bounce && !isActive
     }
+  }
+
+  componentDidMount() {
+    setTimeout(() => this.setState({waiting: false}), BOUNCE_WAIT)
   }
 
   turnOffBounce() {
@@ -27,9 +33,9 @@ class BouncingDockItem extends Component {
 
   render() {
     const {children} = this.props
-    const {bouncing} = this.state
+    const {waiting, bouncing} = this.state
     return (
-      <div className={`icon ${bouncing ? 'bounce' : ''}`}
+      <div className={`icon ${!waiting && bouncing ? 'bounce' : ''}`}
            onClick={bouncing ? () => this.turnOffBounce() : noop} >
         {children}
       </div>
