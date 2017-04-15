@@ -12,7 +12,8 @@ $title-weight: bold;
 
 :local(.container) {
   @include no-select();
-  @include show-scroll($desktop-tools-bg-color);
+  width: 100%;
+  height: 100%;
   background-color: $desktop-tools-bg-color;
 
   .scroll-area {
