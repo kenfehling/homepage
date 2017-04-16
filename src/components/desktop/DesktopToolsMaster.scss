@@ -17,56 +17,41 @@ $title-weight: 500;
   background-color: $desktop-tools-bg-color;
 
   .scroll-area {
-    white-space: nowrap;
-    display: flex;
-    padding: 0 3px 0 5px;
+    width: 100%;
+    padding: 0 5px;
   }
 
-  .col {
-    flex: 1 0 auto;
-    max-width: 104px;
-    height: 100%;
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-    .tool {
-      display: block;
-      width: 96px;
-      text-align: center;
-      cursor: pointer;
-      background-color: $desktop-tools-item-bg-color;
-      border: thin solid darken($desktop-tools-item-bg-color, $border-darken);
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .tool {
+    margin: 1px 4px 7px 4px;
+    display: inline-table;
+    width: 96px;
+    text-align: center;
+    cursor: pointer;
+    background-color: $desktop-tools-item-bg-color;
+    border: thin solid darken($desktop-tools-item-bg-color, $border-darken);
+    border-radius: 4px;
+    padding: 10px;
+    box-sizing: border-box;
+    .icon {
+      width: $icon-size;
+      height: $icon-size;
       border-radius: 4px;
-      padding: 10px;
-      box-sizing: border-box;
-      &:first-child {
-        margin: 1px 4px 8px 4px;
-      }
-      &:last-child {
-        margin: 1px 4px 5px 4px;
-      }
-      .icon {
-        width: $icon-size;
-        height: $icon-size;
-        border-radius: 4px;
-        margin: auto;
-      }
-      .name {
-        font-weight: $title-weight;
-        text-align: center;
-        margin: 1px 0 3px 0;
-      }
-      .stars {
-        text-align: center;
-        img {
-          height: $star-size;
-        }
-      }
+      margin: auto;
     }
-
-    &:last-child {
-      padding-right: 5px;
+    .name {
+      font-weight: $title-weight;
+      text-align: center;
+      margin: 1px 0 3px 0;
+    }
+    .stars {
+      text-align: center;
+      img {
+        height: $star-size;
+      }
     }
 
     .tool:hover {
