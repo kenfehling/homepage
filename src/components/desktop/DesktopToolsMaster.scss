@@ -8,7 +8,7 @@ $star-size: 12px;
 
 $border-darken: 15%;
 $title-size: 15px;
-$title-weight: bold;
+$title-weight: 500;
 
 :local(.container) {
   @include no-select();
@@ -53,7 +53,6 @@ $title-weight: bold;
         margin: auto;
       }
       .name {
-        font-size: 12px;
         font-weight: $title-weight;
         text-align: center;
         margin: 1px 0 3px 0;

@@ -2,6 +2,8 @@
 @import '../../styles/colors';
 @import '../../styles/dimens';
 
+$star-size: 16px;
+
 :local(.container) {
   display: flex;
   flex-direction: column;
@@ -27,7 +29,22 @@
     }
     .title {
       font-size: 15px;
-      margin-bottom: 20px;
+      margin-top: 9px;
+      margin-bottom: 14px;
+    }
+
+    .skill {
+      display: flex;
+      .label {
+        margin-right: 1ex;
+        line-height: $star-size + 3px;
+      }
+      .stars {
+        img {
+          width: $star-size;
+          height: $star-size;
+        }
+      }
     }
   }
 

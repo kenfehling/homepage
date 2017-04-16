@@ -4,6 +4,13 @@ import MobileApp from './MobileApp'
 import bowser from 'bowser'
 import * as styles from './App.scss'
 
+if (bowser.mac || bowser.ios) {
+  require('./osx.scss')
+}
+else {
+  require('./windows.scss')
+}
+
 export default () => (
   <div className={styles.container}>
     {bowser.mobile /* || bowser.tablet */ ? <MobileApp /> : <DesktopApp />}
