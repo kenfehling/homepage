@@ -36,11 +36,14 @@ $tooltip-opacity: 0.98;
     0% {
       bottom: 0 - $dock-height;
     }
+    30% {
+      bottom: 0 - $dock-height;
+    }
     100% {
       bottom: 0;
     }
   }
-  animation: load-dock 1s;
+  animation: load-dock 1.5s;
 
   .inner-container {
     position: relative;
@@ -56,7 +59,7 @@ $tooltip-opacity: 0.98;
       position: absolute;
       z-index: 1;
       @include bg();
-      background-color: #FFF;
+      background-color: #AAA;
       opacity: 0.8;
       @include filter(blur(0));
     }
@@ -102,7 +105,7 @@ $tooltip-opacity: 0.98;
           @include filter(grayscale(0));
         }
       }
-      animation: load-icon 8s;
+      animation: load-icon 6s;
     }
 
     img:active {

@@ -4,7 +4,7 @@ import ReactTooltip from 'react-tooltip'
 import bowser from 'bowser'
 import * as styles from './Dock.scss'
 
-const BOUNCE_WAIT = 6000
+const BOUNCE_WAIT = 4000
 const noop = () => {}
 
 class BouncingDockItem extends Component {
