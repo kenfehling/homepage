@@ -8,16 +8,16 @@
           darken($desktop-tools-bg-color, 15%), $desktop-tools-bg-color));
   @include no-select();
   color: #252525;
-  padding: 15px 0 12px 0;
+  padding: 13px 0 11px 0;
   .categories {
-    padding-left: 10px;
+    padding-left: 9px;
     padding-right: 8px;
     display: flex;
     > * {
       color: inherit;
       text-decoration: none;
       display: block;
-      padding: 6px 7px 5px 7px;
+      padding: 5px 5px 4px 5px;
       margin-right: auto;
       cursor: pointer;
       border: thin solid transparent;

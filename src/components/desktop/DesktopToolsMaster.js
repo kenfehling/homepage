@@ -10,8 +10,6 @@ import Helmet from 'react-helmet'
 import {neverUpdate} from '../../enhancers'
 import {tools} from '../../constants/tools'
 
-const ROWS = 2
-
 const renderTool = (tool, category) => {
   const {name, stars} = tool
 
@@ -34,16 +32,10 @@ const renderTool = (tool, category) => {
 }
 
 const arrangeTools = (tools) => {
-  const n = _.size(tools)
   return (
-    <ScrollArea resetOnLeave={true} className={styles.container} horizontal={true}>
-      <div className="scroll-area">
-        {_.range(Math.ceil(n / ROWS)).map(col =>
-          <div className="col" key={col}>
-            {_.range(ROWS).map(row =>
-              n >= col * ROWS + row + 1 ? tools[col * ROWS + row] : '')}
-          </div>
-        )}
+    <ScrollArea resetOnLeave={true} className={styles.container} vertical={true}>
+      <div className='scroll-area'>
+        {tools}
       </div>
     </ScrollArea>
   )
