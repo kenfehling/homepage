@@ -1,7 +1,9 @@
 @import '../../styles/fonts';
+@import '../../styles/dimens';
 
 :local(.container) {
   font-family: $code-font;
+  line-height: $body-line-height;
   padding: 15px;
   background-color: #2B2B2B;
   color: #BABABA;
