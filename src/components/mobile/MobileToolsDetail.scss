@@ -10,8 +10,12 @@ $star-size: 16px;
   width: 100%;
   height: 100%;
 
-  .heading, .description {
+  .heading {
     padding: 20px;
+  }
+
+  .description {
+    padding: 20px 20px 0 20px;
   }
 
   .heading {
@@ -27,7 +31,7 @@ $star-size: 16px;
       }
     }
     .title {
-      font-size: 15px;
+      font-size: $title-size;
       margin-top: 9px;
       margin-bottom: 14px;
     }

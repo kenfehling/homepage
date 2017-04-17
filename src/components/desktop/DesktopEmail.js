@@ -5,7 +5,7 @@ import {EMAIL} from '../../constants/links'
 import * as _ from 'lodash'
 import serialize from 'form-serialize'
 import fetch from 'isomorphic-fetch'
-import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'
+import {CSSTransitionGroup} from 'react-transition-group'
 
 const SUCCESS_DURATION = 5000
 

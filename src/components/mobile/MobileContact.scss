@@ -3,6 +3,7 @@
 $icon-size: 72px;
 
 :local(.container) {
+  width: 100%;
   padding: 15px;
   font-size: 15px;
   @include link-style(400);

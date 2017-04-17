@@ -26,7 +26,7 @@
     "react-router-nested-history": "github:kenfehling/react-router-nested-history",
     "react-string-replace": "^0.4.0",
     "react-tooltip": "^3.2.7",
-    "react-transition-group": "^1.1.1",
+    "react-transition-group": "github:kenfehling/react-transition-group#build",
     "react-typist": "^0.3.0",
     "recompose": "^0.22.0",
     "tone": "^0.10.0",
