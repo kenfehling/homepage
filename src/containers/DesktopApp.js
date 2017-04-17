@@ -1,14 +1,12 @@
 import React from 'react'
 import DesktopWindow from '../components/desktop/DesktopWindow'
-import IFrameWindow from '../components/desktop/IFrameWindow'
 import Editor from '../components/desktop/Editor'
 import Splash from '../components/desktop/Splash'
-//import Terminal from '../components/desktop/Terminal'
 import Audio from '../components/desktop/Audio'
 import Tools from '../components/desktop/DesktopTools'
 import Social from '../components/desktop/DesktopSocial'
 import Mobile from '../components/shared/Mobile'
-//import Dialer from '../components/desktop/Dialer'
+import PDF from '../components/desktop/PDF'
 import Email from '../components/desktop/DesktopEmail'
 import Dock from '../components/desktop/Dock'
 import {WindowGroup} from 'react-router-nested-history'
@@ -17,6 +15,9 @@ import SimpleRedirect from '../components/shared/SimpleRedirect'
 import {redirectMobileToDesktop} from '../utils/mobile'
 import {SPLASH_DURATION} from '../constants/settings'
 import * as styles from './DesktopApp.scss'
+//import IFrameWindow from '../components/desktop/IFrameWindow'
+//import Terminal from '../components/desktop/Terminal'
+//import Dialer from '../components/desktop/Dialer'
 
 const windows = [
   //{name: 'Map'},
@@ -39,8 +40,9 @@ const DesktopApp = () => (
     <SimpleRedirect from='/tools' to='/tools/All' />
     {SPLASH_DURATION > 0 && <Splash />}
     <WindowGroup name='desktop'>
-      <IFrameWindow name="PDF" right={5} top={5}
-                    src='/static/Ken_Fehling-resume.pdf' />
+      <ContainerWindow name="PDF" right={5} top={5}>
+        <PDF />
+      </ContainerWindow>
       <ContainerWindow name="Editor" center={0} middle={middle}>
         <Editor />
       </ContainerWindow>

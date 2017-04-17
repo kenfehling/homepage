@@ -4,7 +4,7 @@ import baseConfig, {sassPaths} from '../webpack/base.config'
 
 export default {
   ...baseConfig,
-  context: path.resolve('.'),
+  context: path.resolve('./'),
   output: {
     ...baseConfig.output,
     publicPath: '/static',

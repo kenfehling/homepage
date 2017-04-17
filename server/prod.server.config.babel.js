@@ -6,7 +6,7 @@ import baseConfig from './prod.base.config'
 export default {
   ...baseConfig,
   target: 'node',
-  entry: './index.js',
+  entry: './index',
   output: {
     ...baseConfig.output,
     filename: 'server.js'
@@ -27,7 +27,7 @@ export default {
     })
   ],
   node: {
-    __dirname: true
+    __dirname: false
   },
   externals: [nodeExternals()]
 }

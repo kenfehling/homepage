@@ -54,7 +54,7 @@ class Form extends Component {
     event.preventDefault()
     if (this.validate()) {
       this.submitBtn.disabled = true
-      fetch('/contact', {
+      fetch('/api/contact', {
         mode: 'cors',
         headers: {
           'Accept': 'application/json',
