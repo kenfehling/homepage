@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 import {Line} from 'rc-progress';
 import * as styles from './Splash.scss'
+import {SPLASH_DURATION} from '../../constants/settings'
 
-const duration = 3
 const hideAfter = 0.5
 
 export default class Splash extends Component {
@@ -23,7 +23,7 @@ export default class Splash extends Component {
       else {
         this.setState({progress: this.state.progress + 1})
       }
-    }, (duration - hideAfter) * 10)
+    }, (SPLASH_DURATION - hideAfter) * 10)
   }
 
   render() {

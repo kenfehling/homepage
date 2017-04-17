@@ -59,7 +59,7 @@ $tooltip-opacity: 0.98;
       position: absolute;
       z-index: 1;
       @include bg();
-      background-color: #AAA;
+      background-color: #FFF;
       opacity: 0.8;
       @include filter(blur(0));
     }
@@ -91,7 +91,7 @@ $tooltip-opacity: 0.98;
           @include filter(grayscale(100%));
           opacity: 0;
         }
-        20% {
+        25% {
           @include filter(grayscale(100%));
           opacity: 0;
         }
@@ -105,7 +105,7 @@ $tooltip-opacity: 0.98;
           @include filter(grayscale(0));
         }
       }
-      animation: load-icon 6s;
+      animation: load-icon 8.5s;
     }
 
     img:active {
