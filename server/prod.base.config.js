@@ -1,4 +1,5 @@
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
+import webpack from 'webpack'
 import path from 'path'
 import baseConfig, {sassPaths} from '../webpack/base.config'
 
@@ -34,5 +35,18 @@ export default {
   },
   plugins: [
     new ExtractTextPlugin('style.css'),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production')
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      compressor: {
+        warnings: false,
+        screw_ie8: true
+      },
+      output: {
+        screw_ie8: true
+      },
+      mangle: true
+    })
   ]
 }
