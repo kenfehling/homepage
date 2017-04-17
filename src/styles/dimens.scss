@@ -1,8 +1,12 @@
-$title-size: 1.25em;
 $title-weight: 700;
 $icon-size: 56px;
 $detail-icon-size: 36px;
 $tools-star-size: 12px;
 $details-star-size: 16px;
 
-$mobile-body-text-size: 1.08333em;
+$skill-label-text-size: 0.91667em;  // 11 on OS X
+$mobile-body-text-size: 1.08333em;  // 13 on OS X
+$title-size: 1.25em;                // 15 on OS X
+$mobile-list-text-size: 1.33333em;  // 16 on OS X
+
+$body-line-height: 1.45em

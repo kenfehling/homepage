@@ -1,0 +1,48 @@
+@import '../../styles/utils';
+
+$btn-base-size: 20px;
+$btn-margin: 16px;
+$btn-padding: 10px;
+$btn-size: $btn-base-size + $btn-padding * 2;
+
+:local(.container) {
+  @include no-select();
+
+  .resume {
+    width: 476px;
+    height: 616px;
+  }
+
+  .btn {
+    position: absolute;
+    cursor: pointer;
+    background-color: #BBB;
+    color: #FFF;
+    font-size: $btn-base-size;
+    padding: ($btn-padding - 2px) $btn-padding;
+    border-radius: $btn-size / 2;
+    width: $btn-size;
+    height: $btn-size;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  .btn:hover {
+    background-color: #D33;
+  }
+
+  .btn:active {
+    background-color: #D00;
+    opacity: 1;
+  }
+  
+  .download {
+    top: $btn-margin;
+    right: $btn-margin;
+  }
+  
+  .new-window {
+    top: $btn-size + $btn-margin * 1.5;
+    right: $btn-margin;
+  }
+}
