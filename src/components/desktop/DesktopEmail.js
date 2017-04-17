@@ -104,7 +104,6 @@ class Form extends Component {
           <br />
           <span className={this.getLabelClass('body')}>Message:</span>
           <textarea name='body'
-                    rows='10'
                     ref={(el) => {this.body = el}}
                     onChange={this.setOpenInEmailLink.bind(this)}
                     placeholder={'Hi Ken,\n\n' +

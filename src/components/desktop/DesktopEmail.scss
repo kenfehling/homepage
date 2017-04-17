@@ -45,7 +45,6 @@ $text-area-padding-x: 0.7em;
       input[type=text], textarea {
         font-family: inherit;
         font-size: inherit;
-        flex: 1 1;
         border: thin solid #AAA;
         @include placeholder {
           color: #BBB;
@@ -53,13 +52,15 @@ $text-area-padding-x: 0.7em;
       }
 
       input[type=text] {
+        flex: 1 1;
         padding: $text-box-padding-y $text-box-padding-x
         $text-box-padding-y * 1.1 $text-box-padding-x;
       }
 
       textarea {
+        height: 150px;
         resize: none;
-        padding:$text-area-padding-y $text-area-padding-y;
+        padding: ($text-area-padding-y + 0.1em) $text-area-padding-y;
       }
 
       .buttons {
