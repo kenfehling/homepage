@@ -1,0 +1,1 @@
+export const SPLASH_DURATION = 3

@@ -3,8 +3,10 @@ import {HeaderLink} from 'react-router-nested-history'
 import ReactTooltip from 'react-tooltip'
 import bowser from 'bowser'
 import * as styles from './Dock.scss'
+import {SPLASH_DURATION} from '../../constants/settings'
 
-const BOUNCE_WAIT = 4000
+const LOAD_WAIT = SPLASH_DURATION + 5000
+const BOUNCE_WAIT = 5000
 const noop = () => {}
 
 class BouncingDockItem extends Component {
@@ -61,17 +63,36 @@ const DockItem = ({name, container=`desktop_${name.toLowerCase()}`,
   </HeaderLink>
 )
 
-const Dock = ({windows}) => {
-  return (
-    <div className={styles.container}>
-        <div className="inner-container">
-            <div className="back-container" />
+class Dock extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      waiting: true
+    }
+  }
+  componentDidMount() {
+    setTimeout(() => this.setState({waiting: false}), LOAD_WAIT)
+  }
+
+  render() {
+    const {windows} = this.props
+    const {waiting} = this.state
+    if (waiting) {
+      return null
+    }
+    else {
+      return (
+        <div className={styles.container}>
+          <div className="inner-container">
+            <div className="back-container"/>
             <div className="front-container">
               {windows.map(props => <DockItem key={props.name} {...props} />)}
             </div>
+          </div>
         </div>
-    </div>
-  )
+      )
+    }
+  }
 }
 
 export default Dock

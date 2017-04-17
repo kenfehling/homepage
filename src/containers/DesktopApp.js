@@ -15,6 +15,7 @@ import {WindowGroup} from 'react-router-nested-history'
 import ContainerWindow from '../components/desktop/DesktopContainerWindow'
 import SimpleRedirect from '../components/shared/SimpleRedirect'
 import {redirectMobileToDesktop} from '../utils/mobile'
+import {SPLASH_DURATION} from '../constants/settings'
 import * as styles from './DesktopApp.scss'
 
 const windows = [
@@ -36,9 +37,7 @@ const DesktopApp = () => (
   <div className={styles.container} style={{height: '100%'}}>
     {redirectMobileToDesktop('/contacts')}
     <SimpleRedirect from='/tools' to='/tools/All' />
-
-    {/* <Splash /> */}
-
+    {SPLASH_DURATION > 0 && <Splash />}
     <WindowGroup name='desktop'>
       <IFrameWindow name="PDF" right={5} top={5}
                     src='/static/Ken_Fehling-resume.pdf' />
