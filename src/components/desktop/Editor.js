@@ -22,7 +22,7 @@ const period = <span className="symbol">.</span>
 const comma = <span className="symbol">,</span>
 
 export default () => (
-  <div className={styles.container}>
+  <div className={`${styles.container} code-font`}>
     <div>Ken Fehling</div>
     <div>Personal home page</div>
     <br />

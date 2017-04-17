@@ -25,10 +25,16 @@ const NavBar = ({title, backLinkText, className=''}) => (
   <div className={`nav ${className}`}>
     <div className='back'>
       <BackLink>
-        {({params:{app='Home'}}) => (
+        {({params}) => (
           <div className='link'>
             <i className="fa fa-chevron-left" />
-            <div className='text'>{(backLinkText || app).capitalize()}</div>
+            <div className='text'>
+              {(backLinkText ?
+                (backLinkText instanceof Function ?
+                  backLinkText({params}) :
+                  backLinkText)
+                 : params.app || 'Home').capitalize()}
+            </div>
           </div>
         )}
       </BackLink>
@@ -52,7 +58,7 @@ const MobilePage = ({title='', children, backLinkText, isDesktop, useNavBar=true
 
 MobilePage.propTypes = {
   title: PropTypes.string,
-  backLinkText: PropTypes.string,
+  backLinkText: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
   isDesktop: PropTypes.bool,
   useNavBar: PropTypes.bool,
   navClassName: PropTypes.string

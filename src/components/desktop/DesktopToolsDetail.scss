@@ -6,7 +6,7 @@
 
 $top-bar-height: 20px;
 $nav-height: 38px;
-$font-size: 15px;
+$description-font-size: 13px;
 
 :local(.container) {
   height: 100%;
@@ -58,7 +58,7 @@ $font-size: 15px;
           margin-right: 3px;
         }
         .text {
-          font-size: round($font-size * 0.85);
+          font-size: round($title-size * 0.85);
         }
       }
 
@@ -92,6 +92,7 @@ $font-size: 15px;
   }
 
   .description {
+    font-size: $description-font-size;
     padding: 0 16px;
     line-height: 1.45em;
     @include link-style()

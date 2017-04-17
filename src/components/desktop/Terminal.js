@@ -7,7 +7,7 @@ const menuItems = [
 ]
 
 export default () => (
-  <div className={styles.container}>
+  <div className={`${styles.container} code-font`}>
     <div className="menu">
       <div>Terminal</div>
       {menuItems.map(item => <div key={item.name}>{item.name}</div>)}

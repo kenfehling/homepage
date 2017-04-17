@@ -47,7 +47,7 @@ export const getIcon = ({name, iconType}) => (
 
 export function linkToTool(name, path, text=name) {
   const names = _.map(tools, t => t.name)
-  const mainName = _.includes(names, name) ? name : getMainName(name).name
+  const mainName = _.includes(names, name) ? name : getMainName(name)
   const escapedName = escapeName(mainName)
   const to = `${path}/${escapedName}`
   return (
@@ -65,7 +65,7 @@ export const filterTools = (category) =>
         _.filter(tools, t => _.includes(t.categories, category)) : tools
 
 export const replaceLinks = (element, path) => {
-  const children = reactStringReplace(element.props.children, /\[\[(\w+)]]/g,
+  const children = reactStringReplace(element.props.children, /\[\[([\w\s]+)]]/g,
                    (match) => linkToTool(match, path))
   return createElement(element.type, {children})
 }

@@ -4,7 +4,7 @@ import {tracks} from '../../constants/music'
 import * as styles from './Audio.scss'
 
 const AudioPlayer = ({play, stop, next, prev, isPlaying, timeElapsed}) => (
-    <div className={styles.container}>
+    <div className={`${styles.container} code-font`}>
         <div className="controls">
             <i className="fa fa-step-backward" onClick={prev} />
             <i className={`fa fa-${isPlaying ? 'pause' : 'play'}`} onClick={play} />
