@@ -10,16 +10,16 @@ const DATABASES = 'Databases';
 const SOFTWARE = 'Software';
 
 const externalLink = (name, href='http://' + name) =>
-    <a target='_blank' href={href} style={{whiteSpace: 'nowrap'}}>
-      {name}
-      <i className='fa fa-external-link'
-         style={{
-           paddingLeft: '0.3em',
-           paddingRight: '0.2ex',
-           verticalAlign: 'middle'
-         }}
-      />
-    </a>;
+  <a target='_blank' href={href} style={{whiteSpace: 'nowrap'}}>
+    {name}
+    <i className='fa fa-external-link'
+       style={{
+         paddingLeft: '0.3em',
+         paddingRight: '0.2ex',
+         verticalAlign: 'middle'
+       }}
+    />
+  </a>;
 
 export const categories = [
   'All',
@@ -55,7 +55,7 @@ export const tools = [{
   description: <div>
     HTML is the first thing that sparked my interest in programming.
     Since then it's usually been at the center of everything I do,
-    whether it's server-side code in [[Java]] Servlets, [[Rails]], [[[Python]],
+    whether it's server-side code in [[Java]] servlets, [[Rails]], [[Python]],
     or [[Node]], or client-side web apps written with [[JavaScript]].
   </div>
 }, {
@@ -92,8 +92,8 @@ export const tools = [{
     TypeScript is currently my main compile-to-[[JavaScript]] library.
     In the past I've used [[Flow]] but I prefer TypeScript especially
     for its more mature tooling. In many ways they're pretty similar though.
-    Static typing has become another weapon in my arsenal for keeping my web
-    projects organized and stable.
+    Along with unit testing, static typing has become a major weapon in my
+    arsenal for keeping my web projects maintainable.
     <br /><br />
     My [[React]] library {externalLink("react-router-nested-history",
     "http://github.com/kenfehling/react-router-nested-history")} is written
@@ -126,7 +126,7 @@ export const tools = [{
   description: <div>
     Node.js is currently my main back-end platform, along with [[Express]].
     <br /><br />
-    In the past I've used [[Java]] Servlets, [[Rails]], and [[Python]],
+    In the past I've used [[Java]] servlets, [[Rails]], and [[Python]],
     but Node is very appealing for its use in "Universal JS"
     or Server Side Rendered (SSR) apps with [[React]].
   </div>
@@ -148,9 +148,8 @@ export const tools = [{
   categories: [LANGUAGES, MOBILE],
   description: <div>
     At my university, the Computer Science curriculum uses Java as its main programming language.
-    I've also used Java on my own projects with
-    JSP/Servlets, [[GWT', 'Google Web Toolkit]],
-    and [[Android]].
+    I've also used Java on my own projects with [[Android]],
+    JSP and servlets, and [[Google Web Toolkit]].
   </div>
 }, {
   name: 'Webpack',
@@ -279,14 +278,13 @@ export const tools = [{
   stars: 4,
   categories: [WEB],
   description: <div>
-    Becoming overwhelmed with the complexity of one of my
-    libraries {externalLink("react-router-nested-history", "http://github.com/kenfehling/react-router-nested-history")} I
-    I decided to give static typing a try via Facebook's Flow.
+    Becoming overwhelmed while
+    writing {externalLink("react-router-nested-history", "http://github.com/kenfehling/react-router-nested-history")} I
+    decided to give static typing in [[JavaScript]] a try via Facebook's Flow.
     <br /><br />
     I was extremely pleased with the result.
-    Everything was much more organized and I now had a second place to turn to,
-    in addition to unit tests, for catching bugs early and keeping my code
-    clean and manageable.
+    Everything was much more manageable and I now had a second place to turn to
+    in addition to unit tests for catching bugs early.
     <br /><br />
     In the end however I switched to using [[TypeScript]] which is currently
     my main compile-to-[[JavaScript]] language.

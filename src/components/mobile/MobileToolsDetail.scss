@@ -7,7 +7,6 @@ $star-size: 16px;
 :local(.container) {
   display: flex;
   flex-direction: column;
-  font-size: $mobile-body-text-size;
   width: 100%;
   height: 100%;
 
@@ -17,8 +16,8 @@ $star-size: 16px;
 
   .heading {
     display: flex;
-    background-color: white; //$mobile-nav-bg-color;
-    border-bottom: thin solid #CCC;
+    background-color: white;
+    border-bottom: thin solid $mobile-nav-border-color;
     .icon {
       border-radius: 8px;
       margin-right: 10px;
@@ -36,6 +35,7 @@ $star-size: 16px;
     .skill {
       display: flex;
       .label {
+        font-size: 13px;
         margin-right: 1ex;
         line-height: $star-size + 3px;
       }
@@ -51,6 +51,7 @@ $star-size: 16px;
   .description {
     flex: 1 1 auto;
     line-height: 1.45em;
+    font-size: $mobile-body-text-size;
     background-color: $default-mobile-bg-color;
     @include link-style()
   }

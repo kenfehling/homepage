@@ -59,7 +59,7 @@ const MobileTools = ({isDesktop}) => {
       <HistoryRoute path={devicePath('/:app(tools)/:category/:tool', isDesktop)} exact>
         {(props) => (
           <Page title={props.match.params.tool}
-                backLinkText={props.match.params.category}
+                backLinkText={({params:{tool, category}}) => tool || category}
                 isDesktop={isDesktop}
           >
             <MobileToolsDetail {...props} isDesktop={isDesktop} />
