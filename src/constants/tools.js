@@ -283,7 +283,7 @@ export const tools = [{
     decided to give static typing in [[JavaScript]] a try via Facebook's Flow.
     <br /><br />
     I was extremely pleased with the result.
-    Everything was much more manageable and I now had a second place to turn to
+    The code was more manageable and I had a second place to turn to
     in addition to unit tests for catching bugs early.
     <br /><br />
     In the end however I switched to using [[TypeScript]] which is currently

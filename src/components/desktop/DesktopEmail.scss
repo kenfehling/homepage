@@ -43,7 +43,10 @@ $text-area-padding-x: 0.7em;
       }
 
       input[type=text], textarea {
+        font-family: inherit;
+        font-size: inherit;
         flex: 1 1;
+        border: thin solid #AAA;
         @include placeholder {
           color: #BBB;
         }
@@ -57,9 +60,6 @@ $text-area-padding-x: 0.7em;
       textarea {
         resize: none;
         padding:$text-area-padding-y $text-area-padding-y;
-        -webkit-appearance: textfield;
-        border-color: initial;
-        border-image: initial;
       }
 
       .buttons {

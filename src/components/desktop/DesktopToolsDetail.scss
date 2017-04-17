@@ -6,16 +6,16 @@
 
 $top-bar-height: 20px;
 $nav-height: 38px;
-$description-font-size: 13px;
+$description-font-size: 1.08333em;
 
 :local(.container) {
   height: 100%;
   font-family: inherit;
   background-color: $details-bg-color;
-  padding: 20px;
+  padding: 12px 20px;
   box-sizing: border-box;
   .heading {
-    margin-bottom: 20px;
+    margin-bottom: 18px;
     &::after {
       content: '';
       display: block;
@@ -79,9 +79,11 @@ $description-font-size: 13px;
         display: flex;
         font-weight: 400;
         .label {
-          font-size: $title-size;
+          font-size: 0.91667em;
         }
         .stars {
+          padding-top: 0.1em;
+          box-sizing: border-box;
           margin-left: 5px;
           img {
             height: $details-star-size;
