@@ -1,6 +1,6 @@
 import React, {createElement} from 'react'
-import {tools, categories} from '../constants/tools'
-import * as _ from 'lodash'
+import {tools} from '../constants/tools'
+import range from 'lodash/range'
 import {HistoryLink} from 'react-router-nested-history'
 import reactStringReplace from 'react-string-replace'
 
@@ -9,7 +9,7 @@ const halfStarIcon = require('../../img/icons/half-star.svg')
 
 function getToolByFullName(fullName) {
   if (fullName) {
-    const tool = _.find(tools, tool => tool.fullName === fullName)
+    const tool = tools.find(tool => tool.fullName === fullName)
     if (!tool) {
       throw new Error(`Tool '${fullName}' not found`)
     }
@@ -22,7 +22,7 @@ function getToolByFullName(fullName) {
 
 export function getTool(escapedName) {
   const name = unescapeName(escapedName)
-  const tool = _.find(tools, tool => tool.name === name)
+  const tool = tools.find(tool => tool.name === name)
   if (!tool) {
     throw new Error(`Tool '${name}' not found`)
   }
@@ -31,7 +31,7 @@ export function getTool(escapedName) {
 
 export function renderStars(stars) {
   return (<div className="stars">
-    {_.map(_.range(Math.floor(stars)), i => <img key={i} src={starIcon} />)}
+    {range(Math.floor(stars)).map(i => <img key={i} src={starIcon} />)}
     {stars % 1 === 0.5 ? <img src={halfStarIcon} /> : ''}
   </div>)
 }
@@ -46,8 +46,8 @@ export const getIcon = ({name, iconType}) => (
         escapeName(name) +'.' + (iconType || 'svg'))} />)
 
 export function linkToTool(name, path, text=name) {
-  const names = _.map(tools, t => t.name)
-  const mainName = _.includes(names, name) ? name : getMainName(name)
+  const names = tools.map(t => t.name)
+  const mainName = names.includes(name) ? name : getMainName(name)
   const escapedName = escapeName(mainName)
   const to = `${path}/${escapedName}`
   return (
@@ -62,7 +62,7 @@ export function linkToTool(name, path, text=name) {
 
 export const filterTools = (category) =>
     category && category !== 'All' ?
-        _.filter(tools, t => _.includes(t.categories, category)) : tools
+        tools.filter(t => t.categories.includes(category)) : tools
 
 export const replaceLinks = (element, path) => {
   const children = reactStringReplace(element.props.children, /\[\[([\w\s]+)]]/g,

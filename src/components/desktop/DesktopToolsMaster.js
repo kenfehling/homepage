@@ -1,9 +1,7 @@
 import React from 'react'
 import {ScrollArea, HistoryLink} from 'react-router-nested-history'
-import * as _ from 'lodash'
 import {
-  linkToTool, getIcon, renderStars, filterTools,
-  getMainName, escapeName
+  getIcon, renderStars, filterTools, getMainName, escapeName
 } from '../../utils/tools'
 import * as styles from './DesktopToolsMaster.scss'
 import Helmet from 'react-helmet'
@@ -13,8 +11,8 @@ import {tools} from '../../constants/tools'
 const renderTool = (tool, category) => {
   const {name, stars} = tool
 
-  const names = _.map(tools, t => t.name)
-  const mainName = _.includes(names, name) ? name : getMainName(name).name
+  const names = tools.map(t => t.name)
+  const mainName = names.includes(name) ? name : getMainName(name).name
   const escapedName = escapeName(mainName)
 
   const to = `/tools/${category}/${escapedName}`
@@ -43,7 +41,7 @@ const arrangeTools = (tools) => {
 
 const DesktopToolsMaster = ({match:{params:{category}}}) => (
   <div className={styles.container}>
-    {arrangeTools(_.map(filterTools(category), t => renderTool(t, category)))}
+    {arrangeTools(filterTools(category).map(t => renderTool(t, category)))}
     <Helmet title={category} titleTemplate="Ken Fehling - Tools: %s" />
   </div>
 )
