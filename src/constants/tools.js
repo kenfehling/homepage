@@ -100,15 +100,6 @@ export const tools = [{
     in TypeScript.
   </div>
 }, {
-  /*
-   name: 'Lodash',
-   stars: 4.5,
-   categories: [LIBRARIES, WEB],
-   description: <div>
-   Description
-   </div>
-   }, {
-   */
   name: 'CSS',
   stars: 4.5,
   categories: [LANGUAGES, WEB],
@@ -440,7 +431,8 @@ export const tools = [{
   categories: [LANGUAGES, WEB, MOBILE],
   description: <div>
     I learned ActionScript and [[Adobe Flex]] to rewrite one of my [[Android]]
-    apps, {externalLink('Color Sounds', 'http://androidideas.org/colorsounds')}.
+    apps, {externalLink('Color Sounds', 'http://androidideas.org/colorsounds')},
+    to run on the [[Flash]] and Adobe AIR platforms.
   </div>
 }, {
   name: 'C#',
@@ -492,16 +484,6 @@ export const tools = [{
     to my tool belt. Previously I had used Compass.
   </div>
 }, {
-  /*
-   name: 'Xcode',
-   iconType: 'png',
-   stars: 3,
-   categories: [MOBILE, SOFTWARE],
-   description: <div>
-   Description
-   </div>
-   }, {
-   */
   name: 'Postgresql',
   stars: 3,
   categories: [DATABASES],
@@ -553,9 +535,21 @@ export const tools = [{
   stars: 3,
   categories: [SOFTWARE],
   description: <div>
-    Logic was the first Digital Audio Workstation (DAW) I fell in love with,
-    and probably still currently my favorite. I first came across Logic while
-    taking a class on Sound Design.
+    Logic was the first Digital Audio Workstation (DAW) I really got serious
+    with and probably still currently my favorite. I first came across Logic
+    while taking a class on sound design.
+  </div>
+}, {
+  name: 'Reason',
+  fullName: 'Propellerhead Reason',
+  stars: 3,
+  categories: [SOFTWARE],
+  description: <div>
+    Reason was the first Digital Audio Workstation (DAW) I worked with.
+    I was introduced to it in an intro to digital art class.
+    It was really fun to use, especially its skeuomorphic interface that
+    allows you to flip the pieces of equipment around and see their
+    input and output jacks and experiment with patching them together.
   </div>
 }, {
   name: 'Ableton',
@@ -641,7 +635,8 @@ export const tools = [{
   categories: [PLATFORMS, WEB, SOFTWARE],
   description: <div>
     I've used Adobe Flash the actual program a little bit, but I have much
-    more experience with its scripting language [[ActionScript]].
+    more experience with its scripting language [[ActionScript]] and the
+    Flash and Adobe AIR platforms.
   </div>
 }, {
   name: 'Photoshop',

@@ -7,8 +7,10 @@ $icon-size: 54px;
   flex: 1 1;
   padding: 20px 10px;
   box-sizing: border-box;
-  background-image: url('../../../img/mobile_wallpaper.jpg');
-  background-size: cover;
+
+  background: url('../../../img/mobile_wallpaper.svg') repeat left top,
+              linear-gradient(to bottom, #393939, #333, #222, #222, #111);
+  background-size: 6px 6px, cover;
 
   .icon {
     display: inline-block;
