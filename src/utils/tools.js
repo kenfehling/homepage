@@ -32,7 +32,7 @@ export function getTool(escapedName) {
 export function renderStars(stars) {
   return (<div className="stars">
     {range(Math.floor(stars)).map(i => <img key={i} src={starIcon} />)}
-    {stars % 1 === 0.5 ? <img src={halfStarIcon} /> : ''}
+    {stars % 1 === 0.5 ? <img src={halfStarIcon} /> : null}
   </div>)
 }
 
