@@ -44,7 +44,7 @@
     "build": "npm run clean; npm run build:client; npm run build:server; cp -r ../static/* build",
     "start": "node build/server",
     "dev": "npm run build; npm start",
-    "stats": "webpack --config prod.server.config.babel.js --profile --json > stats.json"
+    "stats": "webpack --config prod.client.config.babel.js --profile --json > stats.json"
   },
   "eslintConfig": {
     "extends": "./node_modules/react-scripts/config/eslint.js"
