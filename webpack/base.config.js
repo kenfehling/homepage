@@ -1,5 +1,6 @@
 import path from 'path'
 import bourbon from 'node-bourbon'
+import LodashModuleReplacementPlugin from 'lodash-webpack-plugin'
 
 const root = path.join(__dirname, '..')
 
@@ -35,6 +36,9 @@ export default {
       loader: "url-loader?limit=10000000"
     }]
   },
+  plugins: [
+    new LodashModuleReplacementPlugin
+  ],
   resolve: {
     extensions: ['.js', '.jsx'],
     alias: {

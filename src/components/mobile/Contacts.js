@@ -3,7 +3,6 @@ import {Container, HistoryRoute} from 'react-router-nested-history'
 import List from './List'
 import Page from './MobilePage'
 import Contact from './MobileContact'
-import * as _ from 'lodash'
 import * as styles from './Contacts.scss'
 import {devicePath} from '../../utils/mobile'
 import {EMAIL} from '../../constants/links'
@@ -20,8 +19,7 @@ const Contacts = ({isDesktop}) => {
     twitter: 'kenfehling'
   }]
 
-  const findContact = name =>
-      _.find(contacts, c => c.name === escapeName(name))
+  const findContact = name => contacts.find(c => c.name === escapeName(name))
 
   return (
     <div style={{width: '100%', height: '100%'}}>

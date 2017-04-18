@@ -2,9 +2,9 @@ import React, {Component} from 'react'
 import validator from 'validator'
 import * as styles from './DesktopEmail.scss'
 import {EMAIL} from '../../constants/links'
-import * as _ from 'lodash'
 import serialize from 'form-serialize'
 import fetch from 'isomorphic-fetch'
+import keys from 'lodash/keys'
 import {CSSTransitionGroup} from 'react-transition-group'
 
 const SUCCESS_DURATION = 5000
@@ -31,7 +31,7 @@ class Form extends Component {
   }
 
   getLabelClass(el) {
-    return 'label' + (_.includes(this.state.invalidFields, el) ? ' invalid' : '')
+    return 'label' + (this.state.invalidFields.includes(el) ? ' invalid' : '')
   }
 
   setOpenInEmailLink() {
@@ -45,9 +45,9 @@ class Form extends Component {
   }
 
   validate() {
-    const invalids = _.keys(this.validators).filter(k => !this.validators[k]())
+    const invalids = keys(this.validators).filter(k => !this.validators[k]())
     this.setState({invalidFields: invalids})
-    return _.isEmpty(invalids)
+    return invalids === []
   }
 
   submit(event) {
