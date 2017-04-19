@@ -1,1 +1,1 @@
-export const SPLASH_DURATION = 3
+export const SPLASH_DURATION = 0 //3
