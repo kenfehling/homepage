@@ -20,7 +20,7 @@
     "html-webpack-plugin": "^2.28.0",
     "isomorphic-style-loader": "^1.1.0",
     "source-map-support": "^0.4.11",
-    "webpack": "^2.2.0",
+    "webpack": "^2.4.1",
     "webpack-dev-middleware": "^1.10.1",
     "webpack-hot-middleware": "^2.17.1",
     "webpack-node-externals": "^1.5.4"
@@ -43,12 +43,12 @@
   },
   "scripts": {
     "clean": "rm -rf build/*",
-    "build:client": "webpack --config prod.client.config.babel.js",
-    "build:server": "webpack --config prod.server.config.babel.js",
+    "build:client": "webpack -p --optimize-minimize --config prod.client.config.babel.js",
+    "build:server": "webpack -p --optimize-minimize --config prod.server.config.babel.js",
     "build": "npm run clean; npm run build:client; npm run build:server; cp -r ../static/* build",
     "start": "node build/server",
     "dev": "npm run build; npm start",
-    "stats": "webpack --config prod.client.config.babel.js --profile --json > stats.json"
+    "stats": "webpack -p --config prod.client.config.babel.js --profile --json > stats.json"
   },
   "eslintConfig": {
     "extends": "./node_modules/react-scripts/config/eslint.js"

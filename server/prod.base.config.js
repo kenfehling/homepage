@@ -5,6 +5,7 @@ import baseConfig, {sassPaths} from '../webpack/base.config'
 
 export default {
   ...baseConfig,
+  devtool: false,
   context: path.resolve('./'),
   output: {
     ...baseConfig.output,
@@ -42,12 +43,21 @@ export default {
     new webpack.optimize.UglifyJsPlugin({
       compressor: {
         warnings: false,
-        screw_ie8: true
+        screw_ie8: true,
+        conditionals: true,
+        unused: true,
+        comparisons: true,
+        sequences: true,
+        dead_code: true,
+        evaluate: true,
+        join_vars: true,
+        if_return: true
       },
       output: {
         comments: false,
         screw_ie8: true
       },
+      sourceMap: false,
       mangle: true
     })
   ]

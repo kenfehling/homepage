@@ -20,7 +20,15 @@ export default {
     loaders: [{
       test: /\.js$/,
       exclude: /node_modules/,
-      loader: 'babel-loader'
+      loader: 'babel-loader',
+      options: {
+        "babelrc": false,
+        "presets": [
+          ["es2015", {loose: true, modules: false}],
+          'react'
+        ],
+        "plugins": ["lodash", "transform-object-rest-spread"]
+      }
     }, {
       test: /\.png?$/,
       exclude: /node_modules/,
@@ -46,9 +54,6 @@ export default {
       'static': path.join(root, 'static'),
       //'react': 'preact-compat',
       //'react-dom': 'preact-compat'
-    },
-    modules: [
-      "node_modules"
-    ]
+    }
   }
 }
