@@ -4,7 +4,7 @@
 
 :local(.container) {
   @include no-select();
-  font-size: $mobile-list-text-size;
+  font-size: $large-text-size;
   width: 100%;
   background-color: $default-mobile-bg-color;
   padding: 4px;

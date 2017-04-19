@@ -78,7 +78,7 @@ $nav-height: 38px;
         display: flex;
         font-weight: 400;
         .label {
-          font-size: $skill-label-text-size;
+          font-size: $small-text-size;
         }
         .stars {
           padding-top: 0.1em;
@@ -93,7 +93,7 @@ $nav-height: 38px;
   }
 
   .description {
-    font-size: $mobile-body-text-size;
+    font-size: $medium-text-size;
     padding: 0 16px;
     line-height: $body-line-height;
     @include link-style()

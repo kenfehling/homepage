@@ -55,7 +55,7 @@ $star-size: 16px;
   .description {
     flex: 1 1 auto;
     line-height: $body-line-height;
-    font-size: $mobile-body-text-size;
+    font-size: $medium-text-size;
     background-color: $default-mobile-bg-color;
     @include link-style()
   }
