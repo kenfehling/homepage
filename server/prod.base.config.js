@@ -45,6 +45,7 @@ export default {
         screw_ie8: true
       },
       output: {
+        comments: false,
         screw_ie8: true
       },
       mangle: true

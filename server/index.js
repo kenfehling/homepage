@@ -57,8 +57,7 @@ app.post("/api/contact", function (req, res) {
       console.log('\nERROR: ' + error+'\n')
       res.status(error.status || 400).json({error})
     } else {
-      console.log('\nRESPONSE SENT: ' + info.response+'\n')
-      res.status(200).json({})
+      res.sendStatus(200)
     }
   })
 })

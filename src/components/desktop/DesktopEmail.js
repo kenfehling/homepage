@@ -47,7 +47,7 @@ class Form extends Component {
   validate() {
     const invalids = keys(this.validators).filter(k => !this.validators[k]())
     this.setState({invalidFields: invalids})
-    return invalids === []
+    return invalids.length === 0
   }
 
   submit(event) {
