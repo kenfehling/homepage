@@ -1,0 +1,18 @@
+version: 0.1
+
+phases:
+  install:
+    commands:
+      - npm install
+      - cd server; npm install
+  pre_build:
+    commands:
+      - npm test
+  build:
+    commands:
+      - cd server; npm run build
+artifacts:
+  files:
+    - server/**/*
+  discard-paths: yes
+  base-directory: server

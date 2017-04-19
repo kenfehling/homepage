@@ -1,4 +1,5 @@
 require('source-map-support').install()
+require('dotenv').config()
 import express from 'express'
 import serveStatic from 'serve-static'
 import path from 'path'
@@ -10,8 +11,12 @@ import {HistoryRouter} from 'react-router-nested-history'
 import nodemailer from 'nodemailer'
 import mg from 'nodemailer-mailgun-transport'
 import bodyParser from 'body-parser'
-import auth from './mail.json'
 import {RESUME_FILE} from '../src/constants/links'
+
+const auth = {
+  api_key: process.env.MAILGUN_API_KEY,
+  domain: 'kenfehling.com'
+}
 
 const buildPath = __dirname
 const app = express()
@@ -39,7 +44,7 @@ app.post("/api/contact", function (req, res) {
   const from = req.body.from
   const subject = req.body.subject
   const body = req.body.body
-  const transporter = nodemailer.createTransport(mg(auth))
+  const transporter = nodemailer.createTransport(mg({auth}))
   const mailOptions = {
     'h:Reply-To': from,
     from: 'form@kenfehling.com',
