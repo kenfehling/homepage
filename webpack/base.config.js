@@ -11,7 +11,7 @@ export const sassPaths = bourbon
 
 export default {
   context: root,
-  entry: path.join(root, 'src/index.js'),
+  entry: path.join(root, 'src/index'),
   output: {
     publicPath: '/'
   },
@@ -44,6 +44,8 @@ export default {
     alias: {
       img: path.join(root, 'img'),
       'static': path.join(root, 'static'),
+      //'react': 'preact-compat',
+      //'react-dom': 'preact-compat'
     },
     modules: [
       "node_modules"

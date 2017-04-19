@@ -3,6 +3,7 @@ import DesktopApp from './DesktopApp'
 import MobileApp from './MobileApp'
 import bowser from 'bowser'
 import * as styles from './App.scss'
+import 'babel-polyfill'
 
 if (bowser.mac || bowser.ios) {
   require('./osx.scss')
