@@ -13,6 +13,6 @@ phases:
       - cd server; npm run build
 artifacts:
   files:
-    - **/*
+    - server/**/*
   discard-paths: yes
-  base-directory: server
+#  base-directory: server
