@@ -36,6 +36,7 @@ export default {
   plugins: [
     ...baseConfig.plugins,
     new ExtractTextPlugin('style.css'),
+    /*
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production')
     }),
@@ -50,5 +51,6 @@ export default {
       },
       mangle: true
     })
+    */
   ]
 }

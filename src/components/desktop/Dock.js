@@ -5,7 +5,7 @@ import bowser from 'bowser'
 import * as styles from './Dock.scss'
 import {SPLASH_DURATION} from '../../constants/settings'
 
-const LOAD_WAIT = SPLASH_DURATION + 4000
+const LOAD_WAIT = SPLASH_DURATION * 2 + 1000
 const BOUNCE_WAIT = 5000
 const noop = () => {}
 
