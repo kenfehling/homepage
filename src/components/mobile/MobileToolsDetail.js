@@ -1,6 +1,9 @@
 import React from 'react'
 import Helmet from "react-helmet"
-import {renderStars, getTool, replaceLinks, getIcon} from '../../utils/tools'
+import {
+  renderStars, getTool, replaceLinks, getIcon,
+  removeLinks
+} from '../../utils/tools'
 import * as styles from './MobileToolsDetail.scss'
 import {devicePath} from '../../utils/mobile'
 
@@ -9,7 +12,14 @@ const MobileToolsDetail = ({match:{params:{tool, category}}, isDesktop}) => {
   const {name, fullName, stars, description} = toolObject
   const path = devicePath(`/tools/${category}`, isDesktop)
   return (<div className={styles.container} key={name}>
-    <Helmet title={tool} titleTemplate="Ken Fehling - Tools: %s" />
+    <Helmet title={tool} titleTemplate="Ken Fehling - Tools: %s">
+      <meta name='description'
+            content={removeLinks(description)}
+      />
+      <meta name="keywords"
+            content={fullName}
+      />
+    </Helmet>
     <div className="heading">
       <div className='icon'>{getIcon(toolObject)}</div>
       <div>

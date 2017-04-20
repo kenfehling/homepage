@@ -69,3 +69,9 @@ export const replaceLinks = (element, path) => {
                    (match) => linkToTool(match, path))
   return createElement(element.type, {children})
 }
+
+export const removeLinks = (element) => {
+  const children = reactStringReplace(element.props.children, /\[\[([\w\s]+)]]/g,
+    (match) => match)
+  return createElement(element.type, {children})
+}

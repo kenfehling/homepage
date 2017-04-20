@@ -19,7 +19,8 @@ export default {
     new HtmlWebpackPlugin({
       template: './views/index.ejs',
       filename: 'index.ejs',
-      body: '<div id="root"><%- html %></div>',
+      head: '<%- head %>',
+      body: '<%- body %>',
       "files": {
         "png": 'static/*.png'
       },

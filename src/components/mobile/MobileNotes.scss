@@ -1,6 +1,7 @@
 @import "../../styles/utils";
 @import "../../styles/colors";
 @import "../../styles/dimens";
+@import "../../styles/mixins";
 
 $color: darken(#EEDD00, 7%);
 
@@ -8,9 +9,11 @@ $color: darken(#EEDD00, 7%);
   padding: 15px;
   font-size: $medium-text-size;
 
+  @include link-style(bold);
+
   .title {
-    font-weight: bold;
-    margin-bottom: 1px;
+    display: block;
+    margin-bottom: 2px;
   }
 }
 

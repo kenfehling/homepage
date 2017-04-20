@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Ken Fehling</title>
+    <%= htmlWebpackPlugin.options.head %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/static/style.css" />
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css?v=1234">
 </head>
 <body>
-    <%= htmlWebpackPlugin.options.body %>
+    <div id="root"><%= htmlWebpackPlugin.options.body %></div>
     <script src="/static/client.js"></script>
 </body>
 </html>

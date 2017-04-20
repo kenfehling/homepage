@@ -1,4 +1,5 @@
 import React, {PropTypes} from 'react'
+import Helmet from 'react-helmet'
 import * as styles from './MobileContact.scss'
 
 const MobileContact = ({contact:{name, icon, email, website, twitter}}) => (
@@ -19,6 +20,15 @@ const MobileContact = ({contact:{name, icon, email, website, twitter}}) => (
       <div className='label'>Twitter</div>
       <a target='_blank' href={`http://twitter.com/${twitter}`}>@{twitter}</a>
     </div>
+    <Helmet>
+      <title>Ken Fehling - Contact</title>
+      <meta name='description'
+            content='Contact me for freelance work or consulting'
+      />
+      <meta name="keywords"
+            content="contact, email"
+      />
+    </Helmet>
   </div>
 )
 

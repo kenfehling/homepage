@@ -13,6 +13,7 @@ import nodemailer from 'nodemailer'
 import mg from 'nodemailer-mailgun-transport'
 import bodyParser from 'body-parser'
 import {RESUME_FILE} from '../src/constants/links'
+import Helmet from 'react-helmet'
 
 const auth = {
   api_key: process.env.MAILGUN_API_KEY,
@@ -76,17 +77,20 @@ app.get('/api/' + RESUME_FILE, function (req, res) {
 
 app.use(unless('/api', (req, res) => {
   const context = {}
-  const html = renderToString(
+  const body = renderToString(
     <HistoryRouter location={req.url} context={context}>
       <App />
     </HistoryRouter>,
   )
+  //const helmet = Helmet.rewind()
+  const helmet = Helmet.renderStatic();
+  const head = helmet.title.toString() + helmet.meta.toString()
   if (context.url) {
     return res.redirect(302, context.url)
   }
   return res
     .status(context.status || 200)
-    .render('index', {html})
+    .render('index', {head, body})
 }))
 
 const port = process.env.PORT || 3000

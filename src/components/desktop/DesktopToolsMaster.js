@@ -39,12 +39,22 @@ const arrangeTools = (tools) => {
   )
 }
 
-const DesktopToolsMaster = ({match:{params:{category}}}) => (
-  <div className={styles.container}>
-    {arrangeTools(filterTools(category).map(t => renderTool(t, category)))}
-    <Helmet title={category} titleTemplate="Ken Fehling - Tools: %s" />
-  </div>
-)
+const DesktopToolsMaster = ({match:{params:{category}}}) => {
+  const ts = filterTools(category)
+  return (
+    <div className={styles.container}>
+      {arrangeTools(ts.map(t => renderTool(t, category)))}
+      <Helmet title={category} titleTemplate="Ken Fehling - Tools: %s">
+        <meta name='description'
+              content={`${category} tools that I use`}
+        />
+        <meta name="keywords"
+              content={[category, ...ts].join(',')}
+        />
+      </Helmet>
+    </div>
+  )
+}
 
 
 export default neverUpdate(DesktopToolsMaster)

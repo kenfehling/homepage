@@ -1,4 +1,5 @@
 import React from 'react'
+import Helmet from 'react-helmet'
 import {connectAudioPlayer, TimeSlider} from 'react-designable-audio-player'
 import {tracks} from '../../constants/music'
 import MobilePage from './MobilePage'
@@ -22,6 +23,15 @@ const AudioPlayer = ({play, stop, next, prev, isPlaying, currentTrack, isDesktop
         <i className={`fa fa-${isPlaying ? 'pause' : 'play'}`} onClick={play} />
         <i className="fa fa-forward" onClick={next} />
       </div>
+      <Helmet>
+        <title>Ken Fehling - Music</title>
+        <meta name='description'
+              content="Music I've created"
+        />
+        <meta name="keywords"
+              content="music, songs"
+        />
+      </Helmet>
     </div>
   </MobilePage>
 )

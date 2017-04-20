@@ -1,4 +1,5 @@
 import React from 'react'
+import Helmet from 'react-helmet'
 import * as styles from './PDF.scss'
 import {RESUME_FILE} from '../../constants/links'
 
@@ -22,6 +23,15 @@ const PDF = () => (
          aria-hidden="true"
       />
     </a>
+    <Helmet>
+      <title>Ken Fehling - Résumé</title>
+      <meta name='description'
+            content="My résumé"
+      />
+      <meta name="keywords"
+            content="resume, CV"
+      />
+    </Helmet>
   </div>
 )
 

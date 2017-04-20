@@ -1,7 +1,6 @@
 import React, {PropTypes} from 'react'
 import {HistoryWindow} from 'react-router-nested-history'
 import ReactTooltip from 'react-tooltip'
-import Helmet from 'react-helmet'
 import * as styles from './DesktopWindow.scss'
 
 const noop = () => {}
@@ -52,7 +51,6 @@ const DesktopWindow = ({name, container='desktop_' + name.toLowerCase(),
   >
     {({close}) => (
       <div className={`${styles.window} ${name}`}>
-        <Helmet title={name} titleTemplate="Ken Fehling - %s" />
         <div className='toolbar'>
           <div className='buttons left'>
             <ToolbarButton name='close' onClick={close} />

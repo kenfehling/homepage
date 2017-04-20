@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import Helmet from 'react-helmet'
 import validator from 'validator'
 import * as styles from './DesktopEmail.scss'
 import {EMAIL} from '../../constants/links'
@@ -141,18 +142,27 @@ class DesktopEmail extends Component {
 
   render() {
     return (
-      <CSSTransitionGroup
-        component='div'
-        className={styles.container}
-        transitionName='transition'
-        transitionEnterTimeout={0}
-        transitionLeaveTimeout={0}>
-        {
-          this.state.submitted ?
-          <Success key='success' /> :
-          <Form key='form' onSuccess={this.showSuccess.bind(this)} />
-        }
-      </CSSTransitionGroup>
+      <div className={styles.container}>
+        <CSSTransitionGroup
+          transitionName='transition'
+          transitionEnterTimeout={0}
+          transitionLeaveTimeout={0}>
+          {
+            this.state.submitted ?
+            <Success key='success' /> :
+            <Form key='form' onSuccess={this.showSuccess.bind(this)} />
+          }
+        </CSSTransitionGroup>
+        <Helmet>
+          <title>Ken Fehling - Contact</title>
+          <meta name='description'
+                content='Contact me for freelance work or consulting'
+          />
+          <meta name="keywords"
+                content="contact, email"
+          />
+        </Helmet>
+      </div>
     )
   }
 }

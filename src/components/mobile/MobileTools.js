@@ -1,11 +1,11 @@
 import React, {PropTypes} from 'react'
+import Helmet from 'react-helmet'
 import {HistoryRoute, Container} from 'react-router-nested-history'
 import MobilePage from './MobilePage'
 import MobileToolsDetail from './MobileToolsDetail'
 import List from './List'
 import {categories} from '../../constants/tools'
 import {filterTools, escapeName} from '../../utils/tools'
-import Helmet from 'react-helmet'
 import * as styles from './MobileTools.scss'
 import {devicePath} from '../../utils/mobile'
 
@@ -44,16 +44,36 @@ const MobileTools = ({isDesktop}) => {
       <HistoryRoute path={devicePath('/:app(tools)', isDesktop)} exact>
         <Page title='Tools' isDesktop={isDesktop}>
           <List items={mappedCategories} />
+          <Helmet>
+            <title>Ken Fehling - Tools</title>
+            <meta name='description'
+                  content="Tools I use"
+            />
+            <meta name="keywords"
+                  content="web, mobile, app, dev, design, development, music"
+            />
+          </Helmet>
         </Page>
       </HistoryRoute>
 
       <HistoryRoute path={devicePath('/:app(tools)/:category', isDesktop)} exact>
-        {({match:{params:{category}}}) => (
-          <Page title={category} isDesktop={isDesktop}>
-            <List items={filterTools(category).map(tool => mapTool(tool, category))} />
-            <Helmet title={category} titleTemplate='Ken Fehling - Tools: %s' />
-          </Page>
-        )}
+        {({match:{params:{category}}}) => {
+          const ts = filterTools(category)
+          return (
+            <Page title={category} isDesktop={isDesktop}>
+              <List
+                items={ts.map(tool => mapTool(tool, category))}/>
+              <Helmet title={category} titleTemplate='Ken Fehling - Tools: %s'>
+                <meta name='description'
+                      content={`${category} tools that I use`}
+                />
+                <meta name="keywords"
+                      content={[category, ...ts].join(',')}
+                />
+              </Helmet>
+            </Page>
+          )
+        }}
       </HistoryRoute>
 
       <HistoryRoute path={devicePath('/:app(tools)/:category/:tool', isDesktop)} exact>
