@@ -14,4 +14,4 @@ artifacts:
   files:
     - ./**/*
 #  discard-paths: yes
-  base-directory: server
+  base-directory: server/build
