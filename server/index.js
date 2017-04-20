@@ -2,7 +2,7 @@ require('source-map-support').install()
 require('dotenv').config()
 import express from 'express'
 import serveStatic from 'serve-static'
-import expressStaticGzip from 'express-static-gzip'
+//import expressStaticGzip from 'express-static-gzip'
 import path from 'path'
 import compression from 'compression'
 import React from 'react'
@@ -21,14 +21,18 @@ const auth = {
 
 const buildPath = __dirname
 const app = express()
-const serve = expressStaticGzip(buildPath)
+
+//Before all
+app.use(compression())
+
+const serve = serveStatic(buildPath)
 app.get('*', serve)
 app.use('/static', serve)
 app.set('views', buildPath)
 app.set('view engine', 'ejs')
 
 // After static so it compresses only dynamic assets (like generated HTML)
-app.use(compression())
+//app.use(compression())
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
