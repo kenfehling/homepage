@@ -1,4 +1,5 @@
 import React, {PropTypes} from 'react'
+import Helmet from 'react-helmet'
 import * as styles from './HomeScreen.scss'
 import {HeaderLink} from 'react-router-nested-history'
 import MobilePage from './MobilePage'
@@ -15,6 +16,15 @@ const HomeScreen = ({apps, isDesktop}) => {
             {app}
           </HeaderLink>
         ))}
+        <Helmet>
+          <title>Ken Fehling</title>
+          <meta name='description'
+                content='Web and mobile app developer, music maker'
+          />
+          <meta name="keywords"
+                content="Ken Fehling, web, mobile, dev, apps, websites, development, design"
+          />
+        </Helmet>
       </div>
     </MobilePage>
   )

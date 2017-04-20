@@ -1,4 +1,4 @@
-import React, {Component, PropTypes} from 'react'
+import React, {PropTypes} from 'react'
 import {WindowGroup} from 'react-router-nested-history'
 import * as styles from './Mobile.scss'
 import MobileWindow from '../mobile/MobileWindow'
@@ -21,7 +21,10 @@ const apps = [
 
 const Mobile = ({isDesktop}) => (
   <div className={styles.container}>
-    <WindowGroup name='mobile' allowInterContainerHistory={true}>
+    <WindowGroup name='mobile'
+                 allowInterContainerHistory={true}
+                 hideInactiveContainers={true}
+    >
       <div className='phone'>
         <ContainerWindow isDefault={true}
                          isDesktop={isDesktop}
