@@ -1,5 +1,5 @@
 import baseConfig from './prod.base.config'
-import CompressionPlugin from 'compression-webpack-plugin'
+//import CompressionPlugin from 'compression-webpack-plugin'
 
 export default {
   ...baseConfig,
@@ -9,11 +9,13 @@ export default {
   },
   plugins: [
     ...baseConfig.plugins,
+      /*
       new CompressionPlugin({
         asset: "[path].gz[query]",
         algorithm: "gzip",
         test: /\.(js|html|css)$/,
         minRatio: 0.8
       })
+      */
   ]
 }
