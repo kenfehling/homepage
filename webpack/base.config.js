@@ -21,19 +21,6 @@ export default {
       test: /\.js$/,
       exclude: /node_modules/,
       loader: 'babel-loader'
-    }, {
-      test: /\.png?$/,
-      exclude: /node_modules/,
-      loader: "url-loader?limit=10000000"
-    }, {
-      test: /\.gif?$/,
-      loader: "url-loader?limit=10000000&mimetype=image/png"
-    },{
-      test: /\.jpg?$/,
-      loader: "url-loader?limit=10000000"
-    }, {
-      test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-      loader: "url-loader?limit=10000000"
     }]
   },
   plugins: [

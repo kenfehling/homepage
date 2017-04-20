@@ -30,6 +30,36 @@ export default {
           fallback: "isomorphic-style-loader",
           use: "css-loader"
         })
+      },
+      {
+        test: /\.(png|jp?g)$/i,
+        exclude: /node_modules/,
+        loaders: [
+          "url-loader?limit=10000000",
+          {
+            loader: 'image-webpack-loader',
+            query: {
+              optipng: {
+                optimizationLevel: 7
+              }
+            }
+          }
+        ]
+      }, {
+        test: /\.svg$/i,
+        exclude: /node_modules/,
+        loaders: [
+          "url-loader?limit=10000000",
+          {
+            loader: 'svgo-loader',
+            options: {
+              plugins: [
+                { 'removeUnusedNS': true },
+                { 'convertColors': true }
+              ]
+            }
+          }
+        ]
       }
     ]
   },

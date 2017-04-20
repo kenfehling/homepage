@@ -41,6 +41,12 @@ export default {
         }, {
           test: /\.css$/,
             loader: 'style-loader!css-loader'
+        }, {
+          test: /\.(png|jp?g|svg)$/i,
+          exclude: /node_modules/,
+          loaders: [
+            "url-loader?limit=10000000"
+          ]
         }
       ]
     ]

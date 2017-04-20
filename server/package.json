@@ -17,8 +17,11 @@
     "extract-text-webpack-plugin": "^2.1.0",
     "favicons-webpack-plugin": "0.0.7",
     "html-webpack-plugin": "^2.28.0",
+    "image-webpack-loader": "^3.3.0",
     "isomorphic-style-loader": "^1.1.0",
     "source-map-support": "^0.4.11",
+    "svgo": "^0.7.2",
+    "svgo-loader": "^1.2.1",
     "webpack": "^2.2.0",
     "webpack-node-externals": "^1.5.4"
   },
