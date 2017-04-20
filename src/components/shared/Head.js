@@ -8,6 +8,11 @@ const Head = ({title, description, keywords}) => (
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="keywords" content={keywords} />
+    <meta itemprop="name" content={title} />
+    <meta itemprop="description" content={description} />
+    <meta itemprop="image" content={img} />
+    <meta itemprop="url" content={window.location.href} />
+    <meta itemprop="keywords" content={keywords} />
     <meta property="og:title" content={title} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={window.location.href} />
