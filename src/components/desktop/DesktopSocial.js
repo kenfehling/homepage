@@ -1,7 +1,7 @@
 import React from 'react'
-import Helmet from 'react-helmet'
 import * as styles from './DesktopSocial.scss'
 import {sites} from '../../constants/social'
+import Head from '../shared/Head'
 
 const DesktopSocial = () => (
   <div className={styles.container}>
@@ -11,15 +11,10 @@ const DesktopSocial = () => (
         <div className='text' style={{color}}>{name}</div>
       </a>
     ))}
-    <Helmet>
-      <title>Ken Fehling - Social</title>
-      <meta name='description'
-            content="Links to my Twitter, GitHub, LinkedIn, etc."
-      />
-      <meta name="keywords"
-            content="social, Twitter, GitHub, LinkedIn, Stack Overflow"
-      />
-    </Helmet>
+    <Head title='Ken Fehling - Social'
+          description="Links to my Twitter, GitHub, LinkedIn, etc."
+          keywords="social, Twitter, GitHub, LinkedIn, Stack Overflow"
+    />
   </div>
 )
 

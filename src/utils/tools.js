@@ -1,8 +1,9 @@
-import React, {createElement} from 'react'
+import React, {createElement, Children} from 'react'
 import {tools} from '../constants/tools'
 import range from 'lodash/range'
 import {HistoryLink} from 'react-router-nested-history'
 import reactStringReplace from 'react-string-replace'
+import {renderToString} from 'react-dom/server'
 
 const starIcon = require('../../img/icons/star.svg')
 const halfStarIcon = require('../../img/icons/half-star.svg')
@@ -70,8 +71,10 @@ export const replaceLinks = (element, path) => {
   return createElement(element.type, {children})
 }
 
-export const removeLinks = (element) => {
+const keepStrings = (items) => items.filter(item => typeof(item) === 'string')
+
+export const toTextDescription = (element) => {
   const children = reactStringReplace(element.props.children, /\[\[([\w\s]+)]]/g,
     (match) => match)
-  return createElement(element.type, {children})
+  return keepStrings(children).join('')
 }

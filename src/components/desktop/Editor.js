@@ -1,8 +1,8 @@
 import React from 'react'
-import Helmet from 'react-helmet'
 import * as styles from './Editor.scss'
 import {GITHUB_REPO} from '../../constants/links'
 import {gitHubLink as _gitHubLink} from '../../utils/links'
+import Head from '../shared/Head'
 
 const keyValueItem = (key, value) => (
   <div>
@@ -39,14 +39,9 @@ export default () => (
     <br />
     <br />
     {keyValueItem('Source code', <a target="_blank" href={GITHUB_REPO}>GitHub</a>)}
-    <Helmet>
-      <title>Ken Fehling - About</title>
-      <meta name='description'
-            content="This site was built using React and some other libraries, two of which I authored:"
-      />
-      <meta name="keywords"
-            content="Ken Fehling, React, libraries"
-      />
-    </Helmet>
+    <Head title='Ken Fehling - About'
+          description='This site was built using React and some other libraries, two of which I authored:'
+          keywords="Ken Fehling, React, libraries"
+    />
   </div>
 );

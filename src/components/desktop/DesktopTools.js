@@ -1,5 +1,4 @@
 import React from 'react'
-import Helmet from 'react-helmet'
 import {
   Container, ContainerGroup, HistoryRoute
 } from 'react-router-nested-history'
@@ -8,6 +7,7 @@ import DesktopToolsMaster from './DesktopToolsMaster'
 import DesktopToolsDetail from './DesktopToolsDetail'
 import {categories} from '../../constants/tools'
 import * as styles from './DesktopTools.scss'
+import Head from '../shared/Head'
 
 const DesktopTools = (props) => (
   <div className={styles.container}>
@@ -32,15 +32,10 @@ const DesktopTools = (props) => (
           </Container>
       ))}
     </ContainerGroup>
-    <Helmet>
-      <title>Ken Fehling - Tools</title>
-      <meta name='description'
-            content="Tools I use"
-      />
-      <meta name="keywords"
-            content="web, mobile, app, dev, design, development, music"
-      />
-    </Helmet>
+    <Head title='Ken Fehling - Tools'
+          description="Tools I use"
+          keywords="web, mobile, app, dev, design, development, music"
+    />
   </div>
 )
 

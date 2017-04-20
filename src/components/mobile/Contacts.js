@@ -6,6 +6,7 @@ import Contact from './MobileContact'
 import * as styles from './Contacts.scss'
 import {devicePath} from '../../utils/mobile'
 import {EMAIL} from '../../constants/links'
+import Head from '../shared/Head'
 
 const escapeName = name => name.replace('_', ' ')
 
@@ -44,6 +45,10 @@ const Contacts = ({isDesktop}) => {
           )}
         </HistoryRoute>
       </Container>
+      <Head title='Ken Fehling - Contacts'
+            description='Important contacts in the web development industry'
+            keywords="Ken Fehling, contacts, rolodex"
+      />
     </div>
   )
 }

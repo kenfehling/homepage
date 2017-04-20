@@ -1,25 +1,21 @@
 import React from 'react'
-import Helmet from "react-helmet"
 import {BackLink} from 'react-router-nested-history'
 import {
   renderStars, getTool, replaceLinks, getIcon,
-  removeLinks
+  toTextDescription
 } from '../../utils/tools'
 import * as styles from './DesktopToolsDetail.scss'
+import Head from '../shared/Head'
 
 const DesktopToolsDetail = ({match:{params:{tool, category}}}) => {
   const toolObject = getTool(tool)
-  const {name, fullName, stars, description} = toolObject
+  const {name, fullName, stars, description, categories} = toolObject
   const path = `/tools/${category}`
   return (<div className={styles.container} key={name}>
-    <Helmet title={tool} titleTemplate='Ken Fehling - Tools: %s'>
-      <meta name='description'
-            content={removeLinks(description)}
-      />
-      <meta name="keywords"
-            content={fullName}
-      />
-    </Helmet>
+    <Head title={`${fullName} - ${categories.join(', ')} tools`}
+          description={toTextDescription(description)}
+          keywords={[fullName, ...categories].join(',')}
+    />
     <div className='heading'>
       <div className='inner-heading'>
         <div className='back'>

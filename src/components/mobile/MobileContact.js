@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react'
-import Helmet from 'react-helmet'
 import * as styles from './MobileContact.scss'
+import Head from '../shared/Head'
 
 const MobileContact = ({contact:{name, icon, email, website, twitter}}) => (
   <div className={styles.container}>
@@ -20,15 +20,10 @@ const MobileContact = ({contact:{name, icon, email, website, twitter}}) => (
       <div className='label'>Twitter</div>
       <a target='_blank' href={`http://twitter.com/${twitter}`}>@{twitter}</a>
     </div>
-    <Helmet>
-      <title>Ken Fehling - Contact</title>
-      <meta name='description'
-            content='Contact me for freelance work or consulting'
-      />
-      <meta name="keywords"
-            content="contact, email"
-      />
-    </Helmet>
+    <Head title='Ken Fehling - Contact'
+          description='Contact me for freelance work or consulting'
+          keywords="contact, email"
+    />
   </div>
 )
 

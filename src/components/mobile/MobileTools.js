@@ -1,5 +1,4 @@
 import React, {PropTypes} from 'react'
-import Helmet from 'react-helmet'
 import {HistoryRoute, Container} from 'react-router-nested-history'
 import MobilePage from './MobilePage'
 import MobileToolsDetail from './MobileToolsDetail'
@@ -8,6 +7,7 @@ import {categories} from '../../constants/tools'
 import {filterTools, escapeName} from '../../utils/tools'
 import * as styles from './MobileTools.scss'
 import {devicePath} from '../../utils/mobile'
+import Head from '../shared/Head'
 
 const Page = ({title, backLinkText, children, isDesktop}) => (
   <MobilePage title={title}
@@ -44,15 +44,10 @@ const MobileTools = ({isDesktop}) => {
       <HistoryRoute path={devicePath('/:app(tools)', isDesktop)} exact>
         <Page title='Tools' isDesktop={isDesktop}>
           <List items={mappedCategories} />
-          <Helmet>
-            <title>Ken Fehling - Tools</title>
-            <meta name='description'
-                  content="Tools I use"
-            />
-            <meta name="keywords"
-                  content="web, mobile, app, dev, design, development, music"
-            />
-          </Helmet>
+          <Head title='Ken Fehling - Tools'
+                description="Tools I use"
+                keywords="web, mobile, app, dev, design, development, music"
+          />
         </Page>
       </HistoryRoute>
 
@@ -63,14 +58,10 @@ const MobileTools = ({isDesktop}) => {
             <Page title={category} isDesktop={isDesktop}>
               <List
                 items={ts.map(tool => mapTool(tool, category))}/>
-              <Helmet title={category} titleTemplate='Ken Fehling - Tools: %s'>
-                <meta name='description'
-                      content={`${category} tools that I use`}
-                />
-                <meta name="keywords"
-                      content={[category, ...ts].join(',')}
-                />
-              </Helmet>
+              <Head title={`${category} tools`}
+                    description={`${category} tools that I use`}
+                    keywords={[category, ...ts].join(',')}
+              />
             </Page>
           )
         }}

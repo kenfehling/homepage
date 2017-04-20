@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import Helmet from 'react-helmet'
 import validator from 'validator'
 import * as styles from './DesktopEmail.scss'
 import {EMAIL} from '../../constants/links'
@@ -7,6 +6,7 @@ import serialize from 'form-serialize'
 import fetch from 'isomorphic-fetch'
 import keys from 'lodash/keys'
 import {CSSTransitionGroup} from 'react-transition-group'
+import Head from '../shared/Head'
 
 const SUCCESS_DURATION = 5000
 
@@ -153,15 +153,10 @@ class DesktopEmail extends Component {
             <Form key='form' onSuccess={this.showSuccess.bind(this)} />
           }
         </CSSTransitionGroup>
-        <Helmet>
-          <title>Ken Fehling - Contact</title>
-          <meta name='description'
-                content='Contact me for freelance work or consulting'
-          />
-          <meta name="keywords"
-                content="contact, email"
-          />
-        </Helmet>
+        <Head title='Ken Fehling - Email'
+              description='Contact me for freelance work or consulting'
+              keywords="contact, email"
+        />
       </div>
     )
   }
