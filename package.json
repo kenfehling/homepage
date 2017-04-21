@@ -21,7 +21,7 @@
     "react": "^15.5.4",
     "react-designable-audio-player": "github:kenfehling/react-designable-audio-player",
     "react-dom": "^15.5.4",
-    "react-helmet": "^3.1.0",
+    "react-helmet": "^5.0.3",
     "react-router": "4.0.0",
     "react-router-dom": "4.0.0",
     "react-router-nested-history": "github:kenfehling/react-router-nested-history",

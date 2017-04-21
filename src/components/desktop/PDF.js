@@ -1,6 +1,7 @@
 import React from 'react'
 import * as styles from './PDF.scss'
 import {RESUME_FILE} from '../../constants/links'
+import Head from '../shared/Head'
 
 const FILE = '/static/' + RESUME_FILE
 const DOWNLOAD = '/api/' + RESUME_FILE
@@ -22,6 +23,10 @@ const PDF = () => (
          aria-hidden="true"
       />
     </a>
+    <Head title='Ken Fehling - Resume'
+          description='My resume'
+          keywords="resume, CV"
+    />
   </div>
 )
 

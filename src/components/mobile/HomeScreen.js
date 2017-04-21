@@ -2,6 +2,7 @@ import React, {PropTypes} from 'react'
 import * as styles from './HomeScreen.scss'
 import {HeaderLink} from 'react-router-nested-history'
 import MobilePage from './MobilePage'
+import Head from '../shared/Head'
 
 const HomeScreen = ({apps, isDesktop}) => {
   return (
@@ -15,6 +16,10 @@ const HomeScreen = ({apps, isDesktop}) => {
             {app}
           </HeaderLink>
         ))}
+        <Head title='Ken Fehling'
+              description='Web and mobile app developer, music maker'
+              keywords="Ken Fehling, web, mobile, dev, apps, websites, development, design, music"
+        />
       </div>
     </MobilePage>
   )

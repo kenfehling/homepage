@@ -1,6 +1,8 @@
 import React from 'react'
 import * as styles from './Editor.scss'
 import {GITHUB_REPO} from '../../constants/links'
+import {gitHubLink as _gitHubLink} from '../../utils/links'
+import Head from '../shared/Head'
 
 const keyValueItem = (key, value) => (
   <div>
@@ -9,13 +11,7 @@ const keyValueItem = (key, value) => (
   </div>
 );
 
-const gitHubLink = (name) => (
-  <div className='title'>
-    <a target="_blank" href={`https://www.github.com/kenfehling/${name}`}>
-      {name}
-    </a>
-  </div>
-)
+const gitHubLink = (name) => _gitHubLink(name, 'title')
 
 const colon = <span className="symbol">:</span>
 const period = <span className="symbol">.</span>
@@ -43,5 +39,9 @@ export default () => (
     <br />
     <br />
     {keyValueItem('Source code', <a target="_blank" href={GITHUB_REPO}>GitHub</a>)}
+    <Head title='Ken Fehling - About'
+          description='This site was built using React and some other libraries, two of which I authored:'
+          keywords="Ken Fehling, React, libraries"
+    />
   </div>
 );

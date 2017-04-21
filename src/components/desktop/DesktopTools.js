@@ -7,6 +7,7 @@ import DesktopToolsMaster from './DesktopToolsMaster'
 import DesktopToolsDetail from './DesktopToolsDetail'
 import {categories} from '../../constants/tools'
 import * as styles from './DesktopTools.scss'
+import Head from '../shared/Head'
 
 const DesktopTools = (props) => (
   <div className={styles.container}>
@@ -31,6 +32,10 @@ const DesktopTools = (props) => (
           </Container>
       ))}
     </ContainerGroup>
+    <Head title='Ken Fehling - Tools'
+          description="Tools I use"
+          keywords="web, mobile, app, dev, design, development, music"
+    />
   </div>
 )
 

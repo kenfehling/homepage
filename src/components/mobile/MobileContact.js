@@ -1,5 +1,6 @@
 import React, {PropTypes} from 'react'
 import * as styles from './MobileContact.scss'
+import Head from '../shared/Head'
 
 const MobileContact = ({contact:{name, icon, email, website, twitter}}) => (
   <div className={styles.container}>
@@ -19,6 +20,10 @@ const MobileContact = ({contact:{name, icon, email, website, twitter}}) => (
       <div className='label'>Twitter</div>
       <a target='_blank' href={`http://twitter.com/${twitter}`}>@{twitter}</a>
     </div>
+    <Head title='Ken Fehling - Contact'
+          description='Contact me for freelance work or consulting'
+          keywords="contact, email"
+    />
   </div>
 )
 

@@ -6,6 +6,7 @@ import serialize from 'form-serialize'
 import fetch from 'isomorphic-fetch'
 import keys from 'lodash/keys'
 import {CSSTransitionGroup} from 'react-transition-group'
+import Head from '../shared/Head'
 
 const SUCCESS_DURATION = 5000
 
@@ -141,18 +142,22 @@ class DesktopEmail extends Component {
 
   render() {
     return (
-      <CSSTransitionGroup
-        component='div'
-        className={styles.container}
-        transitionName='transition'
-        transitionEnterTimeout={0}
-        transitionLeaveTimeout={0}>
-        {
-          this.state.submitted ?
-          <Success key='success' /> :
-          <Form key='form' onSuccess={this.showSuccess.bind(this)} />
-        }
-      </CSSTransitionGroup>
+      <div className={styles.container}>
+        <CSSTransitionGroup
+          transitionName='transition'
+          transitionEnterTimeout={0}
+          transitionLeaveTimeout={0}>
+          {
+            this.state.submitted ?
+            <Success key='success' /> :
+            <Form key='form' onSuccess={this.showSuccess.bind(this)} />
+          }
+        </CSSTransitionGroup>
+        <Head title='Ken Fehling - Email'
+              description='Contact me for freelance work or consulting'
+              keywords="contact, email"
+        />
+      </div>
     )
   }
 }

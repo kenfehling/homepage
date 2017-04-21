@@ -4,9 +4,9 @@ import {
   getIcon, renderStars, filterTools, getMainName, escapeName
 } from '../../utils/tools'
 import * as styles from './DesktopToolsMaster.scss'
-import Helmet from 'react-helmet'
 import {neverUpdate} from '../../enhancers'
 import {tools} from '../../constants/tools'
+import Head from '../shared/Head'
 
 const renderTool = (tool, category) => {
   const {name, stars} = tool
@@ -39,12 +39,18 @@ const arrangeTools = (tools) => {
   )
 }
 
-const DesktopToolsMaster = ({match:{params:{category}}}) => (
-  <div className={styles.container}>
-    {arrangeTools(filterTools(category).map(t => renderTool(t, category)))}
-    <Helmet title={category} titleTemplate="Ken Fehling - Tools: %s" />
-  </div>
-)
+const DesktopToolsMaster = ({match:{params:{category}}}) => {
+  const ts = filterTools(category)
+  return (
+    <div className={styles.container}>
+      {arrangeTools(ts.map(t => renderTool(t, category)))}
+      <Head title={`${category} tools`}
+            description={`${category} tools that I use`}
+            keywords={[category, ...ts].join(',')}
+      />
+    </div>
+  )
+}
 
 
 export default neverUpdate(DesktopToolsMaster)

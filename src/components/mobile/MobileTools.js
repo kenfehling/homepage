@@ -5,9 +5,9 @@ import MobileToolsDetail from './MobileToolsDetail'
 import List from './List'
 import {categories} from '../../constants/tools'
 import {filterTools, escapeName} from '../../utils/tools'
-import Helmet from 'react-helmet'
 import * as styles from './MobileTools.scss'
 import {devicePath} from '../../utils/mobile'
+import Head from '../shared/Head'
 
 const Page = ({title, backLinkText, children, isDesktop}) => (
   <MobilePage title={title}
@@ -44,16 +44,27 @@ const MobileTools = ({isDesktop}) => {
       <HistoryRoute path={devicePath('/:app(tools)', isDesktop)} exact>
         <Page title='Tools' isDesktop={isDesktop}>
           <List items={mappedCategories} />
+          <Head title='Ken Fehling - Tools'
+                description="Tools I use"
+                keywords="web, mobile, app, dev, design, development, music"
+          />
         </Page>
       </HistoryRoute>
 
       <HistoryRoute path={devicePath('/:app(tools)/:category', isDesktop)} exact>
-        {({match:{params:{category}}}) => (
-          <Page title={category} isDesktop={isDesktop}>
-            <List items={filterTools(category).map(tool => mapTool(tool, category))} />
-            <Helmet title={category} titleTemplate='Ken Fehling - Tools: %s' />
-          </Page>
-        )}
+        {({match:{params:{category}}}) => {
+          const ts = filterTools(category)
+          return (
+            <Page title={category} isDesktop={isDesktop}>
+              <List
+                items={ts.map(tool => mapTool(tool, category))}/>
+              <Head title={`${category} tools`}
+                    description={`${category} tools that I use`}
+                    keywords={[category, ...ts].join(',')}
+              />
+            </Page>
+          )
+        }}
       </HistoryRoute>
 
       <HistoryRoute path={devicePath('/:app(tools)/:category/:tool', isDesktop)} exact>

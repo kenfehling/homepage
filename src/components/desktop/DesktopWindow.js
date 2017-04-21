@@ -1,7 +1,6 @@
 import React, {PropTypes} from 'react'
 import {HistoryWindow} from 'react-router-nested-history'
 import ReactTooltip from 'react-tooltip'
-import Helmet from 'react-helmet'
 import * as styles from './DesktopWindow.scss'
 
 const noop = () => {}
@@ -34,7 +33,7 @@ const Share = ({location=window.location.href}) => (
     />
     <ShareItem name='Email'
                target='_top'
-               url={`mailto:?subject=${document.title}&body=${location}`}
+               url={`mailto:?subject=${document ? document.title : ''}&body=${location}`}
     />
   </div>
 )
@@ -52,7 +51,6 @@ const DesktopWindow = ({name, container='desktop_' + name.toLowerCase(),
   >
     {({close}) => (
       <div className={`${styles.window} ${name}`}>
-        <Helmet title={name} titleTemplate="Ken Fehling - %s" />
         <div className='toolbar'>
           <div className='buttons left'>
             <ToolbarButton name='close' onClick={close} />
