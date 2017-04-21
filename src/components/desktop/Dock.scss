@@ -30,7 +30,7 @@ $tooltip-opacity: 0.98;
   bottom: 0;
   width: $leftPad + 52px * $num_icons;
   height: $dock-height;
-  z-index: 100;
+  z-index: 10;
 
   @keyframes load-dock {
     0% {

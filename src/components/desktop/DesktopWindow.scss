@@ -27,7 +27,7 @@
     .buttons {
       display: flex;
       position: absolute;
-      z-index: 999;
+      z-index: 100;
       img {
         display: block;
         width: $icon-size;
