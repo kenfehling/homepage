@@ -3,10 +3,10 @@ import {HeaderLink} from 'react-router-nested-history'
 import ReactTooltip from 'react-tooltip'
 import bowser from 'bowser'
 import * as styles from './Dock.scss'
-import {SPLASH_DURATION} from '../../constants/settings'
+import {HIDE_SPLASH_AFTER, SPLASH_DURATION} from '../../constants/settings'
 
-const LOAD_WAIT = SPLASH_DURATION * 2 + 1000
-const BOUNCE_WAIT = 5000
+const LOAD_WAIT = (SPLASH_DURATION + HIDE_SPLASH_AFTER) * 1000
+const BOUNCE_WAIT = 4000
 const noop = () => {}
 
 class BouncingDockItem extends Component {
