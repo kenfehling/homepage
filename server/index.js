@@ -82,8 +82,7 @@ app.use(unless('/api', (req, res) => {
       <App />
     </HistoryRouter>,
   )
-  //const helmet = Helmet.rewind()
-  const helmet = Helmet.renderStatic();
+  const helmet = Helmet.renderStatic()
   const head = helmet.title.toString() + helmet.meta.toString()
   if (context.url) {
     return res.redirect(302, context.url)

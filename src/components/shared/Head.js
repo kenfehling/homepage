@@ -3,7 +3,7 @@ import Helmet from 'react-helmet'
 
 const img = "http://www.kenfehling.com/static/Ken_Fehling.jpg"
 
-const Head = ({title, description, keywords}) => (
+const Head = ({title, description, keywords, url='http://google.com'}) => ( //window.location.href}) => (
   <Helmet>
     <title>{title}</title>
     <meta name="description" content={description} />
@@ -11,11 +11,11 @@ const Head = ({title, description, keywords}) => (
     <meta itemprop="name" content={title} />
     <meta itemprop="description" content={description} />
     <meta itemprop="image" content={img} />
-    <meta itemprop="url" content={window.location.href} />
+    <meta itemprop="url" content={url} />
     <meta itemprop="keywords" content={keywords} />
     <meta property="og:title" content={title} />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={window.location.href} />
+    <meta property="og:url" content={url} />
     <meta property="og:image" content={img} />
     <meta property="og:description" content={description} />
     <meta property="og:site_name" content="kenfehling.com" />
