@@ -9,4 +9,8 @@
   background-color: $default-mobile-bg-color;
   padding: 4px;
   box-sizing: border-box;
+
+  &.ios-safari {
+    padding-bottom: 72px;
+  }
 }

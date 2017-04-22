@@ -8,6 +8,10 @@ $btn-size: $btn-base-size + $btn-padding * 2;
 :local(.container) {
   @include no-select();
 
+  img {
+    @include no-drag();
+  }
+
   .resume {
     width: 476px;
     height: 616px;
