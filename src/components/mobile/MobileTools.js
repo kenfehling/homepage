@@ -23,25 +23,25 @@ const MobileTools = ({isDesktop}) => {
   const mappedCategories = categories.map(c => ({
     name: c,
     icon: `tools/categories/${c}.svg`,
-    page: devicePath(`/tools/${c}`, isDesktop)
+    page: devicePath(`tools/${c}`, isDesktop)
   }))
 
   const mapTool = ({name, iconType}, category) => ({
     name,
     icon: `tools/${escapeName(name)}.${iconType || 'svg'}`,
-    page: devicePath(`/tools/${category}/${escapeName(name)}`, isDesktop)
+    page: devicePath(`tools/${category}/${escapeName(name)}`, isDesktop)
   })
 
   return (
     <Container name='mobile_tools'
-               initialUrl={devicePath('/tools', isDesktop)}
+               initialUrl={devicePath('tools', isDesktop)}
                patterns={[
-                 devicePath('/:app(tools)', isDesktop),
-                 devicePath('/:app(tools)/:category', isDesktop),
-                 devicePath('/:app(tools)/:category/:tool', isDesktop)
+                 devicePath(':app(tools)', isDesktop),
+                 devicePath(':app(tools)/:category', isDesktop),
+                 devicePath(':app(tools)/:category/:tool', isDesktop)
                ]}
     >
-      <HistoryRoute path={devicePath('/:app(tools)', isDesktop)} exact>
+      <HistoryRoute path={devicePath(':app(tools)', isDesktop)} exact>
         <Page title='Tools' isDesktop={isDesktop}>
           <List items={mappedCategories} />
           <Head title='Ken Fehling - Tools'
@@ -51,7 +51,7 @@ const MobileTools = ({isDesktop}) => {
         </Page>
       </HistoryRoute>
 
-      <HistoryRoute path={devicePath('/:app(tools)/:category', isDesktop)} exact>
+      <HistoryRoute path={devicePath(':app(tools)/:category', isDesktop)} exact>
         {({match:{params:{category}}}) => {
           const ts = filterTools(category)
           return (
@@ -67,7 +67,7 @@ const MobileTools = ({isDesktop}) => {
         }}
       </HistoryRoute>
 
-      <HistoryRoute path={devicePath('/:app(tools)/:category/:tool', isDesktop)} exact>
+      <HistoryRoute path={devicePath(':app(tools)/:category/:tool', isDesktop)} exact>
         {(props) => (
           <Page title={props.match.params.tool}
                 backLinkText={({params:{tool, category}}) => tool || category}

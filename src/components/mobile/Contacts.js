@@ -14,7 +14,7 @@ const Contacts = ({isDesktop}) => {
   const contacts = [{
     name: 'Ken Fehling',
     icon: 'mobile/contacts/Ken_Fehling.jpg',
-    page: devicePath('/contacts/Ken_Fehling', isDesktop),
+    page: devicePath('contacts/Ken_Fehling', isDesktop),
     email: EMAIL,
     website: 'kenfehling.com',
     twitter: 'kenfehling'
@@ -27,17 +27,17 @@ const Contacts = ({isDesktop}) => {
       <Container name='mobile_contacts'
                initialUrl={devicePath('/contacts', isDesktop)}
                patterns={[
-                 devicePath('/:app(contacts)', isDesktop),
-                 devicePath('/:app(contacts)/:name', isDesktop)
+                 devicePath(':app(contacts)', isDesktop),
+                 devicePath(':app(contacts)/:name', isDesktop)
                ]}
       >
-        <HistoryRoute path={devicePath('/:app(contacts)', isDesktop)} exact>
+        <HistoryRoute path={devicePath(':app(contacts)', isDesktop)} exact>
           <Page title='Contacts' isDesktop={isDesktop} navClassName={styles.nav}>
             <List items={contacts}/>
           </Page>
         </HistoryRoute>
 
-        <HistoryRoute path={devicePath('/:app(contacts)/:name', isDesktop)} exact>
+        <HistoryRoute path={devicePath(':app(contacts)/:name', isDesktop)} exact>
           {({match:{params:{name}}}) => (
             <Page isDesktop={isDesktop} navClassName={styles.nav}>
               <Contact contact={findContact(name)}/>

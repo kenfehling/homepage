@@ -10,7 +10,7 @@ import Head from '../shared/Head'
 const MobileToolsDetail = ({match:{params:{tool, category}}, isDesktop}) => {
   const toolObject = getTool(tool)
   const {name, fullName, stars, description, categories} = toolObject
-  const path = devicePath(`/tools/${category}`, isDesktop)
+  const path = devicePath(`tools/${category}`, isDesktop)
   return (<div className={styles.container} key={name}>
     <Head title={`${fullName} - ${categories.join(', ')} tools`}
           description={toTextDescription(description)}

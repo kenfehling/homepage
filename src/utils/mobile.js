@@ -3,7 +3,7 @@ import {Route} from 'react-router'
 import {HistoryRedirect} from 'react-router-nested-history'
 import SimpleRedirect from '../components/shared/SimpleRedirect'
 
-export const devicePath = (url, isDesktop) => isDesktop ? `/mobile${url}` : url
+export const devicePath = (url, isDesktop) => isDesktop ? `/mobile${url}` : `/${url}`
 
 export const redirectMobileToDesktop = (path) => (
   <div>

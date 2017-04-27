@@ -4,8 +4,8 @@ import {Container, HistoryRoute} from 'react-router-nested-history'
 import {devicePath} from '../../utils/mobile'
 
 const toId = name => 'mobile_' + name.toLowerCase()
-const toPattern = (name, isDesktop) => devicePath(`/:app(${name.toLowerCase()})`, isDesktop)
-const toPath = (name, isDesktop) => devicePath(`/${name.toLowerCase()}`, isDesktop)
+const toPattern = (name, isDesktop) => devicePath(`:app(${name.toLowerCase()})`, isDesktop)
+const toPath = (name, isDesktop) => devicePath(name.toLowerCase(), isDesktop)
 
 const MobileContainerWindow = ({isDesktop, children, name, title, isDefault=false,
                                 id=toId(name), path=toPath(name, isDesktop),
