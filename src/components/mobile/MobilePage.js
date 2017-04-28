@@ -1,4 +1,5 @@
-import React, {PropTypes} from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import {BackLink} from 'react-router-nested-history'
 import * as styles from './MobilePage.scss'
 import '../../utils/string'

@@ -17,6 +17,7 @@
     "form-serialize": "^0.7.1",
     "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.17.4",
+    "prop-types": "^15.5.8",
     "rc-progress": "^2.0.6",
     "react": "^15.5.4",
     "react-designable-audio-player": "github:kenfehling/react-designable-audio-player",

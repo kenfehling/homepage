@@ -1,4 +1,5 @@
-import React, {PropTypes} from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import {HistoryLink} from 'react-router-nested-history'
 import * as styles from './ListItem.scss'
 
