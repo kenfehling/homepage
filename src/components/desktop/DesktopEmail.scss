@@ -1,6 +1,7 @@
 @import "bourbon";
 @import "../../styles/utils";
 @import "../../styles/dimens";
+@import "../../styles/colors";
 
 $text-box-padding-y: 0.2em;
 $text-box-padding-x: 0.3em;
@@ -24,8 +25,19 @@ $text-area-padding-x: 0.7em;
     form {
       width: 100%;
       height: 100%;
-      display: flex;
-      flex-direction: column;
+
+      .field {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .field.textarea {
+        height: 190px;
+      }
+
+      .field, .buttons {
+        margin-top: 1em;
+      }
 
       label {
         width: 100%;
@@ -38,11 +50,18 @@ $text-area-padding-x: 0.7em;
         margin-right: 1ex;
       }
 
-      .invalid.label {
-        color: #E00;
+      .invalid {
+        .label {
+          color: $error-color;
+        }
+
+        input[type=text], textarea {
+          border-color: $error-color;
+        }
       }
 
       input[type=text], textarea {
+        flex: 1 1;
         font-family: inherit;
         font-size: inherit;
         border: thin solid #AAA;
@@ -52,13 +71,12 @@ $text-area-padding-x: 0.7em;
       }
 
       input[type=text] {
-        flex: 1 1;
         padding: $text-box-padding-y $text-box-padding-x
         $text-box-padding-y * 1.1 $text-box-padding-x;
       }
 
       textarea {
-        height: 150px;
+        height: 100%;
         resize: none;
         padding: ($text-area-padding-y + 0.1em) $text-area-padding-y;
       }

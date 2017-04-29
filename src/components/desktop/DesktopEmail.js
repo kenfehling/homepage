@@ -31,8 +31,8 @@ class Form extends Component {
     }
   }
 
-  getLabelClass(el) {
-    return 'label' + (this.state.invalidFields.includes(el) ? ' invalid' : '')
+  getFieldClass(el) {
+    return this.state.invalidFields.includes(el) ? 'invalid' : ''
   }
 
   setOpenInEmailLink() {
@@ -82,36 +82,38 @@ class Form extends Component {
             <span className='label'>To:</span>
             Ken Fehling &lt;<a href={`mailto:${EMAIL}`}>{EMAIL}</a>&gt;
           </div>
-          <br />
-          <label>
-            <span className={this.getLabelClass('from')}>
-              From:
-            </span>
-            <input type='text'
-                   name='from'
-                   ref={(el) => {this.from = el}}
-                   placeholder='Your email address' />
-          </label>
-          <br />
-          <label>
-            <span className={this.getLabelClass('subject')}>Subject:</span>
-            <input type='text'
-                   name='subject'
-                   ref={(el) => {this.subject = el}}
-                   onChange={this.setOpenInEmailLink.bind(this)}
-                   placeholder="Freelance work/consulting"
+          <div className={'field ' + this.getFieldClass('from')}>
+            <label>
+              <span className='label'>
+                From:
+              </span>
+              <input type='text'
+                     name='from'
+                     ref={(el) => {this.from = el}}
+                     placeholder='Your email address' />
+            </label>
+          </div>
+          <div className={'field ' + this.getFieldClass('subject')}>
+            <label>
+              <span className='label'>Subject:</span>
+              <input type='text'
+                     name='subject'
+                     ref={(el) => {this.subject = el}}
+                     onChange={this.setOpenInEmailLink.bind(this)}
+                     placeholder="Freelance work/consulting"
+              />
+            </label>
+          </div>
+          <div className={'field textarea ' +  this.getFieldClass('body')}>
+            <span className='label'>Message:</span>
+            <textarea name='body'
+                      ref={(el) => {this.body = el}}
+                      onChange={this.setOpenInEmailLink.bind(this)}
+                      placeholder={'Hi Ken,\n\n' +
+                      'I love your website.\n\n' +
+                      'I\'d like to hire you for training or contract work.'}
             />
-          </label>
-          <br />
-          <span className={this.getLabelClass('body')}>Message:</span>
-          <textarea name='body'
-                    ref={(el) => {this.body = el}}
-                    onChange={this.setOpenInEmailLink.bind(this)}
-                    placeholder={'Hi Ken,\n\n' +
-                    'I love your website.\n\n' +
-                    'I\'d like to hire you for training or contract work.'}
-          />
-          <br />
+          </div>
           <div className='buttons'>
             <input type='submit'
                    value='Send'
