@@ -6,6 +6,8 @@ phases:
       - npm install
   build:
     commands:
+      - service npm start
+      - sleep 3
       - npm test
   post_build:
     commands:
