@@ -4,11 +4,11 @@ require('mocha-generators').install();
 import {expect} from 'chai'
 
 describe('smoke tests', function() {
-  this.timeout(60000)
+  this.timeout(30000)
   let nightmare
 
   beforeEach(() => {
-    nightmare = Nightmare({show: false}).goto('http://localhost:8081').wait(4000)
+    nightmare = Nightmare({show: false}).goto('http://localhost:8081').wait(10000)
   })
 
   afterEach(function*() {
