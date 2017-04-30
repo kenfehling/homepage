@@ -8,7 +8,7 @@ describe('smoke tests', function() {
   let nightmare
 
   beforeEach(() => {
-    nightmare = Nightmare({ show: true }).goto('http://localhost:8081').wait(4000)
+    nightmare = Nightmare({show: false}).goto('http://localhost:8081').wait(4000)
   })
 
   afterEach(function*() {
