@@ -9,7 +9,12 @@ phases:
       - npm test
   build:
     commands:
-      - npm run build
+      - npm start &
+      - npm test
+  post_build:
+    commands:
+      - killall node
+      - rm -rf node_modules
 artifacts:
   files:
     - ./**/*
