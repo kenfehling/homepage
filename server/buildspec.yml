@@ -6,12 +6,9 @@ phases:
       - npm install
   build:
     commands:
-      - service npm start
-      - sleep 3
       - npm test
   post_build:
     commands:
-      - killall node
       - rm -rf node_modules
 artifacts:
   files:
