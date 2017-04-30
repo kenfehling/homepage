@@ -1,7 +1,10 @@
 import Nightmare from 'nightmare'
-require('babel-polyfill')
-require('mocha-generators').install();
+import 'babel-polyfill'
+import mocha from 'mocha'
+import coMocha from 'co-mocha'
 import {expect} from 'chai'
+
+coMocha(mocha)
 
 const PORT = 3000
 
@@ -10,7 +13,7 @@ describe('smoke tests', function() {
   let nightmare
 
   beforeEach(() => {
-    nightmare = Nightmare({show: false}).goto(`http://localhost:${PORT}`).wait(10000)
+    nightmare = Nightmare({show: false}).goto(`http://localhost:${PORT}`).wait(5000)
   })
 
   afterEach(function*() {

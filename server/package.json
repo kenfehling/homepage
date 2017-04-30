@@ -11,6 +11,7 @@
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-react": "^6.16.0",
     "chai": "^3.5.0",
+    "co-mocha": "^1.2.0",
     "css-loader": "^0.25.0",
     "ejs-compiled-loader": "^1.1.0",
     "eslint": "^3.7.1",
@@ -21,7 +22,6 @@
     "image-webpack-loader": "^3.3.0",
     "isomorphic-style-loader": "^1.1.0",
     "mocha": "^3.3.0",
-    "mocha-generators": "^2.0.0",
     "nightmare": "^2.10.0",
     "npm-run-all": "^4.0.2",
     "source-map-support": "^0.4.11",
@@ -52,7 +52,7 @@
     "stop": "kill $(pgrep -f 'node build/server')",
     "dev": "npm run build; npm start",
     "test:e2e": "node node_modules/mocha/bin/mocha --compilers js:babel-core/register test/**/*.test.js",
-    "test:once": "sleep 5; wget http://localhost:3000; cat index.html; npm run test:e2e; npm stop",
+    "test:once": "sleep 5; npm run test:e2e; npm stop",
     "test": "node node_modules/npm-run-all/bin/run-p start test:once",
     "stats": "webpack --config prod.client.config.babel.js --profile --json > stats.json"
   }
