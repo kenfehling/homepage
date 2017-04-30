@@ -12,7 +12,7 @@ phases:
       - npm run build
   post_build:
     commands:
-      - cd server; npm start; cd ..
+      - cd server; npm start & cd ..
       - npm run test:e2e
 artifacts:
   files:
