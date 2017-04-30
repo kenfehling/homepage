@@ -10,6 +10,9 @@ phases:
   build:
     commands:
       - npm run build
+  post_build:
+      - cd server; npm start; cd ..
+      - npm run test:e2e
 artifacts:
   files:
     - ./**/*

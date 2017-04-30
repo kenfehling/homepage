@@ -6,7 +6,9 @@
   "scripts": {
     "start": "webpack-dev-server --host 0.0.0.0 --port 8081 --progress --colors --history-api-fallback --config webpack/dev.config.babel.js",
     "lint": "eslint src",
-    "test": "mocha --compilers js:babel-core/register test/**/*.test.js",
+    "test:unit": "echo 'ok'",
+    "test:e2e": "mocha --compilers js:babel-core/register test/**/*.test.js",
+    "test": "npm run test:unit",
     "build": "cd server; npm install; npm run build"
   },
   "author": "Ken Fehling",

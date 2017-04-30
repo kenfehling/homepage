@@ -85,7 +85,7 @@ class Dock extends Component {
         <div className={styles.container}>
           <div className="inner-container">
             <div className="back-container"/>
-            <div className="front-container">
+            <div className="dock">
               {windows.map(props => <DockItem key={props.name} {...props} />)}
             </div>
           </div>
