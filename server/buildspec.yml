@@ -6,7 +6,7 @@ phases:
       - npm install
   build:
     commands:
-      - npm start & npm test
+      - npm test
   post_build:
     commands:
       - killall node
