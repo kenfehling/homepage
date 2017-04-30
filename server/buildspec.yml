@@ -7,9 +7,3 @@ phases:
   build:
     commands:
       - npm test
-  post_build:
-    commands:
-      - rm -rf node_modules
-artifacts:
-  files:
-    - ./**/*
