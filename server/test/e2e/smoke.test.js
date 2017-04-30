@@ -10,7 +10,7 @@ describe('smoke tests', function() {
   let nightmare
 
   beforeEach(() => {
-    nightmare = Nightmare({show: false}).goto(`http://localhost:${PORT}`).wait(5000)
+    nightmare = Nightmare({show: false}).goto(`http://localhost:${PORT}`).wait(10000)
   })
 
   afterEach(function*() {
