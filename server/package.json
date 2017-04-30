@@ -52,7 +52,7 @@
     "stop": "kill $(pgrep -f 'node build/server')",
     "dev": "npm run build; npm start",
     "test:e2e": "node node_modules/mocha/bin/mocha --compilers js:babel-core/register test/**/*.test.js",
-    "test:once": "sleep 5; ping localhost; wget http://localhost:3000; npm run test:e2e; npm stop",
+    "test:once": "sleep 5; wget http://localhost:3000; cat index.html; npm run test:e2e; npm stop",
     "test": "node node_modules/npm-run-all/bin/run-p start test:once",
     "stats": "webpack --config prod.client.config.babel.js --profile --json > stats.json"
   }
