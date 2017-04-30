@@ -51,7 +51,7 @@
     "stop": "kill $(pgrep -f 'node build/server')",
     "dev": "npm run build; npm start",
     "test:e2e": "mocha --compilers js:babel-core/register test/**/*.test.js",
-    "test:once": "sleep 3; npm run test:e2e; npm run stop",
+    "test:once": "sleep 3; npm run test:e2e; npm stop",
     "test": "npm-run-all --parallel start test:once",
     "stats": "webpack --config prod.client.config.babel.js --profile --json > stats.json"
   }
