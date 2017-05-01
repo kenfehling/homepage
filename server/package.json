@@ -52,8 +52,8 @@
     "start": "node build/server",
     "stop": "kill $(pgrep -f 'node build/server')",
     "dev": "npm run build; npm start",
-    "e2e-setup": "selenium-standalone install",
-    "test:e2e": "nightwatch",
+    "e2e-setup": "./node_modules/selenium-standalone/bin/selenium-standalone install",
+    "test:e2e": "./node_modules/nightwatch/bin/nightwatch",
     "test:once": "npm run e2e-setup; npm run test:e2e; npm stop",
     "test": "node node_modules/npm-run-all/bin/run-p start test:once",
     "stats": "webpack --config prod.client.config.babel.js --profile --json > stats.json"
