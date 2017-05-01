@@ -23,7 +23,6 @@
     "mocha": "^3.3.0",
     "nightwatch": "^0.9.14",
     "npm-run-all": "^4.0.2",
-    "phantomjs": "^2.1.7",
     "selenium-standalone": "^6.4.1",
     "source-map-support": "^0.4.11",
     "svgo": "^0.7.2",
