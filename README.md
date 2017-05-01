@@ -1,5 +1,4 @@
-Ken Fehling
-
+Ken Fehling<br>
 Personal home page
 
 This site was built using [React](https://facebook.github.io/react) and
