@@ -5,3 +5,4 @@ server/build
 server/.env
 server/stats.json
 server/.env
+server/test/e2e/reports
