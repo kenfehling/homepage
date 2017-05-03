@@ -49,7 +49,7 @@
     "stop": "kill $(pgrep -f 'node build/server')",
     "dev": "npm run build; npm start",
     "test:e2e": "./node_modules/nightwatch/bin/nightwatch",
-    "test:once": "sleep 5; npm run test:e2e; npm stop",
+    "test:once": "sleep 5; ps -A; npm run test:e2e; npm stop",
     "test": "node node_modules/npm-run-all/bin/run-p start test:once",
     "stats": "webpack --config prod.client.config.babel.js --profile --json > stats.json"
   }
