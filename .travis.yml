@@ -7,6 +7,8 @@ install:
   - docker pull kenfehling/node6:latest
   - npm install
   - cd server; npm install; npm run build; cd ..
-  - docker cp server kenfehling/node6:latest:/opt
 script:
-  - docker run kenfehling/node6:latest -c "cd /opt/server; npm test"
+  - docker run --name dc kenfehling/node6:latest &
+  - sleep 5
+  - docker cp server dc:/opt
+  - docker exec -it dc "cd /opt/server; npm test"
