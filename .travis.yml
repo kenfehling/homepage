@@ -4,9 +4,9 @@ node_js:
 services:
   - docker
 install:
-  - docker pull kenfehling/node6
+  - docker pull kenfehling/node6:latest
   - npm install
   - cd server; npm install; npm run build; cd ..
-  - docker cp server node6:/opt
+  - docker cp server kenfehling/node6:latest:/opt
 script:
-  - docker run node6 -c "cd /opt/server; npm test"
+  - docker run kenfehling/node6:latest -c "cd /opt/server; npm test"
