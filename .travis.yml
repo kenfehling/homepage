@@ -10,5 +10,5 @@ install:
 script:
   - docker run --name dc kenfehling/node6:latest &
   - sleep 5
-  - docker cp server dc:/opt
+  - docker cp server/ dc:/opt
   - docker exec -it dc "cd /opt/server; npm test"
