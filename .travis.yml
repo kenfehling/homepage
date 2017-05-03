@@ -5,8 +5,8 @@ services:
   - docker
 install:
   - docker pull kenfehling/node6:latest
-  - npm install --silent
-  - cd server; npm install --silent; npm run build; cd ..
+  - npm install --silent --progress false --color false
+  - cd server; npm install --silent --progress false --color false; npm run build; cd ..
 script:
   - docker run --name dc kenfehling/node6:latest &
   - sleep 5
