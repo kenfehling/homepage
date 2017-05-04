@@ -21,5 +21,6 @@ deploy:
   region: us-east-1
   app: Homepage
   env: homepage-env
+  bucket_name: kenfehling
   skip_cleanup: true
   local_dir: server
