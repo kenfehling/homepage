@@ -3,6 +3,9 @@ node_js:
 - '6'
 services:
 - docker
+addons:
+  artifacts: true
+  paths: server
 install:
 - docker pull kenfehling/node6:latest
 - npm install --depth 0
@@ -11,10 +14,8 @@ script:
 - docker run --name dc kenfehling/node6:latest & sleep 1
 - docker cp server dc:.
 - docker exec dc bash -c "cd server; npm test"
-after_script:
-- rm rf server/node_modules
 before_deploy:
-- tar -pczf server.tar server
+- tar -pczf server.tgz --exclude=server/node_modules server
 deploy:
   provider: elasticbeanstalk
   access_key_id: AKIAIZDY5R5EQD3JXFJA
@@ -25,4 +26,4 @@ deploy:
   env: homepage-env
   bucket_name: kenfehling
   skip_cleanup: true
-  file: server.tar
+  file: server.tgz
