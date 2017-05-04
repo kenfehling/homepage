@@ -12,7 +12,7 @@ script:
 - docker cp server dc:.
 - docker exec dc bash -c "cd server; npm test"
 before_deploy:
-- zip -qr server.zip server -x server/node_modules/\*
+- cd server; zip -qr ../server.zip . -x node_modules/\*; cd ..
 deploy:
   provider: elasticbeanstalk
   access_key_id: AKIAIZDY5R5EQD3JXFJA
