@@ -19,7 +19,7 @@
     "default": {
       "selenium_port": 4444,
       "selenium_host": "localhost",
-      "silent": false,
+      "silent": true,
       "desiredCapabilities": {
         "javascriptEnabled": true,
         "acceptSslCerts": true,

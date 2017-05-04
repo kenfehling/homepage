@@ -20,7 +20,6 @@
     "image-webpack-loader": "^3.3.0",
     "isomorphic-style-loader": "^1.1.0",
     "nightwatch": "^0.9.14",
-    "npm-run-all": "^4.0.2",
     "source-map-support": "^0.4.11",
     "svgo": "^0.7.2",
     "svgo-loader": "^1.2.1",
@@ -46,11 +45,9 @@
     "build:server": "webpack --config prod.server.config.babel.js",
     "build": "npm run clean; npm run build:client; npm run build:server; cp -r ../static/* build",
     "start": "node build/server",
-    "stop": "kill $(pgrep -f 'node build/server')",
     "dev": "npm run build; npm start",
     "test:e2e": "./node_modules/nightwatch/bin/nightwatch",
-    "test:once": "sleep 5; npm run test:e2e; npm stop",
-    "test": "node node_modules/npm-run-all/bin/run-p start test:once",
+    "test": "node test.js",
     "stats": "webpack --config prod.client.config.babel.js --profile --json > stats.json"
   }
 }
