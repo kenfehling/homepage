@@ -7,7 +7,7 @@ addons:
   artifacts:
     paths: server
     bucket_name: kenfehling
-    region: us-east-1
+    s3_region: us-east-1
     key: AKIAIZC4SWQEC4H5FNSQ
     secret:
       secure: ST6vi3+2Wlx7nksZlRDp+i3o5l7fk5d5mw4sbm2ZzY1ZdN1xyaNL73vLOHi1gZYZSK4iyA7AGCP4tsaQcoIBAqIsS/yLx5ePOpTitzI/KnijGDG8oKOcYETp5U+dSSgSdTCcsPQ3pSqFKS0izxhCA7wam96pIUXrjYrjaohSupj9l0mC/wFyr2JWh/PDJo+x1uVG9EMyiWKJ5gIJFCOjYN0LaTsDPleLYixaln9nwHSvUMJJ5JKkWidQTaTj9tPHwQEM+V0bBVf9go68bOU2gkNc59fuUx8ol+wBtD2c+QIa3kKLrPGqPO8BlDqyaYRgnNTrMNqmgctNfl4L6s8v75n0rB58kekh+ybVyKSuCU8W3s+D9z+J9DBy6YCqnk9JLqAodrcVm3zAlVGJxXPABSdKCn3S+PeLxpiE0CgQgIK0Ul4TkgUCQHFpR5BcbMWWKMwptBGQCNHUJ2D15epEqQmMj3E03KeNPXaijFET8xbVrfdUQQ0/cR17N/gw+D5U4y7FMXrocE2cPb3E/oQWyl0dSopqZVdRFlvlE8bbAgiqUdBxUo7yKq/P/YXOt08xwc6DS/4OD3GVu0h+/SS0ZrM6N05OGZzG+Sk0z4fb55zlZcMPuu39yVtiGn5xmvbrdZF2GsHmncddyhSuHMYjZCfYFybO/AuTKfKNWe3g4Io=
