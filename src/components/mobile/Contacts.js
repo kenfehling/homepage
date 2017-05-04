@@ -25,7 +25,7 @@ const Contacts = ({isDesktop}) => {
   return (
     <div style={{width: '100%', height: '100%'}}>
       <Container name='mobile_contacts'
-               initialUrl={devicePath('/contacts', isDesktop)}
+               initialUrl={devicePath('contacts', isDesktop)}
                patterns={[
                  devicePath(':app(contacts)', isDesktop),
                  devicePath(':app(contacts)/:name', isDesktop)
