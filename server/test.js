@@ -4,11 +4,12 @@ const exec = childProcess.exec
 
 const serverProc = exec('npm start &')
 exec('sleep 5; npm run test:e2e', function(error) {
+  serverProc.kill("SIGINT")
   if (error) {
     console.error(error)
     process.exit(1)
-    return
   }
-  serverProc.kill("SIGINT")
-  process.exit(0)
+  else {
+    process.exit(0)
+  }
 })
