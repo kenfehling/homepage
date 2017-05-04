@@ -5,7 +5,8 @@ services:
 - docker
 addons:
   artifacts:
-    paths: server
+    paths:
+    - server
     bucket_name: kenfehling
     s3_region: us-east-1
     key: AKIAIZC4SWQEC4H5FNSQ
