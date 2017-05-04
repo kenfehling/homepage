@@ -5,10 +5,10 @@ services:
   - docker
 install:
   - docker pull kenfehling/node6:latest
-  - npm install --silent --progress false --color false
-  - cd server; npm install --silent --progress false --color false; npm run build; cd ..
+  - npm install --depth 0
+  - cd server; npm install --depth 0; npm run build; cd ..
 script:
-  - docker run --name dc kenfehling/node6:latest &
-  - sleep 5
-  - docker cp server/* dc:/opt/server
-  - docker exec -it dc "cd /opt/server; npm test"
+  - docker run --name dc kenfehling/node6:latest & sleep 5
+  - docker cp server dc:.
+  - docker exec -t dc /bin/bash
+  - cd server; npm test

@@ -6,7 +6,7 @@
   "globals_path": "test/e2e/globals",
 
   "selenium": {
-    "start_process": true,
+    "start_process": false,
     "server_path": "/opt/selenium/selenium-server-standalone.jar",
     "log_path": "test/e2e/reports",
     "host": "127.0.0.1",
