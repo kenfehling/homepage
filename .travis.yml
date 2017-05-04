@@ -4,8 +4,13 @@ node_js:
 services:
 - docker
 addons:
-  artifacts: true
-  paths: server
+  artifacts:
+    paths: server
+    bucket_name: kenfehling
+    region: us-east-1
+    key: AKIAIZC4SWQEC4H5FNSQ
+    secret:
+      secure: ST6vi3+2Wlx7nksZlRDp+i3o5l7fk5d5mw4sbm2ZzY1ZdN1xyaNL73vLOHi1gZYZSK4iyA7AGCP4tsaQcoIBAqIsS/yLx5ePOpTitzI/KnijGDG8oKOcYETp5U+dSSgSdTCcsPQ3pSqFKS0izxhCA7wam96pIUXrjYrjaohSupj9l0mC/wFyr2JWh/PDJo+x1uVG9EMyiWKJ5gIJFCOjYN0LaTsDPleLYixaln9nwHSvUMJJ5JKkWidQTaTj9tPHwQEM+V0bBVf9go68bOU2gkNc59fuUx8ol+wBtD2c+QIa3kKLrPGqPO8BlDqyaYRgnNTrMNqmgctNfl4L6s8v75n0rB58kekh+ybVyKSuCU8W3s+D9z+J9DBy6YCqnk9JLqAodrcVm3zAlVGJxXPABSdKCn3S+PeLxpiE0CgQgIK0Ul4TkgUCQHFpR5BcbMWWKMwptBGQCNHUJ2D15epEqQmMj3E03KeNPXaijFET8xbVrfdUQQ0/cR17N/gw+D5U4y7FMXrocE2cPb3E/oQWyl0dSopqZVdRFlvlE8bbAgiqUdBxUo7yKq/P/YXOt08xwc6DS/4OD3GVu0h+/SS0ZrM6N05OGZzG+Sk0z4fb55zlZcMPuu39yVtiGn5xmvbrdZF2GsHmncddyhSuHMYjZCfYFybO/AuTKfKNWe3g4Io=
 install:
 - docker pull kenfehling/node6:latest
 - npm install --depth 0
@@ -15,15 +20,4 @@ script:
 - docker cp server dc:.
 - docker exec dc bash -c "cd server; npm test"
 before_deploy:
-- tar -pczf server.tgz --exclude=server/node_modules server
-deploy:
-  provider: elasticbeanstalk
-  access_key_id: AKIAIZDY5R5EQD3JXFJA
-  secret_access_key:
-    secure: dpF+kRF0bxlKdMhRuuKBTd7ShAbSdlKlzicjmYx6bmC4O1mVQmslVBQKsTUsmCc6hseul+PzOg2x+oS7uL2nvGzStH/HSuAsqpw1OKx+PG6Q7sid9z2iImpyJgcwpXiDNkJMIgcDhDkpNm2QLMYdSbWnML/mfp95UqVmmOCvufYHyqGz7D8wCCsFxT4051E5DRhoNG55HhUpqqqYFtfLCNCAj8D0q/g8sMJKgnww7DhqUN+1hUwuaHLmntciRNSTdUNPIMIMLHJBp4hL6WQlme/pIhcC4L61EJT0FowggbTYPsLSAeEo1lDKS43cllAtvgBihIDD8zoC+dRCwZM1jzlUY1LnErEpUKyv+//ApIfB1LKd0GqTvg7XaHsI/RSXRNJPEf9rOnc5AN8q/Tqi3YS1jSfuUGx1WOqSG1mZiARBnnxFFRVZsMsxjFrFbezov/IdIQEJg8cTUuSAz6K+yiEhaOZqEiN6C0ImTNyZI/jcNvVsGMWXHMa3Kh9yLZ2GBoAoomzGtduPiudCXXauIqNRGszH0WKHLzrTKdx/dMoDTt03PATZ1ozxgr4h1ubfAK+4XQXi16ddr8bcMN5E/uri1S8pEV48NAZCI0Qv7PwTCH54RJzHS9zUoqFUVsNJxxESphEdLaPWsX1LsUUEPnq8ghG9lki+pYrXEWy2sRA=
-  region: us-east-1
-  app: Homepage
-  env: homepage-env
-  bucket_name: kenfehling
-  skip_cleanup: true
-  file: server.tgz
+- rm -rf server/node_modules
