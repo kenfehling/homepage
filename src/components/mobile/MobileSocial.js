@@ -10,7 +10,7 @@ const MobileSocial = ({isDesktop}) => (
     <List items={sites} />
     <Head title='Ken Fehling - Social'
           description="Links to my Twitter, GitHub, LinkedIn, etc."
-          keywords="social, Twitter, GitHub, LinkedIn, Stack Overflow"
+          keywords="social, Twitter, GitHub, LinkedIn, Medium, Stack Overflow, Ken Fehling"
     />
   </MobilePage>
 )
