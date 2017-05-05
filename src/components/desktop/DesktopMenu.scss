@@ -1,0 +1,58 @@
+@import "bourbon";
+@import '../../styles/utils';
+@import '../../styles/dimens';
+
+$menu-height: 26px;
+
+:local(.container) {
+  @include no-select();
+  height: $menu-height;
+  font-size: $medium-text-size;
+  color: #222;
+
+  background-color: #F2F2F2;
+
+  .logo, .left > *, .right > * {
+    padding: 0 9px;
+    line-height: $menu-height + 1px;
+  }
+
+  .logo, .left > * {
+    cursor: pointer;
+
+    &:active {
+      background-color: #2a71ff;
+      color: white;
+    }
+  }
+
+  .logo {
+    padding-left: 10px;
+    padding-right: 9px;
+    float: left;
+    padding-top: 4px;
+    img {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  .left, .right {
+    width: 40%;
+  }
+
+  .left {
+    float: left;
+    display: flex;
+  }
+
+  .right {
+    padding-right: 10px;
+    float: right;
+    text-align: right;
+
+    .time {
+
+    }
+  }
+}

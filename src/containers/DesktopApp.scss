@@ -1,5 +1,6 @@
 @import "bourbon";
 @import '../styles/utils';
+@import '../styles/dimens';
 
 $colors: (
   #15407A, #15407A, #15407A,
@@ -19,5 +20,15 @@ $colors: (
 }
 
 :local(.container) {
-  @include background-image(linear-gradient(to bottom, process-colors($colors)))
+  @include background-image(linear-gradient(to bottom, #F2F2F2, #999));
+  padding: 0 $desktop-frame-width $desktop-frame-width $desktop-frame-width;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+
+  .inner-container {
+    flex: 1 1;
+    box-sizing: border-box;
+    @include background-image(linear-gradient(to bottom, process-colors($colors)));
+  }
 }
