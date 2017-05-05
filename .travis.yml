@@ -24,3 +24,5 @@ deploy:
   bucket_name: kenfehling
   skip_cleanup: true
   zip_file: server.zip
+  on:
+    branch: master
