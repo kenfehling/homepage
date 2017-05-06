@@ -21,6 +21,7 @@
     "prop-types": "^15.5.8",
     "rc-progress": "^2.0.6",
     "react": "^15.5.4",
+    "react-analog-clock": "^1.6.0",
     "react-designable-audio-player": "github:kenfehling/react-designable-audio-player",
     "react-dom": "^15.5.4",
     "react-helmet": "^5.0.3",

@@ -7,6 +7,7 @@ import {HeaderLink} from 'react-router-nested-history'
 import Clock from '../shared/Clock'
 import {changeBackground} from '../../actions/UiActions'
 import connect from 'react-redux/es/connect/connect'
+import AnalogClock, { Themes } from 'react-analog-clock'
 
 const AppItem = ({name, onClick, container=`desktop_${name.toLowerCase()}`}) => (
   <HeaderLink toContainer={container} onClick={onClick} className='item'>
@@ -72,6 +73,12 @@ const Dropdown = ({items, top, left, onClick, className=''}) => (
     {items.map((item, i) => (
       <div key={i}>{cloneElement(item, {onClick})}</div>
     ))}
+  </div>
+)
+
+const ClockDropdown = ({top, left}) => (
+  <div className='dropdown'>
+    <AnalogClock theme={Themes.light} />
   </div>
 )
 

@@ -72,10 +72,6 @@ $dropdown-border-radius: 6px;
       padding-right: 10px;
       float: right;
       text-align: right;
-
-      .time {
-
-      }
     }
 
     .dropdown, .submenu {
@@ -94,12 +90,12 @@ $dropdown-border-radius: 6px;
 
       .item {
         display: block;
-        padding: 0 5px 0 15px;
+        padding: 0 20px;
         text-decoration: none;
         color: inherit;
 
         &:hover {
-          background-color: $desktop-menu-active-bg-color;
+          background-color: lighten($desktop-menu-active-bg-color, 10%);
           color: white;
         }
 
@@ -108,7 +104,6 @@ $dropdown-border-radius: 6px;
           font-style: italic;
           display: block;
           float: right;
-          padding-right: 16px;
         }
       }
     }
