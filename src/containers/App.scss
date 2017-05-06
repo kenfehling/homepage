@@ -1,6 +1,8 @@
 @import "../styles/fonts";
+@import "../styles/dimens";
 
 body {
+  font-size: $default-text-size;
   margin: 0;
   padding: 0;
   overflow: hidden;

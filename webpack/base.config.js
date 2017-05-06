@@ -30,9 +30,8 @@ export default {
     extensions: ['.js', '.jsx'],
     alias: {
       img: path.join(root, 'img'),
-      'static': path.join(root, 'static'),
-      //'react': 'preact-compat',
-      //'react-dom': 'preact-compat'
+      fonts: path.join(root, 'fonts'),
+      'static': path.join(root, 'static')
     },
     modules: [
       "node_modules"
