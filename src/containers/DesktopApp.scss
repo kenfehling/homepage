@@ -29,6 +29,7 @@ $sunset-colors: (
     z-index: 1;
     background-size: cover;
     background-position: center;
+    background-color: #222;
     &.Sunset {
       @include background-image(
                   linear-gradient(to bottom, process-colors($sunset-colors)));

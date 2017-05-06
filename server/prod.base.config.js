@@ -7,10 +7,10 @@ const root = path.join(__dirname, '../..')
 const cssLoader = {
   loader: 'css-loader',
   options: {
-    sourceMap: true,
     importLoaders: 1,
     alias: {
-      img: path.join(root, 'img')
+      img: path.join(root, 'img'),
+      fonts: path.join(root, 'fonts')
     }
   }
 }
@@ -20,7 +20,7 @@ export default {
   context: path.resolve('./'),
   output: {
     ...baseConfig.output,
-    publicPath: '/static',
+    publicPath: '/static/',
     path: path.resolve('./build')
   },
   module: {
@@ -48,8 +48,8 @@ export default {
         })
       },
       {
-        test: /\.(png|jp?g)$/i,
-        exclude: /node_modules/,
+        test: /\.(png|jpg)$/i,
+        include: /img/,
         use: [
           "url-loader?limit=10000000",
           {
@@ -63,7 +63,7 @@ export default {
         ]
       }, {
         test: /\.svg$/i,
-        exclude: /node_modules/,
+        include: /img/,
         use: [
           "url-loader?limit=10000000",
           {
@@ -75,6 +75,12 @@ export default {
               ]
             }
           }
+        ]
+      }, {
+        test: /\.(png|jpg|svg)$/i,
+        include: /static/,
+        use: [
+          "file-loader"
         ]
       }
     ]
