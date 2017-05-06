@@ -4,6 +4,7 @@ import onClickOutside from 'react-onclickoutside'
 import {apps, backgrounds} from '../../constants/desktop'
 import styles from './DesktopFrame.scss'
 import {HeaderLink} from 'react-router-nested-history'
+import Clock from '../shared/Clock'
 import {changeBackground} from '../../actions/UiActions'
 import connect from 'react-redux/es/connect/connect'
 
@@ -182,8 +183,7 @@ const DesktopFrame = () => (
       </div>
       <div className='right'>
         <div className='time'>
-          Fri May 5&nbsp;
-          12:32 PM
+          <Clock format='dddd MMMM D [&nbsp;] h:mm A' />
         </div>
       </div>
     </div>

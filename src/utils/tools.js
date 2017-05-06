@@ -1,12 +1,11 @@
-import React, {createElement, Children} from 'react'
+import React, {createElement} from 'react'
 import {tools} from '../constants/tools'
 import range from 'lodash/range'
 import {HistoryLink} from 'react-router-nested-history'
 import reactStringReplace from 'react-string-replace'
-import {renderToString} from 'react-dom/server'
 
-const starIcon = require('../../img/icons/star.svg')
-const halfStarIcon = require('../../img/icons/half-star.svg')
+const starIcon = require('img/icons/star.svg')
+const halfStarIcon = require('img/icons/half-star.svg')
 
 function getToolByFullName(fullName) {
   if (fullName) {

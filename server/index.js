@@ -14,6 +14,9 @@ import mg from 'nodemailer-mailgun-transport'
 import bodyParser from 'body-parser'
 import {RESUME_FILE} from '../src/constants/links'
 import Helmet from 'react-helmet'
+import {Provider} from 'react-redux'
+import {createStore} from 'redux'
+import reducer from '../src/reducers'
 
 const auth = {
   api_key: process.env.MAILGUN_API_KEY,
@@ -77,10 +80,13 @@ app.get('/api/' + RESUME_FILE, function (req, res) {
 
 app.use(unless('/api', (req, res) => {
   const context = {}
+  const store = createStore(reducer)
   const body = renderToString(
-    <HistoryRouter location={req.url} context={context}>
-      <App />
-    </HistoryRouter>,
+    <Provider store={store}>
+      <HistoryRouter location={req.url} context={context}>
+        <App />
+      </HistoryRouter>
+    </Provider>
   )
   const helmet = Helmet.renderStatic()
   const head = helmet.title.toString() + helmet.meta.toString()

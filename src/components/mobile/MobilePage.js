@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import {BackLink} from 'react-router-nested-history'
 import * as styles from './MobilePage.scss'
 import '../../utils/string'
+import Clock from '../shared/Clock'
 
-const timeFormat = {hour: '2-digit', minute:'2-digit'}
 const TopBar = ({className=''}) => (
   <div className={`top-bar ${className}`}>
     <div className="network">
@@ -12,8 +12,7 @@ const TopBar = ({className=''}) => (
       <i className="fa fa-wifi" />
     </div>
     <div className="time">
-      {/* new Date().toLocaleTimeString(navigator.language, timeFormat) */}
-      2:55 PM
+      <Clock format='h:mm A' />
     </div>
     <div className="battery">
       <i className="fa fa-battery-full "/>

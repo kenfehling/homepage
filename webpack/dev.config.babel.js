@@ -34,9 +34,18 @@ export default {
         {
           test: /\.scss$/,
           exclude: /node_modules/,
-          loaders: [
+          use: [
             'style-loader',
-            'css-loader?sourceMap&importLoaders=1',
+            {
+              loader: 'css-loader',
+              options: {
+                sourceMap: true,
+                importLoaders: 1,
+                alias: {
+                  img: path.join(root, 'img')
+                }
+              }
+            },
             'postcss-loader',
             `sass-loader?sourceMap&${sassPaths}`
           ]
@@ -46,7 +55,7 @@ export default {
         }, {
           test: /\.(png|jp?g|svg)$/i,
           exclude: /node_modules/,
-          loaders: [
+          use: [
             "url-loader?limit=10000000"
           ]
         }
