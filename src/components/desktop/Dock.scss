@@ -5,8 +5,8 @@
 
 $dock-height: 55px;
 $num-icons: 7;
-$top-gray: 90;
-$bottom-gray: 80;
+$top-gray: 160;
+$bottom-gray: 140;
 $opacity: 0.85;
 $border-radius: 8px;
 $leftPad: 3px;
@@ -41,7 +41,7 @@ $tooltip-opacity: 0.98;
       bottom: 0 - $dock-height;
     }
     100% {
-      bottom: 0;
+      bottom: $desktop-frame-width;
     }
   }
   animation: load-dock 1.5s;
