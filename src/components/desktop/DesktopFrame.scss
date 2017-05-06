@@ -3,6 +3,8 @@
 @import '../../styles/colors';
 @import '../../styles/dimens';
 
+$dropdown-border-radius: 6px;
+
 :local(.container) {
   position: relative;
   width: 100%;
@@ -24,14 +26,12 @@
     font-size: $medium-text-size;
     color: $desktop-menu-fg-color;
 
-    background-color: $desktop-menu-bg-color;
+    @include background-image(linear-gradient(to bottom,
+            $desktop-menu-bg-color-1, $desktop-menu-bg-color-2));
     border-bottom: 1px solid $desktop-menu-border-color;
 
     .logo, .left > *, .right > * {
       padding: 0 9px;
-    }
-
-    .left > *, .right > * {
       line-height: $desktop-menu-height;
     }
 
@@ -45,6 +45,7 @@
     }
 
     .logo {
+      margin-left: 10px;
       float: left;
       padding-top: 4px;
       padding-bottom: 1px;
@@ -73,27 +74,40 @@
       }
     }
 
-    .dropdown {
+    .dropdown, .submenu {
       position: absolute;
       z-index: 3;
-      left: 100px;  // TODO: Depends on menu position
       top: $desktop-menu-height;
       width: 200px;
       @include background-image(linear-gradient(to bottom,
-                         $desktop-menu-bg-color, rgba(255, 255, 255, 0.5)));
+                                $desktop-menu-bg-color-2,
+                                transparentize($desktop-menu-bg-color-2, 0.05)));
+      color: $desktop-menu-fg-color;
       box-shadow: 0 1px 2px black;
-      border-bottom-left-radius: 8px;
-      border-bottom-right-radius: 8px;
-      padding: 2px 5px 1px 15px;
-      a {
+      border-bottom-left-radius: $dropdown-border-radius;
+      border-bottom-right-radius: $dropdown-border-radius;
+      padding: 3px 0 5px 0;
+      .item {
+        display: block;
+        padding: 0 5px 0 15px;
         text-decoration: none;
-        color: $desktop-menu-fg-color;
+        color: inherit;
+        &:hover {
+          background-color: $desktop-menu-active-bg-color;
+          color: white;
+        }
       }
+    }
+
+    .submenu {
+      border-top-left-radius: $dropdown-border-radius;
+      border-top-right-radius: $dropdown-border-radius;
     }
   }
 
   > .left, > .right {
-    @include background-image(linear-gradient(to bottom, #F2F2F2, #999));
+    @include background-image(linear-gradient(to bottom,
+                              $desktop-menu-bg-color-2, #999));
     width: $desktop-frame-width;
     height: 100%;
     top: $desktop-menu-height;

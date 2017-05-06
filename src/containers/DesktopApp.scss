@@ -26,7 +26,12 @@ $colors: (
     bottom: 0;
     left: 0;
     right: 0;
-    @include background-image(linear-gradient(to bottom, process-colors($colors)));
     z-index: 1;
+    &.Sunset {
+      @include background-image(linear-gradient(to bottom, process-colors($colors)));
+    }
+    &.Chicago {
+      background-image: url('http://musiccitiessummit.com/wp-content/uploads/chicago-1.jpg')
+    }
   }
 }
