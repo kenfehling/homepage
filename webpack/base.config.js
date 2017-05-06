@@ -21,6 +21,12 @@ export default {
       test: /\.js$/,
       exclude: /node_modules/,
       loader: 'babel-loader'
+    }, {
+      test: /\.ttf$/,
+      include: /fonts/,
+      use: [
+        "url-loader?limit=10000000"
+      ]
     }]
   },
   plugins: [

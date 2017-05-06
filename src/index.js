@@ -5,6 +5,7 @@ import App from './containers/App'
 import {Provider} from 'react-redux'
 import {createStore} from 'redux'
 import reducer from './reducers'
+import '../fonts/fonts.css'
 
 // Exposes React performance profiling tools for use in console
 if (process.env.NODE_ENV !== 'production') {
