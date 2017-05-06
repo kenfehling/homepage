@@ -1,7 +1,8 @@
 @import "bourbon";
 @import '../styles/utils';
+@import '../styles/dimens';
 
-$colors: (
+$sunset-colors: (
   #15407A, #15407A, #15407A,
   #1A457E, #214F85, #2B598A,
   #37638A, #476C87, #617785,
@@ -19,5 +20,21 @@ $colors: (
 }
 
 :local(.container) {
-  @include background-image(linear-gradient(to bottom, process-colors($colors)))
+  > .inner-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    background-size: cover;
+    background-position: center;
+    &.Sunset {
+      @include background-image(
+                  linear-gradient(to bottom, process-colors($sunset-colors)));
+    }
+    &.NYC {
+      @include background-image(url('../../static/backgrounds/NYC.jpg'));
+    }
+  }
 }

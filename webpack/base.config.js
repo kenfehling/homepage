@@ -1,6 +1,6 @@
 import path from 'path'
 import bourbon from 'node-bourbon'
-import LodashModuleReplacementPlugin from 'lodash-webpack-plugin'
+import IconfontWebpackPlugin from 'iconfont-webpack-plugin'
 
 const root = path.join(__dirname, '..')
 
@@ -24,7 +24,7 @@ export default {
     }]
   },
   plugins: [
-    new LodashModuleReplacementPlugin
+    new IconfontWebpackPlugin()
   ],
   resolve: {
     extensions: ['.js', '.jsx'],

@@ -5,8 +5,15 @@ $border-darken: 15%;
 $tool-border-color: thin solid darken($item-bg-color, $border-darken);
 $link-color: #007fd3;
 
-$desktop-window-bg-color-top: #777;
-$desktop-window-bg-color-bottom: #555;
+$desktop-window-bg-color-top: #CCC;
+$desktop-window-bg-color-bottom: #A6A6A6;
+$desktop-window-title-color: #222;
+$desktop-menu-bg-color-1: #F2F2F2;
+$desktop-menu-bg-color-2: #E9E9E9;
+$desktop-menu-fg-color: #222;
+$desktop-menu-border-color: #444;
+$desktop-menu-active-bg-color: #0369e2;
+
 
 $desktop-tools-bg-color: #F2F1F0;
 $desktop-tools-item-bg-color: #FCFBFC;

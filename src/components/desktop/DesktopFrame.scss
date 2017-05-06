@@ -1,0 +1,140 @@
+@import "bourbon";
+@import '../../styles/utils';
+@import '../../styles/colors';
+@import '../../styles/dimens';
+
+$dropdown-border-radius: 6px;
+
+:local(.container) {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  > * {
+    position: absolute;
+    z-index: 15;
+  }
+
+  > .menu, > .bottom {
+    left: 0;
+    right: 0;
+  }
+
+  > .menu {
+    @include no-select();
+    height: $desktop-menu-height;
+    font-size: $medium-text-size;
+    color: $desktop-menu-fg-color;
+
+    @include background-image(linear-gradient(to bottom,
+            $desktop-menu-bg-color-1, $desktop-menu-bg-color-2));
+    border-bottom: 1px solid $desktop-menu-border-color;
+
+    .logo > *, .left > *, .right > * {
+      padding: 0 9px;
+      line-height: $desktop-menu-height;
+      height: $desktop-menu-height;
+    }
+
+    .logo > *, .left > * {
+      cursor: pointer;
+
+      &.active {
+        background-color: $desktop-menu-active-bg-color;
+        color: white;
+      }
+    }
+
+    .left, .right {
+      width: 40%;
+    }
+
+    .logo {
+      float: left;
+      margin-left: 10px;
+
+      .KF {
+        float: left;
+        font-size: 18px;
+      }
+
+      .KF:after {
+        font-icon: url('img/icons/font/KF.svg');
+      }
+    }
+
+    .left {
+      float: left;
+      display: flex;
+    }
+
+    .right {
+      padding-right: 10px;
+      float: right;
+      text-align: right;
+
+      .time {
+
+      }
+    }
+
+    .dropdown, .submenu {
+      position: absolute;
+      z-index: 3;
+      top: $desktop-menu-height;
+      width: 180px;
+      @include background-image(linear-gradient(to bottom,
+                                $desktop-menu-bg-color-2,
+                                transparentize($desktop-menu-bg-color-2, 0.05)));
+      color: $desktop-menu-fg-color;
+      box-shadow: 0 1px 2px black;
+      border-bottom-left-radius: $dropdown-border-radius;
+      border-bottom-right-radius: $dropdown-border-radius;
+      padding: 3px 0 5px 0;
+
+      .item {
+        display: block;
+        padding: 0 5px 0 15px;
+        text-decoration: none;
+        color: inherit;
+
+        &:hover {
+          background-color: $desktop-menu-active-bg-color;
+          color: white;
+        }
+
+        .current:after {
+          content: 'current';
+          font-style: italic;
+          display: block;
+          float: right;
+          padding-right: 16px;
+        }
+      }
+    }
+
+    .submenu {
+      border-top-left-radius: $dropdown-border-radius;
+      border-top-right-radius: $dropdown-border-radius;
+    }
+  }
+
+  > .left, > .right {
+    @include background-image(linear-gradient(to bottom,
+                              $desktop-menu-bg-color-2, #999));
+    width: $desktop-frame-width;
+    height: 100%;
+    top: $desktop-menu-height;
+  }
+  > .left {
+    left: 0;
+  }
+  > .right {
+    right: 0;
+  }
+  > .bottom {
+    background-color: #999;
+    height: $desktop-frame-width;
+    bottom: 0;
+  }
+}

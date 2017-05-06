@@ -3,6 +3,18 @@ import webpack from 'webpack'
 import path from 'path'
 import baseConfig, {sassPaths} from '../webpack/base.config'
 
+const root = path.join(__dirname, '../..')
+const cssLoader = {
+  loader: 'css-loader',
+  options: {
+    sourceMap: true,
+    importLoaders: 1,
+    alias: {
+      img: path.join(root, 'img')
+    }
+  }
+}
+
 export default {
   ...baseConfig,
   context: path.resolve('./'),
@@ -20,7 +32,8 @@ export default {
         use: ExtractTextPlugin.extract({
           fallback: "isomorphic-style-loader",
           use: [
-            'css-loader?sourceMap',
+            cssLoader,
+            'postcss-loader',
             `sass-loader?sourceMap&${sassPaths}`
           ]
         })
@@ -28,13 +41,16 @@ export default {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({
           fallback: "isomorphic-style-loader",
-          use: "css-loader"
+          use: [
+            cssLoader,
+            'postcss-loader'
+          ]
         })
       },
       {
         test: /\.(png|jp?g)$/i,
         exclude: /node_modules/,
-        loaders: [
+        use: [
           "url-loader?limit=10000000",
           {
             loader: 'image-webpack-loader',
@@ -48,7 +64,7 @@ export default {
       }, {
         test: /\.svg$/i,
         exclude: /node_modules/,
-        loaders: [
+        use: [
           "url-loader?limit=10000000",
           {
             loader: 'svgo-loader',
