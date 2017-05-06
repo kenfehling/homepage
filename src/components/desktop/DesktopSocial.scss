@@ -1,9 +1,9 @@
-$icon-size: 55px;
+$icon-size: 50px;
 
 :local(.container) {
   background-color: #FFF;
   display: flex;
-  padding: 40px 20px;
+  padding: 35px 20px 0 20px;
   box-sizing: border-box;
   height: 100%;
   .icon {
