@@ -2,7 +2,7 @@
 @import '../styles/utils';
 @import '../styles/dimens';
 
-$colors: (
+$sunset-colors: (
   #15407A, #15407A, #15407A,
   #1A457E, #214F85, #2B598A,
   #37638A, #476C87, #617785,
@@ -27,11 +27,14 @@ $colors: (
     left: 0;
     right: 0;
     z-index: 1;
+    background-size: cover;
+    background-position: center;
     &.Sunset {
-      @include background-image(linear-gradient(to bottom, process-colors($colors)));
+      @include background-image(
+                  linear-gradient(to bottom, process-colors($sunset-colors)));
     }
-    &.Chicago {
-      background-image: url('http://musiccitiessummit.com/wp-content/uploads/chicago-1.jpg')
+    &.NYC {
+      @include background-image(url('../../static/backgrounds/NYC.jpg'));
     }
   }
 }

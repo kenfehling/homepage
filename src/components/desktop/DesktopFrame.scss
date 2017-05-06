@@ -30,12 +30,13 @@ $dropdown-border-radius: 6px;
             $desktop-menu-bg-color-1, $desktop-menu-bg-color-2));
     border-bottom: 1px solid $desktop-menu-border-color;
 
-    .logo, .left > *, .right > * {
+    .logo > *, .left > *, .right > * {
       padding: 0 9px;
       line-height: $desktop-menu-height;
+      height: $desktop-menu-height;
     }
 
-    .logo, .left > * {
+    .logo > *, .left > * {
       cursor: pointer;
 
       &.active {
@@ -44,19 +45,22 @@ $dropdown-border-radius: 6px;
       }
     }
 
-    .logo {
-      margin-left: 10px;
-      float: left;
-      padding-top: 4px;
-      padding-bottom: 1px;
-      img {
-        width: 18px;
-        height: 18px;
-      }
-    }
-
     .left, .right {
       width: 40%;
+    }
+
+    .logo {
+      float: left;
+      margin-left: 10px;
+
+      .KF {
+        float: left;
+        font-size: 18px;
+      }
+
+      .KF:after {
+        font-icon: url('img/icons/desktop/KF.svg');
+      }
     }
 
     .left {
@@ -78,7 +82,7 @@ $dropdown-border-radius: 6px;
       position: absolute;
       z-index: 3;
       top: $desktop-menu-height;
-      width: 200px;
+      width: 180px;
       @include background-image(linear-gradient(to bottom,
                                 $desktop-menu-bg-color-2,
                                 transparentize($desktop-menu-bg-color-2, 0.05)));
@@ -87,14 +91,24 @@ $dropdown-border-radius: 6px;
       border-bottom-left-radius: $dropdown-border-radius;
       border-bottom-right-radius: $dropdown-border-radius;
       padding: 3px 0 5px 0;
+
       .item {
         display: block;
         padding: 0 5px 0 15px;
         text-decoration: none;
         color: inherit;
+
         &:hover {
           background-color: $desktop-menu-active-bg-color;
           color: white;
+        }
+
+        .current:after {
+          content: 'current';
+          font-style: italic;
+          display: block;
+          float: right;
+          padding-right: 16px;
         }
       }
     }

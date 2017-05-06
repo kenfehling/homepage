@@ -28,7 +28,7 @@ export default {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({
           fallback: "isomorphic-style-loader",
-          use: "css-loader"
+          use: "css-loader!postcss-loader"
         })
       },
       {

@@ -1,7 +1,7 @@
 import React, {Component, cloneElement} from 'react'
 import PropTypes from 'prop-types'
 import onClickOutside from 'react-onclickoutside'
-import {apps} from '../../constants/desktop'
+import {apps, backgrounds} from '../../constants/desktop'
 import styles from './DesktopFrame.scss'
 import {HeaderLink} from 'react-router-nested-history'
 import {changeBackground} from '../../actions/UiActions'
@@ -13,12 +13,16 @@ const AppItem = ({name, onClick, container=`desktop_${name.toLowerCase()}`}) => 
   </HeaderLink>
 )
 
-const InnerBackgroundItem = ({name, onClick}) => (
-  <div onClick={onClick} className='item'>{name}</div>
+const InnerBackgroundItem = ({name, isActive, onClick}) => (
+  <div onClick={onClick} className='item'>
+    {name} {isActive ? <span className='current' /> : ''}
+  </div>
 )
 
 const BackgroundItem = connect(
-  state => ({}),
+  (state, ownProps) => ({
+    isActive: state.background === ownProps.name
+  }),
   (dispatch, ownProps) => ({
     onClick: (event) => {
       dispatch(changeBackground(ownProps.name))
@@ -28,8 +32,6 @@ const BackgroundItem = connect(
 )(InnerBackgroundItem)
 
 const applications = apps.map(app => <AppItem {...app} />)
-
-const backgrounds = ['Sunset', 'Chicago']
 
 const SubMenu = ({text, items}) => (
   <MenuItem text={text}
@@ -138,10 +140,9 @@ class InnerMenuItem extends Component {
            onMouseOver={() => openOnMouseOver && this.show()}
            ref={(el) => this.calculateDimensions(el)}
       >
-        <div> {/* TODO: Replace with icon font */}
-          {icon ?
-            <img src={require(`img/icons/desktop/${icon}`)} alt={text} /> :
-            text}
+        <div>
+          {icon && <span className={'icon ' + icon} />}
+          {text && <span className='text'>{text}</span>}
         </div>
         {active && this.createDropdown()}
       </div>
@@ -153,7 +154,7 @@ const MenuItem = onClickOutside(InnerMenuItem)
 
 MenuItem.propTypes = {
   icon: PropTypes.string,
-  text: PropTypes.string.isRequired,
+  text: PropTypes.string,
   items: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
   dropdownPosition: PropTypes.string,
   className: PropTypes.string,
@@ -165,7 +166,7 @@ const DesktopFrame = () => (
   <div className={styles.container}>
     <div className='menu'>
       <div className='logo'>
-        <MenuItem icon='KF.svg' text='System' items={applications} />
+        <MenuItem icon='KF' items={applications} />
       </div>
       <div className='left'>
         <MenuItem text='Applications' items={applications} />

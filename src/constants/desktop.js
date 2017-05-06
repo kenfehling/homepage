@@ -10,3 +10,8 @@ export const apps = [
   {name: 'Social'},
   {name: 'Mobile', container: 'mobile'}
 ]
+
+export const backgrounds = [
+  'Sunset',
+  'NYC'
+]

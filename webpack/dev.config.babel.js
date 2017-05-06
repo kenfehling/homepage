@@ -14,6 +14,7 @@ export default {
     filename: 'client.js'
   },
   plugins: [
+    ...baseConfig.plugins,
     new webpack.ProvidePlugin({ 'React': 'react'}),
     new FaviconsWebpackPlugin({
       logo: path.join(root, 'favicon.png'),
@@ -35,12 +36,13 @@ export default {
           exclude: /node_modules/,
           loaders: [
             'style-loader',
-            'css-loader?sourceMap',
+            'css-loader?sourceMap&importLoaders=1',
+            'postcss-loader',
             `sass-loader?sourceMap&${sassPaths}`
           ]
         }, {
           test: /\.css$/,
-            loader: 'style-loader!css-loader'
+          loader: 'style-loader!css-loader!postcss-loader'
         }, {
           test: /\.(png|jp?g|svg)$/i,
           exclude: /node_modules/,
