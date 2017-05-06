@@ -20,7 +20,7 @@ $colors: (
 }
 
 :local(.container) {
-  .inner-container {
+  > .inner-container {
     position: absolute;
     top: 0;
     bottom: 0;

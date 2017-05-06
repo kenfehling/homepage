@@ -1,5 +1,6 @@
 @import "bourbon";
 @import '../../styles/utils';
+@import '../../styles/colors';
 @import '../../styles/dimens';
 
 :local(.container) {
@@ -9,7 +10,7 @@
 
   > * {
     position: absolute;
-    z-index: 2;
+    z-index: 15;
   }
 
   > .menu, > .bottom {
@@ -21,9 +22,10 @@
     @include no-select();
     height: $desktop-menu-height;
     font-size: $medium-text-size;
-    color: #222;
+    color: $desktop-menu-fg-color;
 
-    background-color: #F2F2F2;
+    background-color: $desktop-menu-bg-color;
+    border-bottom: 1px solid $desktop-menu-border-color;
 
     .logo, .left > *, .right > * {
       padding: 0 9px;
@@ -36,8 +38,8 @@
     .logo, .left > * {
       cursor: pointer;
 
-      &:active {
-        background-color: #0088e7;
+      &.active {
+        background-color: $desktop-menu-active-bg-color;
         color: white;
       }
     }
@@ -68,6 +70,24 @@
 
       .time {
 
+      }
+    }
+
+    .dropdown {
+      position: absolute;
+      z-index: 3;
+      left: 100px;  // TODO: Depends on menu position
+      top: $desktop-menu-height;
+      width: 200px;
+      @include background-image(linear-gradient(to bottom,
+                         $desktop-menu-bg-color, rgba(255, 255, 255, 0.5)));
+      box-shadow: 0 1px 2px black;
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+      padding: 2px 5px 1px 15px;
+      a {
+        text-decoration: none;
+        color: $desktop-menu-fg-color;
       }
     }
   }

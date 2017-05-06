@@ -46,11 +46,12 @@ $tooltip-opacity: 0.98;
   }
   animation: load-dock 1.5s;
 
-  .inner-container {
+  > .inner-container {
     position: relative;
     width: 100%;
     height: 100%;
     margin: 3px;
+    @include bg();
 
     .back-container, .dock {
       padding-left: $leftPad + 2px;
@@ -69,7 +70,7 @@ $tooltip-opacity: 0.98;
       position: absolute;
       z-index: 2;
       @include bg();
-      box-shadow: 0 -1px 6px 0 black;
+      box-shadow: 0 1px 6px 0 black;
       @include background-image(linear-gradient(to bottom, rgba($top-gray, $top-gray, $top-gray, $opacity),
                                                            rgba($bottom-gray, $bottom-gray, $bottom-gray, $opacity)));
       display: flex;

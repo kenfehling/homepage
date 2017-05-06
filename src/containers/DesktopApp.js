@@ -16,22 +16,10 @@ import SimpleRedirect from '../components/shared/SimpleRedirect'
 import {redirectMobileToDesktop} from '../utils/mobile'
 import {SPLASH_DURATION} from '../constants/settings'
 import * as styles from './DesktopApp.scss'
+import {apps} from '../constants/desktop'
 //import IFrameWindow from '../components/desktop/IFrameWindow'
 //import Terminal from '../components/desktop/Terminal'
 //import Dialer from '../components/desktop/Dialer'
-
-const windows = [
-  //{name: 'Map'},
-  //{name: 'Terminal'},
-  {name: 'Editor', bounce: true},
-  {name: 'Tools'},
-  {name: 'Music'},
-  {name: 'PDF'},
-  //{name: 'Dialer'},
-  {name: 'Email'},
-  {name: 'Social'},
-  {name: 'Mobile', container: 'mobile'}
-]
 
 const top = 26
 const middle = -28
@@ -44,7 +32,6 @@ const DesktopApp = () => (
     {redirectMobileToDesktop('/contacts')}
     <SimpleRedirect from='/tools' to='/tools/All' />
     {SPLASH_DURATION > 0 && <Splash />}
-    <DesktopFrame />
     <div className='inner-container'>
       <WindowGroup name='desktop'>
         <ContainerWindow name="PDF" right={right + 5} top={top + 5}>
@@ -81,7 +68,8 @@ const DesktopApp = () => (
          <Dialer />
          </ContainerWindow>
          */}
-        <Dock windows={windows} />
+        <DesktopFrame />
+        <Dock windows={apps} />
       </WindowGroup>
     </div>
   </div>
