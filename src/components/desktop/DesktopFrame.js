@@ -31,8 +31,6 @@ const BackgroundItem = connect(
   })
 )(InnerBackgroundItem)
 
-const applications = apps.map(app => <AppItem {...app} />)
-
 const SubMenu = ({text, items}) => (
   <MenuItem text={text}
             className='item'
@@ -50,6 +48,16 @@ const BackgroundSetting = () => (
            ))}
   />
 )
+
+const Restart = () => (
+  <a href={'http://' + window.location.host} className='item'>Restart</a>
+)
+
+const system = [
+  <Restart />
+]
+
+const applications = apps.map(app => <AppItem {...app} />)
 
 const settings = [
   <BackgroundSetting />
@@ -166,7 +174,7 @@ const DesktopFrame = () => (
   <div className={styles.container}>
     <div className='menu'>
       <div className='logo'>
-        <MenuItem icon='KF' items={applications} />
+        <MenuItem icon='KF' items={system} />
       </div>
       <div className='left'>
         <MenuItem text='Applications' items={applications} />
