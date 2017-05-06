@@ -6,13 +6,6 @@ import * as styles from './App.scss'
 import 'babel-polyfill'
 import Head from '../components/shared/Head'
 
-if (bowser.mac || bowser.ios) {
-  require('./osx.scss')
-}
-else {
-  require('./windows.scss')
-}
-
 export default () => (
   <div className={styles.container}>
     {bowser.mobile /* || bowser.tablet */ ? <MobileApp /> : <DesktopApp />}

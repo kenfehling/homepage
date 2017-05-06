@@ -18,7 +18,6 @@
   .toolbar {
     @include no-select();
     @include no-highlight();
-    font-family: $apple-font;
     $icon-size: 12px;
     height: $icon-size;
     padding-bottom: 8px;
