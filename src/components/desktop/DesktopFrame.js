@@ -190,7 +190,7 @@ const DesktopFrame = () => (
       </div>
       <div className='right'>
         <div className='time'>
-          <Clock format='dddd MMMM D [&nbsp;] h:mm A' />
+          <Clock format='dddd[,] MMMM D [&nbsp;] h:mm A' />
         </div>
       </div>
     </div>

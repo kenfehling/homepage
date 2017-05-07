@@ -5,7 +5,7 @@
 
 :local(.container) {
   @include background-image(linear-gradient(to bottom,
-          darken($desktop-tools-bg-color, 15%), $desktop-tools-bg-color));
+          darken($desktop-tools-bg-color, 10%), $desktop-tools-bg-color));
   @include no-select();
   color: #252525;
   padding: 13px 0 11px 0;

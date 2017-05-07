@@ -3,8 +3,9 @@
 
 :local(.container) {
   @include no-select();
-  background-color: #003;
-  color: #36F;
+  font-size: 13px;
+  background-color: #005;
+  color: #47F;
   font-family: $code-font;
   padding: 0 5%;
   height: 100%;
@@ -36,7 +37,7 @@
       cursor: pointer;
     }
     .rc-slider-track {
-      background-color: #36F;
+      background-color: #47F;
     }
   }
   .time {
