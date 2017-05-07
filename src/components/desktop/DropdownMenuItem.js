@@ -46,7 +46,7 @@ class InnerMenuItem extends Component {
     if (element) {
       const newState = {
         left: element.offsetLeft,
-        right: window.innerWidth - (element.offsetLeft + element.offsetWidth),
+        right: element.offsetLeft + element.offsetWidth,
         top: element.offsetTop
       }
       const {left, right, top} = this.state
@@ -61,7 +61,8 @@ class InnerMenuItem extends Component {
     const {dropdownPosition='bottom', dropdownAnchor='left'} = this.props
     const {left, right, top} = this.state
     if (dropdownPosition === 'bottom') {
-      return dropdownAnchor === 'right' ? {right} : {left}
+      return dropdownAnchor === 'right' ?
+              {right: window.innerWidth - right} : {left}
     }
     else if (dropdownPosition === 'right') {
       return {top, left: right}
