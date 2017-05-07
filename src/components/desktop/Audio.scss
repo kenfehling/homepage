@@ -13,16 +13,16 @@
   .controls {
     width: 96%;
     margin: 0 auto;
-    padding: 27px 0 13px 0;
+    padding: 27px 0 8px 0;
     text-align: center;
     display: flex;
-    i.fa {
+    .icon {
       display: block;
       flex: 1;
       font-size: 1.5rem;
       cursor: pointer;
     }
-    i.fa:active {
+    .icon:active {
       opacity: 0.5;
     }
   }
@@ -43,5 +43,25 @@
   .time {
     margin: 10px auto;
     text-align: center;
+  }
+
+  .play:after {
+    font-icon: url('fonts/icons/play.svg');
+  }
+
+  .pause:after {
+    font-icon: url('fonts/icons/pause.svg');
+  }
+
+  .stop:after {
+    font-icon: url('fonts/icons/stop.svg');
+  }
+
+  .step-backward:after {
+    font-icon: url('fonts/icons/step_backward.svg');
+  }
+
+  .step-forward:after {
+    font-icon: url('fonts/icons/step_forward.svg');
   }
 }

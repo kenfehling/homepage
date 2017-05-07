@@ -12,16 +12,10 @@ const PDF = () => (
          src={require('img/Ken_Fehling-resume.png')}
     />
     <a className='download btn' href={DOWNLOAD} target='_top'>
-      <i className="fa fa-download fa"
-          title='Download'
-          aria-hidden="true"
-      />
+      <span className="download-icon" title='Download' />
     </a>
     <a className='new-window btn' href={FILE} target='_blank'>
-      <i className="fa fa-window-maximize"
-         title='Open in a new window'
-         aria-hidden="true"
-      />
+      <span className="new-window-icon" title='Open in a new window' />
     </a>
     <Head title='Ken Fehling - Resume'
           description='My resume'

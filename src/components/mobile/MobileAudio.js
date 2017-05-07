@@ -19,9 +19,9 @@ const AudioPlayer = ({play, stop, next, prev, isPlaying, currentTrack, isDesktop
         <div className='artist'>{currentTrack.artist}</div>
       </div>
       <div className="controls">
-        <i className="fa fa-backward" onClick={prev} />
-        <i className={`fa fa-${isPlaying ? 'pause' : 'play'}`} onClick={play} />
-        <i className="fa fa-forward" onClick={next} />
+        <span className="icon backward" onClick={prev} />
+        <span className={`icon ${isPlaying ? 'pause' : 'play'}`} onClick={play} />
+        <span className="icon forward" onClick={next} />
       </div>
       <Head title='Ken Fehling - Music'
             description="Music I've created"

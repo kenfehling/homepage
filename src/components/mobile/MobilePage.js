@@ -9,14 +9,14 @@ const TopBar = ({className=''}) => (
   <div className={`top-bar ${className}`}>
     <div className="network">
       <div>Network</div>
-      <i className="fa fa-wifi" />
+      <span className="icon wifi" />
     </div>
     <div className="time">
       <Clock format='h:mm A' />
     </div>
-    <div className="battery">
-      <i className="fa fa-battery-full "/>
-      <div>96%</div>
+    <div className="battery-container">
+      <span className="icon battery "/>
+      <div>23%</div>
     </div>
   </div>
 )
@@ -27,7 +27,7 @@ const NavBar = ({title, backLinkText, className=''}) => (
       <BackLink>
         {({params}) => (
           <div className='link'>
-            <i className="fa fa-chevron-left" />
+            <span className="chevron-left" />
             <div className='text'>
               {(backLinkText ?
                 (backLinkText instanceof Function ?

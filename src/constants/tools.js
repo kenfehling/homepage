@@ -12,7 +12,7 @@ const SOFTWARE = 'Software';
 const externalLink = (name, href='http://' + name) =>
   <a target='_blank' href={href} style={{whiteSpace: 'nowrap'}}>
     {name}
-    <i className='fa fa-external-link'
+    <span className='external-link'
        style={{
          paddingLeft: '0.3em',
          paddingRight: '0.2ex',

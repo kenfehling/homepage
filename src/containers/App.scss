@@ -16,4 +16,9 @@ body {
 
 :local(.container) {
   height: 100vh;
+
+  .chevron-left:after {
+    font-icon: url('fonts/icons/chevron_left.svg');
+    font-weight: bold;
+  }
 }

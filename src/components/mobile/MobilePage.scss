@@ -1,7 +1,7 @@
 @import '../../styles/colors';
 @import "../../styles/utils";
 
-$top-bar-height: 20px;
+$top-bar-height: 22px;
 $nav-height: 40px;
 $font-size: 15px;
 
@@ -24,29 +24,29 @@ $font-size: 15px;
     display: flex;
     border-bottom: 1px solid $mobile-nav-bg-color;
     padding: 0 6px;
-    i {
-      margin-left: 3px;
+    .icon {
+      margin-left: 4px;
     }
-    .network, .battery {
+    .network, .battery-container {
       width: 30%;
     }
     .network {
       display: flex;
-      i {
-        font-size: 12px;
-        line-height: 22px;
+      .icon {
+        font-size: 11px;
+        line-height: $top-bar-height;
       }
     }
     .time {
       flex: 1 1;
       text-align: center;
     }
-    .battery {
+    .battery-container {
       * {
         float: right;
       }
-      i {
-        font-size: 14px;
+      .battery {
+        font-size: 22px;
         line-height: $top-bar-height;
       }
     }
@@ -73,7 +73,7 @@ $font-size: 15px;
         text-decoration: none;
         color: inherit;
       }
-      .fa-chevron-left {
+      .chevron-left {
         font-weight: 100;
         display: block;
         line-height: inherit;
@@ -94,5 +94,13 @@ $font-size: 15px;
     flex: 1 1;
     display: flex;
     background-color: $default-mobile-bg-color;
+  }
+
+  .battery:after {
+    font-icon: url('fonts/icons/battery.svg');
+  }
+
+  .wifi:after {
+    font-icon: url('fonts/icons/wifi.svg');
   }
 }

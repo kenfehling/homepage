@@ -7,10 +7,10 @@ import Head from '../shared/Head'
 const Audio = ({play, stop, next, prev, isPlaying, timeElapsed}) => (
   <div className={`${styles.container} code-font`}>
       <div className="controls">
-          <i className="fa fa-step-backward" onClick={prev} />
-          <i className={`fa fa-${isPlaying ? 'pause' : 'play'}`} onClick={play} />
-          <i className="fa fa-stop" onClick={stop} />
-          <i className="fa fa-step-forward" onClick={next} />
+          <span className="icon step-backward" onClick={prev} />
+          <span className={`icon ${isPlaying ? 'pause' : 'play'}`} onClick={play} />
+          <span className="icon stop" onClick={stop} />
+          <span className="icon step-forward" onClick={next} />
       </div>
       <div className="current-track">
           <TitleMarquee />

@@ -1,9 +1,7 @@
 @import '../../styles/utils';
 
-$btn-base-size: 20px;
-$btn-margin: 16px;
-$btn-padding: 10px;
-$btn-size: $btn-base-size + $btn-padding * 2;
+$btn-size: 36px;
+$btn-margin: 20px;
 
 :local(.container) {
   @include no-select();
@@ -20,24 +18,17 @@ $btn-size: $btn-base-size + $btn-padding * 2;
   .btn {
     position: absolute;
     cursor: pointer;
-    background-color: #BBB;
-    color: #FFF;
-    font-size: $btn-base-size;
-    padding: ($btn-padding - 2px) $btn-padding;
-    border-radius: $btn-size / 2;
-    width: $btn-size;
-    height: $btn-size;
-    box-sizing: border-box;
-    text-align: center;
+    font-size: $btn-size;
+    color: #BBB;
+    text-decoration: none;
   }
 
   .btn:hover {
-    background-color: #D33;
+    color: #D33;
   }
 
   .btn:active {
-    background-color: #D00;
-    opacity: 1;
+    color: #D00;
   }
   
   .download {
@@ -48,5 +39,13 @@ $btn-size: $btn-base-size + $btn-padding * 2;
   .new-window {
     top: $btn-size + $btn-margin * 1.5;
     right: $btn-margin;
+  }
+
+  .download-icon:after {
+    font-icon: url('fonts/icons/download.svg');
+  }
+
+  .new-window-icon:after {
+    font-icon: url('fonts/icons/new_window.svg');
   }
 }

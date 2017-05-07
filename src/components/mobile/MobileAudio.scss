@@ -50,7 +50,7 @@ $text-color: #333;
     margin: 20px auto 0 auto;
     text-align: center;
     display: flex;
-    i.fa {
+    .icon {
       display: block;
       flex: 1;
       font-size: 1.5rem;
@@ -58,9 +58,25 @@ $text-color: #333;
       color: $text-color;
       @include no-highlight();
     }
-    i.fa:active {
+    .icon:active {
       opacity: 0.5;
     }
+  }
+
+  .play:after {
+    font-icon: url('fonts/icons/play.svg');
+  }
+
+  .pause:after {
+    font-icon: url('fonts/icons/pause.svg');
+  }
+
+  .backward:after {
+    font-icon: url('fonts/icons/backward.svg');
+  }
+
+  .forward:after {
+    font-icon: url('fonts/icons/forward.svg');
   }
 }
 
