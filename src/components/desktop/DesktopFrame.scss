@@ -3,8 +3,6 @@
 @import '../../styles/colors';
 @import '../../styles/dimens';
 
-$dropdown-border-radius: 6px;
-
 :local(.container) {
   position: relative;
   width: 100%;
@@ -34,11 +32,7 @@ $dropdown-border-radius: 6px;
       padding: 0 9px;
       line-height: $desktop-menu-height;
       height: $desktop-menu-height;
-    }
-
-    .logo > *, .left > * {
       cursor: pointer;
-
       &.active {
         background-color: $desktop-menu-active-bg-color;
         color: white;
@@ -70,52 +64,18 @@ $dropdown-border-radius: 6px;
 
     .right {
       padding-right: 10px;
-      float: right;
       text-align: right;
+      &, > * {
+        float: right;
+      }
 
       .time {
-
-      }
-    }
-
-    .dropdown, .submenu {
-      position: absolute;
-      z-index: 3;
-      top: $desktop-menu-height;
-      width: 180px;
-      @include background-image(linear-gradient(to bottom,
-                                $desktop-menu-bg-color-2,
-                                transparentize($desktop-menu-bg-color-2, 0.05)));
-      color: $desktop-menu-fg-color;
-      box-shadow: 0 1px 2px black;
-      border-bottom-left-radius: $dropdown-border-radius;
-      border-bottom-right-radius: $dropdown-border-radius;
-      padding: 5px 0;
-
-      .item {
-        display: block;
-        padding: 0 15px;
-        text-decoration: none;
-        color: inherit;
-
-        &:hover {
-          background-color: $desktop-menu-active-bg-color;
-          color: white;
-        }
-
-        .current:after {
-          content: 'current';
-          font-weight: 500;
-          display: block;
-          float: right;
-          padding-right: 10px;
+        padding: 16px 0 20px 0;
+        box-sizing: border-box;
+        .ap-analog-clock-screw {
+          display: none;
         }
       }
-    }
-
-    .submenu {
-      border-top-left-radius: $dropdown-border-radius;
-      border-top-right-radius: $dropdown-border-radius;
     }
   }
 
@@ -126,12 +86,15 @@ $dropdown-border-radius: 6px;
     height: 100%;
     top: $desktop-menu-height;
   }
+
   > .left {
     left: 0;
   }
+
   > .right {
     right: 0;
   }
+
   > .bottom {
     background-color: #999;
     height: $desktop-frame-width;

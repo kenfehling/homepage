@@ -12,6 +12,7 @@
   "author": "Ken Fehling",
   "license": "ISC",
   "dependencies": {
+    "apeman-react-clock": "^3.0.3",
     "babel-polyfill": "^6.23.0",
     "bowser": "^1.6.0",
     "form-serialize": "^0.7.1",
