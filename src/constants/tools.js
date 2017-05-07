@@ -365,6 +365,26 @@ export const tools = [{
     and the e2e tests are really no harder to maintain than the component tests.
   </div>
 }, {
+  name: 'Ruby',
+  stars: 3.5,
+  categories: [LANGUAGES],
+  description: <div>
+    Most of my Ruby experience has been with the [[Rails]] framework.
+    I prefer [[Python]] to Ruby mainly for its readability,
+    however Ruby has some interesting features like blocks.
+  </div>
+}, {
+  name: 'TravisCI',
+  stars: 3.5,
+  categories: [DEVOPS],
+  description: <div>
+    Travis is currently my main Continuous Integration (CI) service.
+    <br /><br />
+    I recently started using it with [[Docker]] to run tests
+    with [[Nightwatch]] and Chrome in headless mode.
+    I wrote a {externalLink('two part article', 'https://medium.com/@kenfehling/ui-testing-with-Nightwatch-js-headless-chrome-and-docker-part-1-f0ce2e8a23a1')} about it.
+  </div>
+}, {
   name: 'Bower',
   stars: 3.5,
   categories: [DEVOPS, WEB],
@@ -373,15 +393,6 @@ export const tools = [{
     front-end package management tool.
     I much prefer NPM because it works more seamlessly with [[JavaScript]] modules,
     and it can be used from both front-end and back-end dependency management.
-  </div>
-}, {
-  name: 'Ruby',
-  stars: 3.5,
-  categories: [LANGUAGES],
-  description: <div>
-    Most of my Ruby experience has been with the [[Rails]] framework.
-    I prefer [[Python]] to Ruby mainly for its readability,
-    however Ruby has some interesting features like blocks.
   </div>
 }, {
   name: 'FFmpeg',
@@ -453,11 +464,15 @@ export const tools = [{
     I've used Raspberry Pi for a few Internet of Things (IoT) and MIDI projects.
   </div>
 }, {
-  name: 'TravisCI',
+  name: 'Illustrator',
+  fullName: 'Adobe Illustrator',
   stars: 3,
-  categories: [DEVOPS],
+  categories: [SOFTWARE],
   description: <div>
-    Travis is currently my main Continuous Integration (CI) service.
+    Illustrator by far is my favorite Adobe software.
+    It's great for making icons, logos, and other vector graphics.
+    Most of the icons on this site are SVG files made with or modified in
+    Illustrator.
   </div>
 }, {
   name: 'Browserify',
@@ -511,17 +526,6 @@ export const tools = [{
     to solution to use a traditional back-end on that project,
     but I could see how solutions like Firebase
     might have a use on simpler projects.
-  </div>
-}, {
-  name: 'Illustrator',
-  fullName: 'Adobe Illustrator',
-  stars: 3,
-  categories: [SOFTWARE],
-  description: <div>
-    Illustrator by far is my favorite Adobe software.
-    It's great for making icons, logos, and other vector graphics.
-    Most of the icons on this site are SVG files made with or modified in
-    Illustrator.
   </div>
 }, {
   name: 'Logic',
@@ -641,5 +645,14 @@ export const tools = [{
     I first learned Photoshop in a digital art class at my university.
     It comes in handy sometimes, but I use [[Illustrator]] far more often
     in the kinds of projects I do.
+  </div>
+}, {
+  name: 'Docker',
+  stars: 1,
+  categories: [DEVOPS],
+  description: <div>
+    I recently started using Docker to run tests
+    with [[Nightwatch]] and Chrome in headless mode.
+    I wrote a {externalLink('two part article', 'https://medium.com/@kenfehling/ui-testing-with-Nightwatch-js-headless-chrome-and-docker-part-1-f0ce2e8a23a1')} about it.
   </div>
 }];
