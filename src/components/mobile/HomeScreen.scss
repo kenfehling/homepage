@@ -4,6 +4,7 @@ $icon-size: 54px;
 
 :local(.container) {
   @include no-select();
+  width: 100%;
   flex: 1 1;
   padding: 20px 10px;
   box-sizing: border-box;
@@ -18,10 +19,10 @@ $icon-size: 54px;
     font-weight: 400;
     color: white;
     text-align: center;
-    width: $icon-size;
+    width: 25%;
     height: $icon-size;
     text-decoration: none;
-    margin: 9px;
+    margin: 9px auto;
     cursor: pointer;
     img {
       width: 100%;
