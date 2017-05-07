@@ -21,4 +21,14 @@ body {
     font-icon: url('fonts/icons/chevron_left.svg');
     font-weight: bold;
   }
+
+  .external-link {
+    padding-left: 0.3em;
+    padding-right: 0.2ex;
+    vertical-align: middle;
+  }
+
+  .external-link:after {
+    font-icon: url('fonts/icons/external_link.svg');
+  }
 }

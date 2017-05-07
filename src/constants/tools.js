@@ -12,13 +12,7 @@ const SOFTWARE = 'Software';
 const externalLink = (name, href='http://' + name) =>
   <a target='_blank' href={href} style={{whiteSpace: 'nowrap'}}>
     {name}
-    <span className='external-link'
-       style={{
-         paddingLeft: '0.3em',
-         paddingRight: '0.2ex',
-         verticalAlign: 'middle'
-       }}
-    />
+    <span className='external-link'/>
   </a>;
 
 export const categories = [
