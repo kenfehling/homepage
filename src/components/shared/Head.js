@@ -6,10 +6,13 @@ import {DOMAIN} from '../../constants/links'
 const img = `http://www.${DOMAIN}/static/Ken_Fehling.jpg`
 
 const Head = ({title, description, keywords, location}) => {
-  const url = 'http://' +  DOMAIN + location.pathname
+  const href = DOMAIN + location.pathname
+  const url = 'http://' +  href
+  const canonicalUrl = 'http://www.' + href
   return (
     <Helmet>
       <title>{title}</title>
+      <link rel="canonical" href={canonicalUrl} />
       <meta name="description" content={description}/>
       <meta name="keywords" content={keywords}/>
       <meta itemprop="name" content={title}/>
