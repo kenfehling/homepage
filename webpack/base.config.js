@@ -18,8 +18,13 @@ export default {
   devtool: 'source-map',
   module: {
     loaders: [{
-      test: /\.js$/,
-      exclude: /node_modules/,
+      test: /\.(js|jsx)$/,
+      include: [
+        /src/,
+        /server\/index.js/,
+        /node_modules\/apeman-react-clock\/lib/,
+        /node_modules\/apeman-react-clock\/src/
+      ],
       loader: 'babel-loader'
     }]
   },
