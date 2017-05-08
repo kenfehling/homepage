@@ -1,3 +1,4 @@
+import webpack from 'webpacl'
 import path from 'path'
 import bourbon from 'node-bourbon'
 import IconfontWebpackPlugin from 'iconfont-webpack-plugin'
@@ -13,7 +14,8 @@ export default {
   context: root,
   entry: path.join(root, 'src/index'),
   output: {
-    publicPath: '/'
+    publicPath: '/',
+    filename: '[name].js'
   },
   devtool: 'source-map',
   module: {
@@ -24,7 +26,8 @@ export default {
     }]
   },
   plugins: [
-    new IconfontWebpackPlugin()
+    new IconfontWebpackPlugin(),
+    new webpack.optimize.CommonsChunkPlugin("common.js")
   ],
   resolve: {
     extensions: ['.js', '.jsx'],
