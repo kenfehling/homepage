@@ -2,7 +2,6 @@ import React from 'react'
 import DesktopFrame from '../components/desktop/DesktopFrame'
 import DesktopWindow from '../components/desktop/DesktopWindow'
 import Editor from '../components/desktop/Editor'
-import Splash from '../components/desktop/Splash'
 import Audio from '../components/desktop/Audio'
 import Tools from '../components/desktop/DesktopTools'
 import Social from '../components/desktop/DesktopSocial'
@@ -14,7 +13,6 @@ import {WindowGroup} from 'react-router-nested-history'
 import ContainerWindow from '../components/desktop/DesktopContainerWindow'
 import SimpleRedirect from '../components/shared/SimpleRedirect'
 import {redirectMobileToDesktop} from '../utils/mobile'
-import {SPLASH_DURATION} from '../constants/settings'
 import * as styles from './DesktopApp.scss'
 import {apps} from '../constants/desktop'
 import {connect} from 'react-redux'
@@ -32,7 +30,6 @@ const DesktopApp = ({background}) => (
   <div className={styles.container} style={{height: '100%'}}>
     {redirectMobileToDesktop('/contacts')}
     <SimpleRedirect from='/tools' to='/tools/All' />
-    {SPLASH_DURATION > 0 && <Splash />}
     <div className={'inner-container ' + background}>
       <WindowGroup name='desktop'>
         <ContainerWindow name="PDF" right={right + 5} top={top + 5}>

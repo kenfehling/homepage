@@ -1,4 +1,4 @@
-import webpack from 'webpacl'
+import webpack from 'webpack'
 import path from 'path'
 import bourbon from 'node-bourbon'
 import IconfontWebpackPlugin from 'iconfont-webpack-plugin'
@@ -13,7 +13,8 @@ export const sassPaths = bourbon
 export default {
   context: root,
   entry: {
-    path.join(root, 'src/index'),
+    splash: path.join(root, 'src/entry/splash'),
+    main: path.join(root, 'src/entry/main')
   },
   output: {
     publicPath: '/',

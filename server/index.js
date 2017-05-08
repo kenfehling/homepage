@@ -2,7 +2,6 @@ require('source-map-support').install()
 require('dotenv').config()
 import express from 'express'
 import serveStatic from 'serve-static'
-//import expressStaticGzip from 'express-static-gzip'
 import path from 'path'
 import compression from 'compression'
 import React from 'react'
@@ -17,6 +16,7 @@ import Helmet from 'react-helmet'
 import {Provider} from 'react-redux'
 import {createStore} from 'redux'
 import reducer from '../src/reducers'
+//import expressStaticGzip from 'express-static-gzip'
 
 const auth = {
   api_key: process.env.MAILGUN_API_KEY,
