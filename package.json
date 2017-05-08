@@ -18,7 +18,6 @@
     "form-serialize": "^0.7.1",
     "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.17.4",
-    "moment": "^2.18.1",
     "prop-types": "^15.5.8",
     "rc-progress": "^2.0.6",
     "react": "^15.5.4",
@@ -36,6 +35,7 @@
     "react-typist": "^0.3.0",
     "recompose": "^0.22.0",
     "redux": "^3.6.0",
+    "strftime": "^0.10.0",
     "tone": "^0.10.0",
     "validator": "^7.0.0"
   },

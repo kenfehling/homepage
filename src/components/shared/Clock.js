@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
-import moment from 'moment'
+import strftime from 'strftime'
 
 const ONE_MINUTE = 60000
 
@@ -21,7 +21,7 @@ class Clock extends Component {
     this.intervalId1 = setTimeout(() => {
       this.setTime()
       this.intervalId2 = setInterval(() => this.setTime(), ONE_MINUTE)
-    }, ONE_MINUTE - (moment().seconds() * 1000 + moment().milliseconds()))
+    }, ONE_MINUTE - (new Date().getTime() % 60000))
   }
 
   componentWillUnmount(){
@@ -34,7 +34,7 @@ class Clock extends Component {
     const {time} = this.state
     return (
       <div>
-        {time && moment().format(format)}
+        {time && strftime(format)}
       </div>
     )
   }
