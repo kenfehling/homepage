@@ -79,7 +79,7 @@ const DesktopFrame = () => (
         <MenuItem text='Settings' items={settings} />
       </div>
       <div className='right'>
-        <MenuItem text={<Clock format='dddd[,] MMMM D [&nbsp;] h:mm A' />}
+        <MenuItem text={<Clock format='%A, %B %d &nbsp;%l:%M %p' />}
                   dropdownClassName='time'
                   dropdownAnchor='right'
                   items={[<ClockDropdown />]}

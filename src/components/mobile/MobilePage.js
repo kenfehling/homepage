@@ -12,7 +12,7 @@ const TopBar = ({className=''}) => (
       <span className="icon wifi" />
     </div>
     <div className="time">
-      <Clock format='h:mm A' />
+      <Clock format='%l:%M %p' />
     </div>
     <div className="battery-container">
       <span className="icon battery "/>
