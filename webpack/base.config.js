@@ -12,7 +12,9 @@ export const sassPaths = bourbon
 
 export default {
   context: root,
-  entry: path.join(root, 'src/index'),
+  entry: {
+    path.join(root, 'src/index'),
+  },
   output: {
     publicPath: '/',
     filename: '[name].js'
