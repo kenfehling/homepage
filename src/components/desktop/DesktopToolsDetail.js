@@ -12,9 +12,9 @@ const DesktopToolsDetail = ({match:{params:{tool, category}}}) => {
   const {name, fullName, stars, description, categories} = toolObject
   const path = `/tools/${category}`
   return (<div className={styles.container} key={name}>
-    <Head title={`${fullName} - ${categories.join(', ')} tools`}
+    <Head title={`${fullName || name} - ${categories.join(', ')} tools`}
           description={toTextDescription(description)}
-          keywords={[fullName, ...categories].join(',')}
+          keywords={[fullName || name, ...categories].join(',')}
     />
     <div className='heading'>
       <div className='inner-heading'>

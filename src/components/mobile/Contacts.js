@@ -5,7 +5,7 @@ import Page from './MobilePage'
 import Contact from './MobileContact'
 import * as styles from './Contacts.scss'
 import {devicePath} from '../../utils/mobile'
-import {EMAIL} from '../../constants/links'
+import {EMAIL, DOMAIN} from '../../constants/links'
 import Head from '../shared/Head'
 
 const escapeName = name => name.replace('_', ' ')
@@ -16,7 +16,7 @@ const Contacts = ({isDesktop}) => {
     icon: 'mobile/contacts/Ken_Fehling.jpg',
     page: devicePath('contacts/Ken_Fehling', isDesktop),
     email: EMAIL,
-    website: 'kenfehling.com',
+    website: DOMAIN,
     twitter: 'kenfehling'
   }]
 

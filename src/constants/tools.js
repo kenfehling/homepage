@@ -149,8 +149,11 @@ export const tools = [{
   categories: [LIBRARIES, WEB],
   description: <div>
     After trying LESS and Stylus I settled on SASS as my CSS preprocessor
-    of choice. I prefer to use the SCSS syntax because it's just a superset
-    of regular [[CSS]] syntax.
+    of choice. I prefer to use the SCSS dialect of SASS
+    because it's just a superset of regular [[CSS]] syntax.
+    <br /><br />
+    In the past I've used SASS with Compass,
+    and I'm currently using it with [[Bourbon]].
   </div>
 }, {
   name: 'Gulp',

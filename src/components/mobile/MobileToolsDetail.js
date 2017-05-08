@@ -6,15 +6,17 @@ import {
 import * as styles from './MobileToolsDetail.scss'
 import {devicePath} from '../../utils/mobile'
 import Head from '../shared/Head'
+import '../../utils/array'
 
 const MobileToolsDetail = ({match:{params:{tool, category}}, isDesktop}) => {
   const toolObject = getTool(tool)
   const {name, fullName, stars, description, categories} = toolObject
   const path = devicePath(`tools/${category}`, isDesktop)
+  const names = [name, fullName].joinIgnoreNulls(',')
   return (<div className={styles.container} key={name}>
-    <Head title={`${fullName} - ${categories.join(', ')} tools`}
+    <Head title={`${names} - ${categories.join(', ')} tools`}
           description={toTextDescription(description)}
-          keywords={[fullName, ...categories].join(',')}
+          keywords={[...names, ...categories].join(',')}
     />
     <div className="heading">
       <div className='icon'>{getIcon(toolObject)}</div>
