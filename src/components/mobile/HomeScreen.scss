@@ -1,5 +1,7 @@
 @import "bourbon";
 @import "../../styles/utils";
+@import "../../styles/dimens";
+@import "../../styles/colors";
 $icon-size: 54px;
 
 :local(.container) {
@@ -15,9 +17,9 @@ $icon-size: 54px;
 
   .icon {
     display: inline-block;
-    font-size: 10px;
+    font-size: $mobile-home-screen-text-size;
     font-weight: 400;
-    color: white;
+    color: $mobile-home-screen-fg-color;
     text-align: center;
     width: 25%;
     height: $icon-size;
@@ -40,8 +42,11 @@ $icon-size: 54px;
 :local(.nav) {
   background-color: transparent !important;
   border-color: transparent !important;
-  color: white !important;
+  color: $mobile-home-screen-fg-color !important;
   font-weight: 400 !important;
+  .time {
+    font-weight: 500 !important;
+  }
   position: absolute;
   z-index: 10;
   width: 100%;

@@ -3,7 +3,7 @@
 
 $top-bar-height: 22px;
 $nav-height: 40px;
-$font-size: 15px;
+$font-size: 16px;
 
 :local(.container) {
   width: 100%;
@@ -34,7 +34,7 @@ $font-size: 15px;
       display: flex;
       .icon {
         font-size: 11px;
-        line-height: $top-bar-height;
+        line-height: $top-bar-height - 2px;
       }
     }
     .time {
@@ -77,7 +77,7 @@ $font-size: 15px;
         font-weight: 100;
         display: block;
         line-height: inherit;
-        margin: 0 5px 0 4px;
+        margin: 0 3px 0 4px;
       }
       .text {
         font-size: round($font-size * 0.9);
