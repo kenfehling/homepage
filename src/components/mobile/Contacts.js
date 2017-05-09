@@ -44,11 +44,11 @@ const Contacts = ({isDesktop}) => {
             </Page>
           )}
         </HistoryRoute>
+        <Head title='Ken Fehling - Contacts'
+              description='Important contacts in the web development industry'
+              keywords="Ken Fehling, contacts, rolodex"
+        />
       </Container>
-      <Head title='Ken Fehling - Contacts'
-            description='Important contacts in the web development industry'
-            keywords="Ken Fehling, contacts, rolodex"
-      />
     </div>
   )
 }
