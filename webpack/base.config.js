@@ -22,8 +22,10 @@ export default {
       include: [
         /src/,
         /server\/index.js/,
+        /*
         /node_modules\/apeman-react-clock\/lib/,
         /node_modules\/apeman-react-clock\/src/
+        */
       ],
       loader: 'babel-loader'
     }]
