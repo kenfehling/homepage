@@ -4,3 +4,4 @@ export const CANONICAL_DOMAIN = 'www.' + NAKED_DOMAIN
 export const BASE_URL = 'http://' + CANONICAL_DOMAIN
 export const EMAIL = 'me@' + NAKED_DOMAIN
 export const RESUME_FILE = 'Ken_Fehling-resume.pdf'
+export const FACEBOOK_APP_ID = 424951111216319

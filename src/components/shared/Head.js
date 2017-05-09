@@ -2,7 +2,7 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import {withRouter} from 'react-router'
 import {WhenActive} from 'react-router-nested-history'
-import {BASE_URL, NAKED_DOMAIN} from '../../constants/links'
+import {BASE_URL, FACEBOOK_APP_ID, NAKED_DOMAIN} from '../../constants/links'
 
 const img = BASE_URL + '/static/Ken_Fehling.jpg'
 
@@ -20,7 +20,7 @@ const Head = ({title, description, keywords, location}) => {
           <meta itemprop="image" content={img}/>
           <meta itemprop="url" content={url}/>
           <meta itemprop="keywords" content={keywords}/>
-          <meta property='fb:app_id' content={424951111216319}/>
+          <meta property='fb:app_id' content={FACEBOOK_APP_ID}/>
           <meta property="og:title" content={title}/>
           <meta property="og:type" content="website"/>
           <meta property="og:url" content={url}/>
