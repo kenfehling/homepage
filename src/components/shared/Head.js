@@ -20,6 +20,7 @@ const Head = ({title, description, keywords, location}) => {
           <meta itemprop="image" content={img}/>
           <meta itemprop="url" content={url}/>
           <meta itemprop="keywords" content={keywords}/>
+          <meta property='fb:app_id' content={424951111216319}/>
           <meta property="og:title" content={title}/>
           <meta property="og:type" content="website"/>
           <meta property="og:url" content={url}/>
