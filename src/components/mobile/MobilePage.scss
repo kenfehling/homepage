@@ -1,9 +1,11 @@
 @import '../../styles/colors';
 @import "../../styles/utils";
+@import "../../styles/dimens";
 
 $top-bar-height: 22px;
 $nav-height: 40px;
-$font-size: 16px;
+
+$font-size: $larger-text-size;
 
 :local(.container) {
   width: 100%;
@@ -80,7 +82,7 @@ $font-size: 16px;
         margin: 0 3px 0 4px;
       }
       .text {
-        font-size: round($font-size * 0.9);
+        font-size: $large-text-size;
       }
     }
     .title {

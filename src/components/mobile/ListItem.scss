@@ -35,7 +35,7 @@ $bg-color: white;
       border: thin solid darken($bg-color, 18%);
     }
 
-    &:active, &:focus {
+    &:active {
       background-color: darken($bg-color, 10%);
       border: thin solid darken($bg-color, 25%);
     }

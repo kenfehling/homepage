@@ -7,7 +7,7 @@ $color: darken(#EEDD00, 7%);
 
 :local(.container) {
   padding: 15px;
-  font-size: $medium-text-size;
+  font-size: $large-text-size;
 
   @include link-style(bold);
 

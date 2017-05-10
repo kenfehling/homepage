@@ -1,11 +1,12 @@
 @import '../../styles/mixins';
+@import '../../styles/dimens';
 
 $icon-size: 72px;
 
 :local(.container) {
   width: 100%;
   padding: 15px;
-  font-size: 15px;
+  font-size: $larger-text-size;
   @include link-style(400);
 
   .heading {
@@ -20,14 +21,14 @@ $icon-size: 72px;
     }
     .name {
       line-height: $icon-size;
-      font-size: 18px;
+      font-size: $xx-large-text-size;
       font-weight: 500;
     }
   }
 
   .section {
     .label {
-      font-size: 12px;
+      font-size: $medium-text-size;
       font-weight: bold;
       color: #333;
       margin-bottom: 5px;
