@@ -106,6 +106,7 @@ export const tools = [{
   </div>
 }, {
   name: 'Node',
+  fullName: 'Node.js',
   stars: 4.5,
   categories: [PLATFORMS, WEB],
   description: <div>
@@ -465,6 +466,10 @@ export const tools = [{
   categories: [PLATFORMS],
   description: <div>
     I've used Raspberry Pi for a few Internet of Things (IoT) and MIDI projects.
+    <br /><br />
+    The main language I've used with it is [[Python]], although
+    it can be used with basically anything,
+    including [[JavaScript]] and [[Node]].
   </div>
 }, {
   name: 'Illustrator',

@@ -39,7 +39,7 @@ export function renderStars(stars) {
 export const getMainName = fullName => getToolByFullName(fullName).name
 
 export const escapeName = name => name.replace(' ', '_').replace('#', 'sharp')
-export const unescapeName = name => name.replace('_', ' ').replace('sharp', '#')
+export const unescapeName = name => name ? name.replace('_', ' ').replace('sharp', '#') : name
 
 export const getIcon = ({name, iconType}) => (
     <img className="icon" src={require('../../img/icons/tools/' +

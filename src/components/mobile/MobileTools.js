@@ -5,7 +5,7 @@ import MobilePage from './MobilePage'
 import MobileToolsDetail from './MobileToolsDetail'
 import List from './List'
 import {categories} from '../../constants/tools'
-import {filterTools, escapeName} from '../../utils/tools'
+import {filterTools, escapeName, unescapeName} from '../../utils/tools'
 import * as styles from './MobileTools.scss'
 import {devicePath} from '../../utils/mobile'
 import Head from '../shared/Head'
@@ -71,7 +71,7 @@ const MobileTools = ({isDesktop}) => {
       <HistoryRoute path={devicePath(':app(tools)/:category/:tool', isDesktop)} exact>
         {(props) => (
           <Page title={props.match.params.tool}
-                backLinkText={({params:{tool, category}}) => tool || category}
+                backLinkText={({params:{tool, category}}) => unescapeName(tool) || category}
                 isDesktop={isDesktop}
           >
             <MobileToolsDetail {...props} isDesktop={isDesktop} />

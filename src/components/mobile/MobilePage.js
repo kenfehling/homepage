@@ -4,6 +4,7 @@ import {BackLink} from 'react-router-nested-history'
 import * as styles from './MobilePage.scss'
 import '../../utils/string'
 import Clock from '../shared/Clock'
+import {unescapeName} from '../../utils/tools'
 
 const TopBar = ({className=''}) => (
   <div className={`top-bar ${className}`}>
@@ -47,7 +48,7 @@ const MobilePage = ({title='', children, backLinkText, isDesktop, useNavBar=true
                      navClassName=''}) => (
   <div className={styles.container}>
     {isDesktop && <TopBar className={navClassName} />}
-    {useNavBar && <NavBar title={title}
+    {useNavBar && <NavBar title={unescapeName(title)}
                           backLinkText={backLinkText}
                           className={navClassName} />}
     <div className='content'>
