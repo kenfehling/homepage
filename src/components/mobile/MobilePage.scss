@@ -82,12 +82,13 @@ $font-size: $larger-text-size;
         margin: 0 3px 0 4px;
       }
       .text {
-        font-size: $large-text-size;
+        font-size: $title-size;
       }
     }
     .title {
       width: 100%;
       text-align: center;
+      font-size: $x-large-text-size;
     }
   }
 
