@@ -1,5 +1,6 @@
 require('source-map-support').install()
 require('dotenv').config()
+import forceSSL from 'express-force-ssl'
 import express from 'express'
 import serveStatic from 'serve-static'
 //import expressStaticGzip from 'express-static-gzip'
@@ -25,6 +26,13 @@ const auth = {
 
 const buildPath = __dirname
 const app = express()
+
+app.set('forceSSLOptions', {
+  enable301Redirects: true,
+  trustXFPHeader: false,
+  httpsPort: 443,
+  sslRequiredMessage: 'SSL Required.'
+});
 
 //Before all
 app.use(compression())
