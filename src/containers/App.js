@@ -9,8 +9,8 @@ import Head from '../components/shared/Head'
 export default () => (
   <div className={styles.container}>
     <Head title='Ken Fehling'
-          description='Web and mobile app developer, music maker'
-          keywords="Ken Fehling, web, mobile, dev, apps, websites, development, design, music"
+          description='Freelance web and mobile app developer from Long Island, New York'
+          keywords="Ken Fehling, web development, web design, app development, web, mobile, dev, apps, websites, development, design, Long Island, New York, NYC"
     />
     {bowser.mobile /* || bowser.tablet */ ? <MobileApp /> : <DesktopApp />}
   </div>
