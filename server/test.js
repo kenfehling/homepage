@@ -2,7 +2,7 @@ const fs = require('fs')
 const exec = require('child_process').exec
 
 const serverProc = exec('npm start &')
-exec('sleep 15; npm run test:e2e', function(error) {
+exec('sleep 30; npm run test:e2e', function(error) {
   serverProc.kill("SIGINT")
   if (error) {
     console.error(error)
