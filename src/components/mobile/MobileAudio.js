@@ -9,7 +9,9 @@ const AudioPlayer = ({play, stop, next, prev, isPlaying, currentTrack, isDesktop
   <MobilePage title='Music' isDesktop={isDesktop} navClassName={styles.nav}>
     <div className={styles.container}>
       <div className='picture'>
-        <img src={require('img/icons/mobile/music/background.svg')} />
+        <img alt='Music background'
+             src={require('img/icons/mobile/music/background.svg')}
+        />
       </div>
       <div className="time-slider">
         <TimeSlider />

@@ -36,7 +36,10 @@ export default class Splash extends Component {
     return (
       <div className={styles.container}
            style={{display: show ? 'block' : 'none'}}>
-        <img className='ken' src={require('img/Ken_Fehling.jpg')} />
+        <img className='ken'
+             alt='Ken Fehling'
+             src={require('img/Ken_Fehling.jpg')}
+        />
         <Line percent={progress} className='progress' />
       </div>
     )

@@ -15,7 +15,7 @@ const ItemLink = ({page, url, className, children}) => (
 const ListItem = ({icon, name, page, url}) => (
   <div className={styles.container}>
     <ItemLink page={page} url={url} className='inner-container'>
-      <img className="icon" src={require('img/icons/' + icon)} />
+      <img alt={name} className="icon" src={require('img/icons/' + icon)} />
       <div className="name">{name}</div>
     </ItemLink>
   </div>

@@ -6,7 +6,10 @@ import * as styles from './DesktopWindow.scss'
 const noop = () => {}
 
 const ToolbarButton = ({name, onClick=noop}) => (
-  <img src={require(`img/icons/desktop/${name}.svg`)} onClick={onClick} />
+  <img alt={name}
+       src={require(`img/icons/desktop/${name}.svg`)}
+       onClick={onClick}
+  />
 )
 
 const ShareItem = ({name, text=name, url, target='_blank'}) => (

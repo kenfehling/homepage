@@ -9,6 +9,7 @@ const DOWNLOAD = '/api/' + RESUME_FILE
 const PDF = () => (
   <div className={styles.container}>
     <img className='resume'
+         alt='Resume'
          src={require('img/Ken_Fehling-resume.png')}
     />
     <a className='download btn' href={DOWNLOAD} target='_top'>

@@ -31,8 +31,8 @@ export function getTool(escapedName) {
 
 export function renderStars(stars) {
   return (<div className="stars">
-    {range(Math.floor(stars)).map(i => <img key={i} src={starIcon} />)}
-    {stars % 1 === 0.5 ? <img src={halfStarIcon} /> : null}
+    {range(Math.floor(stars)).map(i => <img key={i} alt='Star' src={starIcon} />)}
+    {stars % 1 === 0.5 ? <img alt='Half star' src={halfStarIcon} /> : null}
   </div>)
 }
 
@@ -42,8 +42,10 @@ export const escapeName = name => name.replace(' ', '_').replace('#', 'sharp')
 export const unescapeName = name => name ? name.replace('_', ' ').replace('sharp', '#') : name
 
 export const getIcon = ({name, iconType}) => (
-    <img className="icon" src={require('../../img/icons/tools/' +
-        escapeName(name) +'.' + (iconType || 'svg'))} />)
+    <img alt={name}
+         className="icon"
+         src={require('../../img/icons/tools/' +
+                escapeName(name) +'.' + (iconType || 'svg'))} />)
 
 export function linkToTool(name, path, text=name) {
   const names = tools.map(t => t.name)
