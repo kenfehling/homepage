@@ -5,7 +5,6 @@ import serveStatic from 'serve-static'
 //import expressStaticGzip from 'express-static-gzip'
 import path from 'path'
 import compression from 'compression'
-import enforceSSL from 'express-sslify'
 import React from 'react'
 import App from '../src/containers/App'
 import {renderToString} from 'react-dom/server'
@@ -29,12 +28,6 @@ const app = express()
 
 //Before all
 app.use(compression())
-
-/*
-if (process.env.MODE === 'production') {
-  app.use(enforceSSL.HTTPS())
-}
-*/
 
 const serve = serveStatic(buildPath)
 app.get('*', serve)
@@ -86,6 +79,12 @@ app.get('/api/' + RESUME_FILE, function (req, res) {
 })
 
 app.use(unless('/api', (req, res) => {
+
+  if (process.env.MODE === 'production' && req.headers.host.slice(0, 3) !== 'www') {
+    const protocol = req.secure ? 'https' : 'http'
+    return res.redirect(301, protocol + '://www.' + req.headers.host + req.url);
+  }
+
   const context = {}
   const store = createStore(reducer)
   const body = renderToString(
