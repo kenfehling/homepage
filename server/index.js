@@ -5,6 +5,7 @@ import serveStatic from 'serve-static'
 //import expressStaticGzip from 'express-static-gzip'
 import path from 'path'
 import compression from 'compression'
+import enforceSSL from 'express-sslify'
 import React from 'react'
 import App from '../src/containers/App'
 import {renderToString} from 'react-dom/server'
@@ -28,6 +29,7 @@ const app = express()
 
 //Before all
 app.use(compression())
+app.use(enforceSSL())
 
 const serve = serveStatic(buildPath)
 app.get('*', serve)
