@@ -79,10 +79,12 @@ app.get('/api/' + RESUME_FILE, function (req, res) {
 })
 
 app.use(unless('/api', (req, res) => {
-
-  if (process.env.MODE === 'production' && req.headers.host.slice(0, 3) !== 'www') {
-    const protocol = req.secure ? 'https' : 'http'
-    return res.redirect(301, protocol + '://www.' + req.headers.host + req.url);
+  if (process.env.MODE === 'production') {
+    const www = req.headers.host.slice(0, 3) === 'www'
+    const https = req.secure
+    if (!https || !www) {
+      return res.redirect(301, 'https://www.' + req.headers.host + req.url);
+    }
   }
 
   const context = {}
