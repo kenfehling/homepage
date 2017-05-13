@@ -29,7 +29,10 @@ const app = express()
 
 //Before all
 app.use(compression())
-app.use(enforceSSL())
+
+if (process.env.MODE === 'production') {
+  app.use(enforceSSL.HTTPS())
+}
 
 const serve = serveStatic(buildPath)
 app.get('*', serve)
