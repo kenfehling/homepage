@@ -6,7 +6,7 @@ import * as styles from './Dock.scss'
 import {HIDE_SPLASH_AFTER, SPLASH_DURATION} from '../../constants/settings'
 
 const LOAD_WAIT = (SPLASH_DURATION + HIDE_SPLASH_AFTER) * 1000
-const BOUNCE_WAIT = 4000
+const BOUNCE_WAIT = 2500
 const noop = () => {}
 
 class BouncingDockItem extends Component {

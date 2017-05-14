@@ -3,6 +3,7 @@
 @import "../../styles/fonts";
 @import "../../styles/dimens";
 
+$load-time: 5s;
 $dock-height: 55px;
 $num-icons: 7;
 $top-gray: 160;
@@ -107,7 +108,7 @@ $tooltip-opacity: 0.98;
           @include filter(grayscale(0));
         }
       }
-      animation: load-icon 7.5s;
+      animation: load-icon $load-time;
     }
 
     img:active {
