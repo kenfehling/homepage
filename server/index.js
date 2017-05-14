@@ -84,7 +84,7 @@ app.use(unless('/api', (req, res) => {
     const https = req.secure ||
         (req.headers["x-forwarded-proto"] || '').substring(0, 5) === 'https'
 
-    console.log('Is HTTP? ' + req.secure)
+    console.log('Is HTTP? ' + https)
 
     if (!www) {
     //if (!https || !www) {
