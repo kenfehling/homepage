@@ -81,7 +81,8 @@ app.get('/api/' + RESUME_FILE, function (req, res) {
 app.use(unless('/api', (req, res) => {
   if (process.env.MODE === 'production') {
     const www = req.headers.host.slice(0, 3) === 'www'
-    const https = req.secure
+    const https = req.secure ||
+        (req.headers["x-forwarded-proto"] || '').substring(0, 5) === 'https'
 
     console.log('Is HTTP? ' + req.secure)
 
