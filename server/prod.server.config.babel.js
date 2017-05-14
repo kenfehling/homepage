@@ -21,6 +21,7 @@ export default {
       filename: 'index.ejs',
       head: '<%- head %>',
       body: '<%- body %>',
+      device: '<%- device %>',
       "files": {
         "png": 'static/*.png'
       },

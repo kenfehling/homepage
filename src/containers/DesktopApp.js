@@ -15,9 +15,11 @@ import ContainerWindow from '../components/desktop/DesktopContainerWindow'
 import SimpleRedirect from '../components/shared/SimpleRedirect'
 import {redirectMobileToDesktop} from '../utils/mobile'
 import {SPLASH_DURATION} from '../constants/settings'
+import './App.scss'
 import * as styles from './DesktopApp.scss'
 import {apps} from '../constants/desktop'
 import {connect} from 'react-redux'
+import AppHead from '../components/shared/AppHead'
 //import IFrameWindow from '../components/desktop/IFrameWindow'
 //import Terminal from '../components/desktop/Terminal'
 //import Dialer from '../components/desktop/Dialer'
@@ -30,6 +32,7 @@ const right = 5
 
 const DesktopApp = ({background}) => (
   <div className={styles.container} style={{height: '100%'}}>
+    <AppHead />
     {redirectMobileToDesktop('/contacts')}
     <SimpleRedirect from='/tools' to='/tools/All' />
     {SPLASH_DURATION > 0 && <Splash />}

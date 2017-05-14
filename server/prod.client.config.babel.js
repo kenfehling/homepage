@@ -4,10 +4,6 @@ import webpack from 'webpack'
 
 export default {
   ...baseConfig,
-  output: {
-    ...baseConfig.output,
-    filename: 'client.js'
-  },
   plugins: [
     ...baseConfig.plugins,
     new webpack.optimize.UglifyJsPlugin({

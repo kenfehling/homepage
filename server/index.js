@@ -5,8 +5,8 @@ import serveStatic from 'serve-static'
 //import expressStaticGzip from 'express-static-gzip'
 import path from 'path'
 import compression from 'compression'
+import MobileDetect from 'mobile-detect'
 import React from 'react'
-import App from '../src/containers/App'
 import {renderToString} from 'react-dom/server'
 import {HistoryRouter} from 'react-router-nested-history'
 import nodemailer from 'nodemailer'
@@ -17,6 +17,8 @@ import Helmet from 'react-helmet'
 import {Provider} from 'react-redux'
 import {createStore} from 'redux'
 import reducer from '../src/reducers'
+import MobileApp from '../src/containers/MobileApp'
+import DesktopApp from '../src/containers/DesktopApp'
 
 const auth = {
   api_key: process.env.MAILGUN_API_KEY,
@@ -93,10 +95,12 @@ app.use(unless('/api', (req, res) => {
 
   const context = {}
   const store = createStore(reducer)
+  const md = new MobileDetect(req.headers['user-agent'])
+  const device = md.mobile() ? 'mobile' : 'desktop'
   const body = renderToString(
     <Provider store={store}>
       <HistoryRouter location={req.url} context={context}>
-        <App />
+        {device === 'mobile' ? <MobileApp /> : <DesktopApp />}
       </HistoryRouter>
     </Provider>
   )
@@ -107,7 +111,7 @@ app.use(unless('/api', (req, res) => {
   }
   return res
     .status(context.status || 200)
-    .render('index', {head, body})
+    .render('index', {head, body, device})
 }))
 
 const port = process.env.PORT || 3000

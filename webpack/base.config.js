@@ -11,9 +11,13 @@ export const sassPaths = bourbon
 
 export default {
   context: root,
-  entry: path.join(root, 'src/index'),
+  entry: {
+    desktop: path.join(root, 'src/entry/desktop'),
+    mobile: path.join(root, 'src/entry/mobile')
+  },
   output: {
-    publicPath: '/'
+    publicPath: '/',
+    filename: '[name].client.js'
   },
   devtool: 'source-map',
   module: {

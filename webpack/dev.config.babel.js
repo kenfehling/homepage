@@ -16,8 +16,9 @@ const cssLoader = {
   }
 }
 
-export default {
+export default (env) => ({
   ...baseConfig,
+  entry: path.join(root, 'src/entry/' + env.device),
   output: {
     ...baseConfig.output,
     path: path.resolve('./static'),
@@ -69,4 +70,4 @@ export default {
       ]
     ]
   }
-}
+})
