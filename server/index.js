@@ -83,7 +83,7 @@ app.use(unless('/api', (req, res) => {
     const www = req.headers.host.slice(0, 3) === 'www'
     const https = req.secure
     if (!https || !www) {
-      const host = www ? req.headers.host.slice(3) : req.headers.host
+      const host = www ? req.headers.host.slice(4) : req.headers.host
       return res.redirect(301, 'https://www.' + host + req.url);
     }
   }
