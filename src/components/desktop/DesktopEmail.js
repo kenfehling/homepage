@@ -87,7 +87,7 @@ class Form extends Component {
               <span className='label'>
                 From:
               </span>
-              <input type='text'
+              <input type='email'
                      name='from'
                      ref={(el) => {this.from = el}}
                      placeholder='Your email address' />

@@ -55,12 +55,12 @@ $text-area-padding-x: 0.7em;
           color: $error-color;
         }
 
-        input[type=text], textarea {
+        input[type=text], input[type=email], textarea {
           border-color: $error-color;
         }
       }
 
-      input[type=text], textarea {
+      input[type=text], input[type=email], textarea {
         flex: 1 1;
         font-family: inherit;
         font-size: inherit;
