@@ -19,6 +19,7 @@ import {createStore} from 'redux'
 import reducer from '../src/reducers'
 import MobileApp from '../src/containers/MobileApp'
 import DesktopApp from '../src/containers/DesktopApp'
+import {getRedirectUrl, isLocal, shouldRedirect} from './utils'
 
 const auth = {
   api_key: process.env.MAILGUN_API_KEY,
@@ -81,18 +82,9 @@ app.get('/api/' + RESUME_FILE, function (req, res) {
 })
 
 app.use(unless('/api', (req, res) => {
-
-  // Redirect everything to to https://www
-  if (process.env.MODE === 'production') {
-    const www = req.headers.host.slice(0, 3) === 'www'
-    const https = req.secure ||
-        (req.headers["x-forwarded-proto"] || '').substring(0, 5) === 'https'
-    if (!https || !www) {
-      const host = www ? req.headers.host.slice(4) : req.headers.host
-      return res.redirect(301, 'https://www.' + host + req.url);
-    }
+  if (shouldRedirect(req)) {  // Redirect everything to to https://www
+    return res.redirect(301, getRedirectUrl(req));
   }
-
   const context = {}
   const store = createStore(reducer)
   const md = new MobileDetect(req.headers['user-agent'])
