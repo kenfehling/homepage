@@ -79,15 +79,13 @@ app.get('/api/' + RESUME_FILE, function (req, res) {
 })
 
 app.use(unless('/api', (req, res) => {
+
+  // Redirect everything to to https://www
   if (process.env.MODE === 'production') {
     const www = req.headers.host.slice(0, 3) === 'www'
     const https = req.secure ||
         (req.headers["x-forwarded-proto"] || '').substring(0, 5) === 'https'
-
-    console.log('Is HTTP? ' + https)
-
-    if (!www) {
-    //if (!https || !www) {
+    if (!https || !www) {
       const host = www ? req.headers.host.slice(4) : req.headers.host
       return res.redirect(301, 'https://www.' + host + req.url);
     }
