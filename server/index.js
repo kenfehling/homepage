@@ -19,7 +19,7 @@ import {createStore} from 'redux'
 import reducer from '../src/reducers'
 import MobileApp from '../src/containers/MobileApp'
 import DesktopApp from '../src/containers/DesktopApp'
-import {getRedirectUrl, isLocal, shouldRedirect} from './utils'
+import {getRedirectUrl, shouldRedirect, isTextBrowser} from './utils'
 
 const auth = {
   api_key: process.env.MAILGUN_API_KEY,
@@ -87,8 +87,9 @@ app.use(unless('/api', (req, res) => {
   }
   const context = {}
   const store = createStore(reducer)
-  const md = new MobileDetect(req.headers['user-agent'])
-  const device = md.mobile() ? 'mobile' : 'desktop'
+  const ua = req.headers['user-agent']
+  const md = new MobileDetect(ua)
+  const device = md.mobile() || isTextBrowser(ua) ? 'mobile' : 'desktop'
   const body = renderToString(
     <Provider store={store}>
       <HistoryRouter location={req.url} context={context}>
