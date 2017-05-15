@@ -22,7 +22,7 @@ const DesktopToolsDetail = ({match:{params:{tool, category}}}) => {
           <BackLink>
             {({params:{tool, category}}) => (
               <div className='link'>
-                {/* <span className="chevron-left" /> */}
+                <span className="chevron-left" />
                 <div className='text'>{tool || category}</div>
               </div>
             )}
