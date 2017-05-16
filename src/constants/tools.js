@@ -313,18 +313,6 @@ export const tools = [{
     especially one as influential as Rails.
   </div>
 }, {
-  name: 'Bootstrap',
-  stars: 3.5,
-  categories: [LIBRARIES, WEB],
-  description: <div>
-    I have used Bootstrap on a few projects and find it good when something
-    needs to be done simply and quickly, although for any large project I
-    feel more like it gets in my way.
-    <br /><br />
-    I used Bootstrap for the front-end of
-    the {externalLink('HackHealth', 'http://kenfehling.github.io/hack-health-2016-website')} website.
-  </div>
-}, {
   name: 'Keystone',
   stars: 3.5,
   categories: [LIBRARIES, WEB],
@@ -337,6 +325,18 @@ export const tools = [{
     Unfortunately it hasn't been deployed yet to replace the existing website.
     <br /><br />
     {externalLink('Project GitHub repository', 'https://github.com/kingofirony/WUSB-Website')}
+  </div>
+}, {
+  name: 'Bootstrap',
+  stars: 3.5,
+  categories: [LIBRARIES, WEB],
+  description: <div>
+    I have used Bootstrap on a few projects and find it good when something
+    needs to be done simply and quickly, although for any large project I
+    feel more like it gets in my way.
+    <br /><br />
+    I used Bootstrap for the front-end of
+    the {externalLink('HackHealth', 'http://kenfehling.github.io/hack-health-2016-website')} website.
   </div>
 }, {
   name: 'Jest',
@@ -378,7 +378,7 @@ export const tools = [{
     however Ruby has some interesting features like blocks.
   </div>
 }, {
-  name: 'TravisCI',
+  name: 'Travis CI',
   stars: 3.5,
   categories: [DEVOPS],
   description: <div>
@@ -524,18 +524,6 @@ export const tools = [{
     especially [[Android]].
   </div>
 }, {
-  name: 'Firebase',
-  stars: 3,
-  categories: [DATABASES],
-  description: <div>
-    I used Firebase on one project for the TLT Media Lab because the client
-    wanted it. It was interesting, but I felt sort of boxed in by it.
-    In retrospect, I think it would have been a much similar and more robust
-    to solution to use a traditional back-end on that project,
-    but I could see how solutions like Firebase
-    might have a use on simpler projects.
-  </div>
-}, {
   name: 'Logic',
   iconType: 'png',
   stars: 3,
@@ -567,22 +555,6 @@ export const tools = [{
     after [[Logic]]. One great feature is its integration with Max/MSP.
   </div>
 }, {
-  name: 'Clojure',
-  stars: 2.5,
-  categories: [LANGUAGES],
-  description: <div>
-    I had previously learned Scheme over a summer vacation using the
-    old {externalLink("SICP lectures", "http://youtube.com/watch?v=2Op3QLzMgSY")} from MIT.
-    I was smitten by the power yet simplicity of it all.
-    I later learned some Clojure and ClojureScript,
-    which also being Lisp variants are similar to Scheme.
-    <br /><br />
-    Although I don't use any of these languages in my daily work,
-    I'm glad I learned them because they completely changed the way I approach writing programs,
-    even in more imperative languages
-    like [[JavaScript]] and [[Python]].
-  </div>
-}, {
   name: 'Swift',
   stars: 2.5,
   categories: [LANGUAGES, MOBILE],
@@ -606,6 +578,18 @@ export const tools = [{
     particularly with [[Guice]], and the observer pattern.
   </div>
 }, {
+  name: 'Firebase',
+  stars: 2.5,
+  categories: [DATABASES],
+  description: <div>
+    I used Firebase on one project for the TLT Media Lab because the client
+    wanted it. It was interesting, but I felt sort of boxed in by it.
+    In retrospect, I think it would have been a much similar and more robust
+    to solution to use a traditional back-end on that project,
+    but I could see how solutions like Firebase
+    might have a use on simpler projects.
+  </div>
+}, {
   name: 'Flex',
   fullName: 'Adobe Flex',
   stars: 2.5,
@@ -614,6 +598,22 @@ export const tools = [{
     I learned [[ActionScript]] and Flex to rewrite one of my [[Android]]
     apps, {externalLink('Color Sounds', 'http://androidideas.org/colorsounds')}.
     Flex was used for the main menu interface.
+  </div>
+}, {
+  name: 'Clojure',
+  stars: 2,
+  categories: [LANGUAGES],
+  description: <div>
+    I had previously learned Scheme over a summer vacation using the
+    old {externalLink("SICP lectures", "http://youtube.com/watch?v=2Op3QLzMgSY")} from MIT.
+    I was smitten by the power yet simplicity of it all.
+    I later learned some Clojure and ClojureScript,
+    which also being Lisp variants are similar to Scheme.
+    <br /><br />
+    Although I don't use any of these languages in my daily work,
+    I'm glad I learned them because they completely changed the way I approach writing programs,
+    even in more imperative languages
+    like [[JavaScript]] and [[Python]].
   </div>
 }, {
   name: 'Unity',
