@@ -1,7 +1,7 @@
 /* global describe, it */
 
 import {expect} from 'chai'
-import {isLocal} from '../../utils'
+import {isLocal} from '../../src/utils'
 
 const makeReq = (host) => ({
   headers: {

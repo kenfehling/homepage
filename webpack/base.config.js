@@ -25,7 +25,7 @@ export default {
       test: /\.(js|jsx)$/,
       include: [
         /src/,
-        /server\/index.js/,
+        /server\/src/,
         /*
         /node_modules\/apeman-react-clock\/lib/,
         /node_modules\/apeman-react-clock\/src/

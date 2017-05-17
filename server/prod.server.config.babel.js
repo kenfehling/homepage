@@ -6,10 +6,12 @@ import baseConfig from './prod.base.config'
 export default {
   ...baseConfig,
   target: 'node',
-  entry: './index',
+  entry: './src/server',
   output: {
     ...baseConfig.output,
-    filename: 'server.js'
+    filename: 'server.js',
+    library: 'server',
+    libraryTarget: 'umd'
   },
   plugins: [
     ...baseConfig.plugins,
