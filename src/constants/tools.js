@@ -628,11 +628,6 @@ export const tools = [{
     <br /><br />
     When I did experiment with Unity I spent a lot of time trying to learn
     best practices and tools like Strange IoC and the Unity Testing Tools.
-    It's just how I am I guess.
-    <br /><br />
-    Unity and the entire 3D ecosystem has always been very interesting to me
-    but I've chosen to focus mostly on web development,
-    which is a very large area on its own.
   </div>
 }, {
   name: 'Flash',
