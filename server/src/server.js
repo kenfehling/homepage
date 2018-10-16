@@ -94,7 +94,9 @@ export const run = (callback) => {
     const body = renderToString(
       <Provider store={store}>
         <HistoryRouter location={req.url} context={context}>
-          {device === 'mobile' ? <MobileApp /> : <DesktopApp />}
+          {device === 'mobile' ?
+            <MobileApp serverRequest={req} /> :
+            <DesktopApp serverRequest={req} />}
         </HistoryRouter>
       </Provider>
     )

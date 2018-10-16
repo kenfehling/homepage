@@ -2,6 +2,7 @@ import React, {PropTypes} from 'react'
 import {HistoryWindow} from 'react-router-nested-history'
 import ReactTooltip from 'react-tooltip'
 import * as styles from './DesktopWindow.scss'
+import {getLocation} from '../../utils/tools'
 
 const noop = () => {}
 
@@ -22,7 +23,7 @@ const ShareItem = ({name, text=name, url, target='_blank'}) => (
   </a>
 )
 
-const Share = ({location=window.location.href}) => (
+const Share = ({location=getLocation()}) => (
   <div>
     <div className='share-title'>Share</div>
     <ShareItem name='Twitter'

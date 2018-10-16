@@ -9,6 +9,7 @@ import MenuItem, {SubMenu} from './DropdownMenuItem'
 //import ApAnalogClock from 'apeman-react-clock/lib/ap_analog_clock'
 //import ApAnalogClockStyle from 'apeman-react-clock/lib/ap_digital_clock_style'
 import {ApAnalogClock, ApAnalogClockStyle} from 'apeman-react-clock'
+import {getHost} from '../../utils/tools'
 
 const AppItem = ({name, onClick, container=`desktop_${name.toLowerCase()}`}) => (
   <HeaderLink toContainer={container} onClick={onClick} className='item'>
@@ -45,7 +46,7 @@ const BackgroundSetting = () => (
 )
 
 const Restart = () => (
-  <a href={'http://' + window.location.host} className='item'>Restart</a>
+  <a href={getHost()} className='item'>Restart</a>
 )
 
 const system = [

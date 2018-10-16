@@ -79,3 +79,17 @@ export const toTextDescription = (element) => {
     (match) => match)
   return keepStrings(children).join('')
 }
+
+export const getHost = () => {
+  if (typeof window !== 'undefined'){
+    return window.location.protocol + '//' + window.location.host
+  } else if (this.props.serverRequest){
+    return this.props.serverRequest.headers.host
+  } else {
+    throw new Error('Cannot find location');
+  }
+}
+
+export const getLocation = () => {
+  return getHost() + '/' + this.props.location.pathname
+}
