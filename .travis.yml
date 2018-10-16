@@ -7,8 +7,9 @@ install:
 - docker pull kenfehling/node-selenium-chrome:latest
 - npm install --depth 0
 - cd server; npm install --depth 0; npm run build; cd ..
+-
 script:
-- docker run --name dc kenfehling/node6:latest; sleep 5
+- docker run --name dc kenfehling/node-selenium-chrome:latest
 - docker cp server dc:.
 - docker exec dc bash -c "cd server; npm test"
 before_deploy:
