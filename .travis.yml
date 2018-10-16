@@ -8,7 +8,7 @@ install:
 - npm install --depth 0
 - cd server; npm install --depth 0; npm run build; cd ..
 script:
-- docker run -d --name dc kenfehling/node6:latest
+- docker run --name dc kenfehling/node6:latest; sleep 5
 - docker cp server dc:.
 - docker exec dc bash -c "cd server; npm test"
 before_deploy:
