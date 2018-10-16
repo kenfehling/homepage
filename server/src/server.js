@@ -6,7 +6,7 @@ import serveStatic from 'serve-static'
 import path from 'path'
 import compression from 'compression'
 import MobileDetect from 'mobile-detect'
-import React from 'react'
+import React, {Component, PropTypes} from 'react'
 import {renderToString} from 'react-dom/server'
 import {HistoryRouter} from 'react-router-nested-history'
 import nodemailer from 'nodemailer'
@@ -82,6 +82,20 @@ export const run = (callback) => {
     res.sendFile(path.join(buildPath, RESUME_FILE))
   })
 
+  class ContextWrapper extends Component {
+    getChildContext() {
+      return {serverRequest: this.props.serverRequest}
+    }
+
+    render() {
+      return this.props.children
+    }
+  }
+
+  ContextWrapper.childContextTypes = {
+    serverRequest: PropTypes.object.isRequired
+  }
+
   app.use(unless('/api', (req, res) => {
     if (shouldRedirect(req)) {  // Redirect everything to to https://www
       return res.redirect(301, getRedirectUrl(req));
@@ -94,9 +108,9 @@ export const run = (callback) => {
     const body = renderToString(
       <Provider store={store}>
         <HistoryRouter location={req.url} context={context}>
-          {device === 'mobile' ?
-            <MobileApp serverRequest={req} /> :
-            <DesktopApp serverRequest={req} />}
+          <ContextWrapper serverRequest={req}>
+            {device === 'mobile' ? <MobileApp /> : <DesktopApp />}
+          </ContextWrapper>
         </HistoryRouter>
       </Provider>
     )

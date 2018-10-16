@@ -80,16 +80,26 @@ export const toTextDescription = (element) => {
   return keepStrings(children).join('')
 }
 
-export const getHost = () => {
-  if (typeof window !== 'undefined'){
+export const getHost = (context) => {
+  if (typeof window !== 'undefined') {
     return window.location.protocol + '//' + window.location.host
-  } else if (this.props.serverRequest){
-    return this.props.serverRequest.headers.host
+  } else if (context.serverRequest) {
+    return context.serverRequest.headers.host
   } else {
-    throw new Error('Cannot find location');
+    throw new Error('Cannot find host');
   }
 }
 
-export const getLocation = () => {
-  return getHost() + '/' + this.props.location.pathname
+export const getPathname = (context) => {
+  if (typeof window !== 'undefined') {
+
+  } else if (context.serverRequest) {
+    return context.serverRequest.url
+  } else {
+    throw new Error('Cannot find pathname');
+  }
+}
+
+export const getLocation = (context) => {
+  return getHost(context) + getPathname(context)
 }

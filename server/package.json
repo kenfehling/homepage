@@ -45,7 +45,7 @@
     "serve-static": "^1.12.1"
   },
   "scripts": {
-    "clean": "rm -rf build/*",
+    "clean": "rm -rf build; mkdir build",
     "build:client": "webpack --config prod.client.config.babel.js",
     "build:server": "webpack --config prod.server.config.babel.js",
     "build": "npm run clean; npm run build:client; npm run build:server; cp -r ../static/* build; cp src/index.js build",

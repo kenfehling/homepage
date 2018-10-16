@@ -23,7 +23,12 @@ const ShareItem = ({name, text=name, url, target='_blank'}) => (
   </a>
 )
 
-const Share = ({location=getLocation()}) => (
+const getEmailSubject = () => {
+  //TODO: This will interfere with SSR because server and client are different
+  return typeof document !== 'undefined' ? document.title : ''
+}
+
+const _Share = ({location}) => (
   <div>
     <div className='share-title'>Share</div>
     <ShareItem name='Twitter'
@@ -37,10 +42,13 @@ const Share = ({location=getLocation()}) => (
     />
     <ShareItem name='Email'
                target='_top'
-               url={`mailto:?subject=${document ? document.title : ''}&body=${location}`}
+               url={`mailto:?subject=${getEmailSubject()}&body=${location}`}
     />
   </div>
 )
+
+const Share = (props, context) => _Share({location: getLocation(context)})
+Share.contextTypes = {serverRequest: PropTypes.object}
 
 const DesktopWindow = ({name, container='desktop_' + name.toLowerCase(),
                         children, ...windowProps}) => (

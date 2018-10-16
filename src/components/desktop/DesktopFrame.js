@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {PropTypes} from 'react'
 import {apps, backgrounds} from '../../constants/desktop'
 import styles from './DesktopFrame.scss'
 import {HeaderLink} from 'react-router-nested-history'
@@ -45,9 +45,10 @@ const BackgroundSetting = () => (
   />
 )
 
-const Restart = () => (
-  <a href={getHost()} className='item'>Restart</a>
+const Restart = (props, context) => (
+  <a href={getHost(context)} className='item'>Restart</a>
 )
+Restart.contextTypes = {serverRequest: PropTypes.object}
 
 const system = [
   <Restart />
