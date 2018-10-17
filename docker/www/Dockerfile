@@ -5,7 +5,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 RUN git clone https://github.com/kenfehling/homepage.git
+RUN cd homepage; npm install; cd server; npm install --depth 0; npm run build
 
-ENTRYPOINT java -jar /opt/selenium/selenium-server-standalone.jar
+ENTRYPOINT node build/index.js
 
-EXPOSE 4444
+EXPOSE 3000
