@@ -2,7 +2,6 @@ import React, {PropTypes} from 'react'
 import {HistoryWindow} from 'react-router-nested-history'
 import ReactTooltip from 'react-tooltip'
 import * as styles from './DesktopWindow.scss'
-import {getLocation} from '../../utils/tools'
 
 const noop = () => {}
 
@@ -23,12 +22,7 @@ const ShareItem = ({name, text=name, url, target='_blank'}) => (
   </a>
 )
 
-const getEmailSubject = () => {
-  //TODO: This will interfere with SSR because server and client are different
-  return typeof document !== 'undefined' ? document.title : ''
-}
-
-const _Share = ({location}) => (
+const Share = ({location=window.location.href}) => (
   <div>
     <div className='share-title'>Share</div>
     <ShareItem name='Twitter'
@@ -42,13 +36,10 @@ const _Share = ({location}) => (
     />
     <ShareItem name='Email'
                target='_top'
-               url={`mailto:?subject=${getEmailSubject()}&body=${location}`}
+               url={`mailto:?subject=${document ? document.title : ''}&body=${location}`}
     />
   </div>
 )
-
-const Share = (props, context) => _Share({location: getLocation(context)})
-Share.contextTypes = {serverRequest: PropTypes.object}
 
 const DesktopWindow = ({name, container='desktop_' + name.toLowerCase(),
                         children, ...windowProps}) => (

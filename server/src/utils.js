@@ -2,8 +2,7 @@ import some from 'lodash/some'
 
 const localPatterns = ['localhost', '127.0.0.1', '192.168', '10.']
 export const isLocal = function(req) {
-  return some(localPatterns, pattern =>
-    req.headers.host && req.headers.host.indexOf(pattern) === 0)
+  return some(localPatterns, pattern => req.headers.host.indexOf(pattern) === 0)
 }
 
 const hasHTTPS = function(req) {
@@ -12,11 +11,10 @@ const hasHTTPS = function(req) {
 }
 
 const hasWWW = function(req) {
-  return req.headers.host && req.headers.host.slice(0, 3) === 'www'
+  return req.headers.host.slice(0, 3) === 'www'
 }
 
 export const shouldRedirect = function(req) {
-  console.log('Should redirect?')
   return !isLocal(req) && (!hasHTTPS(req) || !hasWWW(req))
 }
 

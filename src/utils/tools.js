@@ -3,7 +3,6 @@ import {tools} from '../constants/tools'
 import range from 'lodash/range'
 import {HistoryLink} from 'react-router-nested-history'
 import reactStringReplace from 'react-string-replace'
-import {HOST} from '../constants/settings'
 
 const starIcon = require('img/icons/star.svg')
 const halfStarIcon = require('img/icons/half-star.svg')
@@ -79,28 +78,4 @@ export const toTextDescription = (element) => {
   const children = reactStringReplace(element.props.children, /\[\[([\w\s]+)]]/g,
     (match) => match)
   return keepStrings(children).join('')
-}
-
-export const getHost = (context) => {
-  if (typeof window !== 'undefined') {
-    return window.location.protocol + '//' + window.location.host
-  } else if (context.serverRequest) {
-    return context.serverRequest.headers.host
-  } else {
-    return 'http://' + HOST  // Whatever... this is only needed on AWS
-  }
-}
-
-export const getPathname = (context) => {
-  if (typeof window !== 'undefined') {
-
-  } else if (context.serverRequest) {
-    return context.serverRequest.url
-  } else {
-    throw new Error('Cannot find pathname');
-  }
-}
-
-export const getLocation = (context) => {
-  return getHost(context) + getPathname(context)
 }
