@@ -12,7 +12,7 @@ const hasHTTPS = function(req) {
 }
 
 const hasWWW = function(req) {
-  return req.headers.host.slice(0, 3) === 'www'
+  return req.headers.host && req.headers.host.slice(0, 3) === 'www'
 }
 
 export const shouldRedirect = function(req) {
