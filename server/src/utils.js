@@ -2,7 +2,6 @@ import some from 'lodash/some'
 
 const localPatterns = ['localhost', '127.0.0.1', '192.168', '10.']
 export const isLocal = function(req) {
-  console.log(req)
   return some(localPatterns, pattern => req.headers.host.indexOf(pattern) === 0)
 }
 
