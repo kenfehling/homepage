@@ -83,9 +83,6 @@ export const run = (callback) => {
   })
 
   app.use(unless('/api', (req, res) => {
-
-    console.log(req)
-
     if (shouldRedirect(req)) {  // Redirect everything to to https://www
       return res.redirect(301, getRedirectUrl(req));
     }

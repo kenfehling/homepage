@@ -1,12 +1,14 @@
 version: '3'
 services:
   web:
+    container_name: web
     image: kenfehling/homepage
     ports:
-    - "3000:3000"
+    - "127.0.0.1:3000:3000"
   ssl:
     image: valian/docker-nginx-auto-ssl
     ports:
       - "80:80"
+      - "443:443"
     environment:
-      SITES: '*.kenfehling.com=localhost:3000'
+      SITES: 'kenfehling.com=web:3000;*.kenfehling.com=web:3000'
