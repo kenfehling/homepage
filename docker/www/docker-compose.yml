@@ -3,4 +3,10 @@ services:
   web:
     image: kenfehling/homepage
     ports:
-    - "80:3000"
+    - "3000:3000"
+  ssl:
+    image: valian/docker-nginx-auto-ssl
+    ports:
+      - "80:80"
+    environment:
+      SITES: '*.kenfehling.com=localhost:3000'
