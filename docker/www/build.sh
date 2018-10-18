@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-docker build . --tag=kenfehling/homepage
+docker build . --tag=kenfehling/homepage --no-cache
 docker push kenfehling/homepage

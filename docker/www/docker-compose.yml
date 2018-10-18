@@ -3,4 +3,4 @@ services:
   web:
     image: kenfehling/homepage
     ports:
-    - "3000:3000"
+    - "3000:80"
