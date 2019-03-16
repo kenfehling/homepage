@@ -22,7 +22,7 @@
     "prop-types": "15.5.8",
     "rc-progress": "2.0.6",
     "react": "15.5.4",
-    "react-designable-audio-player": "github:kenfehling/react-designable-audio-player",
+    "react-designable-audio-player": "github:kenfehling/react-designable-audio-player#0.0.1",
     "react-dom": "15.5.4",
     "react-helmet": "5.0.3",
     "react-onclickoutside": "5.11.1",
