@@ -15,7 +15,7 @@
     "ejs-compiled-loader": "1.1.0",
     "eslint": "3.7.1",
     "eslint-plugin-import": "2.2.0",
-    "extract-text-webpack-plugin": "2.1.0",
+    "extract-text-webpack-plugin": "^2.1.0",
     "favicons-webpack-plugin": "0.0.7",
     "html-webpack-plugin": "2.28.0",
     "image-webpack-loader": "3.3.0",
