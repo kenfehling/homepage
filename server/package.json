@@ -18,7 +18,7 @@
     "extract-text-webpack-plugin": "^2.1.0",
     "favicons-webpack-plugin": "0.0.7",
     "html-webpack-plugin": "2.28.0",
-    "image-webpack-loader": "3.3.0",
+    "image-webpack-loader": "7.0.1",
     "isomorphic-style-loader": "1.1.0",
     "mocha": "3.4.1",
     "nightwatch": "0.9.14",
