@@ -295,7 +295,7 @@ export const tools = [{
     NoSQL databases like Mongo are becoming more prevalent in my projects than
     relational ones like [[Postgresql]] or [[MySQL]].
     <br /><br />
-    I've had good experiences with the [[Keystone] CMS platform for [[Node]]
+    I've had good experiences with the [[Keystone]] CMS platform for [[Node]]
     which uses Mongo as its default storage.
   </div>
 }, {
