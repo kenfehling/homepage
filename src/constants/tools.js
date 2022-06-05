@@ -405,7 +405,7 @@ export const tools = [{
   description: <div>
     FFmpeg is a great command line tool for editing and converting video files.
     One of my [[Android]]
-    apps, {externalLink('Video Toolbox', 'http://androidideas.org/videotoolbox')} is
+    apps, Video Toolbox was
     based on FFmpeg's C libraries. It uses the Android NDK to load the libraries
     for use in [[Java]] using the Java Native Interface (JNI).
   </div>
@@ -440,7 +440,7 @@ export const tools = [{
   categories: [LANGUAGES, WEB, MOBILE],
   description: <div>
     I learned ActionScript and [[Adobe Flex]] to rewrite one of my [[Android]]
-    apps, {externalLink('Color Sounds', 'http://androidideas.org/colorsounds')},
+    apps, Color Sounds,
     to run on the [[Flash]] and Adobe AIR platforms.
   </div>
 }, {
@@ -596,7 +596,7 @@ export const tools = [{
   categories: [WEB, SOFTWARE],
   description: <div>
     I learned [[ActionScript]] and Flex to rewrite one of my [[Android]]
-    apps, {externalLink('Color Sounds', 'http://androidideas.org/colorsounds')}.
+    apps, Color Sounds.
     Flex was used for the main menu interface.
   </div>
 }, {

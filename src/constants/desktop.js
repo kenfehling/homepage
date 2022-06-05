@@ -4,10 +4,11 @@ export const apps = [
   {name: 'Editor', bounce: true},
   {name: 'Tools'},
   {name: 'Music'},
-  {name: 'PDF'},
+  // {name: 'PDF'},
   //{name: 'Dialer'},
   {name: 'Email'},
   {name: 'Social'},
+  {name: 'Projects'},
   {name: 'Mobile', container: 'mobile'}
 ]
 

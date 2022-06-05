@@ -6,8 +6,9 @@ import Splash from '../components/desktop/Splash'
 import Audio from '../components/desktop/Audio'
 import Tools from '../components/desktop/DesktopTools'
 import Social from '../components/desktop/DesktopSocial'
+import Projects from '../components/desktop/DesktopProjects'
 import Mobile from '../components/shared/Mobile'
-import PDF from '../components/desktop/PDF'
+// import PDF from '../components/desktop/PDF'
 import Email from '../components/desktop/DesktopEmail'
 import Dock from '../components/desktop/Dock'
 import {WindowGroup} from 'react-router-nested-history'
@@ -38,9 +39,9 @@ const DesktopApp = ({background}) => (
     {SPLASH_DURATION > 0 && <Splash />}
     <div className={'inner-container ' + background}>
       <WindowGroup name='desktop'>
-        <ContainerWindow name="PDF" right={right + 5} top={top + 5}>
+        {/* <ContainerWindow name="PDF" right={right + 5} top={top + 5}>
           <PDF />
-        </ContainerWindow>
+        </ContainerWindow> */}
         <ContainerWindow name="Editor" center={0} middle={middle}>
           <Editor />
         </ContainerWindow>
@@ -72,6 +73,9 @@ const DesktopApp = ({background}) => (
          <Dialer />
          </ContainerWindow>
          */}
+        <DesktopWindow name="Projects" right={right + 10} top={top + 10}>
+          <Projects />
+        </DesktopWindow>
         <DesktopFrame />
         <Dock windows={apps} />
       </WindowGroup>

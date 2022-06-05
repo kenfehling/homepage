@@ -1,0 +1,64 @@
+@import "bourbon";
+@import "../../styles/utils";
+@import "../../styles/colors";
+
+$icon-size: 56px;
+$title-size: 15px;
+$title-weight: 500;
+
+:local(.container) {
+  background-color: #DDD;
+  padding: 16px 8px;
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+
+  .folder {
+    color: inherit;
+    text-decoration: none;
+    margin: 1px 4px 7px 4px;
+    display: inline-table;
+    width: 96px;
+    text-align: center;
+    cursor: pointer;
+    padding: 10px;
+    box-sizing: border-box;
+    .icon {
+      width: $icon-size;
+      height: $icon-size;
+      border-radius: 4px;
+      margin: auto;
+    }
+    .name {
+      font-weight: $title-weight;
+      text-align: center;
+      margin: 1px 0 3px 0;
+    }
+  }
+
+  .project {
+    color: inherit;
+    margin: 0 8px;
+    padding: 11px 10.5px 10px 10px;
+    float: left;
+    text-decoration: none;
+    cursor: pointer;
+    width: calc(50% - 20px);
+    height: 100%;
+    box-sizing: border-box;
+    img {
+      width: 100%;
+    }
+    .name {
+      text-align: center;
+      font-weight: 500;
+      padding-top: 5px;
+    }
+    .description {
+      padding-top: 5px;
+      padding-left: 2px;
+      opacity: 0.75;
+      font-style: italic;
+    }
+  }
+}
