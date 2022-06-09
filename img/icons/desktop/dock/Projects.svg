@@ -31,12 +31,12 @@
      inkscape:window-maximized="1"
      inkscape:current-layer="svg17" />
   <path
-     fill="#ffb900"
+     fill="#0077EE"
      d="M 45,18.95 40.7574,13.85888 C 39.6321,12.50852 38.106,11.75 36.5147,11.75 H 9 c -1.6569,0 -3,1.61172 -3,3.6 v 67.2 c 0,0.66276 0.4477,1.2 1,1.2 h 82 c 0.5523,0 1,-0.53724 1,-1.2 v -60 c 0,-1.98828 -1.3431,-3.6 -3,-3.6 z"
      id="path2"
      style="stroke-width:1.09545" />
   <path
-     fill="#ffd75e"
+     fill="#0099FF"
      d="m 45,18.95 -4.2426,5.09112 C 39.6321,25.39148 38.106,26.15 36.5147,26.15 H 6 v 56.4 c 0,0.66276 0.4477,1.2 1,1.2 h 82 c 0.5523,0 1,-0.53724 1,-1.2 v -60 c 0,-1.98828 -1.3431,-3.6 -3,-3.6 z"
      id="path4"
      style="stroke-width:1.09545" />
@@ -55,7 +55,7 @@
        id="stop6" />
     <stop
        offset="1"
-       stop-color="#ffd75e"
+       stop-color="#0099FF"
        stop-opacity=".3"
        id="stop8" />
   </linearGradient>
@@ -70,7 +70,7 @@
      id="path13"
      style="stroke-width:1.09545" />
   <path
-     fill="#da7b16"
+     fill="#0066CC"
      d="M 89,83.75 H 7 c -0.5523,0 -1,-0.53724 -1,-1.2 v 0 h 84 v 0 c 0,0.66276 -0.4477,1.2 -1,1.2 z"
      id="path15"
      style="stroke-width:1.09545" />

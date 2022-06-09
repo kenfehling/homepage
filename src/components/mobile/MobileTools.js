@@ -57,8 +57,7 @@ const MobileTools = ({isDesktop}) => {
           const ts = filterTools(category)
           return (
             <Page title={category} isDesktop={isDesktop}>
-              <List
-                items={ts.map(tool => mapTool(tool, category))}/>
+              <List items={ts.map(tool => mapTool(tool, category))} />
               <Head title={`${category} tools`}
                     description={`${category} tools that I use`}
                     keywords={[category, ...ts].join(',')}

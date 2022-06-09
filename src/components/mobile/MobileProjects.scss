@@ -7,61 +7,27 @@ $title-size: 15px;
 $title-weight: 500;
 
 :local(.container) {
-  background-color: #FFF;
+  background-color: #DDD;
   height: 100%;
   width: 100%;
 
-  .header {
-    background-color: #ECECEC;
-    padding: 11px 20px 10px 20px;
-    box-sizing: border-box;
-    margin-bottom: 18px;
-    display: flex;
-
-    a {
-      text-decoration: none;
-    }
-
-    .back-container {
-      width: 20%;
-    }
-
-    .back {
-      font-size: round($title-size * 0.85);
-      display: flex;
-      font-weight: 400;
-      color: $link-color;
-      line-height: $title-size + 3px;
-    
-      .chevron-left {
-        font-weight: 100;
-        display: block;
-        line-height: inherit;
-        margin-right: 3px;
-      }
-    }
-
-    .title {
-      width: 60%;
-      text-align: center;
-      font-weight: $title-weight;
-      font-size: $title-size;
-    }
+  .content {
+      padding-top: 5px;
   }
 
-  .files-body {
-    padding: 16px 8px;
+  .folders {
+    padding: 0 20px;
   }
 
   .folder {
     color: inherit;
     text-decoration: none;
-    margin: 1px 4px 7px 4px;
+    margin: 16px 0 8px 0;
     display: inline-table;
-    width: 96px;
+    width: 50%;
     text-align: center;
     cursor: pointer;
-    padding: 10px;
+    padding: 12px;
     box-sizing: border-box;
     .icon {
       width: $icon-size;
@@ -78,12 +44,12 @@ $title-weight: 500;
 
   .project {
     color: inherit;
-    margin: 0 8px;
-    padding: 11px 10.5px 10px 10px;
+    margin: 0 0 0 8px;
+    padding: 11px 0 10px 10px;
     float: left;
     text-decoration: none;
     cursor: pointer;
-    width: calc(50% - 20px);
+    width: calc(50% - 16px);
     height: 100%;
     box-sizing: border-box;
     img {

@@ -73,7 +73,10 @@ const DesktopApp = ({background}) => (
          <Dialer />
          </ContainerWindow>
          */}
-        <DesktopWindow name="Projects" right={right + 10} top={top + 10}>
+        <DesktopWindow name="File Manager"
+                       className='Projects'
+                       container='desktop_projects' 
+                       right={right + 10} top={top + 10}>
           <Projects />
         </DesktopWindow>
         <DesktopFrame />

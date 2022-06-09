@@ -6,9 +6,9 @@ export const apps = [
   {name: 'Music'},
   // {name: 'PDF'},
   //{name: 'Dialer'},
+  {name: 'Projects'},
   {name: 'Email'},
   {name: 'Social'},
-  {name: 'Projects'},
   {name: 'Mobile', container: 'mobile'}
 ]
 

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created using Karbon, part of Calligra: http://www.calligra.org/karbon -->
+
+<svg
+   width="128px"
+   height="128px"
+   version="1.1"
+   id="svg7"
+   sodipodi:docname="Projects.svg"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   viewBox="0 0 128 128"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview9"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="pt"
+     showgrid="false"
+     inkscape:zoom="3.9916992"
+     inkscape:cx="60.625811"
+     inkscape:cy="72.901285"
+     inkscape:window-width="1440"
+     inkscape:window-height="759"
+     inkscape:window-x="0"
+     inkscape:window-y="32"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg7" />
+  <defs
+     id="defs2" />
+  <path
+     id="shape0"
+     fill="#3399ff"
+     d="M 128,111.583 C 128,120.65 120.767,128 111.842,128 H 16.158 C 7.234,128 0,120.65 0,111.583 V 16.417 C 0,7.35 7.234,0 16.158,0 h 95.684 C 120.767,0 128,7.35 128,16.417 Z" />
+  <path
+     d="m 104.6696,54.006246 h -4.56959 v -8.278877 c 0,-2.264308 -1.814401,-4.104058 -4.032002,-4.104058 H 61.728805 L 54.740004,32 H 28.532001 C 26.3144,32 24.5,33.83975 24.5,36.104059 v 58.659731 1.132153 c 0,0 0,0 0,0.07076 v 0.424558 0 c 0.0672,0.707595 0.2688,1.415192 0.672,1.981265 C 25.9112,99.36316 27.0536,100 28.2632,100 h 62.294405 c 1.680001,0 3.1584,-1.132154 3.696,-2.759622 L 108.5,58.747141 v -0.353798 c -0.0672,-2.547347 -1.6128,-4.387097 -3.8304,-4.387097 z M 27.7256,36.174818 c 0,-0.353798 0.336,-0.636837 0.7392,-0.636837 h 24.595204 l 6.9888,9.623312 h 35.952005 c 0.4032,0 0.7392,0.283037 0.7392,0.636836 v 8.208117 H 42.442401 v 0 c -1.679999,0 -3.158399,1.132153 -3.628799,2.759625 L 27.7928,86.343395 V 36.174818 Z"
+     id="path324"
+     style="stroke-width:0.689568" />
+</svg>

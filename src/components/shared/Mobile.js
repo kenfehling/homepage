@@ -9,10 +9,12 @@ import MobileTools from '../mobile/MobileTools'
 import MobileAudio from '../mobile/MobileAudio'
 import MobileSocial from '../mobile/MobileSocial'
 import MobileNotes from '../mobile/MobileNotes'
+import MobileProjects from '../mobile/MobileProjects'
 import Contacts from '../mobile/Contacts'
 import {devicePath} from '../../utils/mobile'
 
 const apps = [
+  {name: 'Projects'},
   {name: 'Tools'},
   {name: 'Music'},
   {name: 'Notes'},
@@ -42,6 +44,9 @@ const Mobile = ({isDesktop}) => (
         <ContainerWindow name="Music" isDesktop={isDesktop}>
           <MobileAudio isDesktop={isDesktop} />
         </ContainerWindow>
+        <MobileWindow name='Projects' isDesktop={isDesktop}>
+          <MobileProjects isDesktop={isDesktop} />
+        </MobileWindow>
         <ContainerWindow name="Notes" isDesktop={isDesktop}>
           <MobileNotes isDesktop={isDesktop} />
         </ContainerWindow>

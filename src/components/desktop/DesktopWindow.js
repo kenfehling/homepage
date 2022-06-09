@@ -41,7 +41,7 @@ const Share = ({location=window.location.href}) => (
   </div>
 )
 
-const DesktopWindow = ({name, container='desktop_' + name.toLowerCase(),
+const DesktopWindow = ({name, className=name, container='desktop_' + name.toLowerCase(),
                         children, ...windowProps}) => (
   <HistoryWindow forName={container}
                  visible={false}
@@ -53,7 +53,7 @@ const DesktopWindow = ({name, container='desktop_' + name.toLowerCase(),
                  rememberPosition={false}
   >
     {({close}) => (
-      <div className={`${styles.window} ${name}`}>
+      <div className={`${styles.window} ${className}`}>
         <div className='toolbar'>
           <div className='buttons left'>
             <ToolbarButton name='close' onClick={close} />
