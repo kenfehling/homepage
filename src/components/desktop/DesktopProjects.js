@@ -49,7 +49,7 @@ const DesktopProjects = () => (
   <div className={styles.container}>
     <Container name='desktop_projects'
               initialUrl='/projects'
-              patterns={[`/projects`, `/projects/viz`, '/projects/web']}>
+              patterns={folders.map(f => `/projects/${f.id}`)}>
         <HistoryRoute path='/projects' exact>
           <Folders items={folders} />
         </HistoryRoute>
