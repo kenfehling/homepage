@@ -42,7 +42,7 @@ const DesktopApp = ({background}) => (
         {/* <ContainerWindow name="PDF" right={right + 5} top={top + 5}>
           <PDF />
         </ContainerWindow> */}
-        <ContainerWindow name="Editor" center={0} middle={middle}>
+        <ContainerWindow name="Editor" center={-150} middle={middle + 50}>
           <Editor />
         </ContainerWindow>
         {/*
@@ -55,7 +55,7 @@ const DesktopApp = ({background}) => (
         <ContainerWindow name="Music" right={right + 200} middle={-120}>
           <Audio />
         </ContainerWindow>
-        <DesktopWindow name="Mobile" center={-200} middle={50}
+        <DesktopWindow name="Mobile" left={left + 100} middle={-50}
                        container='mobile'>
           <Mobile isDesktop={true} />
         </DesktopWindow>
@@ -76,7 +76,7 @@ const DesktopApp = ({background}) => (
         <DesktopWindow name="File Manager"
                        className='Projects'
                        container='desktop_projects' 
-                       right={right + 10} top={top + 10}>
+                       center={150} middle={middle - 50}>
           <Projects />
         </DesktopWindow>
         <DesktopFrame />
