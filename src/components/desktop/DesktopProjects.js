@@ -65,11 +65,11 @@ const DesktopProjects = () => (
             </div>
           </HistoryRoute>
         ))}
-    </Container>
-    <Head title='Ken Fehling - Projects'
+        <Head title='Ken Fehling - Projects'
           description="Various projects I've worked on"
           keywords="Projects, Software, Programming, Code"
-    />
+        />
+    </Container>
   </div>
 )
 

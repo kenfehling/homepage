@@ -1,12 +1,12 @@
 export const apps = [
   //{name: 'Map'},
   //{name: 'Terminal'},
-  {name: 'Editor', bounce: true},
+  {name: 'Editor'},
   {name: 'Tools'},
   {name: 'Music'},
   // {name: 'PDF'},
   //{name: 'Dialer'},
-  {name: 'Projects'},
+  {name: 'Projects', bounce: true},
   {name: 'Email'},
   {name: 'Social'},
   {name: 'Mobile', container: 'mobile'}

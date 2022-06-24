@@ -28,6 +28,10 @@ export default () => (
       which I authored{colon}
     </div>
     <br />
+    <div>
+      It has separate desktop and mobile designs.
+    </div>
+    <br />
     {gitHubLink('react-router-nested-history')}
     <div>
       Handles the windows{comma} tabs{comma} browser history{comma} and
@@ -35,7 +39,7 @@ export default () => (
     </div>
     <br />
     {gitHubLink('react-designable-audio-player')}
-    <div>Used for the desktop and mobile music players</div>
+    <div>Used for both the desktop and mobile music players</div>
     <br />
     <br />
     {keyValueItem('Source code', <a target="_blank" href={GITHUB_REPO}>GitHub</a>)}

@@ -10,3 +10,4 @@ server/test/e2e/reports
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
+**/.DS_Store
