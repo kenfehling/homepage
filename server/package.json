@@ -3,13 +3,16 @@
   "version": "1.0.0",
   "homepage": "http://kenfehling.com",
   "devDependencies": {
-    "babel-core": "7.18.5",
-    "babel-loader": "6.2.0",
-    "babel-preset-env": "7.18.2",
+    "babel-core": "6.3.26",
+    "babel-eslint": "7.1.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-es2017": "1.0.0",
     "babel-preset-react": "6.16.0",
     "chai": "3.5.0",
     "css-loader": "0.25.0",
     "ejs-compiled-loader": "1.1.0",
+    "eslint": "3.7.1",
+    "eslint-plugin-import": "2.2.0",
     "extract-text-webpack-plugin": "^2.1.0",
     "favicons-webpack-plugin": "0.0.7",
     "html-webpack-plugin": "2.28.0",
@@ -45,7 +48,9 @@
     "build": "npm run clean; npm run build:client; npm run build:server; cp -r ../static/* build; cp src/index.js build",
     "start": "node build/index",
     "dev": "npm run build; npm start",
-    "test": "./node_modules/mocha/bin/mocha --compilers js:babel-core/register test/unit/*",
+    "test:unit": "./node_modules/mocha/bin/mocha --compilers js:babel-core/register test/unit/*",
+    "test:e2e": "node test/e2e/script.js",
+    "test": "npm run test:unit; npm run test:e2e",
     "stats": "webpack --config prod.client.config.babel.js --profile --json > stats.json"
   }
 }
