@@ -9,7 +9,7 @@ export default {
   entry: './src/server',
   output: {
     ...baseConfig.output,
-    filename: 'server.js',
+    filename: 'index.js',
     library: 'server',
     libraryTarget: 'umd'
   },
