@@ -11,6 +11,7 @@ services:
       - "80:80"
       - "443:443"
     environment:
+      ALLOWED_DOMAINS: 'desktop.kenfehling.com'
       SITES: 'desktop.kenfehling.com=web:3000'
     volumes:
           - ssl_data:/etc/resty-auto-ssl
