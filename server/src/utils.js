@@ -10,21 +10,6 @@ export const isLocal = function(req) {
 //     (req.headers["x-forwarded-proto"] || '').substring(0, 5) === 'https'
 // }
 
-const hasWWW = function(req) {
-  return req.headers.host.slice(0, 3) === 'www'
-}
-
-export const shouldRedirect = function(req) {
-  // return !isLocal(req) && (!hasHTTPS(req) || !hasWWW(req))
-  return !isLocal(req) && !hasWWW(req)
-}
-
-export const getRedirectUrl = function(req) {
-  const host = hasWWW(req) ? req.headers.host.slice(4) : req.headers.host
-  // return 'https://www.' + host + req.url
-  return 'http://www.' + host + req.url
-}
-
 export const isTextBrowser = function(ua) {
   return /(Lynx)|(ELinks)|(Links[ s]\()|(Net-Tamer)|(w3m)/i.test(ua)
 }
