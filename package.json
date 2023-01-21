@@ -16,7 +16,7 @@
     "apeman-react-clock": "3.0.3",
     "babel-polyfill": "6.23.0",
     "bowser": "1.6.0",
-    "lodash": "4.17.4",
+    "lodash": "4.17.21",
     "prop-types": "15.5.8",
     "rc-progress": "2.0.6",
     "react": "15.5.4",
