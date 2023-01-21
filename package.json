@@ -8,7 +8,7 @@
     "start:mobile": "webpack-dev-server --env.device mobile --host 0.0.0.0 --port 8081 --progress --colors --history-api-fallback --config webpack/dev.config.babel.js",
     "lint": "eslint src",
     "test": "echo 'ok'",
-    "build": "cd server; npm install; npm run build"
+    "build": "cd server; npm install --force; npm run build"
   },
   "author": "Ken Fehling",
   "license": "ISC",
