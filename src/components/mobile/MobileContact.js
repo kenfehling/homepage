@@ -15,7 +15,7 @@ const MobileContact = ({contact:{name, icon, email, website, twitter}}) => (
     </div>
     <div className='section website'>
       <div className='label'>Website</div>
-      <a target='_blank' href={'http://www.' + website}>{website}</a>
+      <a target='_blank' href={'http://' + website}>{website}</a>
     </div>
     <div className='section twitter'>
       <div className='label'>Twitter</div>

@@ -19,7 +19,7 @@ import {createStore} from 'redux'
 import reducer from '../../src/reducers/index'
 import MobileApp from '../../src/containers/MobileApp'
 import DesktopApp from '../../src/containers/DesktopApp'
-import {getRedirectUrl, shouldRedirect, isTextBrowser} from './utils'
+import {isTextBrowser} from './utils'
 
 export const run = (callback) => {
   const auth = {
@@ -83,9 +83,6 @@ export const run = (callback) => {
   })
 
   app.use(unless('/api', (req, res) => {
-    if (shouldRedirect(req)) {  // Redirect everything to to https://www
-      return res.redirect(301, getRedirectUrl(req));
-    }
     const context = {}
     const store = createStore(reducer)
     const ua = req.headers['user-agent']
